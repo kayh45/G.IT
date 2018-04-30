@@ -1,0 +1,24 @@
+/*
+ *	작성자 : 강현
+ *	목적: 헤더 네비게이션 바에 적용될 스타일
+ *	note: 부트스트랩의 일부 속성 덮어쓰기
+ */
+
+.side_body {
+	background-color : #414141;
+	color : #fff;	
+}
+
+.side_title {
+	background-color : #575757;
+	font-size : 25px;
+	padding : 10px 20px;
+	
+}
+
+.side_sub-menu {
+	background-color : #272727;
+	font-size : 20px;
+	padding : 5px 40px;
+	border-bottom : 1px solid #696969
+}

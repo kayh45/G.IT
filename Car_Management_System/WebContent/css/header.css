@@ -1,0 +1,63 @@
+/*
+ *	작성자 : 강현
+ *	목적: 헤더 네비게이션 바에 적용될 스타일
+ *	note: 부트스트랩의 일부 속성 덮어쓰기 (b)로 구분
+ */
+
+
+.navbar {
+	margin : 0;
+} /* 네비게이션의 마진 제거 (b) */
+
+#navbar {
+	background-color : #009DD9;
+	color : #ffffff;
+	font-size : 18px;
+} /* 네비게이션의 배경색 및 폰트 컬러 지정 (b) */
+
+.top-of-top {
+	background-color : #333;
+	color : #fff;
+	height : 40px;
+	padding : 10px;
+} /* 최상단 바의 배경색 및 폰트 컬러 지정 */
+
+.top-of-top img {
+	height : 20px;
+	width : 35px;
+	margin-right : 10px;
+} /* 최상단 바의 로고 크기 및 마진 지정 */
+
+.navbar-brand img {
+	height : 30px;
+	margin : 0 30px;
+} /* 네비게이션의 로고 크기 및 마진 지정 (b) */
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+    color: #ffffff;
+    background-color: #009DD9;
+}
+
+.dropdown-menu a {
+	background-color : #35c1f7;
+	
+} /* 드롭다운 배경색 지정 (b) */
+
+.dropdown-menu>li>a {
+	color : #f0f0f0;
+	padding : 10px 15px;
+}
+
+.dropdown-menu {
+	padding : 0;
+	font-size : 15px;
+	border : 0;
+} /* 드롭다운 패딩 0으로 초기화 (b) */
+
+.navbar-nav {
+	padding : 0 25px;
+}
+
+.navbar-brand {
+	margin-right : 25px;
+}
