@@ -75,7 +75,7 @@ section#content {
 .form_textbox {
 	margin : 0 10px;
 	margin-right : 0;
-	width : 100px;
+	width : 150px;
 }
 
 .form_textbox[readonly] {
@@ -88,7 +88,7 @@ section#content {
 .form_label {
 	background-color : #4ab4e1;
 	padding : auto;
-	width : 18%;
+	width : 17%;
 	text-align : center;
 	color : #fff;
 }
@@ -177,6 +177,13 @@ section#content {
 		width : 0px;
 	}
 	
+}	
+
+@media (min-width: 1700px){
+	section#content {
+		padding : 30px 300px;
+		padding-left : 100px;
+	}
 	
-}		
+}	
 		
