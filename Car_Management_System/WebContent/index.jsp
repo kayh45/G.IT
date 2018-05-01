@@ -19,7 +19,7 @@
 			<%@ include file = "sideMenu.jsp" %>
 		</aside>
 		<section id = "content">
-			<a href = "member.do?command=member_join_form">회원등록 화면</a>
+			<h1>메인화면입니다.</h1>
 		</section>
 	</section>
 </body>

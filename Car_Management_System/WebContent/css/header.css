@@ -60,4 +60,7 @@
 
 .navbar-brand {
 	margin-right : 25px;
+	display : inline-block;
+	vertical-align : middle;
+	
 }

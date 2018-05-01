@@ -16,7 +16,7 @@
 	</header>
 	<section id = "main">
 		<aside id = "side">
-			<%@ include file = "../sideMenu.jsp" %>
+			<%@ include file = "sideMenu.jsp" %>
 		</aside>
 		<section id = "content">
 			<div class = "content_title-box">
@@ -127,6 +127,17 @@
 						</td>
 						<td colspan = "3">
 							<input type = "text" id = "form_address-detail" class = "form_textbox">
+						</td>
+					</tr>
+					<tr>
+						<td class = "form_label">
+							<p class = "label">권한</p>				
+						</td>
+						<td colspan = "3">
+							<div class = "radio-group">
+								<input type = "radio" name = "mem_auth" checked>일반사용자
+								<input type = "radio" name = "mem_auth">관리자
+							</div>
 						</td>
 					</tr>
 												

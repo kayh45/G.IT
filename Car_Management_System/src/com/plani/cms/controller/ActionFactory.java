@@ -1,7 +1,8 @@
 package com.plani.cms.controller;
 
 import com.plani.cms.controller.action.Action;
-import com.plani.cms.controller.action.member.MemberJoinFormAction;
+import com.plani.cms.controller.action.MainAction;
+import com.plani.cms.controller.action.member.MemberWriteFormAction;
 
 public class ActionFactory {
 
@@ -22,9 +23,11 @@ public class ActionFactory {
 		
 		System.out.println("ActionFactory : " + command);
 	
-		if(command.equals("member_join_form")){
-			action = new MemberJoinFormAction();
-		} 
+		if(command.equals("main")){
+			action = new MainAction();
+		} else if (command.equals("member_write_form")) {
+			action = new MemberWriteFormAction();
+		}
 		
 		return action;
 	
