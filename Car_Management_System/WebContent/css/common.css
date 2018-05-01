@@ -29,4 +29,103 @@ section#content {
 	height : auto;
 	width : 100%;
 	color : #000;
+	padding : 30px;
+}
+
+.content_title-box {
+	border : 1px solid #2dccc0;
+	padding : 10px;
+	padding-left : 20px;
+	font-size : 18px;
+	background-color : #fff;
+	border-radius: 8px;
+	font-weight : bold;
+}
+
+.content_title-text {
+	margin-left : 10px;
+	margin-bottom : 0;
+	display : inline-block;
+}
+
+.content_cont-box {
+	border : 1px solid #ddd;
+	padding : 10px 30px;
+	background-color : #fff;
+	margin : 15px 0;
+	font-size : 15px;
+}
+
+.content_cont-text {
+	margin-left : 10px;
+	margin-bottom : 0;
+	display : inline-block;
+}
+
+.form_textbox[readonly] {
+	background-color : #d8d8d8;
+	margin-left : 20px;
+	margin : 0 10px;
+}
+
+.form_label {
+	background-color : #4ab4e1;
+	padding : auto;
+	width : 18%;
+	text-align : center;
+	color : #fff;
+}
+
+.table>tbody>tr>td {
+	padding : 5px;
+}
+
+.form_label p {
+	display: inline-block;
+	margin-bottom : 0;
+}
+
+.form_label>.label {
+	font-size : 15px;
+	float : left;
+}
+
+.form_label>.must {
+	color : #ff0000;
+	float : right;
+}
+
+.form_textbox {
+	margin : 0 10px;
+}
+
+.form_phone-td  p{
+	display: inline-block;
+	margin : -10px;
+}
+
+#form_address {
+	width : 60%;
+}
+
+#form_address-detail {
+	width : 30%;
+}
+
+.form_btn-group {
+	text-align : center;
+}
+
+.form_btn-group button {
+	width : 60px;
+	height : 30px;
+	margin : 10px;
+	font-size : 15px;
+}
+
+#search-button {
+	background-color : #6a6a6a;
+	color : #fff;
+	padding : 5px;
+	border-radius: 1px;
 }
