@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no">
 <title>법인차량관리시스템</title>
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../css/common.css" rel="stylesheet">
@@ -32,13 +33,13 @@
 				<p class = "content_cont-text">
 					*사원 기본 정보
 				</p>
-				<table class="table table-bordered">
+				<table class="table table-bordered" id = "form_table">
 					<tr>
 						<td class = "form_label">
 							<p class = "label">사원 아이디</p>
 							<p class = "must">*</p>					
 						</td>
-						<td colspan = "3">
+						<td class = "form_normal-td" colspan = "3">
 							<input type = "text" class = "form_textbox">
 							<span id ="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
 						</td>
@@ -55,7 +56,7 @@
 							<p class = "label">비밀번호 확인</p>
 							<p class = "must">*</p>			
 						</td>
-						<td>
+						<td class = "form_normal-td" >
 							<input type = "text" class = "form_textbox">
 						</td>
 					</tr>
@@ -64,14 +65,18 @@
 							<p class = "label">사원 이름</p>
 							<p class = "must">*</p>			
 						</td>
-						<td>
+						<td class = "form_normal-td"  colspan = "3">
 							<input type = "text" class = "form_textbox">
-						</td>
+						</td>						
+					</tr>
+					<tr>
 						<td class = "form_label">
 							<p class = "label">주민등록번호</p>
 							<p class = "must">*</p>			
 						</td>
-						<td>
+						<td class = "form_jumin-td" colspan = "3">
+							<input type = "text" class = "form_textbox">
+							<p>-</p>
 							<input type = "text" class = "form_textbox">
 						</td>
 					</tr>
@@ -87,7 +92,7 @@
 						<td class = "form_label">
 							<p class = "label">직책</p>		
 						</td>
-						<td>
+						<td class = "form_normal-td" >
 							<input type = "text" class = "form_textbox">
 						</td>
 					</tr>
@@ -108,7 +113,7 @@
 						<td class = "form_label">
 							<p class = "label">우편번호</p>				
 						</td>
-						<td colspan = "3">
+						<td class = "form_normal-td"  colspan = "3">
 							<input type = "text" size = "13" class = "form_textbox" readonly>
 						</td>
 					</tr>	
@@ -116,7 +121,7 @@
 						<td class = "form_label">
 							<p class = "label">주소</p>				
 						</td>
-						<td colspan = "3">
+						<td class = "form_normal-td"  colspan = "3">
 							<input type = "text" id = "form_address" class = "form_textbox" readonly>
 							<span id ="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
 						</td>
@@ -125,7 +130,7 @@
 						<td class = "form_label">
 							<p class = "label">상세 주소</p>				
 						</td>
-						<td colspan = "3">
+						<td class = "form_normal-td"  colspan = "3">
 							<input type = "text" id = "form_address-detail" class = "form_textbox">
 						</td>
 					</tr>
@@ -133,7 +138,7 @@
 						<td class = "form_label">
 							<p class = "label">권한</p>				
 						</td>
-						<td colspan = "3">
+						<td class = "form_normal-td"  colspan = "3">
 							<div class = "radio-group">
 								<input type = "radio" name = "mem_auth" checked>일반사용자
 								<input type = "radio" name = "mem_auth">관리자
