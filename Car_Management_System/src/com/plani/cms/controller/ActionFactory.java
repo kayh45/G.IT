@@ -4,6 +4,7 @@ import com.plani.cms.controller.action.Action;
 import com.plani.cms.controller.action.MainAction;
 import com.plani.cms.controller.action.car.CarWriteFormAction;
 import com.plani.cms.controller.action.member.MemberWriteFormAction;
+import com.plani.cms.controller.action.place.PlaceWriteFormAction;
 
 public class ActionFactory {
 
@@ -30,6 +31,8 @@ public class ActionFactory {
 			action = new MemberWriteFormAction();
 		} else if (command.equals("car_write_form")) {
 			action = new CarWriteFormAction();
+		} else if (command.equals("place_write_form")) {
+			action = new PlaceWriteFormAction();
 		}
 		
 		return action;
