@@ -11,9 +11,8 @@
 <body class = "side_body">
 
 	<ul class = "side_ul">
-		<li class = "side_title">사원 관리</li>
-		<li class = "side_sub-menu">부서 등록</li>
-		<li class = "side_sub-menu">사원 등록</li>
+		<li class = "side_title">법인 차 등록</li>
+
 	</ul>
 
 </body>
