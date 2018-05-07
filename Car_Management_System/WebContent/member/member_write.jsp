@@ -11,7 +11,6 @@
 <script type = "text/javascript" src="../js/bootstrap.js"></script>
 </head>
 <body>
-	<!-- 수정 -->
 	<header>
 			<%@ include file = "../header.jsp" %>
 			<!-- 헤더 -->
