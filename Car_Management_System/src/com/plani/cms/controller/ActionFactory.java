@@ -2,6 +2,7 @@ package com.plani.cms.controller;
 
 import com.plani.cms.controller.action.Action;
 import com.plani.cms.controller.action.MainAction;
+import com.plani.cms.controller.action.car.CarWriteFormAction;
 import com.plani.cms.controller.action.member.MemberWriteFormAction;
 
 public class ActionFactory {
@@ -27,6 +28,8 @@ public class ActionFactory {
 			action = new MainAction();
 		} else if (command.equals("member_write_form")) {
 			action = new MemberWriteFormAction();
+		} else if (command.equals("car_write_form")) {
+			action = new CarWriteFormAction();
 		}
 		
 		return action;
