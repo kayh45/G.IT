@@ -35,7 +35,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">사원 관리 <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">부서 등록</a></li>
+            <li><a href="member.do?command=dept_write_form">부서 등록</a></li>
             <li><a href="member.do?command=member_write_form">사원 등록</a></li>
           </ul>
         </li>

@@ -33,7 +33,7 @@
 	<section id="main"> <aside id="side"> <%@ include
 		file="sideMenu.jsp"%> </aside> 
 		<section id="content">
-	<div class="content	_title-box">
+	<div class="content_title-box">
 		<span class="glyphicon glyphicon-pencil" aria-hidden="true"> </span>
 		<p class="content_title-text">법인 차 등록</p>
 	</div>

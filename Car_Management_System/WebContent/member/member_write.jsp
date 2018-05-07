@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, user-scalable=no">
-<title>법인차량관리시스템</title>
+<title>법인차량관리시스템 :: 사원등록</title>
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../css/common.css" rel="stylesheet">
 <script type = "text/javascript" src="../js/bootstrap.js"></script>
@@ -31,7 +31,7 @@
 			</div>
 			<div class = "content_cont-box">
 				<p class = "content_cont-text">
-					*사원 기본 정보
+					* 사원 기본 정보
 				</p>
 				<table class="table table-bordered" id = "form_table">
 					<tr>
