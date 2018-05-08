@@ -41,7 +41,9 @@
 						</td>
 						<td class = "form_normal-td" colspan = "3">
 							<input type = "text" class = "form_textbox">
-							<span id ="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
+
+								<span onclick = "javascript:window.open('member/idCheck.jsp', '_blank_1', 'toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200');" id ="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
+								<!-- 위에 있는거 나중에 js파일로 처리 -->
 						</td>
 					</tr>
 					<tr>
