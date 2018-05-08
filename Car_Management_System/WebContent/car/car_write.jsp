@@ -28,10 +28,14 @@
 </script>
 </head>
 <body>
-	<header> <%@ include file="../header.jsp"%>
-	<!-- 헤더 --> </header>
-	<section id="main"> <aside id="side"> <%@ include
-		file="sideMenu.jsp"%> </aside> 
+	<header> 
+		<%@ include file="../header.jsp"%>
+		<!-- 헤더 --> 
+	</header>
+	<section id="main"> 
+	<aside id="side"> 
+		<%@ include file="sideMenu.jsp"%> 
+	</aside> 
 		<section id="content">
 	<div class="content_title-box">
 		<span class="glyphicon glyphicon-pencil" aria-hidden="true"> </span>
@@ -75,11 +79,13 @@
 
 
 			</table>
-			<div id="paycar" style="display: NONE;"><jsp:include
-					page="car_pay.jsp" flush="true" /></div>
-
-			<div id="rental_lease" style="display: NONE;"><jsp:include
-					page="car_rental_lease.jsp" flush="true" /></div>
+			
+			<div id="paycar" style="display: NONE;">
+				<jsp:include page="car_pay.jsp" flush="true" />
+			</div>
+			<div id="rental_lease" style="display: NONE;">
+				<jsp:include page="car_rental_lease.jsp" flush="true" />
+			</div>
 	</div>
 	<div class="form_btn-group">
 		<button>등록</button>
