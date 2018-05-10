@@ -16,9 +16,7 @@ public class DeptWriteAction implements Action{
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "member.do?command=dept_write_form";
 		
-		DeptVO dVo = new DeptVO();
-		
-		System.out.println("어디서 문제가 발생할까");
+		DeptVO dVo = new DeptVO();		
 		
 		String dept_name = request.getParameter("dept_name");
 		

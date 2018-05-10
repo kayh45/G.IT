@@ -22,16 +22,21 @@ function deptWriteCheck() {
 		document.frm.dept_name.focus();
 		return false;
 	} else if(document.frm.dept_name_ok.value == "0"){
-		alert("등록할 수 없는 부서명입니다.");
-		document.frm.mem_pw.focus();
+		alert("부서명을 확인해주세요");
+		document.frm.dept_name.focus();
 		return false;
 	} else if(document.frm.dept_name_ok.value == "0" && document.frm.dept_no.value != ""){
 		alert("수정할 수 없는 부서명입니다.");
-		document.frm.mem_pw.focus();
+		document.frm.dept_name.focus();
 		return false;
+	} else {
+		var name = document.frm.dept_usable_name.value;
+		var isCorrect = confirm("등록하고자 하는 부서가 '" + name + "'이 확실합니까?");
+		if (isCorrect == true) {
+		    return true;
+		} else {
+			return false;
+		}
 	}
 }
 
-function doing() {
-	alert('뭐라도 좀 해봐');
-}
