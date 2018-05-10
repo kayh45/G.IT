@@ -47,6 +47,7 @@ public class DeptWriteCheckFormAction implements Action {
 		
 		if(result.isEmpty()) {
 			request.setAttribute("isExist", "no");
+			request.setAttribute("deptName", dept_name);
 		} else {
 			request.setAttribute("isExist", "yes");
 			request.setAttribute("deptList", result);

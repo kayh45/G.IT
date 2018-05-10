@@ -23,13 +23,13 @@
 <div class = "popup_body">
 	<c:choose>
 		<c:when test = "${isExist eq 'no'}">
-			<p>'${dept_name}'은 등록가능합니다.</p>
+			<p>'${deptName}'은 등록가능합니다.</p>
 		</c:when>
 		<c:when test = "${isExist eq 'yes'}">
 			<table class = "deptList">
 					<tr id = "sub">
 						<td>No.</td>
-						<td>닉네임(아이디)</td>
+						<td>부서명</td>
 					</tr>
 					<c:forEach var = "dept" items = "${deptList}">
 					<tr>
