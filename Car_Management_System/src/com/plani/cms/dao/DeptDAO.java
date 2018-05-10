@@ -19,7 +19,7 @@ public class DeptDAO {
 	} // Singleton 패턴
 
 	public void deptInsert(DeptVO dVo) {
-		String sql = "insert into test values('', ?)";
+		String sql = "insert into dept(dept_name) values(?)";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;

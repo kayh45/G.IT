@@ -31,7 +31,7 @@
 				<p class = "content_cont-text">
 					* 부서 기본 정보
 				</p>
-				<form name = "frm">
+				<form name = "frm" method = "post" action = "member.do?command=dept_write">
 				<table class="table table-bordered" id = "form_table">
 					<tr>
 						<td class = "form_label">
@@ -40,19 +40,21 @@
 						</td>
 						<td class = "form_normal-td" colspan = "3">
 							<input type = "text" name = "dept_name" class = "form_textbox">
-							<button type = "button" onClick = "dept_check();" class = "quiet_btn" id = "deptCheck">
+							<input type = "hidden" name = "dept_name_ok" value = "0">
+							<input type = "hidden" name = "dept_usable_name">
+							<button type = "button" onClick = "deptNamecheck();" class = "quiet_btn" id = "deptCheck">
 								<span id ="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
 							</button>
 						</td>
 					</tr>					
 				</table>
-				</form>
 			</div>
-			<div class = "form_btn-group">
-				<button>등록</button>
-				<button>수정</button>
-				<button>삭제</button>
-			</div>
+				<div class = "form_btn-group">
+					<button type = "submit" onclick = "return deptWriteCheck()">등록</button>
+					<button>수정</button>
+					<button>삭제</button>
+				</div>
+			</form>
 		</section>
 	</section>
 </body>

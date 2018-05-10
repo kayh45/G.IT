@@ -9,6 +9,7 @@
 <link href="css/popup.css" rel="stylesheet">
 <link href="css/common.css" rel="stylesheet">
 <link href="css/bootstrap.min.css" rel="stylesheet">
+<script type = "text/javascript" src="js/member.js"></script>
 <title>부서 이름으로 검색</title>
 </head>
 <body>
@@ -17,13 +18,15 @@
 	<p><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;부서 이름으로 검색</p>
 </div>
 <div class = "popup_body">
-	<input type = "text">
-	<button>검색</button>
-</div>
-<div class = "popup_body">
 	<c:choose>
 		<c:when test = "${isExist eq 'no'}">
-			<p>'${deptName}'은 등록가능합니다.</p>
+		<form name = "frm">
+			<input type = "hidden" name = "dept_name" value = "${deptName}">
+			<input type = "hidden" name = "dept_name_ok" value = "1">
+			<p>'${deptName}'은 등록가능합니다. 
+				<button type = "button" onclick = "useDeptName()">사용</button> 
+			</p>
+		</form>			
 		</c:when>
 		<c:when test = "${isExist eq 'yes'}">
 			<table class = "deptList">
