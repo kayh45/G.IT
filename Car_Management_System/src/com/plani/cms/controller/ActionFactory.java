@@ -4,31 +4,14 @@ import com.plani.cms.controller.action.Action;
 import com.plani.cms.controller.action.MainAction;
 import com.plani.cms.controller.action.car.CarWriteFormAction;
 import com.plani.cms.controller.action.course.CourseWriteFormAction;
-import com.plani.cms.controller.action.member.DeptWriteCheckFormAction;
 import com.plani.cms.controller.action.member.DeptWriteFormAction;
 import com.plani.cms.controller.action.member.MemberWriteFormAction;
 import com.plani.cms.controller.action.place.PlaceWriteFormAction;
 
 
-/* ===============================================
- * 
- * 
- * 	ActionFactory
- * 
- * 		설명: request로 받아온 parameter중에 command의 값으로 각 액션을 분기한다.
- * 
- * 		작성자 : 강현
- * 
- * 		작성일 : 2018.5.9
- * 
- * 		참고 : action추가 시 최대한 기능별로 정렬될 수 있도록 한다.
- * 			  수정이 잦은 class이므로 주의하여 편집!!
- *
- *
- *==================================================*/
-
 public class ActionFactory {
 
+	//주석
 	
 	private static ActionFactory instance = new ActionFactory();
 	
@@ -51,13 +34,12 @@ public class ActionFactory {
 			action = new MemberWriteFormAction();
 		} else if (command.equals("dept_write_form")) {
 			action = new DeptWriteFormAction();
-		} else if (command.equals("dept_write_check_form")) {
-			action = new DeptWriteCheckFormAction();
 		} else if (command.equals("car_write_form")) {
 			action = new CarWriteFormAction();
-		} else if (command.equals("course_write_form")) {
+		}else if (command.equals("course_write_form")) {
 			action = new CourseWriteFormAction();
-		} else if (command.equals("place_write_form")) {
+		}
+		else if (command.equals("place_write_form")) {
 			action = new PlaceWriteFormAction();
 		}
 		
