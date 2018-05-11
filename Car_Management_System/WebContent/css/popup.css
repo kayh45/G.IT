@@ -10,6 +10,43 @@
 	color : white;
 }
 
+.popup_header p {
+	font-size : 25px;
+	padding : 5px 20px;
+	margin-bottom : 0;
+}
+
 .popup_body {
 	margin: 10px;
+	background-color : #f4f4f4;
+}
+
+.popup_box {
+	margin : 10px;
+	padding : 10px;
+	background-color: #fff;
+	border : 1px solid #ddd;
+}
+
+.popup_box p {
+	margin : 8px;
+}
+
+.popup_box table {
+	font-size : 14px;
+	width : 90%;
+	margin : auto;
+}
+
+.popup_box th{
+	background-color : #e3f9f9;
+}
+
+.number_th{
+	width : 30%;
+}
+
+.search-result_label {
+	font-size : 15px;
+	color : #4e4e4e;
 }

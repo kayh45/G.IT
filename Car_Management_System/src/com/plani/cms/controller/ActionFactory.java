@@ -4,6 +4,8 @@ import com.plani.cms.controller.action.Action;
 import com.plani.cms.controller.action.MainAction;
 import com.plani.cms.controller.action.car.CarWriteFormAction;
 import com.plani.cms.controller.action.course.CourseWriteFormAction;
+import com.plani.cms.controller.action.member.DeptDeleteAction;
+import com.plani.cms.controller.action.member.DeptModifyAction;
 import com.plani.cms.controller.action.member.DeptWriteAction;
 import com.plani.cms.controller.action.member.DeptWriteCheckFormAction;
 import com.plani.cms.controller.action.member.DeptWriteFormAction;
@@ -56,6 +58,10 @@ public class ActionFactory {
 			action = new DeptWriteFormAction();
 		} else if (command.equals("dept_write_check_form")) {
 			action = new DeptWriteCheckFormAction();
+		} else if (command.equals("dept_modify")) {
+			action = new DeptModifyAction();
+		} else if (command.equals("dept_delete")) {
+			action = new DeptDeleteAction();
 		} else if (command.equals("car_write_form")) {
 			action = new CarWriteFormAction();
 		} else if (command.equals("course_write_form")) {

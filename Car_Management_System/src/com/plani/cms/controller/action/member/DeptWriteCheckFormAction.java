@@ -12,23 +12,13 @@ import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.DeptDAO;
 import com.plani.cms.dto.DeptVO;
 
-/* ===============================================
- * 
+/*******************************************************
  * 
  * 	DeptWriteCheckFormAction
  * 
- * 		설명: 부서명을 파라미터값으로 받아와 DB에서 검색하고 결과가 있을경우 list형태로 리턴한다
+ * 	부서명을 파라미터값으로 받아와 DB에서 검색하고 결과가 있을경우 list형태로 리턴한다
  * 
- * 		작성자 : 강현
- * 
- * 		작성일 : 2018.5.9
- * 
- * 		수정자 : 
- * 
- * 		수정일 : 
- *
- *
- *==================================================*/
+ *******************************************************/
 
 public class DeptWriteCheckFormAction implements Action {
 
@@ -36,24 +26,38 @@ public class DeptWriteCheckFormAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String url = "member/deptCheck.jsp";
+		String dept_name = null;
 		
-		String dept_name = new String(request.getParameter("dept_name").getBytes("8859_1"),"utf-8");
-		// 한글로 입력 받았을 때 제대로 받을 수 있도록 하기 위함 
+		if(request.getParameter("popup").equals("yes")) { // 한글로 입력 받았을 때 제대로 받을 수 있도록 하기 위함 
+			dept_name = request.getParameter("dept_name");
+		} else {
+			dept_name = new String(request.getParameter("dept_name").getBytes("8859_1"),"utf-8");
+		}
+		
 		
 		System.out.println("받은 파라미터 : " + dept_name);
 		
 		DeptDAO dDao = DeptDAO.getInstance();
-		List<DeptVO> result = dDao.DeptSearchByName(dept_name);
+		List<DeptVO> dVoList = dDao.deptSearchByNameLike(dept_name);
 		
-		if(result.isEmpty()) {
-			request.setAttribute("isExist", "no");
-			request.setAttribute("deptName", dept_name);
-		} else {
-			request.setAttribute("isExist", "yes");
-			request.setAttribute("deptList", result);
+		request.setAttribute("deptName", dept_name);
+		
+		if(dVoList.isEmpty()) { // 부분 일치의 결과가 없는 경우
+			request.setAttribute("isLike", "no");
+		} else { // 부분일치의 결과가 있는 경우
+			DeptVO dVoMatch = dDao.deptSearchByName(dept_name);
+			
+			request.setAttribute("isLike", "yes");
+			request.setAttribute("deptList", dVoList);
+			
+			System.out.println(dVoMatch.getDept_no());
+			
+			if(dVoMatch.getDept_no() == 0) {	// 부분 일치하지만 완전 일치하지 않은 경우			 
+				request.setAttribute("isMatch", "no");
+			}else { // 부분 일치와 완전 일치를 모두 만족하는 경우
+				request.setAttribute("isMatch", "yes");
+			}
 		}
-		
-		System.out.println("받은 파라미터 : " + dept_name);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

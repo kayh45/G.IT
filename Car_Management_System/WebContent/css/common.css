@@ -1,14 +1,32 @@
-/*
- *	�옉�꽦�옄 : 媛뺥쁽
- *	紐⑹쟻: 紐⑤뱺 �럹�씠吏��뿉 怨듯넻�쟻�쑝濡� �쟻�슜�맆 �뒪���씪
- * 	二쇱쓽: �뒪���씪 �옉�꽦 �떆 二쇱꽍�쑝濡� 湲곕뒫�씠�굹 �궗�슜泥� �솗�떎�븯寃� �몴�떆�빐�넃�쓣 寃�
- *
- */
 * {
 	margin: 0;
 	padding: 0;
 	font-family: "-윤고딕340";
-} /* margin怨� padding�쓣 0�쑝濡� 珥덇린�솕�븯怨� �룿�듃瑜� �꽕�젙 */
+}
+
+button {
+	border : 0;
+	padding : 2px 8px;
+}
+
+#del_btn {
+	background-color : #c55c5c;
+}
+
+#del_btn:disabled {
+	background-color : #ddd;
+}
+
+
+button[type = "submit"] {
+	background-color : #70cf81;
+}
+
+button:disabled {
+	background-color : #ddd;
+	color : #7f7f7f;
+}
+
 section#main {
 	width: 100%;
 	height: 1000px;
@@ -86,7 +104,9 @@ section#content_car_include {
 	margin: 0 10px;
 	margin-right: 0;
 	width: 150px;
+	padding : 0 10px;
 }
+
 .form_car_select {
 	margin: 0 10px;
 	margin-right: 0;
@@ -98,6 +118,10 @@ section#content_car_include {
 	margin-left: 20px;
 	margin: 0 10px;
 	margin-right: 0;
+}
+
+#number_input {
+	text-align: right;	
 }
 
 .form_label {
@@ -181,6 +205,12 @@ section#content_car_include {
 
 .quiet_btn {
 	border : 0;
+	background-color : inherit;
+	padding : 0;
+}
+
+.hdn_label {
+	visibility: hidden;
 }
 
 @media ( max-width : 700px) {

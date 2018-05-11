@@ -19,6 +19,11 @@ public class DeptDAO {
 	} // Singleton 패턴
 
 	public void deptInsert(DeptVO dVo) {
+		/**
+		 * 부서 등록
+		 * 부서명만 받아와서 등록시킴
+		 * @DeptWriteAction 에서 사용
+		 **/
 		String sql = "insert into dept(dept_name) values(?)";
 
 		Connection conn = null;
@@ -40,9 +45,100 @@ public class DeptDAO {
 
 		}
 	}
+	
+	public void deptUpdate(DeptVO dVo) {
+		/**
+		 * 부서 수정
+		 * 부서 번호와 부서명을 받아와서 수정
+		 * @DeptModifyAction 에서 사용
+		 **/
+		String sql = "UPDATE dept SET dept_name = ? where dept_no = ?";
 
-	public List<DeptVO> DeptSearchByName(String name) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, dVo.getDept_name());
+			pstmt.setInt(2, dVo.getDept_no());
+
+			pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		} finally {
+			DBManager.close(conn, pstmt);
+
+		}
+	}
+	
+	public void deptDelete(int dept_no) {
+		/**
+		 * 부서 수정
+		 * 부서 번호와 부서명을 받아와서 수정
+		 * @DeptModifyAction 에서 사용
+		 **/
+		String sql = "DELETE FROM dept WHERE dept_no = ?";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, dept_no);
+
+			pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		} finally {
+			DBManager.close(conn, pstmt);
+
+		}
+	}
+
+	public DeptVO deptSearchByName(String name) {
+		/**
+		 * 부서명에 대한 완전일치 검색
+		 * @DeptWriteCheckFormAction 에서 사용
+		 **/
 		String sql = "select * from dept where dept_name = '" + name + "'";
+
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+
+		DeptVO dVo = new DeptVO();
+
+		try {
+			conn = DBManager.getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+				dVo.setDept_no(rs.getInt("dept_no"));
+				dVo.setDept_name(rs.getString("dept_name"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, stmt, rs);
+		}
+		return dVo;
+	}
+	
+	public List<DeptVO> deptSearchByNameLike(String name) {
+		/**
+		 * 부서명에 대한 부분일치 검색
+		 * @DeptWriteCheckFormAction 에서 사용
+		 **/
+		String sql = "select * from dept where dept_name like '%" + name + "%'";
 
 		Connection conn = null;
 		Statement stmt = null;
@@ -71,6 +167,5 @@ public class DeptDAO {
 			DBManager.close(conn, stmt, rs);
 		}
 		return list;
-
 	}
 }
