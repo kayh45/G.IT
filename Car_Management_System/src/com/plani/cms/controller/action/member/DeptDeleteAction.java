@@ -23,7 +23,7 @@ public class DeptDeleteAction implements Action {
 		mDao.deptDelete(dept_no);
 		
 		System.out.println("수정 성공");
-		request.setAttribute("message", "부서 삭제 성공 : " + dept_no);
+		request.setAttribute("message", "<strong>부서 삭제 성공!</strong> &nbsp 삭제한 부서 번호 : " + dept_no);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

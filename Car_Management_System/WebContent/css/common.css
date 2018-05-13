@@ -1,7 +1,7 @@
 * {
 	margin: 0;
 	padding: 0;
-	font-family: "-윤고딕340";
+	/* font-family: "-윤고딕340"; */
 }
 
 button {
@@ -167,11 +167,11 @@ section#content_car_include {
 	width: 70px;
 }
 
-#form_address {
+#roadAddress {
 	width: 60%;
 }
 
-#form_address-detail {
+#roadAddress-detail {
 	width: 30%;
 }
 

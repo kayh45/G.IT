@@ -30,7 +30,7 @@ public class DeptModifyAction implements Action {
 		mDao.deptUpdate(dVo);
 		
 		System.out.println("수정 성공");
-		request.setAttribute("message", "부서 수정 성공 : " + dept_no + ", " +  dept_name);
+		request.setAttribute("message", "<strong>부서 수정 성공!</strong> &nbsp 수정된 부서명: " +  dept_name);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

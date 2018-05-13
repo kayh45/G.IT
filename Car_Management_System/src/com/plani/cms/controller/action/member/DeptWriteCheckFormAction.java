@@ -31,7 +31,7 @@ public class DeptWriteCheckFormAction implements Action {
 		if(request.getParameter("popup").equals("yes")) { // 한글로 입력 받았을 때 제대로 받을 수 있도록 하기 위함 
 			dept_name = request.getParameter("dept_name");
 		} else {
-			dept_name = new String(request.getParameter("dept_name").getBytes("8859_1"),"utf-8");
+			dept_name = new String(request.getParameter("dept_name").getBytes("8859_1"),"UTF-8");
 		}
 		
 		

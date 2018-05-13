@@ -2,6 +2,7 @@ package com.plani.cms.controller.action.car;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +17,8 @@ public class CarWriteAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		String url = "car.do?command=car_write_form";
+		
 		String car_reg_no = request.getParameter("car_reg_no");
 		String car_divi = request.getParameter("car_divi");
 		String car_model = request.getParameter("car_model");
@@ -35,8 +38,9 @@ public class CarWriteAction implements Action {
 		String bo_e_date = request.getParameter("bo_e_date");
 		String total_dist = request.getParameter("total_dist");
 
+		// 법인차 구분에 따라 DAO따로 받아야 될수도...
+		
 		CarVO cVo = new CarVO();
-
 		
 		cVo.setCar_reg_no(car_reg_no);
 		cVo.setCar_divi(car_divi);
@@ -63,12 +67,12 @@ public class CarWriteAction implements Action {
 
 		if (result == 1) {
 			session.setAttribute("car_model", cVo.getCar_model());
-
 		} else {
-
+			
 		}
-
-		new CarWriteFormAction().execute(request, response);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+		dispatcher.forward(request, response);
 
 	}
 

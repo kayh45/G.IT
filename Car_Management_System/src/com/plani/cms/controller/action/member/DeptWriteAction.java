@@ -26,7 +26,7 @@ public class DeptWriteAction implements Action{
 		mDao.deptInsert(dVo);
 		
 		System.out.println("등록성공");
-		request.setAttribute("message", "부서 등록 성공 : " + dept_name);
+		request.setAttribute("message", "<strong>부서 등록 성공!</strong> &nbsp 등록된 부서명 : " + dept_name);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

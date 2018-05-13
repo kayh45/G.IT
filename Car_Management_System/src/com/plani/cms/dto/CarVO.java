@@ -59,13 +59,12 @@ public class CarVO {
 		this.co_name = co_name;
 	}
 	public String getCo_tel() {
-		return co_tel;
+		return co_tel = getCo_tel1() + getCo_tel2() + getCo_tel3();
 	}
 	public void setCo_tel(String co_tel) {
 		this.co_tel = co_tel;
 	}
 	public String getCo_tel1() {
-		this.co_tel = getCo_tel1() + "-" + getCo_tel2() + "-" + getCo_tel3(); 
 		return co_tel1;
 	}
 	public void setCo_tel1(String co_tel1) {
