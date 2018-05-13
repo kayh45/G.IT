@@ -11,7 +11,11 @@
 <body class = "side_body">
 
 	<ul class = "side_ul">
-		<li class = "side_title">법인 차 등록</li>
+		<li class = "side_title">법인 차 관리</li>
+		<li class = "side_sub-menu">법인 차 등록</li>
+		<li class = "side_sub-menu">정비소 등록</li>
+		<li class = "side_sub-menu">정비 내역 등록</li>
+		<li class = "side_sub-menu">정비 내역 조회</li>
 	</ul>
 
 </body>
