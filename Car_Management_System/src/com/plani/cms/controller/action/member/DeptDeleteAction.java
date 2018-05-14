@@ -19,8 +19,8 @@ public class DeptDeleteAction implements Action {
 		
 		int dept_no = Integer.parseInt(request.getParameter("dept_no"));
 
-		DeptDAO mDao = DeptDAO.getInstance();
-		mDao.deptDelete(dept_no);
+		DeptDAO dDao = DeptDAO.getInstance();
+		dDao.deptDelete(dept_no);
 		
 		System.out.println("수정 성공");
 		request.setAttribute("message", "<strong>부서 삭제 성공!</strong> &nbsp 삭제한 부서 번호 : " + dept_no);

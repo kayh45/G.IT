@@ -26,8 +26,8 @@ public class DeptModifyAction implements Action {
 		dVo.setDept_no(dept_no);
 		dVo.setDept_name(dept_name);
 	
-		DeptDAO mDao = DeptDAO.getInstance();
-		mDao.deptUpdate(dVo);
+		DeptDAO dDao = DeptDAO.getInstance();
+		dDao.deptUpdate(dVo);
 		
 		System.out.println("수정 성공");
 		request.setAttribute("message", "<strong>부서 수정 성공!</strong> &nbsp 수정된 부서명: " +  dept_name);

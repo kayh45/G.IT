@@ -14,67 +14,65 @@
 </head>
 <body>
 	<p class="content_cont-text">*렌탈/리스 정보</p>
-		<table class="table table-bordered" id="form_table">
-			<tr>
-				<td class="form_label">
-					<p class="label">회사명</p>
-					<p class="must">*</p>
-				</td>
-				<td colspan="3"><input type="text" class="form_textbox" name ="co_name">
-				</td>
-			</tr>
-			<tr>
-				<td class="form_label">
-					<p class="label">회사 전화번호</p>
-					<p class="must">*</p>
-				</td>
-				<td class="form_phone-td"><input type="text"
-					class="form_textbox" size="6" maxlength="3" name="co_tel1">-<input
-					type="text" class="form_textbox" size="6" maxlength="4"
-					name="co_tel2">-<input type="text" class="form_textbox"
-					size="6" maxlength="4" name="co_tel3"></td>
-				<td class="form_label">
-					<p class="label">회사 FAX</p>
-					<p class="must">*</p>
-				</td>
-				<td class="form_phone-td"><input type="text"
-					class="form_textbox" size="6" maxlength="4" name="co_fax1">-<input
-					type="text" class="form_textbox" size="6" maxlength="4"
-					name="co_fax2">-<input type="text" class="form_textbox"
-					size="6" maxlength="4" name="co_fax3"></td>
+	<table class="table table-bordered" id="form_table">
+		<tr>
+			<td class="form_label">
+				<p class="label">회사명</p>
+				<p class="must">*</p>
+			</td>
+			<td colspan="3"><input type="text" class="form_textbox"
+				name="co_name"></td>
+		</tr>
+		<tr>
+			<td class="form_label">
+				<p class="label">회사 전화번호</p>
+				<p class="must">*</p>
+			</td>
+			<td class="form_phone-td"><input type="text"
+				class="form_textbox" size="6" maxlength="3" name="co_tel1">-<input
+				type="text" class="form_textbox" size="6" maxlength="4"
+				name="co_tel2">-<input type="text" class="form_textbox"
+				size="6" maxlength="4" name="co_tel3"></td>
+			<td class="form_label">
+				<p class="label">회사 FAX</p>
+				<p class="must">*</p>
+			</td>
+			<td class="form_phone-td"><input type="text"
+				class="form_textbox" size="6" maxlength="4" name="co_fax1">-<input
+				type="text" class="form_textbox" size="6" maxlength="4"
+				name="co_fax2">-<input type="text" class="form_textbox"
+				size="6" maxlength="4" name="co_fax3"></td>
 
-			</tr>
-			<tr>
-				<td class="form_label">
-					<p class="label">계약 날짜</p>
-					<p class="must">*</p>
-				</td>
-				<td>				
-					<div id = "ct_date">
-						<input type="text" class="form_textbox" name = "ct_date">
-					</div>
-					<script type="text/javascript">
-						$('#ct_date input').datepicker({
-							dateFormat: "yy-mm-dd"
-						});
-					</script>	
-				</td>
-				<td class="form_label">
-					<p class="label">계약 만료 날짜</p>
-					<p class="must">*</p>
-				</td>
-				<td>
-					<div id = "ep_date">
-						<input type="text" class="form_textbox" name = "ep_date">
-					</div>
-					<script type="text/javascript">
-						$('#ep_date input').datepicker({
-							dateFormat: "yy-mm-dd"
-						});
-					</script>					
-				</td>
+		</tr>
+		<tr>
+			<td class="form_label">
+				<p class="label">계약 날짜</p>
+				<p class="must">*</p>
+			</td>
+			<td>
+				<div id="ct_date">
+					<input type="text" class="form_textbox" name="ct_date">
+				</div> <script type="text/javascript">
+					$('#ct_date input').datepicker({
+						dateFormat : "yy-mm-dd"
+					});
+				</script>
+			</td>
+			<td class="form_label">
+				<p class="label">계약 만료 날짜</p>
+				<p class="must">*</p>
+			</td>
+			<td>
+				<div id="ep_date">
+					<input type="text" class="form_textbox" name="ep_date">
+				</div> <script type="text/javascript">
+					$('#ep_date input').datepicker({
+						dateFormat : "yy-mm-dd"
+					});
+				</script>
+			</td>
 
-			</tr>
-		</table>
+		</tr>
+	</table>
 </body>
 </html>
