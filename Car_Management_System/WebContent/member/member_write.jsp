@@ -79,12 +79,11 @@
 				<p class = "content_title-text">사원 등록</p>
 			</div>
 			<div class = "content_cont-box">
-				<p class = "content_cont-text">사원 번호</p>
-				<input type = "text" class = "form_textbox" readonly>				
-			</div>
-			<div class = "content_cont-box">
 				<p class = "content_cont-text">
 					* 사원 기본 정보
+				</p>
+				<p class = "content_cont-text">
+					(비밀번호는 주민등록번호 앞자리 6자리로 초기화됩니다.)
 				</p>
 				<table class="table table-bordered" id = "form_table">
 					<tr>
@@ -93,26 +92,10 @@
 							<p class = "must">*</p>					
 						</td>
 						<td class = "form_normal-td" colspan = "3">
-							<input type = "text" class = "form_textbox">
+							<input name = "mem_id" type = "text" class = "form_textbox">
 
 								<span onclick = "javascript:window.open('member/idCheck.jsp', '_blank_1', 'toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200');" id ="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
 								<!-- 위에 있는거 나중에 js파일로 처리 -->
-						</td>
-					</tr>
-					<tr>
-						<td class = "form_label">
-							<p class = "label">비밀번호</p>
-							<p class = "must">*</p>			
-						</td>
-						<td>
-							<input type = "text" class = "form_textbox">
-						</td>
-						<td class = "form_label">
-							<p class = "label">비밀번호 확인</p>
-							<p class = "must">*</p>			
-						</td>
-						<td class = "form_normal-td" >
-							<input type = "text" class = "form_textbox">
 						</td>
 					</tr>
 					<tr>
@@ -121,7 +104,7 @@
 							<p class = "must">*</p>			
 						</td>
 						<td class = "form_normal-td"  colspan = "3">
-							<input type = "text" class = "form_textbox">
+							<input name = "mem_name" type = "text" class = "form_textbox">
 						</td>						
 					</tr>
 					<tr>
@@ -130,9 +113,9 @@
 							<p class = "must">*</p>			
 						</td>
 						<td class = "form_jumin-td" colspan = "3">
-							<input type = "text" class = "form_textbox">
+							<input name = "mem_jumin1" type = "text" size = "6" maxlength="6" class = "form_textbox">
 							<p>-</p>
-							<input type = "text" class = "form_textbox">
+							<input name = "mem_jumin2" type = "password" size = "7" maxlength="7" class = "form_textbox">
 						</td>
 					</tr>
 					<tr>
@@ -141,14 +124,15 @@
 							<p class = "must">*</p>			
 						</td>
 						<td>
-							<input type = "text" class = "form_textbox">
+							<input name = "dept_name" type = "text" class = "form_textbox">
+							<input name = "dept_no" type = "hidden" class = "form_textbox">
 							<span id ="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
 						</td>
 						<td class = "form_label">
 							<p class = "label">직책</p>		
 						</td>
 						<td class = "form_normal-td" >
-							<input type = "text" class = "form_textbox">
+							<input name = "mem_posi" type = "text"  class = "form_textbox">
 						</td>
 					</tr>
 					<tr>
@@ -157,11 +141,11 @@
 							<p class = "must">*</p>					
 						</td>
 						<td colspan = "3" class = "form_phone-td">
-							<input type = "text" class = "form_textbox" size = "6" maxlength="3">
+							<input name = "mem_hp1" type = "text" class = "form_textbox" size = "6" maxlength="3">
 							<p>-</p>
-							<input type = "text" class = "form_textbox" size = "6" maxlength="4">
+							<input name = "mem_hp2" type = "text" class = "form_textbox" size = "6" maxlength="4">
 							<p>-</p>
-							<input type = "text" class = "form_textbox" size = "6" maxlength="4">
+							<input name = "mem_hp3" type = "text" class = "form_textbox" size = "6" maxlength="4">
 						</td>
 					</tr>
 					<tr>
@@ -169,7 +153,7 @@
 							<p class = "label">우편번호</p>				
 						</td>
 						<td class = "form_normal-td"  colspan = "3">
-							<input type = "text" id = "postcode" size = "13" class = "form_textbox" readonly>
+							<input name = "mem_p_no" type = "text" id = "postcode" size = "13" class = "form_textbox" readonly>
 						</td>
 					</tr>	
 					<tr>
@@ -177,7 +161,7 @@
 							<p class = "label">주소</p>				
 						</td>
 						<td class = "form_normal-td"  colspan = "3">
-							<input type = "text" id = "roadAddress" class = "form_textbox" readonly>
+							<input  name = "mem_addr1" type = "text" id = "roadAddress" class = "form_textbox" readonly>
 							<button type = "button" onClick = "execDaumPostcode();" class = "quiet_btn">
 								<span id ="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
 							</button>
@@ -188,7 +172,7 @@
 							<p class = "label">상세 주소</p>				
 						</td>
 						<td class = "form_normal-td"  colspan = "3">
-							<input type = "text" id = "roadAddress-detail" class = "form_textbox">
+							<input name = "mem_addr2" type = "text" id = "roadAddress-detail" class = "form_textbox">
 						</td>
 					</tr>
 					<tr>
@@ -207,8 +191,6 @@
 			</div>
 			<div class = "form_btn-group">
 				<button>등록</button>
-				<button>수정</button>
-				<button>삭제</button>
 			</div>
 		</section>
 	</section>
