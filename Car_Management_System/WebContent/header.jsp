@@ -48,15 +48,6 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">사원 관리 <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="member.do?command=dept_write_form">부서 등록</a></li>
-            <li><a href="member.do?command=member_write_form">사원 등록</a></li>
-          </ul>
-        </li>
-      </ul>
-      <ul class="nav navbar-nav">
-        <li class="dropdown">
            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">법인 차 관리 <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="car.do?command=car_write_form">법인 차 등록</a></li>
@@ -82,6 +73,15 @@
           <ul class="dropdown-menu" role="menu">
             <li><a href="#">운행 일지 작성</a></li>
             <li><a href="#">운행 일지 조회</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">기초 정보 관리 <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="member.do?command=dept_write_form">부서 등록</a></li>
+            <li><a href="member.do?command=member_write_form">사원 등록</a></li>
           </ul>
         </li>
       </ul>      

@@ -58,6 +58,11 @@
 		                	    $('[data-toggle="tooltip"]').tooltip(); 
 		                	});
 	                	</script>
+	                	<br><br>
+	                	<span style = "color:#aaa;font-size:15px">
+	                	임시 관리자 계정<br>
+	                	<span>아이디: admin / 비밀번호: admin</span>
+	                	</span>
                 	</p>
    	   </form>
 	</div>
