@@ -61,6 +61,14 @@
 .navbar-brand {
 	margin-right : 25px;
 	display : inline-block;
-	vertical-align : middle;
-	
+	vertical-align : middle;	
+}
+
+.loginfo {
+	float : right;
+	margin-right : 20%
+}
+
+.logout {
+	background-color: #33a6dd;
 }

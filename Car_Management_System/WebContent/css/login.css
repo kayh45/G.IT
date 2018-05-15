@@ -5,7 +5,7 @@
 }
 
 .login_form {
-	width : 50%;
+	width : 40%;
 	margin : 30px auto;
 	border : 1px solid #ddd;
 	padding : 5%;
@@ -17,3 +17,4 @@
 	margin : 5% auto;
 	}
 }
+
