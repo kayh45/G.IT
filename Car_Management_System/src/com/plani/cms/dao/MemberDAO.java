@@ -35,7 +35,7 @@ public class MemberDAO {
 			pstmt.setString(1, mVo.getMem_id());
 			pstmt.setString(2, mVo.getMem_pw());
 			pstmt.setString(3, mVo.getMem_name());
-			pstmt.setInt(4, mVo.getMem_jumin());
+			pstmt.setLong(4, mVo.getMem_jumin());
 			pstmt.setString(5, mVo.getMem_p_no());
 			pstmt.setString(6, mVo.getMem_addr());
 			pstmt.setString(7, mVo.getMem_hp());

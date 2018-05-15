@@ -18,7 +18,7 @@ public class MemberVO extends DeptVO{
 	String mem_id;
 	String mem_pw;
 	String mem_name;
-	int mem_jumin;
+	long mem_jumin;
 	String mem_p_no;
 	String mem_addr;
 	String mem_hp;
@@ -43,10 +43,10 @@ public class MemberVO extends DeptVO{
 	public void setMem_name(String mem_name) {
 		this.mem_name = mem_name;
 	}
-	public int getMem_jumin() {
+	public long getMem_jumin() {
 		return mem_jumin;
 	}
-	public void setMem_jumin(int mem_jumin) {
+	public void setMem_jumin(long mem_jumin) {
 		this.mem_jumin = mem_jumin;
 	}
 	public String getMem_p_no() {

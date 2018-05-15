@@ -66,6 +66,34 @@ function modDeptSelect(dept_no, dept_name) {
 	self.close();
 }
 
+function memWriteDeptSelect(dept_no, dept_name) {
+	/*
+	 * @deptSearch.jsp 에서 사용
+	 * 
+	 * 부서명을 검색하고 부서명을 누르면 해당 부서의 부서번호와 부서명이 부모화면의 폼으로 들어간다.
+	 * 
+	 */
+	opener.frm.dept_no.value = dept_no;
+	opener.frm.dept_name.value = dept_name;
+	self.close();
+}
+
+function deptSearch() {	
+	/*
+	 * @deptSearch.jsp 에서 사용
+	 * 
+	 * 
+	 */
+	if (document.frm.dept_name.value == "") {
+		alert('부서명을 입력하세요');
+		document.frm.dept_name.focus();
+		return;
+	}
+	var url = "member.do?popup=no&command=dept_search&dept_name=" + encodeURIComponent(document.frm.dept_name.value);
+	window.open(url, "_blank_1",
+					"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
+}
+
 function deptWriteCheck() {
 	if(document.frm.dept_name.value == ""){
 		alert("부서명을 입력하세요.");

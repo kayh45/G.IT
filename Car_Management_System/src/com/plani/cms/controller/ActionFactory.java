@@ -7,9 +7,11 @@ import com.plani.cms.controller.action.car.CarWriteFormAction;
 import com.plani.cms.controller.action.course.CourseWriteFormAction;
 import com.plani.cms.controller.action.member.DeptDeleteAction;
 import com.plani.cms.controller.action.member.DeptModifyAction;
+import com.plani.cms.controller.action.member.DeptSearchAction;
 import com.plani.cms.controller.action.member.DeptWriteAction;
 import com.plani.cms.controller.action.member.DeptWriteCheckFormAction;
 import com.plani.cms.controller.action.member.DeptWriteFormAction;
+import com.plani.cms.controller.action.member.MemberWriteAction;
 import com.plani.cms.controller.action.member.MemberWriteFormAction;
 import com.plani.cms.controller.action.place.PlaceWriteFormAction;
 
@@ -53,6 +55,10 @@ public class ActionFactory {
 			action = new MainAction();
 		} else if (command.equals("member_write_form")) {
 			action = new MemberWriteFormAction();
+		} else if (command.equals("member_write")) {
+			action = new MemberWriteAction();
+		} else if (command.equals("dept_search")) {
+			action = new DeptSearchAction();
 		} else if (command.equals("dept_write")) {
 			action = new DeptWriteAction();
 		} else if (command.equals("dept_write_form")) {
