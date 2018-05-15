@@ -28,9 +28,16 @@
 	margin-right : 10px;
 } /* 최상단 바의 로고 크기 및 마진 지정 */
 
+.navbar-brand {
+	margin-right : 25px;
+	padding : 3px;
+	display : flex;
+	vertical-align : middle;	
+}
+
 .navbar-brand img {
 	height : 30px;
-	margin : 0 30px;
+	margin : auto 30px;
 } /* 네비게이션의 로고 크기 및 마진 지정 (b) */
 
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
@@ -58,12 +65,6 @@
 	padding : 0 25px;
 }
 
-.navbar-brand {
-	margin-right : 25px;
-	display : inline-block;
-	vertical-align : middle;	
-}
-
 .loginfo {
 	float : right;
 	margin-right : 20%;
@@ -75,8 +76,14 @@
 
 @media ( max-width : 700px) {
 	.loginfo {
-	float : right;
-	font-size : 11px;
-	margin-right : 0;
-}
+		float : right;
+		font-size : 11px;
+		margin-right : 0;
+	}
+	.top-of-top img {
+		margin-right : 5px;
+	} /* 최상단 바의 로고 크기 및 마진 지정 */
+	.navbar-brand img {
+		margin : auto 10px;
+	} /* 네비게이션의 로고 크기 및 마진 지정 (b) */
 }
