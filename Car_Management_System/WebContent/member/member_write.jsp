@@ -1,16 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, user-scalable=no">
-<title>법인차량관리시스템 :: 사원등록</title>
+<title>사원 등록 :: 법인차량관리시스템</title>
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../css/common.css" rel="stylesheet">
 <script type = "text/javascript" src="../js/bootstrap.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script type = "text/javascript" src="js/member.js"></script>
 <script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
     function execDaumPostcode() {
@@ -73,18 +76,25 @@
 			<%@ include file = "sideMenu.jsp" %>
 		</aside>
 		<section id = "content">
+			<c:if test = "${message ne null}">
+				<div class="alert alert-success alert-dismissible" role="alert">
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				  ${message}
+				</div>
+			</c:if>	
 			<div class = "content_title-box">
 				<span class="glyphicon glyphicon-pencil" aria-hidden="true">
 				</span>
 				<p class = "content_title-text">사원 등록</p>
 			</div>
+			<form method = "post" action = "member.do?command=member_write" name = "frm">
 			<div class = "content_cont-box">
 				<p class = "content_cont-text">
 					* 사원 기본 정보
 				</p>
 				<p class = "content_cont-text">
 					(비밀번호는 주민등록번호 앞자리 6자리로 초기화됩니다.)
-				</p>
+				</p>				
 				<table class="table table-bordered" id = "form_table">
 					<tr>
 						<td class = "form_label">
@@ -126,7 +136,9 @@
 						<td>
 							<input name = "dept_name" type = "text" class = "form_textbox">
 							<input name = "dept_no" type = "hidden" class = "form_textbox">
-							<span id ="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
+							<button type = "button" onClick = "deptSearch();" class = "quiet_btn">
+								<span id ="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
+							</button>
 						</td>
 						<td class = "form_label">
 							<p class = "label">직책</p>		
@@ -181,17 +193,17 @@
 						</td>
 						<td class = "form_normal-td"  colspan = "3">
 							<div class = "radio-group">
-								<input type = "radio" name = "mem_auth" checked>일반사용자
-								<input type = "radio" name = "mem_auth">관리자
+								<input type = "radio" value = "0" name = "mem_auth" checked>일반사용자
+								<input type = "radio" value = "1" name = "mem_auth">관리자
 							</div>
 						</td>
-					</tr>
-												
+					</tr>												
 				</table>
 			</div>
 			<div class = "form_btn-group">
 				<button>등록</button>
 			</div>
+			</form>
 		</section>
 	</section>
 </body>
