@@ -2,7 +2,9 @@ package com.plani.cms.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import com.plani.cms.dto.DeptVO;
 import com.plani.cms.dto.MemberVO;
@@ -35,12 +37,12 @@ public class MemberDAO {
 			pstmt.setString(1, mVo.getMem_id());
 			pstmt.setString(2, mVo.getMem_pw());
 			pstmt.setString(3, mVo.getMem_name());
-			pstmt.setLong(4, mVo.getMem_jumin());
+			pstmt.setString(4, mVo.getMem_jumin());
 			pstmt.setString(5, mVo.getMem_p_no());
 			pstmt.setString(6, mVo.getMem_addr());
 			pstmt.setString(7, mVo.getMem_hp());
 			pstmt.setString(8, mVo.getMem_posi());
-			pstmt.setInt(9, mVo.getMem_auth());
+			pstmt.setString(9, mVo.getMem_auth());
 			pstmt.setInt(10, mVo.getDept_no());
 
 			pstmt.executeUpdate();
@@ -111,5 +113,75 @@ public class MemberDAO {
 		}
 	}
 	
+	public int loginCheck(MemberVO mVo) {
+		/**
+		 * 부서명에 대한 완전일치 검색
+		 * @DeptWriteCheckFormAction 에서 사용
+		 **/
+		String sql = "SELECT mem_pw FROM mem WHERE mem_id = '" + mVo.getMem_id() + "'";
+
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = DBManager.getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+
+			if (rs.next()) {
+				
+				if (rs.getString("mem_pw") != null && rs.getString("mem_pw").equals(mVo.getMem_pw())) {
+					return 1; //로그인 성공
+				}else {
+					return 0; //로그인 실패
+				}
+			}else {
+				return -1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, stmt, rs);
+		}	
+		return -1;
+	}
 	
+	public MemberVO getMemberInfoAll(MemberVO tempVo) {
+		/**
+		 * 부서명에 대한 완전일치 검색
+		 * @DeptWriteCheckFormAction 에서 사용
+		 **/
+		String sql = "SELECT * FROM mem WHERE mem_id = '" + tempVo.getMem_id() + "'";
+
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+
+		MemberVO mVo = new MemberVO();
+
+		try {
+			conn = DBManager.getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+				mVo.setMem_id(rs.getString("mem_id"));
+				mVo.setMem_name(rs.getString("mem_name"));
+				mVo.setMem_jumin(rs.getString("mem_name"));
+				mVo.setMem_p_no(rs.getString("mem_name"));
+				mVo.setMem_addr(rs.getString("mem_name"));
+				mVo.setMem_hp(rs.getString("mem_name"));
+				mVo.setMem_posi(rs.getString("mem_name"));
+				mVo.setMem_auth(rs.getString("mem_name"));
+				mVo.setDept_no(rs.getInt("dept_no"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, stmt, rs);
+		}
+		return mVo;
+	}
+
 }

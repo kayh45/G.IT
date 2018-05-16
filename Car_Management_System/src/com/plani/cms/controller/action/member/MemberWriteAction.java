@@ -21,12 +21,12 @@ public class MemberWriteAction implements Action{
 		String mem_id = request.getParameter("mem_id");
 		String mem_pw = request.getParameter("mem_jumin1");
 		String mem_name = request.getParameter("mem_name");
-		long mem_jumin = Long.parseLong(request.getParameter("mem_jumin1") + request.getParameter("mem_jumin2"));
+		String mem_jumin = request.getParameter("mem_jumin1") + request.getParameter("mem_jumin2");
 		String p_no = request.getParameter("mem_p_no");
 		String mem_addr = request.getParameter("mem_addr1") + " " +  request.getParameter("mem_addr2");
 		String mem_hp = request.getParameter("mem_hp1") + request.getParameter("mem_hp2") + request.getParameter("mem_hp3");
 		String mem_posi = request.getParameter("mem_posi");
-		int mem_auth = Integer.parseInt(request.getParameter("mem_auth"));
+		String mem_auth = request.getParameter("mem_auth");
 		int dept_no = Integer.parseInt(request.getParameter("dept_no"));
 		
 		mVo.setMem_id(mem_id);

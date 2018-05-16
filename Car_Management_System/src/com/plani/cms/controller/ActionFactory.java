@@ -1,6 +1,8 @@
 package com.plani.cms.controller;
 
 import com.plani.cms.controller.action.Action;
+import com.plani.cms.controller.action.LoginAction;
+import com.plani.cms.controller.action.LogoutAction;
 import com.plani.cms.controller.action.MainAction;
 import com.plani.cms.controller.action.car.CarWriteAction;
 import com.plani.cms.controller.action.car.CarWriteFormAction;
@@ -53,6 +55,10 @@ public class ActionFactory {
 	
 		if(command.equals("main")){
 			action = new MainAction();
+		} else if (command.equals("login")) {
+			action = new LoginAction();
+		} else if (command.equals("logout")) {
+			action = new LogoutAction();
 		} else if (command.equals("member_write_form")) {
 			action = new MemberWriteFormAction();
 		} else if (command.equals("member_write")) {

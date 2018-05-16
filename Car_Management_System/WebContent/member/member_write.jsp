@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, user-scalable=no">
-<title>법인차량관리시스템 :: 사원등록</title>
+<title>사원 등록 :: 법인차량관리시스템</title>
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../css/common.css" rel="stylesheet">
 <script type = "text/javascript" src="../js/bootstrap.js"></script>
@@ -208,3 +208,8 @@
 	</section>
 </body>
 </html>
+<!-- 
+TODO 
+- 이미 저장되어있는 정보 가져오는 부분 만들기 
+- 모바일에 맞게 CSS등 수정
+-->

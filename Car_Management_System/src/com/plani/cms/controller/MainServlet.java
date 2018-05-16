@@ -1,6 +1,8 @@
 package com.plani.cms.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,12 +34,21 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 		String command = request.getParameter("command");
 		System.out.println("MainServlet에서 요청을 받음을 확인 : " + command);
 		
-		ActionFactory af = ActionFactory.getInstance();
-		Action action = af.getAction(command);
-		
-		if(action != null){
-			action.execute(request, response);
+		if(command == null) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("main.jsp");
+			dispatcher.forward(request, response);
+		}else if(command.equals("loginForm")) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			dispatcher.forward(request, response);
+		}else {
+			ActionFactory af = ActionFactory.getInstance();
+			Action action = af.getAction(command);
+			
+			if(action != null){
+				action.execute(request, response);
+			}
 		}
+
 	}
 
 	/**
