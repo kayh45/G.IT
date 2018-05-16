@@ -58,7 +58,7 @@ public class MemberDAO {
 	
 	public void deptUpdate(DeptVO dVo) {
 		/**
-		 * 부서 수정
+		 * 부서 수정 -> TODO 사원 수정으로 바꿔야됨 TODO
 		 * 부서 번호와 부서명을 받아와서 수정
 		 * @DeptModifyAction 에서 사용
 		 **/
@@ -87,7 +87,7 @@ public class MemberDAO {
 	
 	public void deptDelete(int dept_no) {
 		/**
-		 * 부서 수정
+		 * 부서 수정 -> TODO 사원 삭제로 바꿔야됨 TODO
 		 * 부서 번호와 부서명을 받아와서 수정
 		 * @DeptModifyAction 에서 사용
 		 **/
@@ -115,8 +115,8 @@ public class MemberDAO {
 	
 	public int loginCheck(MemberVO mVo) {
 		/**
-		 * 부서명에 대한 완전일치 검색
-		 * @DeptWriteCheckFormAction 에서 사용
+		 * 로그인 검사를 위한 메소드
+		 * @LoginAction 에서 사용
 		 **/
 		String sql = "SELECT mem_pw FROM mem WHERE mem_id = '" + mVo.getMem_id() + "'";
 
@@ -149,8 +149,9 @@ public class MemberDAO {
 	
 	public MemberVO getMemberInfoAll(MemberVO tempVo) {
 		/**
-		 * 부서명에 대한 완전일치 검색
-		 * @DeptWriteCheckFormAction 에서 사용
+		 * 로그인 세션 정보를 받아오기 위한 메소드
+		 * 비밀번호는 받지 않는다(보안을 위해)
+		 * @LoginAction 에서 사용
 		 **/
 		String sql = "SELECT * FROM mem WHERE mem_id = '" + tempVo.getMem_id() + "'";
 
@@ -183,5 +184,36 @@ public class MemberDAO {
 		}
 		return mVo;
 	}
+	
+	public int idDupCheck(String id) {
+		/**
+		 * 로그인 검사를 위한 메소드
+		 * @LoginAction 에서 사용
+		 **/
+		String sql = "SELECT * FROM mem WHERE mem_id = '" + id + "'";
+
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = DBManager.getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+
+			if (rs.next()) {
+				return 1; // 이미 값이 있다.
+			}else {
+				return 0; // 값이 없다.
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, stmt, rs);
+		}	
+		return -1; // 비정상적 리턴
+	}
+	
+	
 
 }

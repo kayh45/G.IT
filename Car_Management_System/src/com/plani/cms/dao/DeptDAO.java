@@ -77,8 +77,8 @@ public class DeptDAO {
 	
 	public void deptDelete(int dept_no) {
 		/**
-		 * 부서 수정
-		 * 부서 번호와 부서명을 받아와서 수정
+		 * 부서 삭제
+		 * 부서 번호를 받아와서 삭제
 		 * @DeptModifyAction 에서 사용
 		 **/
 		String sql = "DELETE FROM dept WHERE dept_no = ?";
