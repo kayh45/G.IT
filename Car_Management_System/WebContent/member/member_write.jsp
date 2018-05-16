@@ -8,12 +8,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, user-scalable=no">
 <title>사원 등록 :: 법인차량관리시스템</title>
-<link href="../css/bootstrap.min.css" rel="stylesheet">
-<link href="../css/common.css" rel="stylesheet">
 <script type = "text/javascript" src="../js/bootstrap.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script type = "text/javascript" src="js/member.js"></script>
+<script type = "text/javascript" src="js/member.js?ver=2"></script>
 <script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
     function execDaumPostcode() {
@@ -103,9 +101,11 @@
 						</td>
 						<td class = "form_normal-td" colspan = "3">
 							<input name = "mem_id" type = "text" class = "form_textbox">
+							<input name = "mem_id_ok" type = "hidden" class = "form_textbox">
 
-								<span onclick = "javascript:window.open('member/idCheck.jsp', '_blank_1', 'toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200');" id ="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
-								<!-- 위에 있는거 나중에 js파일로 처리 -->
+							<button type = "button" onClick = "memIdCheck();" class = "quiet_btn" id = "idCheck">
+								<span id ="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
+							</button>								<!-- 위에 있는거 나중에 js파일로 처리 -->
 						</td>
 					</tr>
 					<tr>

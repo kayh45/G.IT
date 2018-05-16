@@ -6,9 +6,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="../css/popup.css" rel="stylesheet">
-<link href="../css/common.css" rel="stylesheet">
-<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="css/popup.css" rel="stylesheet">
+<link href="css/common.css" rel="stylesheet">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<script type = "text/javascript" src="js/member.js?ver=2"></script>
 <title>아이디 중복 체크</title>
 </head>
 <body>
@@ -16,16 +17,22 @@
 <div class = "popup_header">	 
 	<p><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;아이디 중복 체크</p>
 </div>
+<form method = "post" name = "frm" action = "member.do?command=member_id_check">
 <div class = "popup_body">
-	<input type = "text">
-	<button>중복 체크</button>
+	<input type = "text" name = "mem_id" value = "${mem_id}">
+	<input type = "hidden" name = "mem_id_ok" value = "1">
+	<button type = "submit">중복 체크</button>
 </div>
+</form>
 <div class = "popup_body">
 	<c:choose>
-		<c:when test="${isExist eq 1}">
-			<p>"${mem_id}"은 사용가능한 아이디입니다.</p>
-		</c:when>
 		<c:when test="${isExist eq 0}">
+			<p>
+			"${mem_id}"은 사용가능한 아이디입니다.
+			<button type = "button" onclick = "useMemID();">사용</button>
+			</p>
+		</c:when>
+		<c:when test="${isExist eq 1}">
 			<p>"${mem_id}"은 이미 존재하는 아이디입니다.</p>
 		</c:when>
 		<c:otherwise>

@@ -10,6 +10,25 @@ function deptNamecheck() {
 					"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
 }
 
+function memIdCheck() {
+	if (document.frm.mem_id.value == "") {
+		alert('아이디를 입력하세요');
+		document.frm.mem_id.focus();
+		return;
+	}
+	document.frm.mem_id_ok.value = 0; // 중복검사 여부를 0으로 초기화
+	var url = "member.do?popup=no&command=member_id_check&mem_id=" + encodeURIComponent(document.frm.mem_id.value);
+	window.open(url, "_blank_1",
+					"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
+}
+
+function useMemID() {
+	opener.frm.mem_id.value = document.frm.mem_id.value;
+	opener.frm.mem_usable_id = document.frm.mem_id.value;
+	opener.frm.mem_id_ok.value = document.frm.mem_id_ok.value;
+	self.close();
+}
+
 function useDeptName() {
 	/*
 	 * @deptCheck.jsp 에서 사용
