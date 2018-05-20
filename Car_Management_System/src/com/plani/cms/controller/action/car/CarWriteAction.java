@@ -2,11 +2,11 @@ package com.plani.cms.controller.action.car;
 
 import java.io.IOException;
 
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.CarDAO;
@@ -18,7 +18,7 @@ public class CarWriteAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String url = "car.do?command=car_write_form";
-		
+
 		String car_reg_no = request.getParameter("car_reg_no");
 		String car_divi = request.getParameter("car_divi");
 		String car_model = request.getParameter("car_model");
@@ -38,10 +38,10 @@ public class CarWriteAction implements Action {
 		String bo_e_date = request.getParameter("bo_e_date");
 		String total_dist = request.getParameter("total_dist");
 
-		// 법인차 구분에 따라 DAO따로 받아야 될수도...
-		
+		// 踰뺤씤李� 援щ텇�뿉 �뵲�씪 DAO�뵲濡� 諛쏆븘�빞 �맆�닔�룄...
+
 		CarVO cVo = new CarVO();
-		
+
 		cVo.setCar_reg_no(car_reg_no);
 		cVo.setCar_divi(car_divi);
 		cVo.setCar_model(car_model);
@@ -61,16 +61,18 @@ public class CarWriteAction implements Action {
 		cVo.setBo_e_date(bo_e_date);
 		cVo.setTotal_dist(Integer.parseInt(total_dist));
 
+		/*렌탈/리스와 구입 기준으로 분기한 코드 내용*/
 		CarDAO cDao = CarDAO.getInstance();
-		int result = cDao.insertCar(cVo);
-		HttpSession session = request.getSession();
-
-		if (result == 1) {
-			session.setAttribute("car_model", cVo.getCar_model());
-		} else {
-			
+		if (car_divi.equals("렌트") || car_divi.equals("리스")) {
+			cDao.insertCar_rentalCar(cVo);
+		} else if(car_divi.equals("구입")){
+			cDao.insertCar_payCar(cVo);
 		}
-		
+		/*렌탈/리스와 구입 기준으로 분기한 코드 내용*/
+
+		System.out.println("등록성공");
+		request.setAttribute("message", "<strong>법인 차 등록 성공!</strong> &nbsp 등록된 법인차 : " + car_reg_no);
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 

@@ -1,11 +1,12 @@
 package com.plani.cms.controller;
 
 import com.plani.cms.controller.action.Action;
+
 import com.plani.cms.controller.action.LoginAction;
 import com.plani.cms.controller.action.LogoutAction;
 import com.plani.cms.controller.action.MainAction;
-import com.plani.cms.controller.action.car.CarWriteAction;
 import com.plani.cms.controller.action.car.CarWriteFormAction;
+import com.plani.cms.controller.action.car.CarWriteAction;
 import com.plani.cms.controller.action.course.CourseWriteFormAction;
 import com.plani.cms.controller.action.member.DeptDeleteAction;
 import com.plani.cms.controller.action.member.DeptModifyAction;
@@ -21,7 +22,6 @@ import com.plani.cms.controller.action.member.MemberSearchFormAction;
 import com.plani.cms.controller.action.member.MemberWriteAction;
 import com.plani.cms.controller.action.member.MemberWriteFormAction;
 import com.plani.cms.controller.action.place.PlaceWriteFormAction;
-
 
 /* ===============================================
  * 
@@ -42,17 +42,16 @@ import com.plani.cms.controller.action.place.PlaceWriteFormAction;
 
 public class ActionFactory {
 
-	
 	private static ActionFactory instance = new ActionFactory();
-	
-	private ActionFactory(){
+
+	private ActionFactory() {
 		super();
 	}
-	
-	public static ActionFactory getInstance(){
+
+	public static ActionFactory getInstance() {
 		return instance;
 	}
-	
+
 	public Action getAction(String command){
 		Action action = null;
 		
