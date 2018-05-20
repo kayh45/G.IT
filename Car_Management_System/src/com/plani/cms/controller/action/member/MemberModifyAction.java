@@ -11,15 +11,14 @@ import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.MemberDAO;
 import com.plani.cms.dto.MemberVO;
 
-public class MemberWriteAction implements Action{
+public class MemberModifyAction implements Action{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "member.do?command=member_write_form";
+		String url = "member.do?command=member_search_form";
 		
 		MemberVO mVo = new MemberVO();	
 		
 		String mem_id = request.getParameter("mem_id");
-		String mem_pw = request.getParameter("mem_jumin1");
 		String mem_name = request.getParameter("mem_name");
 		String mem_jumin = request.getParameter("mem_jumin1") + request.getParameter("mem_jumin2");
 		String p_no = request.getParameter("mem_p_no");
@@ -31,7 +30,6 @@ public class MemberWriteAction implements Action{
 		int dept_no = Integer.parseInt(request.getParameter("dept_no"));
 		
 		mVo.setMem_id(mem_id);
-		mVo.setMem_pw(mem_pw);
 		mVo.setMem_name(mem_name);
 		mVo.setMem_jumin(mem_jumin);
 		mVo.setMem_p_no(p_no);
@@ -53,10 +51,10 @@ public class MemberWriteAction implements Action{
 		mVo.setDept_no(dept_no);
 	
 		MemberDAO mDao = MemberDAO.getInstance();
-		mDao.memberInsert(mVo);
+		mDao.memberUpdate(mVo);
 		
-		System.out.println("등록성공");
-		request.setAttribute("message", "<strong>사원 등록 성공!</strong> &nbsp 등록된 사원이름 : " + mem_name);
+		System.out.println("수정 성공");
+		request.setAttribute("message", "<strong>사원 수정 성공!</strong> &nbsp 수정한 사원 : " + mem_name + "(" + mem_id+ ")");
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

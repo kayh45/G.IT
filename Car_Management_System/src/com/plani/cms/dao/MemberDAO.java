@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.plani.cms.dto.DeptVO;
 import com.plani.cms.dto.MemberVO;
@@ -21,11 +23,13 @@ public class MemberDAO {
 	
 	public void memberInsert(MemberVO mVo) {
 		/**
-		 * 부서 등록
-		 * 부서명만 받아와서 등록시킴
-		 * @DeptWriteAction 에서 사용
+		 * 사원 등록
+		 * 사원정보를 받아와서 입력시킴
+		 * @MemberWriteAction 에서 사용
 		 **/
-		String sql = "insert into mem values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "insert into mem(mem_id, mem_pw, mem_name, mem_jumin, mem_p_no, mem_addr, mem_addr_dtl, mem_hp"
+				+ ", mem_posi, mem_auth, dept_no)"
+				+ " values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -40,10 +44,11 @@ public class MemberDAO {
 			pstmt.setString(4, mVo.getMem_jumin());
 			pstmt.setString(5, mVo.getMem_p_no());
 			pstmt.setString(6, mVo.getMem_addr());
-			pstmt.setString(7, mVo.getMem_hp());
-			pstmt.setString(8, mVo.getMem_posi());
-			pstmt.setString(9, mVo.getMem_auth());
-			pstmt.setInt(10, mVo.getDept_no());
+			pstmt.setString(7, mVo.getMem_addr_dtl());
+			pstmt.setString(8, mVo.getMem_hp());
+			pstmt.setString(9, mVo.getMem_posi());
+			pstmt.setString(10, mVo.getMem_auth());
+			pstmt.setInt(11, mVo.getDept_no());
 
 			pstmt.executeUpdate();
 
@@ -56,13 +61,12 @@ public class MemberDAO {
 		}
 	}
 	
-	public void deptUpdate(DeptVO dVo) {
+	public void memberUpdate(MemberVO mVo) {
 		/**
-		 * 부서 수정 -> TODO 사원 수정으로 바꿔야됨 TODO
-		 * 부서 번호와 부서명을 받아와서 수정
-		 * @DeptModifyAction 에서 사용
+		 * 사원 수정
 		 **/
-		String sql = "UPDATE dept SET dept_name = ? where dept_no = ?";
+		String sql = "UPDATE mem SET mem_name = ?, mem_jumin = ?, mem_p_no = ?, mem_addr = ?"
+				+ ", mem_addr_dtl = ?, mem_hp = ?, mem_posi = ?, mem_auth = ?, dept_no =?  where mem_id = ?";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -71,8 +75,16 @@ public class MemberDAO {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setString(1, dVo.getDept_name());
-			pstmt.setInt(2, dVo.getDept_no());
+			pstmt.setString(1, mVo.getMem_name());
+			pstmt.setString(2, mVo.getMem_jumin());
+			pstmt.setString(3, mVo.getMem_p_no());
+			pstmt.setString(4, mVo.getMem_addr());
+			pstmt.setString(5, mVo.getMem_addr_dtl());
+			pstmt.setString(6, mVo.getMem_hp());
+			pstmt.setString(7, mVo.getMem_posi());
+			pstmt.setString(8, mVo.getMem_auth());
+			pstmt.setInt(9, mVo.getDept_no());
+			pstmt.setString(10, mVo.getMem_id());
 
 			pstmt.executeUpdate();
 
@@ -85,13 +97,13 @@ public class MemberDAO {
 		}
 	}
 	
-	public void deptDelete(int dept_no) {
+	public void memberDelete(String mem_id) {
 		/**
 		 * 부서 수정 -> TODO 사원 삭제로 바꿔야됨 TODO
 		 * 부서 번호와 부서명을 받아와서 수정
 		 * @DeptModifyAction 에서 사용
 		 **/
-		String sql = "DELETE FROM dept WHERE dept_no = ?";
+		String sql = "DELETE FROM mem WHERE mem_id = ?";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -100,7 +112,7 @@ public class MemberDAO {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setInt(1, dept_no);
+			pstmt.setString(1, mem_id);
 
 			pstmt.executeUpdate();
 
@@ -169,12 +181,13 @@ public class MemberDAO {
 			while (rs.next()) {
 				mVo.setMem_id(rs.getString("mem_id"));
 				mVo.setMem_name(rs.getString("mem_name"));
-				mVo.setMem_jumin(rs.getString("mem_name"));
-				mVo.setMem_p_no(rs.getString("mem_name"));
-				mVo.setMem_addr(rs.getString("mem_name"));
-				mVo.setMem_hp(rs.getString("mem_name"));
-				mVo.setMem_posi(rs.getString("mem_name"));
-				mVo.setMem_auth(rs.getString("mem_name"));
+				mVo.setMem_jumin(rs.getString("mem_jumin"));
+				mVo.setMem_p_no(rs.getString("mem_p_no"));
+				mVo.setMem_addr(rs.getString("mem_addr"));
+				mVo.setMem_addr_dtl(rs.getString("mem_addr_dtl"));
+				mVo.setMem_hp(rs.getString("mem_hp"));
+				mVo.setMem_posi(rs.getString("mem_posi"));
+				mVo.setMem_auth(rs.getString("mem_auth"));
 				mVo.setDept_no(rs.getInt("dept_no"));
 			}
 		} catch (Exception e) {
@@ -214,6 +227,50 @@ public class MemberDAO {
 		return -1; // 비정상적 리턴
 	}
 	
-	
+	public List<MemberVO> memberSearchByName(String name) {
+		/**
+		 * 사원 이름에 대한 부분일치 검색
+		 * @MemberSearchAction 에서 사용
+		 **/
+		String sql = "select * from mem m inner join dept d on m.dept_no = d.dept_no"
+				+ " where mem_name like '%" + name + "%'";
+
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+
+		List<MemberVO> list = new ArrayList<MemberVO>();
+
+		try {
+			conn = DBManager.getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+
+				MemberVO mVo = new MemberVO();
+
+				mVo.setMem_id(rs.getString("mem_id"));
+				mVo.setMem_name(rs.getString("mem_name"));
+				mVo.setMem_jumin(rs.getString("mem_jumin"));
+				mVo.setMem_p_no(rs.getString("mem_p_no"));
+				mVo.setMem_addr(rs.getString("mem_addr"));
+				mVo.setMem_addr_dtl(rs.getString("mem_addr_dtl"));
+				mVo.setMem_hp(rs.getString("mem_hp"));
+				mVo.setMem_posi(rs.getString("mem_posi"));
+				mVo.setMem_auth(rs.getString("mem_auth"));
+				mVo.setDept_no(rs.getInt("d.dept_no"));
+				mVo.setDept_name(rs.getString("d.dept_name"));
+
+				list.add(mVo);
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, stmt, rs);
+		}
+		return list;
+	}
 
 }

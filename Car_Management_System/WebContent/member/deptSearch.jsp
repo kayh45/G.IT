@@ -25,16 +25,17 @@
 					부서명 &nbsp;
 					<input type = "text" name = "dept_name" value = "${deptName}">
 					<button type = "submit">조회</button>
-				<input type = "hidden" name = "dept_name_ok" value = "1">
+				<input type = "hidden" name = "dept_name_ok" value = "1">	
+			</form>
+		</div>	
 		<div class = "popup_box">
 			<p class = "search-result_label">'${deptName}'에 대한 조회결과가 없습니다.</p>
-		</div>		
-			</form>
 		</div>			
 		</c:when>
 		<c:when test = "${isLike eq 'yes'}">
 			<div class = "popup_box">
 				<form name = "frm" method = "post" action = "member.do?command=dept_search&popup=yes">
+						부서명 &nbsp;
 						<input type = "text" name = "dept_name" value = "${deptName}">
 						<button type = "submit">조회</button>
 				</form>

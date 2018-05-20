@@ -13,7 +13,11 @@ import com.plani.cms.controller.action.member.DeptSearchAction;
 import com.plani.cms.controller.action.member.DeptWriteAction;
 import com.plani.cms.controller.action.member.DeptWriteCheckFormAction;
 import com.plani.cms.controller.action.member.DeptWriteFormAction;
+import com.plani.cms.controller.action.member.MemberDeleteAction;
 import com.plani.cms.controller.action.member.MemberIdCheckAction;
+import com.plani.cms.controller.action.member.MemberModifyAction;
+import com.plani.cms.controller.action.member.MemberSearchAction;
+import com.plani.cms.controller.action.member.MemberSearchFormAction;
 import com.plani.cms.controller.action.member.MemberWriteAction;
 import com.plani.cms.controller.action.member.MemberWriteFormAction;
 import com.plani.cms.controller.action.place.PlaceWriteFormAction;
@@ -66,6 +70,14 @@ public class ActionFactory {
 			action = new MemberWriteAction();
 		} else if (command.equals("member_id_check")) {
 			action = new MemberIdCheckAction();
+		} else if (command.equals("member_search_form")) {
+			action = new MemberSearchFormAction();
+		} else if (command.equals("member_search")) {
+			action = new MemberSearchAction();
+		} else if (command.equals("member_modify")) {
+			action = new MemberModifyAction();
+		} else if (command.equals("member_delete")) {
+			action = new MemberDeleteAction();
 		} else if (command.equals("dept_search")) {
 			action = new DeptSearchAction();
 		} else if (command.equals("dept_write")) {

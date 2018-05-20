@@ -7,12 +7,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, user-scalable=no">
-<title>사원 등록 :: 법인차량관리시스템</title>
-<script type = "text/javascript" src="../js/bootstrap.js"></script>
+<title>법인차량관리시스템</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<script type = "text/javascript" src="js/bootstrap.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script type = "text/javascript" src="js/member.js?ver=3"></script>
 <script type = "text/javascript" src="js/common.js"></script>
+<script type = "text/javascript" src="js/member.js?ver=2"></script>
 <script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
     function execDaumPostcode() {
@@ -82,18 +83,22 @@
 				</div>
 			</c:if>	
 			<div class = "content_title-box">
-				<span class="glyphicon glyphicon-pencil" aria-hidden="true">
+				<span class="glyphicon glyphicon-search" aria-hidden="true">
 				</span>
-				<p class = "content_title-text">사원 등록</p>
+				<p class = "content_title-text">사원 정보 조회</p>
 			</div>
-			<form method = "post" action = "member.do?command=member_write" name = "frm">
+			<form method = "post" action = "member.do?command=member_modify" name = "frm">
+			<div class = "content_cont-box">
+				<p class = "content_cont-text">사원 이름으로 검색</p>	
+				<input name = "mem_search_name" type = "text" class = "form_textbox">
+				<button type = "button" onClick = "memSearchByName();" class = "quiet_btn">
+					<span id ="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
+				</button>				
+			</div>
 			<div class = "content_cont-box">
 				<p class = "content_cont-text">
 					* 사원 기본 정보
-				</p>
-				<p class = "content_cont-text">
-					(비밀번호는 주민등록번호 앞자리 6자리로 초기화됩니다.)
-				</p>				
+				</p>			
 				<table class="table table-bordered" id = "form_table">
 					<tr>
 						<td class = "form_label">
@@ -101,12 +106,7 @@
 							<p class = "must">*</p>					
 						</td>
 						<td class = "form_normal-td" colspan = "3">
-							<input name = "mem_id" type = "text" class = "form_textbox">
-							<input name = "mem_id_ok" type = "hidden" class = "form_textbox">
-
-							<button type = "button" onClick = "memIdCheck();" class = "quiet_btn" id = "idCheck">
-								<span id ="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
-							</button>								<!-- 위에 있는거 나중에 js파일로 처리 -->
+							<input name = "mem_id" type = "text" class = "form_textbox" readonly>
 						</td>
 					</tr>
 					<tr>
@@ -211,15 +211,11 @@
 				</table>
 			</div>
 			<div class = "form_btn-group">
-				<button id = "ins_btn" type = "submit" onclick = "return memWriteCheck()">등록</button>
+				<button id = "mod_btn" type = "submit" onclick = "return memModifyCheck()">수정</button>
+				<button id = "del_btn" type = "button" onclick = "memberDelete()">삭제</button>
 			</div>
 			</form>
 		</section>
 	</section>
 </body>
 </html>
-<!-- 
-TODO 
-- 이미 저장되어있는 정보 가져오는 부분 만들기 
-- 모바일에 맞게 CSS등 수정
--->

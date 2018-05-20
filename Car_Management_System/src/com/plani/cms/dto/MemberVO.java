@@ -21,6 +21,7 @@ public class MemberVO extends DeptVO{
 	String mem_jumin;
 	String mem_p_no;
 	String mem_addr;
+	String mem_addr_dtl;
 	String mem_hp;
 	String mem_posi;
 	String mem_auth;
@@ -60,6 +61,13 @@ public class MemberVO extends DeptVO{
 	}
 	public void setMem_addr(String mem_addr) {
 		this.mem_addr = mem_addr;
+	}
+	
+	public String getMem_addr_dtl() {
+		return mem_addr_dtl;
+	}
+	public void setMem_addr_dtl(String mem_addr_dtl) {
+		this.mem_addr_dtl = mem_addr_dtl;
 	}
 	public String getMem_hp() {
 		return mem_hp;
