@@ -6,6 +6,12 @@ import com.plani.cms.controller.action.LoginAction;
 import com.plani.cms.controller.action.LogoutAction;
 import com.plani.cms.controller.action.MainAction;
 import com.plani.cms.controller.action.car.CarWriteFormAction;
+import com.plani.cms.controller.action.cent.CentDeleteAction;
+import com.plani.cms.controller.action.cent.CentModifyAction;
+import com.plani.cms.controller.action.cent.CentWriteAction;
+import com.plani.cms.controller.action.cent.CentWriteFormAction;
+import com.plani.cms.controller.action.car.CarDeleteAction;
+import com.plani.cms.controller.action.car.CarModifyAction;
 import com.plani.cms.controller.action.car.CarWriteAction;
 import com.plani.cms.controller.action.course.CourseWriteFormAction;
 import com.plani.cms.controller.action.member.DeptDeleteAction;
@@ -52,12 +58,12 @@ public class ActionFactory {
 		return instance;
 	}
 
-	public Action getAction(String command){
+	public Action getAction(String command) {
 		Action action = null;
-		
+
 		System.out.println("ActionFactory : " + command);
-	
-		if(command.equals("main")){
+
+		if (command.equals("main")) {
 			action = new MainAction();
 		} else if (command.equals("login")) {
 			action = new LoginAction();
@@ -89,18 +95,36 @@ public class ActionFactory {
 			action = new DeptModifyAction();
 		} else if (command.equals("dept_delete")) {
 			action = new DeptDeleteAction();
-		} else if (command.equals("car_write_form")) {
+		}
+		/* 법인차 기능 구현 start */
+		else if (command.equals("car_write_form")) {
 			action = new CarWriteFormAction();
 		} else if (command.equals("car_write")) {
 			action = new CarWriteAction();
+		} else if (command.equals("car_modify")) {
+			action = new CarModifyAction();
+		} else if (command.equals("car_delete")) {
+			action = new CarDeleteAction();
+			/* 법인차 기능 구현 end */
+		} 
+		/* 정비소 기능 구현 start */
+		else if (command.equals("cent_write_form")) {
+			action = new CentWriteFormAction();
+		}  else if (command.equals("cent_write")) {
+			action = new CentWriteAction();
+		}  else if (command.equals("cent_modify")) {
+			action = new CentModifyAction();
+		}  else if (command.equals("cent_delete")) {
+			action = new CentDeleteAction();
+			/* 정비소 기능 구현 end */
 		} else if (command.equals("course_write_form")) {
 			action = new CourseWriteFormAction();
 		} else if (command.equals("place_write_form")) {
 			action = new PlaceWriteFormAction();
 		}
-		
+
 		return action;
-	
+
 	}
-	
+
 }

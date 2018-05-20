@@ -2,7 +2,6 @@ package com.plani.cms.controller.action.car;
 
 import java.io.IOException;
 
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -12,13 +11,13 @@ import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.CarDAO;
 import com.plani.cms.dto.CarVO;
 
-public class CarWriteAction implements Action {
+public class CarModifyAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		String url = "car.do?command=car_write_form";
-
+	String url = "car.do?command=car_write_form";
+		
+		CarVO cVo = new CarVO();		
 		String car_reg_no = request.getParameter("car_reg_no");
 		String car_divi = request.getParameter("car_divi");
 		String car_model = request.getParameter("car_model");
@@ -40,7 +39,6 @@ public class CarWriteAction implements Action {
 
 		// 踰뺤씤李� 援щ텇�뿉 �뵲�씪 DAO�뵲濡� 諛쏆븘�빞 �맆�닔�룄...
 
-		CarVO cVo = new CarVO();
 
 		cVo.setCar_reg_no(car_reg_no);
 		cVo.setCar_divi(car_divi);
@@ -60,22 +58,16 @@ public class CarWriteAction implements Action {
 		cVo.setBo_s_date(bo_s_date);
 		cVo.setBo_e_date(bo_e_date);
 		cVo.setTotal_dist(Integer.parseInt(total_dist));
-
-		/*렌탈/리스와 구입 기준으로 분기한 코드 내용*/
+	
 		CarDAO cDao = CarDAO.getInstance();
-		if (car_divi.equals("2") || car_divi.equals("3")) {
-			cDao.insertCar_rentalCar(cVo);
-		} else if(car_divi.equals("1")){
-			cDao.insertCar_payCar(cVo);
-		}
-		/*렌탈/리스와 구입 기준으로 분기한 코드 내용*/
-
-		System.out.println("등록성공");
-		request.setAttribute("message", "<strong>법인 차 등록 성공!</strong> &nbsp 등록된 법인차 : " + car_reg_no);
-
+		cDao.updateCar(cVo);
+		
+		System.out.println("수정 성공");
+		request.setAttribute("message", "<strong>법인차 수정 성공!</strong> &nbsp 수정된 법인차: " +  car_reg_no);
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
-
+		
 	}
 
 }
