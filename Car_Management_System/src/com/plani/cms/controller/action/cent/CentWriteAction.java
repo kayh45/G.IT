@@ -21,7 +21,6 @@ public class CentWriteAction implements Action{
 		
 
 		
-		String cent_no = request.getParameter("cent_no");
 		String cent_name = request.getParameter("cent_name");
 		String ceo_name = request.getParameter("ceo_name");
 		String cent_tell1 = request.getParameter("cent_tell1");
@@ -35,7 +34,6 @@ public class CentWriteAction implements Action{
 		String cent_addr2 = request.getParameter("cent_addr2");
 		
 		
-		cVo.setCent_no(Integer.parseInt(cent_no));
 		cVo.setCent_name(cent_name);
 		cVo.setCeo_name(ceo_name);
 		cVo.setCent_tell1(cent_tell1);	
