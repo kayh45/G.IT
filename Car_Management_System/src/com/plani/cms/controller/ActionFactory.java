@@ -114,7 +114,9 @@ public class ActionFactory {
 		/* 정비소 기능 구현 start */
 		else if (command.equals("cent_write_form")) {
 			action = new CentWriteFormAction();
-		} else if (command.equals("cent_write")) {
+		} else if (command.equals("cent_write_check_form")) {
+			action = new CentWriteCheckFormAction();
+		}else if (command.equals("cent_write")) {
 			action = new CentWriteAction();
 		} else if (command.equals("cent_modify")) {
 			action = new CentModifyAction();
