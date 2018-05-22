@@ -28,6 +28,7 @@ import com.plani.cms.controller.action.member.MemberSearchFormAction;
 import com.plani.cms.controller.action.member.MemberWriteAction;
 import com.plani.cms.controller.action.member.MemberWriteFormAction;
 import com.plani.cms.controller.action.place.PlaceWriteFormAction;
+import com.plani.cms.controller.action.reserve.ReserveWriteFormAction;
 import com.plani.cms.controller.action.repa.RepaWriteAction;
 import com.plani.cms.controller.action.repa.RepaCarWriteCheckFormAction;
 import com.plani.cms.controller.action.repa.RepaWriteFormAction;
@@ -72,7 +73,7 @@ public class ActionFactory {
 			action = new LoginAction();
 		} else if (command.equals("logout")) {
 			action = new LogoutAction();
-		} else if (command.equals("member_write_form")) {
+		} else if (command.equals("member_write_form")) { // 여기서 부터 멤버
 			action = new MemberWriteFormAction();
 		} else if (command.equals("member_write")) {
 			action = new MemberWriteAction();
@@ -109,7 +110,7 @@ public class ActionFactory {
 		} else if (command.equals("car_delete")) {
 			action = new CarDeleteAction();
 			/* 법인차 기능 구현 end */
-		}
+		} 
 		/* 정비소 기능 구현 start */
 		else if (command.equals("cent_write_form")) {
 			action = new CentWriteFormAction();
@@ -119,14 +120,13 @@ public class ActionFactory {
 			action = new CentModifyAction();
 		} else if (command.equals("cent_delete")) {
 			action = new CentDeleteAction();
-		} else if (command.equals("cent_write_check_form")) {
-			action = new CentWriteCheckFormAction();
-		}
-		/* 정비소 기능 구현 end */
-		else if (command.equals("course_write_form")) {
+			/* 정비소 기능 구현 end */
+		} else if (command.equals("course_write_form")) {
 			action = new CourseWriteFormAction();
 		} else if (command.equals("place_write_form")) {
 			action = new PlaceWriteFormAction();
+		} else if (command.equals("reserve_write_form")) {
+			action = new ReserveWriteFormAction();
 		}/* 정비내역 등록 구현 start*/
 		 else if (command.equals("repa_write")) {
 				action = new RepaWriteAction();
