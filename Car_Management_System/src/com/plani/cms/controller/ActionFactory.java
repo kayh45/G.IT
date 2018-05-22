@@ -1,19 +1,18 @@
 package com.plani.cms.controller;
 
 import com.plani.cms.controller.action.Action;
-
 import com.plani.cms.controller.action.LoginAction;
 import com.plani.cms.controller.action.LogoutAction;
 import com.plani.cms.controller.action.MainAction;
+import com.plani.cms.controller.action.car.CarDeleteAction;
+import com.plani.cms.controller.action.car.CarModifyAction;
+import com.plani.cms.controller.action.car.CarWriteAction;
 import com.plani.cms.controller.action.car.CarWriteFormAction;
 import com.plani.cms.controller.action.cent.CentDeleteAction;
 import com.plani.cms.controller.action.cent.CentModifyAction;
 import com.plani.cms.controller.action.cent.CentWriteAction;
 import com.plani.cms.controller.action.cent.CentWriteCheckFormAction;
 import com.plani.cms.controller.action.cent.CentWriteFormAction;
-import com.plani.cms.controller.action.car.CarDeleteAction;
-import com.plani.cms.controller.action.car.CarModifyAction;
-import com.plani.cms.controller.action.car.CarWriteAction;
 import com.plani.cms.controller.action.course.CourseWriteFormAction;
 import com.plani.cms.controller.action.member.DeptDeleteAction;
 import com.plani.cms.controller.action.member.DeptModifyAction;
@@ -29,6 +28,9 @@ import com.plani.cms.controller.action.member.MemberSearchFormAction;
 import com.plani.cms.controller.action.member.MemberWriteAction;
 import com.plani.cms.controller.action.member.MemberWriteFormAction;
 import com.plani.cms.controller.action.place.PlaceWriteFormAction;
+import com.plani.cms.controller.action.repa.RepaWriteAction;
+import com.plani.cms.controller.action.repa.RepaWriteCheckFormAction;
+import com.plani.cms.controller.action.repa.RepaWriteFormAction;
 
 /* ===============================================
  * 
@@ -125,7 +127,17 @@ public class ActionFactory {
 			action = new CourseWriteFormAction();
 		} else if (command.equals("place_write_form")) {
 			action = new PlaceWriteFormAction();
-		}
+		}/* 정비내역 등록 구현 start*/
+		 else if (command.equals("repa_write")) {
+				action = new RepaWriteAction();
+			}
+		 else if (command.equals("repa_write_form")) {
+				action = new RepaWriteFormAction();
+			}
+		 else if (command.equals("repa_write_check_form")) {
+				action = new RepaWriteCheckFormAction();
+			}
+
 
 		return action;
 
