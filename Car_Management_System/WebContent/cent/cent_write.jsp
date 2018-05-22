@@ -9,6 +9,7 @@
 <script type="text/javascript" src="js/jquery-ui.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/post.js"></script>
+<script type="text/javascript" src="js/cent.js"></script>
 <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 </head>
@@ -33,8 +34,14 @@
 					<p class="label">정비소 이름</p>
 					<p class="must">*</p>
 				</td>
-				<td class="form_normal-td"><input type="text"
-					class="form_textbox" name="cent_name"></td>
+				<td class="form_normal-td">
+				<input type="text" name="cent_name" class="form_textbox">
+				<input type = "hidden" name = "cent_name_ok" class = "form_textbox">
+
+							<button type = "button" onClick = "centIdCheck();" class = "quiet_btn" id = "idCheck">
+								<span id ="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
+							</button>	
+					</td>
 					<td class="form_label">
 					<p class="label">대표자</p>
 				</td>
@@ -96,9 +103,10 @@
 		</table>
 	</div>
 	<div class="form_btn-group">
-		<button id="ins_btn" type="submit" >등록</button>
-		<button id="mod_btn" type="submit" >수정</button>
-		<button id="del_btn" type="button" >삭제</button>
+		<button id="ins_btn" type="submit" onclick = "return centWriteCheck()">등록</button>
+		<button id="mod_btn" type="submit" onclick = "return centWriteCheck()" disabled>수정</button>
+		<button id="del_btn" type="button" onclick = "centDelete()" disabled>삭제</button>
+		
 	</div>
 	</form>
 	</section> </section>
