@@ -9,7 +9,7 @@ function repaNameCheck() {
 		return;
 	}
 	document.frm.car_reg_no_ok.value = 0; // 중복검사 여부를 0으로 초기화
-	var url = "repa.do?popup=no&command=repa_write_check_form&car_reg_no="
+	var url = "repa.do?popup=no&command=repa_car_write_check_form&car_reg_no="
 			+ encodeURIComponent(document.frm.car_reg_no.value);
 	window
 			.open(url, "_blank_1",

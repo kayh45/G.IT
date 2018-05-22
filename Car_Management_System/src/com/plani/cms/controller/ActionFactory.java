@@ -29,7 +29,7 @@ import com.plani.cms.controller.action.member.MemberWriteAction;
 import com.plani.cms.controller.action.member.MemberWriteFormAction;
 import com.plani.cms.controller.action.place.PlaceWriteFormAction;
 import com.plani.cms.controller.action.repa.RepaWriteAction;
-import com.plani.cms.controller.action.repa.RepaWriteCheckFormAction;
+import com.plani.cms.controller.action.repa.RepaCarWriteCheckFormAction;
 import com.plani.cms.controller.action.repa.RepaWriteFormAction;
 
 /* ===============================================
@@ -134,8 +134,8 @@ public class ActionFactory {
 		 else if (command.equals("repa_write_form")) {
 				action = new RepaWriteFormAction();
 			}
-		 else if (command.equals("repa_write_check_form")) {
-				action = new RepaWriteCheckFormAction();
+		 else if (command.equals("repa_car_write_check_form")) {
+				action = new RepaCarWriteCheckFormAction();
 			}
 
 
