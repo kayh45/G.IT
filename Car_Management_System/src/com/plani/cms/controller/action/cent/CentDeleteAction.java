@@ -2,13 +2,13 @@ package com.plani.cms.controller.action.cent;
 
 import java.io.IOException;
 
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.plani.cms.controller.action.Action;
-import com.plani.cms.dao.CarDAO;
 import com.plani.cms.dao.CentDAO;
 
 public class CentDeleteAction implements Action {

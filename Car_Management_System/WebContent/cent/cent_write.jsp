@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>법인차량관리시스템</title>
+<title>정비소 등록 :: 법인차량관리시스템</title>
 <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery-ui.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/post.js"></script>
-<script type="text/javascript" src="js/cent.js"></script>
+<script type="text/javascript" src="js/cent.js?ver=1"></script>
 <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 </head>
@@ -37,11 +37,12 @@
 				<td class="form_normal-td">
 				<input type="text" name="cent_name" class="form_textbox">
 				<input type = "hidden" name = "cent_name_ok" class = "form_textbox">
-
-							<button type = "button" onClick = "centIdCheck();" class = "quiet_btn" id = "idCheck">
+					<input type = "hidden" name = "cent_usable_name">
+							<button type = "button" onClick = "centNameCheck();" class = "quiet_btn" id = "idCheck">
 								<span id ="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
 							</button>	
-					</td>
+<!-- 							<span id = "hdn_label" class = "hdn_label">기존: <input type = "text" class = "form_textbox" name = "pre_cent_name" readonly></span>
+ -->						</td>
 					<td class="form_label">
 					<p class="label">대표자</p>
 				</td>
@@ -84,7 +85,7 @@
 							<p class = "label">주소</p>				
 						</td>
 						<td class = "form_normal-td"  colspan = "3">
-							<input  name = "cent_addr1" type = "text" id = "roadAddress" class = "form_textbox" readonly>
+							<input  name = "cent_addr" type = "text" id = "roadAddress" class = "form_textbox" readonly>
 							<button type = "button" onclick="sample6_execDaumPostcode()" class = "quiet_btn">
 								<span id ="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
 							</button>
@@ -95,7 +96,7 @@
 							<p class = "label">상세 주소</p>				
 						</td>
 						<td class = "form_normal-td"  colspan = "3">
-							<input name = "cent_addr2" type = "text" id = "roadAddress-detail" class = "form_textbox">
+							<input name = "cent_addr_dtl" type = "text" id = "roadAddress-detail" class = "form_textbox">
 						</td>
 					</tr>
 
@@ -104,7 +105,7 @@
 	</div>
 	<div class="form_btn-group">
 		<button id="ins_btn" type="submit" onclick = "return centWriteCheck()">등록</button>
-		<button id="mod_btn" type="submit" onclick = "return centWriteCheck()" disabled>수정</button>
+		<button id="mod_btn" type="submit" onclick = "return centModifyCheck()" disabled>수정</button>
 		<button id="del_btn" type="button" onclick = "centDelete()" disabled>삭제</button>
 		
 	</div>

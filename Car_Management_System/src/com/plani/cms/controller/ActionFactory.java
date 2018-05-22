@@ -9,6 +9,7 @@ import com.plani.cms.controller.action.car.CarWriteFormAction;
 import com.plani.cms.controller.action.cent.CentDeleteAction;
 import com.plani.cms.controller.action.cent.CentModifyAction;
 import com.plani.cms.controller.action.cent.CentWriteAction;
+import com.plani.cms.controller.action.cent.CentWriteCheckFormAction;
 import com.plani.cms.controller.action.cent.CentWriteFormAction;
 import com.plani.cms.controller.action.car.CarDeleteAction;
 import com.plani.cms.controller.action.car.CarModifyAction;
@@ -106,18 +107,21 @@ public class ActionFactory {
 		} else if (command.equals("car_delete")) {
 			action = new CarDeleteAction();
 			/* 법인차 기능 구현 end */
-		} 
+		}
 		/* 정비소 기능 구현 start */
 		else if (command.equals("cent_write_form")) {
 			action = new CentWriteFormAction();
-		}  else if (command.equals("cent_write")) {
+		} else if (command.equals("cent_write")) {
 			action = new CentWriteAction();
-		}  else if (command.equals("cent_modify")) {
+		} else if (command.equals("cent_modify")) {
 			action = new CentModifyAction();
-		}  else if (command.equals("cent_delete")) {
+		} else if (command.equals("cent_delete")) {
 			action = new CentDeleteAction();
-			/* 정비소 기능 구현 end */
-		} else if (command.equals("course_write_form")) {
+		} else if (command.equals("cent_write_check_form")) {
+			action = new CentWriteCheckFormAction();
+		}
+		/* 정비소 기능 구현 end */
+		else if (command.equals("course_write_form")) {
 			action = new CourseWriteFormAction();
 		} else if (command.equals("place_write_form")) {
 			action = new PlaceWriteFormAction();

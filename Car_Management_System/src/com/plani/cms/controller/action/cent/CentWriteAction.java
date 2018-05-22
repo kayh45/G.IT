@@ -23,28 +23,20 @@ public class CentWriteAction implements Action{
 		
 		String cent_name = request.getParameter("cent_name");
 		String ceo_name = request.getParameter("ceo_name");
-		String cent_tell1 = request.getParameter("cent_tell1");
-		String cent_tell2 = request.getParameter("cent_tell2");
-		String cent_tell3 = request.getParameter("cent_tell3");
-		String cent_fax1 = request.getParameter("cent_fax1");
-		String cent_fax2 = request.getParameter("cent_fax2");
-		String cent_fax3 = request.getParameter("cent_fax3");
+		String cent_tell = request.getParameter("cent_tell1") + request.getParameter("cent_tell2") + request.getParameter("cent_tell3");
+		String cent_fax = request.getParameter("cent_fax1") + request.getParameter("cent_fax2") + request.getParameter("cent_fax3");
 		String cent_p_no = request.getParameter("cent_p_no");
-		String cent_addr1 = request.getParameter("cent_addr1");
-		String cent_addr2 = request.getParameter("cent_addr2");
+		String cent_addr = request.getParameter("cent_addr");
+		String cent_addr_dtl = request.getParameter("cent_addr_dtl");
 		
 		
 		cVo.setCent_name(cent_name);
 		cVo.setCeo_name(ceo_name);
-		cVo.setCent_tell1(cent_tell1);	
-		cVo.setCent_tell2(cent_tell2);	
-		cVo.setCent_tell3(cent_tell3);	
-		cVo.setCent_fax1(cent_fax1);	
-		cVo.setCent_fax2(cent_fax2);	
-		cVo.setCent_fax3(cent_fax3);	
+		cVo.setCent_tell(cent_tell);	
+		cVo.setCent_fax(cent_fax);	
 		cVo.setCent_p_no(Integer.parseInt(cent_p_no));	
-		cVo.setCent_addr1(cent_addr1);	
-		cVo.setCent_addr2(cent_addr2);	
+		cVo.setCent_addr(cent_addr);	
+		cVo.setCent_addr_dtl(cent_addr_dtl);	
 		
 		CentDAO cDao = CentDAO.getInstance();
 		cDao.insertCent(cVo);
