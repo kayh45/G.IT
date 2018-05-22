@@ -11,6 +11,7 @@ import com.plani.cms.controller.action.car.CarWriteFormAction;
 import com.plani.cms.controller.action.cent.CentDeleteAction;
 import com.plani.cms.controller.action.cent.CentModifyAction;
 import com.plani.cms.controller.action.cent.CentWriteAction;
+import com.plani.cms.controller.action.cent.CentWriteCheckFormAction;
 import com.plani.cms.controller.action.cent.CentWriteFormAction;
 import com.plani.cms.controller.action.course.CourseWriteFormAction;
 import com.plani.cms.controller.action.member.DeptDeleteAction;
@@ -28,6 +29,9 @@ import com.plani.cms.controller.action.member.MemberWriteAction;
 import com.plani.cms.controller.action.member.MemberWriteFormAction;
 import com.plani.cms.controller.action.place.PlaceWriteFormAction;
 import com.plani.cms.controller.action.reserve.ReserveWriteFormAction;
+import com.plani.cms.controller.action.repa.RepaWriteAction;
+import com.plani.cms.controller.action.repa.RepaWriteCheckFormAction;
+import com.plani.cms.controller.action.repa.RepaWriteFormAction;
 
 /* ===============================================
  * 
@@ -83,7 +87,7 @@ public class ActionFactory {
 			action = new MemberModifyAction();
 		} else if (command.equals("member_delete")) {
 			action = new MemberDeleteAction();
-		} else if (command.equals("dept_search")) { //여기서 부터 부서
+		} else if (command.equals("dept_search")) {
 			action = new DeptSearchAction();
 		} else if (command.equals("dept_write")) {
 			action = new DeptWriteAction();
@@ -110,11 +114,11 @@ public class ActionFactory {
 		/* 정비소 기능 구현 start */
 		else if (command.equals("cent_write_form")) {
 			action = new CentWriteFormAction();
-		}  else if (command.equals("cent_write")) {
+		} else if (command.equals("cent_write")) {
 			action = new CentWriteAction();
-		}  else if (command.equals("cent_modify")) {
+		} else if (command.equals("cent_modify")) {
 			action = new CentModifyAction();
-		}  else if (command.equals("cent_delete")) {
+		} else if (command.equals("cent_delete")) {
 			action = new CentDeleteAction();
 			/* 정비소 기능 구현 end */
 		} else if (command.equals("course_write_form")) {
@@ -123,7 +127,17 @@ public class ActionFactory {
 			action = new PlaceWriteFormAction();
 		} else if (command.equals("reserve_write_form")) {
 			action = new ReserveWriteFormAction();
-		}
+		}/* 정비내역 등록 구현 start*/
+		 else if (command.equals("repa_write")) {
+				action = new RepaWriteAction();
+			}
+		 else if (command.equals("repa_write_form")) {
+				action = new RepaWriteFormAction();
+			}
+		 else if (command.equals("repa_write_check_form")) {
+				action = new RepaWriteCheckFormAction();
+			}
+
 
 		return action;
 

@@ -53,9 +53,7 @@
 				<div id="ct_date">
 					<input type="text" class="form_textbox" name="ct_date">
 				</div> <script type="text/javascript">
-					$('#ct_date input').datepicker({
-						dateFormat : "yy-mm-dd"
-					});
+					$('#ct_date input').datepicker({dateFormat : "yy-mm-dd"});
 				</script>
 			</td>
 			<td class="form_label">
@@ -66,9 +64,7 @@
 				<div id="ep_date">
 					<input type="text" class="form_textbox" name="ep_date">
 				</div> <script type="text/javascript">
-					$('#ep_date input').datepicker({
-						dateFormat : "yy-mm-dd"
-					});
+					$('#ep_date input').datepicker({dateFormat : "yy-mm-dd"});
 				</script>
 			</td>
 
