@@ -213,7 +213,7 @@ function centSelect(name) {
 function centNameCheck() {
 	if (document.frm.cent_name.value == "") {
 		alert('정비소명을 입력하세요');
-		document.frm.cent_name.focus();
+		document.frm.dept_name.focus();
 		return;
 	}
 	document.frm.cent_name_ok.value = 0; // 중복검사 여부를 0으로 초기화
