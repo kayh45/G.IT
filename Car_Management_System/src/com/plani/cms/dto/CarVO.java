@@ -21,7 +21,10 @@ public class CarVO {
 	private String bo_s_date;
 	private String bo_e_date;
 	private int total_dist;
-	
+	// 배차에서 쓰려고 만듬 .. 없어질수도 있음
+	private int isUsing;
+	private int canUse;
+	// 배차에서 쓰려고 만듬 .. 없어질수도 있음
 	public String getCar_reg_no() {
 		return car_reg_no;
 	}
@@ -143,6 +146,18 @@ public class CarVO {
 	}
 	public void setTotal_dist(int total_dist) {
 		this.total_dist = total_dist;
+	}
+	public int getCanUse() {
+		return canUse;
+	}
+	public void setCanUse(int canUse) {
+		this.canUse = canUse;
+	}
+	public int getIsUsing() {
+		return isUsing;
+	}
+	public void setIsUsing(int isUsing) {
+		this.isUsing = isUsing;
 	}
 }
 	

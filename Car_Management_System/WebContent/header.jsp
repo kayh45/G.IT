@@ -63,7 +63,7 @@
           <ul class="dropdown-menu" role="menu">
             <li><a href="place.do?command=place_write_form" role="button">장소 등록</a></li>
             <li><a href="course.do?command=course_write_form" role="button">경로 등록</a></li>
-            <li><a href="#">배차 등록</a></li>
+            <li><a href="course.do?command=reserve_write_form">배차 등록</a></li>
           </ul>
         </li>
       </ul>

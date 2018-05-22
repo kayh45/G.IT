@@ -38,7 +38,6 @@ public class CarWriteAction implements Action {
 		String bo_e_date = request.getParameter("bo_e_date");
 		String total_dist = request.getParameter("total_dist");
 
-		// 踰뺤씤李� 援щ텇�뿉 �뵲�씪 DAO�뵲濡� 諛쏆븘�빞 �맆�닔�룄...
 
 		CarVO cVo = new CarVO();
 

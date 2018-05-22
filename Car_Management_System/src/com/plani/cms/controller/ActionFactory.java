@@ -1,18 +1,17 @@
 package com.plani.cms.controller;
 
 import com.plani.cms.controller.action.Action;
-
 import com.plani.cms.controller.action.LoginAction;
 import com.plani.cms.controller.action.LogoutAction;
 import com.plani.cms.controller.action.MainAction;
+import com.plani.cms.controller.action.car.CarDeleteAction;
+import com.plani.cms.controller.action.car.CarModifyAction;
+import com.plani.cms.controller.action.car.CarWriteAction;
 import com.plani.cms.controller.action.car.CarWriteFormAction;
 import com.plani.cms.controller.action.cent.CentDeleteAction;
 import com.plani.cms.controller.action.cent.CentModifyAction;
 import com.plani.cms.controller.action.cent.CentWriteAction;
 import com.plani.cms.controller.action.cent.CentWriteFormAction;
-import com.plani.cms.controller.action.car.CarDeleteAction;
-import com.plani.cms.controller.action.car.CarModifyAction;
-import com.plani.cms.controller.action.car.CarWriteAction;
 import com.plani.cms.controller.action.course.CourseWriteFormAction;
 import com.plani.cms.controller.action.member.DeptDeleteAction;
 import com.plani.cms.controller.action.member.DeptModifyAction;
@@ -28,6 +27,7 @@ import com.plani.cms.controller.action.member.MemberSearchFormAction;
 import com.plani.cms.controller.action.member.MemberWriteAction;
 import com.plani.cms.controller.action.member.MemberWriteFormAction;
 import com.plani.cms.controller.action.place.PlaceWriteFormAction;
+import com.plani.cms.controller.action.reserve.ReserveWriteFormAction;
 
 /* ===============================================
  * 
@@ -69,7 +69,7 @@ public class ActionFactory {
 			action = new LoginAction();
 		} else if (command.equals("logout")) {
 			action = new LogoutAction();
-		} else if (command.equals("member_write_form")) {
+		} else if (command.equals("member_write_form")) { // 여기서 부터 멤버
 			action = new MemberWriteFormAction();
 		} else if (command.equals("member_write")) {
 			action = new MemberWriteAction();
@@ -83,7 +83,7 @@ public class ActionFactory {
 			action = new MemberModifyAction();
 		} else if (command.equals("member_delete")) {
 			action = new MemberDeleteAction();
-		} else if (command.equals("dept_search")) {
+		} else if (command.equals("dept_search")) { //여기서 부터 부서
 			action = new DeptSearchAction();
 		} else if (command.equals("dept_write")) {
 			action = new DeptWriteAction();
@@ -121,6 +121,8 @@ public class ActionFactory {
 			action = new CourseWriteFormAction();
 		} else if (command.equals("place_write_form")) {
 			action = new PlaceWriteFormAction();
+		} else if (command.equals("reserve_write_form")) {
+			action = new ReserveWriteFormAction();
 		}
 
 		return action;

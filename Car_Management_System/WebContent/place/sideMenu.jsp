@@ -14,7 +14,7 @@
 		<li class = "side_title">배차 관리</li>
 		<li class = "side_sub-menu">장소 등록</li>
 		<li class = "side_sub-menu">경로 등록</li>
-		<li class = "side_sub-menu">배차 신청</li>
+		<li class = "side_sub-menu">배차 등록</li>
 
 	</ul>
 
