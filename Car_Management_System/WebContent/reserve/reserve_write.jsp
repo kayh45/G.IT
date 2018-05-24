@@ -10,6 +10,9 @@
 <meta name="viewport" content="width=device-width, user-scalable=no">
 <title>배차 등록 :: 법인차량관리시스템</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/jquery.schedule.css" rel="stylesheet">
+<script type = "text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type = "text/javascript" src="js/jquery-ui.js"></script>
 <script type = "text/javascript" src="js/bootstrap.js"></script>
 <script type = "text/javascript" src="js/common.js"></script>
 </head>
@@ -66,6 +69,26 @@
 					</tr>
 					</c:forEach>
 				</table>
+			</div>
+			<div class = "content_cont-box">
+				<div class="container">
+			        <div class="row">
+			            <div class="col">
+			                <div id="schedule" class="jqs-demo mb-3"></div>
+			            </div>
+			    	</div>
+			    </div>
+			    <script type = "text/javascript" src="js/jquery.schedule.js"></script>
+			    <script>
+					$(function () {
+						$('#schedule').jqs({
+							days: ['월', '화', '수', '목', '금'],
+							hour : 12,
+						});						
+					});
+					
+					
+				</script>
 			</div>
 			</form>
 		</section>
