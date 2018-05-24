@@ -43,8 +43,11 @@ public class ReserveWriteFormAction implements Action {
 		}
 		
 		
-		request.setAttribute("CarList", cVoList);
-				
+		System.out.println(rDao.getSysDate());
+		
+		// Calendar써서~~
+		
+		request.setAttribute("CarList", cVoList);				
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.plani.cms.util.DBManager;
@@ -79,6 +82,40 @@ public class ReserveDAO {
 			DBManager.close(conn, stmt, rs);
 		}
 		return usingList;		
+	}
+	
+	public Date getSysDate() {
+		
+		String sql = "select curdate()";
+		
+		SimpleDateFormat today = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = new Date();
+		
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DBManager.getConnection();
+			stmt = conn.createStatement();
+
+			rs = stmt.executeQuery(sql);
+			
+			if(rs.next()){				
+				try {
+					date = today.parse(rs.getString(1));
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+			}
+			
+		} catch (SQLException e){
+			e.printStackTrace();			
+		} finally {
+			DBManager.close(conn, stmt, rs);
+		}
+		
+		return date;
 	}
 	
 }
