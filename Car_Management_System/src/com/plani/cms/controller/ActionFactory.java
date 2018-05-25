@@ -28,6 +28,7 @@ import com.plani.cms.controller.action.member.MemberSearchFormAction;
 import com.plani.cms.controller.action.member.MemberWriteAction;
 import com.plani.cms.controller.action.member.MemberWriteFormAction;
 import com.plani.cms.controller.action.place.PlaceWriteFormAction;
+import com.plani.cms.controller.action.reserve.ReserveViewScheduleAction;
 import com.plani.cms.controller.action.reserve.ReserveWriteFormAction;
 import com.plani.cms.controller.action.repa.RepaWriteAction;
 import com.plani.cms.controller.action.repa.RepaWriteCheckFormAction;
@@ -129,6 +130,8 @@ public class ActionFactory {
 			action = new PlaceWriteFormAction();
 		} else if (command.equals("reserve_write_form")) {
 			action = new ReserveWriteFormAction();
+		} else if (command.equals("reserve_view_schedule")) {
+			action = new ReserveViewScheduleAction();
 		}/* 정비내역 등록 구현 start*/
 		 else if (command.equals("repa_write")) {
 				action = new RepaWriteAction();

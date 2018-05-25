@@ -15,16 +15,16 @@ public class MemberVO extends DeptVO{
 //	  PRIMARY KEY (`mem_id`),
 //	CONSTRAINT FK_cms_dept FOREIGN KEY(dept_no) REFERENCES dept(dept_no));
 	
-	String mem_id;
-	String mem_pw;
-	String mem_name;
-	String mem_jumin;
-	String mem_p_no;
-	String mem_addr;
-	String mem_addr_dtl;
-	String mem_hp;
-	String mem_posi;
-	String mem_auth;
+	private String mem_id;
+	private String mem_pw;
+	private String mem_name;
+	private String mem_jumin;
+	private String mem_p_no;
+	private String mem_addr;
+	private String mem_addr_dtl;
+	private String mem_hp;
+	private String mem_posi;
+	private String mem_auth;
 	
 	public String getMem_id() {
 		return mem_id;

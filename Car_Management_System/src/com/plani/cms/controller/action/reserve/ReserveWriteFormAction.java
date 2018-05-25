@@ -2,6 +2,7 @@ package com.plani.cms.controller.action.reserve;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -30,9 +31,7 @@ public class ReserveWriteFormAction implements Action {
 		cVoList = cDao.selectAllCar();
 		isUsingList = rDao.usingNow();
 		canUseList = rDao.canUseNow();			
-		
-		
-		
+			
 		for (CarVO cVo : cVoList) {
 			System.out.println(cVo.getCar_reg_no());
 			if(isUsingList.contains(cVo.getCar_reg_no())) {				
@@ -41,11 +40,9 @@ public class ReserveWriteFormAction implements Action {
 				cVo.setCanUse(1);
 			}
 		}
-		
-		
+			
 		System.out.println(rDao.getSysDate());
 		
-		// Calendar써서~~
 		
 		request.setAttribute("CarList", cVoList);				
 		
@@ -53,3 +50,5 @@ public class ReserveWriteFormAction implements Action {
 		dispatcher.forward(request, response);
 	}
 }
+
+
