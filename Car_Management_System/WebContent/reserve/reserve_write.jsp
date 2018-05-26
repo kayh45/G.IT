@@ -43,7 +43,7 @@
 			</div>
 			<form name = "frm" method = "post" action = "member.do?command=dept_write">
 			<div class = "content_cont-box">
-				<p class="content_cont-text">장소 번호</p>
+				날짜 선택
 					<c:choose>
 						<c:when test="${date eq null}">
 							<div id = "date">
@@ -93,7 +93,7 @@
 				</table>
 			</div>
 			<div class = "content_cont-box">
-			<table class  = "schedule_table">		
+			<table class  = "table table-bordered">		
 				<c:if test="${date ne null}">		
 				<%
 					List<DrivVO> dList = new ArrayList<DrivVO>();
@@ -109,8 +109,8 @@
 					for(int i = 0; i < 8; i++) {
 						isIn = false;
 						out.print("<tr>");
-						out.print("<td>");
-						out.print(hour);
+						out.print("<td class = \"schedule_td\">");
+						out.print(hour + "시 ~ " +(hour+2) + "시");
 						out.print("</td>");
 						for(int j = jp; j < dList.size(); j++) {
 							tempVO = dList.get(j);
@@ -126,13 +126,19 @@
 							out.print("<td class = \"schedule_td\" rowspan = " + dif/2 + ">");
 							out.print(tempVO.getMem_id());
 							out.print("</td>");
+							out.print("<td class = \"schedule_td\" rowspan = " + dif/2 + ">");
+							out.print("선택 불가");
+							out.print("</td>");
 							out.print("</tr>");
 							i += (dif-2);
 							hour += 2;
 							jp++;
 						} else {
 							if(dif <= 2){
-								out.print("<td class = \"schedule_td\">blank" + hour + "</td></tr>");
+								out.print("<td class = \"schedule_td\">-</td>");
+								out.print("<td class = \"schedule_td\">");
+								out.print("선택 가능");
+								out.print("</td></tr>");
 								hour += 2;
 							}
 						}

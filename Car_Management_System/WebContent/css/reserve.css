@@ -1,4 +1,8 @@
 .schedule_td {
 	padding : 3px;
-	border : 1px solid #ddd;
+	vertical-align: middle;
+}
+
+.table>tbody>tr>td {
+	vertical-align: middle;
 }
