@@ -110,16 +110,20 @@ public class ActionFactory {
 		} else if (command.equals("car_delete")) {
 			action = new CarDeleteAction();
 			/* 법인차 기능 구현 end */
-		} 
+		}
 		/* 정비소 기능 구현 start */
 		else if (command.equals("cent_write_form")) {
 			action = new CentWriteFormAction();
-		} else if (command.equals("cent_write")) {
+		} else if (command.equals("cent_write_check_form")) {
+			action = new CentWriteCheckFormAction();
+		}else if (command.equals("cent_write")) {
 			action = new CentWriteAction();
 		} else if (command.equals("cent_modify")) {
 			action = new CentModifyAction();
 		} else if (command.equals("cent_delete")) {
 			action = new CentDeleteAction();
+		} else if (command.equals("cent_write_check_form")) {
+			action = new CentWriteCheckFormAction();
 			/* 정비소 기능 구현 end */
 		} else if (command.equals("course_write_form")) {
 			action = new CourseWriteFormAction();
@@ -127,6 +131,7 @@ public class ActionFactory {
 			action = new PlaceWriteFormAction();
 		} else if (command.equals("reserve_write_form")) {
 			action = new ReserveWriteFormAction();
+<<<<<<< HEAD
 		}/* 정비내역 등록 구현 start*/
 		 else if (command.equals("repa_write")) {
 				action = new RepaWriteAction();
@@ -138,6 +143,16 @@ public class ActionFactory {
 				action = new RepaCarWriteCheckFormAction();
 			}
 
+=======
+		} /* 정비내역 등록 구현 start */
+		else if (command.equals("repa_write")) {
+			action = new RepaWriteAction();
+		} else if (command.equals("repa_write_form")) {
+			action = new RepaWriteFormAction();
+		} else if (command.equals("repa_write_check_form")) {
+			action = new RepaWriteCheckFormAction();
+		}
+>>>>>>> branch 'master' of https://github.com/kayh45/G.IT
 
 		return action;
 
