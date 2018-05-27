@@ -31,7 +31,7 @@ import com.plani.cms.controller.action.place.PlaceWriteCheckFormAction;
 import com.plani.cms.controller.action.place.PlaceWriteFormAction;
 import com.plani.cms.controller.action.reserve.ReserveWriteFormAction;
 import com.plani.cms.controller.action.repa.RepaWriteAction;
-import com.plani.cms.controller.action.repa.RepaWriteCheckFormAction;
+import com.plani.cms.controller.action.repa.RepaCarWriteCheckFormAction;
 import com.plani.cms.controller.action.repa.RepaWriteFormAction;
 
 /* ===============================================
@@ -135,6 +135,7 @@ public class ActionFactory {
 			action = new PlaceWriteFormAction();
 		} else if (command.equals("reserve_write_form")) {
 			action = new ReserveWriteFormAction();
+<<<<<<< HEAD
 		} else if (command.equals("place_write_check_form")) {
 			action = new PlaceWriteCheckFormAction();
 		}
@@ -148,6 +149,20 @@ public class ActionFactory {
 		} else if (command.equals("repa_write_check_form")) {
 			action = new RepaWriteCheckFormAction();
 		}
+=======
+		}/* 정비내역 등록 구현 start*/
+		 else if (command.equals("repa_write")) {
+				action = new RepaWriteAction();
+			}
+		 else if (command.equals("repa_write_form")) {
+				action = new RepaWriteFormAction();
+			}
+		 else if (command.equals("repa_car_write_check_form")) {
+				action = new RepaCarWriteCheckFormAction();
+			}
+
+	
+>>>>>>> branch 'master' of https://github.com/kayh45/G.IT
 
 		return action;
 

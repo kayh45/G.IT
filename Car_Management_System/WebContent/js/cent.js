@@ -51,7 +51,7 @@ function centWriteCheck() {
 		return false;
 }else {
 	var name = document.frm.cent_name.value;
-	var isCorrect = confirm(name + " 정비소를을 등록하시겠습니까?");
+	var isCorrect = confirm(name + " 정비소를 등록하시겠습니까?");
 	if (isCorrect == true) {
 		return true;
 	} else {
