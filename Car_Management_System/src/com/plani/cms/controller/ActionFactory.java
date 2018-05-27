@@ -131,7 +131,6 @@ public class ActionFactory {
 			action = new PlaceWriteFormAction();
 		} else if (command.equals("reserve_write_form")) {
 			action = new ReserveWriteFormAction();
-<<<<<<< HEAD
 		}/* 정비내역 등록 구현 start*/
 		 else if (command.equals("repa_write")) {
 				action = new RepaWriteAction();
@@ -143,16 +142,7 @@ public class ActionFactory {
 				action = new RepaCarWriteCheckFormAction();
 			}
 
-=======
-		} /* 정비내역 등록 구현 start */
-		else if (command.equals("repa_write")) {
-			action = new RepaWriteAction();
-		} else if (command.equals("repa_write_form")) {
-			action = new RepaWriteFormAction();
-		} else if (command.equals("repa_write_check_form")) {
-			action = new RepaWriteCheckFormAction();
-		}
->>>>>>> branch 'master' of https://github.com/kayh45/G.IT
+	
 
 		return action;
 
