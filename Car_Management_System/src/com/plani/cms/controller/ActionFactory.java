@@ -160,7 +160,7 @@ public class ActionFactory {
 		}
 	 else if (command.equals("repa_member_search")) {
 		 action = new RepaMemberSearchAction();
-	 }/* 정비내역 등록 구현 end*/
+	 }/* 정비내역 등록 구현 End*/
 		
 		return action;
 
