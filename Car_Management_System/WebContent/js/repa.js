@@ -25,6 +25,23 @@ window.open(url, "_blank_1",
 	
 }
 
+function repaCentSelect(cent_no, cent_name) {
+	/*
+	 * repa_cent_check.jsp 에서 사용
+	 * 
+	 * 정비소명 을 검색하고 정비소명을 누르면 해당 정비소의 정비소명과 정비번호가 부모화면의 폼으로 들어간다.
+	 * 
+	 */
+	opener.frm.cent_no.value = cent_no;
+	opener.frm.cent_name.value = cent_name;
+	self.close();
+}
+function regiCent(){
+	window.close();
+	 window.opener.location.href="cent.do?command=cent_write_form";
+
+	
+}
 
 
 function useRepaName() {
