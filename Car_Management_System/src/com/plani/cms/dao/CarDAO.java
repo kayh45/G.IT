@@ -235,42 +235,50 @@ public class CarDAO {
 
 		}
 	}
+	public int confirmCarNo(String car_reg_no) {
+		
+		int result = -1;
+		String sql = "select car_reg_no from car where car_reg_no=?";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 
+		try {
+			conn = DBManager.getConnection();
 
-	/*
-	 * public List<CustomerVO> selectSearchCus(String cusname) {
-	 * 
-	 * String sql =
-	 * "select cusnum,cusname,substr(cusphone,1,instr(cusphone,'-',1,1) - 1) as cusphone1,substr(cusphone,instr(cusphone,'-',1,1) + 1,instr(cusphone,'-',1,2) - instr(cusphone,'-',1,1) - 1) as cusphone2,substr(cusphone,instr(cusphone,'-',1,2) + 1) as cusphone3,cuspost,substr(cusaddr,1,(instr(cusaddr,',',1)-1)) as cusaddr1,substr(cusaddr,(instr(cusaddr,',',1)+1)) as cusaddr2,substr(cusemail,1,(instr(cusemail,'@',1)-1)) as cusemail1,substr(cusemail,(instr(cusemail,'@',1)+1)) as cusemail2, ceoname from customer where cusname=?"
-	 * ;
-	 * 
-	 * List<CustomerVO> list = new ArrayList<CustomerVO>(); Connection conn =
-	 * null; PreparedStatement pstmt = null; ResultSet rs = null;
-	 * 
-	 * try { conn = DBManager.getConnection(); pstmt =
-	 * conn.prepareStatement(sql);
-	 * 
-	 * pstmt.setString(1, cusname);
-	 * 
-	 * rs = pstmt.executeQuery();
-	 * 
-	 * while (rs.next()) {
-	 * 
-	 * CustomerVO cVo = new CustomerVO();
-	 * 
-	 * cVo.setCusnum(rs.getString("cusnum"));
-	 * cVo.setCusname(rs.getString("cusname"));
-	 * cVo.setCusphone1(rs.getString("cusphone1"));
-	 * cVo.setCusphone2(rs.getString("cusphone2"));
-	 * cVo.setCusphone3(rs.getString("cusphone3"));
-	 * cVo.setCusemail1(rs.getString("cusemail1"));
-	 * cVo.setCusemail2(rs.getString("cusemail2"));
-	 * cVo.setCuspost(rs.getString("cuspost"));
-	 * cVo.setCusaddr1(rs.getString("cusaddr1"));
-	 * cVo.setCusaddr2(rs.getString("cusaddr2"));
-	 * cVo.setCeoname(rs.getString("ceoname"));
-	 * 
-	 * list.add(cVo); } } catch (SQLException e) { e.printStackTrace(); }
-	 * finally { DBManager.close(conn, pstmt, rs); } return list; }
-	 */
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, car_reg_no);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+
+				result = 1; // 데이터 존재.
+			} else if(car_reg_no==" ") {
+				result = 0;
+			
+			} else {
+				result = -1;
+			}
+		}// 데이터 없음.
+		catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
 }
+
+
+	

@@ -47,7 +47,9 @@
 		<div class="content_cont-box">
 			<p class="content_cont-text">차량 등록 번호</p>
 			<input type="text" class="form_textbox" name="car_reg_no">
-			<button type="button" onClick="" class="quiet_btn" id="idCheck">
+						<input type = "hidden" name = "car_reg_no_ok" class = "form_textbox">
+											<input type = "hidden" name = "car_usable_no">
+			<button type="button" onClick="carNoCheck()" class="quiet_btn" id="idCheck">
 				<span id="search-button" class="glyphicon glyphicon-search"
 					aria-hidden="true"></span>
 			</button>

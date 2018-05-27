@@ -184,6 +184,9 @@ section#content_car_include {
 .form_btn-group {
 	text-align: center;
 }
+.form_btn-group1 {
+	text-align: right;
+}
 
 .form_btn-group button {
 	width: 60px;
