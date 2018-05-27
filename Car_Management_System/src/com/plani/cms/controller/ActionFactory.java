@@ -28,6 +28,7 @@ import com.plani.cms.controller.action.member.MemberSearchAction;
 import com.plani.cms.controller.action.member.MemberSearchFormAction;
 import com.plani.cms.controller.action.member.MemberWriteAction;
 import com.plani.cms.controller.action.member.MemberWriteFormAction;
+import com.plani.cms.controller.action.place.PlaceWriteCheckFormAction;
 import com.plani.cms.controller.action.place.PlaceWriteFormAction;
 import com.plani.cms.controller.action.reserve.ReserveWriteFormAction;
 import com.plani.cms.controller.action.repa.RepaWriteAction;
@@ -120,7 +121,7 @@ public class ActionFactory {
 			action = new CentWriteFormAction();
 		} else if (command.equals("cent_write_check_form")) {
 			action = new CentWriteCheckFormAction();
-		}else if (command.equals("cent_write")) {
+		} else if (command.equals("cent_write")) {
 			action = new CentWriteAction();
 		} else if (command.equals("cent_modify")) {
 			action = new CentModifyAction();
@@ -129,24 +130,30 @@ public class ActionFactory {
 		} else if (command.equals("cent_write_check_form")) {
 			action = new CentWriteCheckFormAction();
 			/* 정비소 기능 구현 end */
-		} else if (command.equals("course_write_form")) {
+		}
+
+		/* 배차관리 기능 구현 start */
+		else if (command.equals("course_write_form")) {
 			action = new CourseWriteFormAction();
 		} else if (command.equals("place_write_form")) {
 			action = new PlaceWriteFormAction();
 		} else if (command.equals("reserve_write_form")) {
 			action = new ReserveWriteFormAction();
-		}/* 정비내역 등록 구현 start*/
-		 else if (command.equals("repa_write")) {
-				action = new RepaWriteAction();
-			}
-		 else if (command.equals("repa_write_form")) {
-				action = new RepaWriteFormAction();
-			}
-		 else if (command.equals("repa_car_write_check_form")) {
-				action = new RepaCarWriteCheckFormAction();
-			}
 
-	
+		} else if (command.equals("place_write_check_form")) {
+			action = new PlaceWriteCheckFormAction();
+		}
+		/* 배차관리 기능 구현 end */
+
+		/* 정비내역 등록 구현 start */
+		else if (command.equals("repa_write")) {
+			action = new RepaWriteAction();
+		} else if (command.equals("repa_write_form")) {
+			action = new RepaWriteFormAction();
+		} /*else if (command.equals("repa_write_check_form")) {
+			action = new RepaWriteCheckFormAction();
+		}*/
+
 
 		return action;
 
