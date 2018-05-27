@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no">
 <title>정비소 등록 :: 법인차량관리시스템</title>
 <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery-ui.js"></script>

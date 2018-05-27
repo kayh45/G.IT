@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no">
 <title>법인차량관리시스템</title>
 <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery-ui.js"></script>
@@ -111,7 +112,7 @@
 					</td>
 					<td class="form_normal-td" colspan="3"><textarea
 							class="form_textarea" id="repa_cont" name="repa_cont" rows="4"
-							cols="120"></textarea></td>
+							cols="60"></textarea></td>
 				</tr>
 
 
