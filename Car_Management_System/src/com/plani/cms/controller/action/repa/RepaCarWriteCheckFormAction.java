@@ -12,7 +12,7 @@ import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.RepaDAO;
 import com.plani.cms.dto.RepaVO;
 
-public class RepaWriteCheckFormAction implements Action {
+public class RepaCarWriteCheckFormAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
