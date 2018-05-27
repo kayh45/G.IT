@@ -62,7 +62,10 @@ public class CarDAO {
 		return list;
 	}
 
-	public List<CarVO> carSearchByName(String car_reg_no) {
+	
+	
+	
+	public List<CarVO> carSearchByNameLike(String car_reg_no) {
 		String sql = "select * from car"
 				+ " where car_reg_no like '%" + car_reg_no + "%'";
 

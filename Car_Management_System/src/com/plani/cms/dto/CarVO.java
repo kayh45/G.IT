@@ -8,13 +8,7 @@ public class CarVO {
 	private String ep_date;
 	private String co_name;
 	private String co_tel;
-	private String co_tel1;
-	private String co_tel2;
-	private String co_tel3;
 	private String co_fax;
-	private String co_fax1;
-	private String co_fax2;
-	private String co_fax3;
 	private String bo_name;
 	private String bo_divi;
 	private int bo_age;
@@ -62,54 +56,16 @@ public class CarVO {
 		this.co_name = co_name;
 	}
 	public String getCo_tel() {
-		co_tel = getCo_tel1() + getCo_tel2() + getCo_tel3();
 		return co_tel;
 	}
 	public void setCo_tel(String co_tel) {
 		this.co_tel = co_tel;
 	}
-	public String getCo_tel1() {
-		return co_tel1;
-	}
-	public void setCo_tel1(String co_tel1) {
-		this.co_tel1 = co_tel1;
-	}
-	public String getCo_tel2() {
-		return co_tel2;
-	}
-	public void setCo_tel2(String co_tel2) {
-		this.co_tel2 = co_tel2;
-	}
-	public String getCo_tel3() {
-		return co_tel3;
-	}
-	public void setCo_tel3(String co_tel3) {
-		this.co_tel3 = co_tel3;
-	}
 	public String getCo_fax() {
-		this.co_fax = getCo_fax1() + "-" + getCo_fax2() + "-" + getCo_fax3();
 		return co_fax;
 	}
 	public void setCo_fax(String co_fax) {
 		this.co_fax = co_fax;
-	}
-	public String getCo_fax1() {
-		return co_fax1;
-	}
-	public void setCo_fax1(String co_fax1) {
-		this.co_fax1 = co_fax1;
-	}
-	public String getCo_fax2() {
-		return co_fax2;
-	}
-	public void setCo_fax2(String co_fax2) {
-		this.co_fax2 = co_fax2;
-	}
-	public String getCo_fax3() {
-		return co_fax3;
-	}
-	public void setCo_fax3(String co_fax3) {
-		this.co_fax3 = co_fax3;
 	}
 	public String getBo_name() {
 		return bo_name;
@@ -147,17 +103,18 @@ public class CarVO {
 	public void setTotal_dist(int total_dist) {
 		this.total_dist = total_dist;
 	}
-	public int getCanUse() {
-		return canUse;
-	}
-	public void setCanUse(int canUse) {
-		this.canUse = canUse;
-	}
 	public int getIsUsing() {
 		return isUsing;
 	}
 	public void setIsUsing(int isUsing) {
 		this.isUsing = isUsing;
 	}
+	public int getCanUse() {
+		return canUse;
+	}
+	public void setCanUse(int canUse) {
+		this.canUse = canUse;
+	}
+
 }
 	

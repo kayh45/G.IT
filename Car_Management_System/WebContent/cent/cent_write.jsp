@@ -39,7 +39,7 @@
 				<input type="text" name="cent_name" class="form_textbox">
 				<input type = "hidden" name = "cent_name_ok" class = "form_textbox">
 					<input type = "hidden" name = "cent_usable_name">
-							<button type = "button" onClick = "centNameCheck()" class = "quiet_btn" id = "idCheck">
+							<button type = "button" onClick = "carNameCheck()" class = "quiet_btn" id = "idCheck">
 								<span id ="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
 							</button>	
 <!-- 							<span id = "hdn_label" class = "hdn_label">기존: <input type = "text" class = "form_textbox" name = "pre_cent_name" readonly></span>

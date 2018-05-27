@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, user-scalable=no">
 <title>법인차량관리시스템</title>
+<script type="text/javascript" src="js/car.js?ver=1"></script>
 <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 <link href="css/jquery-ui.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery-ui.js"></script>
@@ -46,6 +47,10 @@
 		<div class="content_cont-box">
 			<p class="content_cont-text">차량 등록 번호</p>
 			<input type="text" class="form_textbox" name="car_reg_no">
+			<button type="button" onClick="" class="quiet_btn" id="idCheck">
+				<span id="search-button" class="glyphicon glyphicon-search"
+					aria-hidden="true"></span>
+			</button>
 		</div>
 		<div class="content_cont-box">
 			<p class="content_cont-text">*법인 차 기본 정보</p>
@@ -90,9 +95,9 @@
 			</div>
 		</div>
 		<div class="form_btn-group">
-			<button id="ins_btn" type="submit">등록</button>
-			<button id="mod_btn" type="submit">수정</button>
-			<button id="del_btn" type="button">삭제</button>
+			<button id="ins_btn" type="submit" onclick="return carWriteCheck1()">등록</button>
+			<button id="mod_btn" type="submit" onclick="return carModifyCheckDivided()"disabled>수정</button>
+			<button id="del_btn" type="button" onclick="carDelete()" disabled>삭제</button>
 		</div>
 	</form>
 	</section> </section>

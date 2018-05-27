@@ -19,7 +19,7 @@ public class CentDAO {
 		return instance;
 	}
 
-	public List<CentVO> selectAllCus() {
+	public List<CentVO> selectAllCent() {
 
 		String sql = "select * from cent order by cent_no desc";
 
