@@ -29,7 +29,6 @@ public class RepaWriteAction implements Action{
 
 		
 			
-		String repa_no = request.getParameter("repa_no");
 		String cent_no = request.getParameter("cent_no");
 		String car_reg_no = request.getParameter("car_reg_no");
 		String mechanic_name = request.getParameter("mechanic_name");
@@ -39,7 +38,6 @@ public class RepaWriteAction implements Action{
 		String repa_fee = request.getParameter("repa_fee");
 		
 		
-		rVo.setRepa_no(Integer.parseInt(repa_no));
 		rVo.setCent_no(Integer.parseInt(cent_no));
 		rVo.setCar_reg_no(car_reg_no);
 		rVo.setMechanic_name(mechanic_name);
@@ -51,7 +49,7 @@ public class RepaWriteAction implements Action{
 		rDao.insertRepa(rVo);
 		
 		System.out.println("등록성공");
-		request.setAttribute("message", "<strong>정비 내역 등록 성공!</strong> &nbsp 등록된 정비 내역 번호 : " + repa_no);
+		request.setAttribute("message", "<strong>정비 내역 등록 성공!</strong> &nbsp 등록된 정비 내역 번호 : ");
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

@@ -44,16 +44,44 @@ function regiCent(){
 }
 
 
-function useRepaName() {
-
-	opener.frm.cent_name.value = document.frm.cent_name.value;
-	opener.frm.cent_usable_name.value = document.frm.cent_name.value;
-	opener.frm.cent_name_ok.value = document.frm.cent_name_ok.value;
-	if (opener.frm.cent_no.value == '') {
-		opener.document.getElementById("ins_btn").removeAttribute('disabled');
-		opener.document.getElementById("mod_btn").disabled = "true";
-		opener.document.getElementById("del_btn").disabled = "true";
-		opener.frm.action = "cent.do?command=cent_write";
+function centWriteCheck() {
+	if (document.frm.car_reg_no.value == "") {
+		alert("차량 등록 번호를 입력하세요");
+		document.frm.car_reg_no.focus();
+		return false;
 	}
-	self.close();
+	else if (document.frm.cent_no.value == "") {
+		alert("정비소 번호를 입력하세요.");
+		document.frm.cent_no.focus();
+		return false;
+	}
+	else if (document.frm.repa_s_date.value == "") {
+		alert("정비 시작 날짜를 입력하세요");
+		document.frm.repa_s_date.focus();
+		return false;
+	} else if (document.frm.repa_e_date.value == "") {
+		alert("정비 종료 날짜를 입력하세요");
+		document.frm.repa_e_date.focus();
+		return false;
+	}  else if (document.frm.mechanic_name.value == "") {
+		alert("정비사 명을 입력하세요");
+		document.frm.mechanic_name.focus();
+		return false;
+	} else if (document.frm.repa_fee.value == "") {
+		alert("수비비용을 입력하세요");
+		document.frm.repa_fee.focus();
+		return false;
+	} else if (document.frm.repa_cont.value == "") {
+		alert("수리내용을 입력하세요");
+		document.frm.repa_cont.focus();
+		return false;
+	}
+	else {
+	var isCorrect = confirm(" 정비내역을 등록하시겠습니까?");
+	if (isCorrect == true) {
+		return true;
+	} else {
+		return false;
+	}
+}
 }

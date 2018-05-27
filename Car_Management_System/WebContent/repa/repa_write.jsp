@@ -69,11 +69,11 @@
 				</td>
 				<td>				
 					<div id = "bo_s_date">
-						<input type="text" class="form_textbox" name = "bo_s_date">
+						<input type="text" class="form_textbox" name = "repa_s_date">
 					</div>
 					<script type="text/javascript">
-						$('#bo_s_date input').datepicker({
-							dateFormat: "yy-mm-dd"
+						$('#repa_s_date input').datepicker({
+							dateFormat: "yyyy-mm-dd"
 						});
 					</script>	
 				
@@ -83,12 +83,12 @@
 					<p class="must">*</p>
 				</td>
 				<td class="form_normal-td">
-					<div id = "bo_e_date">
-						<input type="text" class="form_textbox" name = "bo_e_date">
+					<div id = "repa_e_date">
+						<input type="text" class="form_textbox" name = "repa_e_date">
 					</div>
 					<script type="text/javascript">
-						$('#bo_e_date input').datepicker({
-							dateFormat: "yy-mm-dd"
+						$('#repa_e_date input').datepicker({
+							dateFormat: "yyyy-mm-dd"
 						});
 					</script>										
 					</td>
@@ -121,10 +121,10 @@
 
 			</table>
 		</div>
-		<div class="form_btn-group">
-			<button id="ins_btn" type="submit">등록</button>
-			<button id="mod_btn" type="submit">수정</button>
-			<button id="del_btn" type="button">삭제</button>
+			<div class="form_btn-group">
+		<button id="ins_btn" type="submit" onclick = "return centWriteCheck()">등록</button>
+		<button id="mod_btn" type="submit" onclick = "return centModifyCheck()" disabled>수정</button>
+		<button id="del_btn" type="button" onclick = "centDelete()" disabled>삭제</button>
 		</div>
 	</form>
 	</section> </section>
