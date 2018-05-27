@@ -16,6 +16,14 @@ function repaNameCheck() {
 					"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
 }
 
+function centNameCheck() {
+	document.frm.cent_name_ok.value = 0; // 중복검사 여부를 0으로 초기화
+	var url = "repa.do?popup=no&command=repa_cent_write_check_form&cent_name="
+		+ encodeURIComponent(document.frm.cent_name.value);
+window.open(url, "_blank_1",
+				"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
+	
+}
 
 
 

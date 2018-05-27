@@ -10,7 +10,7 @@
 <script type="text/javascript" src="js/jquery-ui.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/post.js"></script>
-<script type="text/javascript" src="js/repa.js?ver=1"></script>
+<script type="text/javascript" src="js/repa.js?ver=2"></script>
 <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
 
 </head>
@@ -51,12 +51,15 @@
 					<td class="form_label">
 						<p class="label">정비소 명</p>
 					</td>
-					<td class="form_normal-td"><input type="text"
-						class="form_textbox" id="cent_name" name="cent_name"><button type="button" onClick="execDaumPostcode();"
-							class="quiet_btn">
-							<span id="search-button" class="glyphicon glyphicon-search"
-								aria-hidden="true"></span>
-						</button></td>
+					<td class="form_normal-td">
+				<input type="text" name="cent_name" class="form_textbox">
+				<input type = "hidden" name = "cent_name_ok" class = "form_textbox">
+					<input type = "hidden" name = "cent_usable_name">
+							<button type = "button" onClick = "centNameCheck();" class = "quiet_btn" id = "idCheck">
+								<span id ="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
+							</button>	
+<!-- 							<span id = "hdn_label" class = "hdn_label">기존: <input type = "text" class = "form_textbox" name = "pre_cent_name" readonly></span>
+ -->						</td>
 				</tr>
 			
 			<tr>
