@@ -12,11 +12,11 @@
 <script type="text/javascript" src="js/post.js"></script>
 <script type="text/javascript" src="js/repa.js?ver=2"></script>
 <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+											
 							<script language="javascript">
 	function change() {
 			paycar.style.display = "inline"
-			rental_lease.style.display = "none"
-			
+			rental_lease.style.display = "none"		
 	}
 //-->
 </script>
@@ -36,6 +36,33 @@
 			<p class="content_cont-text">*정비 내역 정보</p>
 			<table class="table table-bordered" id="form_table">
 			<tr>
+				<td class="form_label">
+					<p class="label">보험 계약 날짜</p>
+					<p class="must">*</p>
+				</td>
+				<td>				
+					<div id = "bo_s_date">
+						<input type="text" class="form_textbox" name = "bo_s_date">
+					</div>
+					<script type="text/javascript">
+						$('#bo_s_date input').datepicker({dateFormat: "yy-mm-dd"});
+					</script>	
+				
+				</td>
+				<td class="form_label">
+					<p class="label">보험 만기 날짜</p>
+					<p class="must">*</p>
+				</td>
+				<td class="form_normal-td">
+					<div id = "bo_e_date">
+						<input type="text" class="form_textbox" name = "bo_e_date">
+					</div>
+					<script type="text/javascript">
+						$('#bo_e_date input').datepicker({dateFormat: "yy-mm-dd"});
+					</script>										
+					</td>
+			</tr>
+			<!-- <tr>
 				<td class="form_label">
 					<p class="label">정비 시작 날짜</p>
 					<p class="must">*</p>
@@ -61,7 +88,7 @@
 						$('#repa_e_date input').datepicker({dateFormat: "yyyy-mm-dd"});
 					</script>										
 					</td>
-			</tr>
+			</tr> -->
 				<tr>
 					<td class="form_label">
 						<p class="label">법인 차 번호</p>
