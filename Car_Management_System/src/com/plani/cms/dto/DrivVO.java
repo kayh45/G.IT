@@ -22,8 +22,8 @@ public class DrivVO extends MemberVO {
 	private String mem_id;
 	private String car_reg_no;
 	private int cour_no;
-	private Date driv_s_date;
-	private Date driv_e_date;
+	private String driv_s_date;
+	private String driv_e_date;
 	private String card_divi;
 	private int oil_fee;
 	private int trans_fee;
@@ -58,16 +58,16 @@ public class DrivVO extends MemberVO {
 	public void setCour_no(int cour_no) {
 		this.cour_no = cour_no;
 	}
-	public Date getDriv_s_date() {
+	public String getDriv_s_date() {
 		return driv_s_date;
 	}
-	public void setDriv_s_date(Date driv_s_date) {
-		this.driv_s_date = driv_s_date;
+	public void setDriv_s_date(String driv_s_date2) {
+		this.driv_s_date = driv_s_date2;
 	}
-	public Date getDriv_e_date() {
+	public String getDriv_e_date() {
 		return driv_e_date;
 	}
-	public void setDriv_e_date(Date driv_e_date) {
+	public void setDriv_e_date(String driv_e_date) {
 		this.driv_e_date = driv_e_date;
 	}
 	public String getCard_divi() {

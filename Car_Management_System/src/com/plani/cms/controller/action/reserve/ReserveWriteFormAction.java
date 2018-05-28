@@ -25,6 +25,8 @@ public class ReserveWriteFormAction implements Action {
 		List<String> isUsingList = new ArrayList<String>();
 		List<String> canUseList = new ArrayList<String>();
 		
+		String dateInPage = request.getParameter("date");
+		
 		CarDAO cDao = CarDAO.getInstance();
 		ReserveDAO rDao = ReserveDAO.getInstance();
 		
@@ -41,8 +43,10 @@ public class ReserveWriteFormAction implements Action {
 			}
 		}
 			
-		System.out.println(rDao.getSysDate());
-		
+		if(dateInPage == null) {
+			String date = rDao.getSysDate();				
+			request.setAttribute("date", date);
+		}		
 		
 		request.setAttribute("CarList", cVoList);				
 		

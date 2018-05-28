@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -87,12 +86,11 @@ public class ReserveDAO {
 		return usingList;		
 	}
 	
-	public Date getSysDate() {
+	public String getSysDate() {
 		
 		String sql = "select curdate()";
 		
-		SimpleDateFormat today = new SimpleDateFormat("yyyy-MM-dd");
-		Date date = new Date();
+		String date = null;
 		
 		Connection conn = null;
 		Statement stmt = null;
@@ -105,11 +103,7 @@ public class ReserveDAO {
 			rs = stmt.executeQuery(sql);
 			
 			if(rs.next()){				
-				try {
-					date = today.parse(rs.getString(1));
-				} catch (ParseException e) {
-					e.printStackTrace();
-				}
+				date = rs.getString(1);
 			}
 			
 		} catch (SQLException e){
@@ -127,10 +121,9 @@ public class ReserveDAO {
 		 * @ReserveWriteFormAction 에서 사용
 		 **/
 		
-		String sql = "SELECT *, hour(driv_s_date) as s_hour, hour(driv_e_date) as e_hour FROM driv WHERE date(driv_s_date) = ? AND car_reg_no = ?";
+		String sql = "SELECT *, hour(driv_s_date) as s_hour, hour(driv_e_date) as e_hour FROM driv WHERE date(driv_s_date) = ? AND car_reg_no = ? ORDER BY driv_s_date ASC";
 		
 		List<DrivVO> scheduleList = new ArrayList<DrivVO>();		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -150,22 +143,51 @@ public class ReserveDAO {
 				
 				dVo.setDriv_no(rs.getInt("driv_no"));
 				dVo.setMem_id(rs.getString("mem_id"));
-				dVo.setDriv_s_date(sdf.parse(rs.getString("driv_s_date")));
-				dVo.setDriv_e_date(sdf.parse(rs.getString("driv_e_date")));
+				dVo.setDriv_s_date(rs.getString("driv_s_date"));
+				dVo.setDriv_e_date(rs.getString("driv_e_date"));
 				dVo.setS_hour(rs.getInt("s_hour"));
 				dVo.setE_hour(rs.getInt("e_hour"));		
 								
 				scheduleList.add(dVo);	
 				
 			}
-		} catch (SQLException | ParseException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			DBManager.close(conn, pstmt, rs);
 		}
-		System.out.println(scheduleList.get(0));
 		return scheduleList;	
 	}
+	
+	public void insertReserve(DrivVO dVo) {
+		/**
+		 * @ReserveWriteAction 에서 사용
+		 **/
+		
+		String sql = "INSERT INTO driv(driv_s_date, driv_e_date, car_reg_no, mem_id) VALUES (?, ?, ?, ?)";
+		
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, dVo.getDriv_s_date());
+			pstmt.setString(2, dVo.getDriv_e_date());
+			pstmt.setString(3, dVo.getCar_reg_no());		
+			pstmt.setString(4, dVo.getMem_id());		
+			
+			pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+	}
+	
 	
 	
 	

@@ -29,6 +29,7 @@ public class ReserveViewScheduleAction implements Action {
 		dVoList = rDao.oneDaySchedule(date, car_reg_no);
 		
 		request.setAttribute("date", date);
+		request.setAttribute("car_reg_no", car_reg_no);
 		request.setAttribute("dVoList", dVoList);
 		
 		

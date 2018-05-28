@@ -1,8 +1,29 @@
 .schedule_td {
-	padding : 3px;
-	vertical-align: middle;
+	padding : 8px 3px !important;
+	height : 50px;
 }
 
-.table>tbody>tr>td {
-	vertical-align: middle;
+.schedule_td_selectable {
+	cursor: pointer;
+}
+
+.table>tbody>tr>td,
+.table>thead>tr>th {
+	vertical-align: middle  !important;
+	text-align: center;
+}
+
+#date {
+	display: inline-block;
+}
+
+.schedule_choice {
+	width : 30%;
+}
+
+.segmented-control{
+	border-color : #06c457 !important;	
+}
+.segmented-control label {
+	color : #06c457;	
 }
