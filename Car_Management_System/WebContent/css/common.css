@@ -226,8 +226,17 @@ section#content_car_include {
 	.form_label>.label {
 		font-size: 12px;
 	}
-	.form_textbox {
+	.form_car_select,
+	#bo_s_date .form_textbox,
+	#bo_e_date .form_textbox,
+	#ep_date .form_textbox,
+	#ct_date .form_textbox,
+	#date .form_textbox {
 		margin: 0 2px;
+		width : 80px;
+	}
+	.form_textbox {
+		margin: 0 2px !important;
 		margin-right: 0;
 		width: 60px;
 	}

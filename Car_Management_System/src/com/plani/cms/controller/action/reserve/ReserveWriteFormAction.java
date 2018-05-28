@@ -2,6 +2,7 @@ package com.plani.cms.controller.action.reserve;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -24,15 +25,15 @@ public class ReserveWriteFormAction implements Action {
 		List<String> isUsingList = new ArrayList<String>();
 		List<String> canUseList = new ArrayList<String>();
 		
+		String dateInPage = request.getParameter("date");
+		
 		CarDAO cDao = CarDAO.getInstance();
 		ReserveDAO rDao = ReserveDAO.getInstance();
 		
 		cVoList = cDao.selectAllCar();
 		isUsingList = rDao.usingNow();
 		canUseList = rDao.canUseNow();			
-		
-		
-		
+			
 		for (CarVO cVo : cVoList) {
 			System.out.println(cVo.getCar_reg_no());
 			if(isUsingList.contains(cVo.getCar_reg_no())) {				
@@ -41,12 +42,17 @@ public class ReserveWriteFormAction implements Action {
 				cVo.setCanUse(1);
 			}
 		}
+			
+		if(dateInPage == null) {
+			String date = rDao.getSysDate();				
+			request.setAttribute("date", date);
+		}		
 		
-		
-		request.setAttribute("CarList", cVoList);
-				
+		request.setAttribute("CarList", cVoList);				
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}
 }
+
+

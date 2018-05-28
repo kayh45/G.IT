@@ -140,7 +140,7 @@ public class MemberDAO {
 			conn = DBManager.getConnection();
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
-
+				
 			if (rs.next()) {
 				
 				if (rs.getString("mem_pw") != null && rs.getString("mem_pw").equals(mVo.getMem_pw())) {
