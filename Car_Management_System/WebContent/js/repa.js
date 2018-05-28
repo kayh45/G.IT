@@ -63,8 +63,6 @@ function repaCentSelect(cent_no, cent_name) {
 function regiCent(){
 	window.close();
 	 window.opener.location.href="cent.do?command=cent_write_form";
-
-	
 }
 
 

@@ -1,7 +1,6 @@
-package com.plani.cms.controller.action.place;
+package com.plani.cms.controller.action.course;
 
 import java.io.IOException;
-
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -13,11 +12,12 @@ import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.PlaceDAO;
 import com.plani.cms.dto.PlaceVO;
 
-public class PlaceWriteCheckFormAction implements Action {
+public class CourSPlaceWriteCheckFormAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String place_name = new String(request.getParameter("place_name").getBytes("UTF-8"));
+		
+		String place_name = new String(request.getParameter("s_place_name").getBytes("UTF-8"));
 
         System.out.println("레그넘 = "+ place_name);
 		PlaceDAO pDao = PlaceDAO.getInstance();
@@ -30,7 +30,7 @@ public class PlaceWriteCheckFormAction implements Action {
 		request.setAttribute("result", result);
 
 		/* ------------------ place 체크----------------------- */
-		String url = "place/place_check.jsp";
+		String url = "course/cour_place_check.jsp";
 
 		List<PlaceVO> placeList = pDao.placeSearchByNameLike(place_name);
 		request.setAttribute("placeList", placeList);

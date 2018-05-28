@@ -20,7 +20,7 @@
 </div>
 <div class = "popup_body">
 
-		<form name = "frm" method = "post" action = "place.do?command=place_write_check_form">
+		<form name = "frm" method = "post" action = "course.do?command=cour_place_write_check_form">
 					장소명 &nbsp;
 					<input type = "text" name = "place_name" value = "${place_name}">
 					<button type = "submit">조회</button>
@@ -29,8 +29,8 @@
 		<c:if test = "${result==-1}">
 		<div class = "popup_box">
 		
-				<p>'${place_name}'은 등록가능합니다. 
-					<button type = "button" onclick = "usePlaceName()">사용</button> 
+				<p>'${place_name}'은 등록 되어 있지 않습니다. <br> 등록 하시겠습니까? 
+					<button type = "button" onclick = "regiCent()">등록</button> 
 				</p>
 		
 		</div>			
@@ -56,11 +56,8 @@
 					</tr>	
 					
 									
-					<input type = "hidden" name = "${place.place_no}place_no" value  = "${place.place_no}">
 					<input type = "hidden" name = "${place.place_no}place_name" value  = "${place.place_name}">
-					<input type = "hidden" name = "${place.place_no}place_p_no" value  = "${place.place_p_no}">
 					<input type = "hidden" name = "${place.place_no}place_addr" value  = "${place.place_addr}">
-					<input type = "hidden" name = "${place.place_no}place_addr_dtl" value  = "${place.place_addr_dtl}">
 					</c:forEach>
 				</table>
 			</div>
@@ -88,11 +85,8 @@
 					</tr>	
 					
 									
-					<input type = "hidden" name = "${place.place_no}place_no" value  = "${place.place_no}">
 					<input type = "hidden" name = "${place.place_no}place_name" value  = "${place.place_name}">
-					<input type = "hidden" name = "${place.place_no}place_p_no" value  = "${place.place_p_no}">
 					<input type = "hidden" name = "${place.place_no}place_addr" value  = "${place.place_addr}">
-					<input type = "hidden" name = "${place.place_no}place_addr_dtl" value  = "${place.place_addr_dtl}">
 					</c:forEach>
 				</table>
 				

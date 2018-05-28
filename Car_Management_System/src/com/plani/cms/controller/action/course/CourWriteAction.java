@@ -10,7 +10,7 @@ import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.CourseDAO;
 import com.plani.cms.dto.CourseVO;
 
-public class CourseWriteAction implements Action{
+public class CourWriteAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -18,9 +18,7 @@ public class CourseWriteAction implements Action{
 		
 		CourseVO cVo = new CourseVO();	
 		
-
 		
-
 		int s_place = Integer.parseInt(request.getParameter("s_place"));
 		int e_place = Integer.parseInt(request.getParameter("s_place"));
 		int distance = Integer.parseInt(request.getParameter("distance"));
@@ -37,8 +35,8 @@ public class CourseWriteAction implements Action{
 		CourseDAO cDao = CourseDAO.getInstance();
 		cDao.insertCourse(cVo);
 		
-		System.out.println("등록성공");
-		request.setAttribute("message", "<strong>경로 등록 성공!</strong> &nbsp 등록된 경로 이름 : " + cour_purpo);
+		System.out.println("등록 성공");
+		request.setAttribute("message", "<strong>경로 등록 성공!</strong>");
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
