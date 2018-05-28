@@ -1,7 +1,6 @@
 package com.plani.cms.controller.action.car;
 
 import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,8 +16,6 @@ public class CarWriteCheckFormAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String car_reg_no = request.getParameter("car_reg_no");
-		
-		
         System.out.println("레그넘 = "+ car_reg_no);
 		CarDAO cDao = CarDAO.getInstance();
 
