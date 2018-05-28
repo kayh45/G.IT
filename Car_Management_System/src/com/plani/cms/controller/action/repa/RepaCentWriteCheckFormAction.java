@@ -24,7 +24,7 @@ public class RepaCentWriteCheckFormAction implements Action {
 		} else {
 			cent_name = new String(request.getParameter("cent_name").getBytes("8859_1"),"UTF-8");
 		}
-		
+	
 		
 		System.out.println("받은 파라미터 : " + cent_name);
 		
