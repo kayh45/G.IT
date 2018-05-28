@@ -36,8 +36,7 @@
 		</c:if>
 		
 		<c:if test = "${result==1}">
-			<div class = "popup_box">
-			</div>
+		
 			<div class = "popup_box">
 				<p class = "search-result_label">'${car_reg_no}'에 대한 조회 결과입니다.</p>
 					<table class = "table table-condensed table-bordered">					
@@ -73,10 +72,7 @@
 				</table>
 			</div>
 		</c:if>
-		
-		<c:if test = "${result==0}">
-			
-		</c:if>
+
 		
 	
 			</form>

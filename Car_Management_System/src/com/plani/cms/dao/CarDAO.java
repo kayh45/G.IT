@@ -252,12 +252,12 @@ public class CarDAO {
 
 			rs = pstmt.executeQuery();
 
-			if (rs.next()) {
+			if (car_reg_no == "") {
 
-				result = 1; // 데이터 존재.
-			} else if(car_reg_no==" ") {
 				result = 0;
-			
+			} else if(rs.next()) {
+				result = 1; // 데이터 존재.
+			System.out.println(result +":통과");
 			} else {
 				result = -1;
 			}

@@ -16,6 +16,7 @@
 	function change() {
 			paycar.style.display = "inline"
 			rental_lease.style.display = "none"
+			
 	}
 //-->
 </script>
