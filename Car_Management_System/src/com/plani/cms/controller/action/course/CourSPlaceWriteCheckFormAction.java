@@ -1,6 +1,7 @@
 package com.plani.cms.controller.action.course;
 
 import java.io.IOException;
+
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -26,11 +27,11 @@ public class CourSPlaceWriteCheckFormAction implements Action {
 
 		System.out.println(result);
 
-		request.setAttribute("place_name", place_name);
+		request.setAttribute("s_place_name", place_name);
 		request.setAttribute("result", result);
 
 		/* ------------------ place 체크----------------------- */
-		String url = "course/cour_place_check.jsp";
+		String url = "course/cour_splace_check.jsp";
 
 		List<PlaceVO> placeList = pDao.placeSearchByNameLike(place_name);
 		request.setAttribute("placeList", placeList);

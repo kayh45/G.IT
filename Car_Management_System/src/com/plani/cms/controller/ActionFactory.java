@@ -15,9 +15,11 @@ import com.plani.cms.controller.action.cent.CentWriteAction;
 import com.plani.cms.controller.action.cent.CentWriteCheckFormAction;
 import com.plani.cms.controller.action.cent.CentWriteFormAction;
 import com.plani.cms.controller.action.course.CourDeleteAction;
+import com.plani.cms.controller.action.course.CourEPlaceWriteCheckFormAction;
 import com.plani.cms.controller.action.course.CourModifyAction;
 import com.plani.cms.controller.action.course.CourSPlaceWriteCheckFormAction;
 import com.plani.cms.controller.action.course.CourWriteAction;
+import com.plani.cms.controller.action.course.CourWriteFormAction;
 import com.plani.cms.controller.action.member.DeptDeleteAction;
 import com.plani.cms.controller.action.member.DeptModifyAction;
 import com.plani.cms.controller.action.member.DeptSearchAction;
@@ -153,15 +155,17 @@ public class ActionFactory {
         /* 장소 기능 구현 end */
 			 /* 경로 기능 구현 start */
 		}else if (command.equals("cour_write_form")) {
-				action = new CourSPlaceWriteCheckFormAction();
+				action = new CourWriteFormAction();
 			}else if (command.equals("cour_write")) {
 					action = new CourWriteAction();
 			}else if (command.equals("cour_modify")) {
 				action = new CourModifyAction();
 			}else if (command.equals("cour_delete")) {
 				action = new CourDeleteAction();
-			}else if (command.equals("cour_place_write_check_form")) {
+			}else if (command.equals("cour_splace_write_check_form")) {
 				action = new CourSPlaceWriteCheckFormAction();
+			}else if (command.equals("cour_eplace_write_check_form")) {
+					action = new CourEPlaceWriteCheckFormAction();
 	        /* 경로 기능 구현 end */
 		/* 배차관리 기능 구현 start */
 		} else if (command.equals("course_write_form")) {
