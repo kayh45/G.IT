@@ -14,19 +14,19 @@
 <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
 <script language="javascript">
 	function change(style) {
-		if (style == "0") {
+		if (style == "선택") {
 			paycar.style.display = "none"
 			rental_lease.style.display = "none"
 		}
-		else if (style == "1") {
+		else if (style == "구입") {
 			paycar.style.display = "inline"
 			rental_lease.style.display = "none"
 		}
-		else if (style == "2") {
+		else if (style == "렌트") {
 			paycar.style.display = "inline"
 			rental_lease.style.display = "inline"
 		}
-		else if (style == "3") {
+		else if (style == "리스") {
 			paycar.style.display = "inline"
 			rental_lease.style.display = "inline"
 		}
@@ -65,10 +65,10 @@
 					<td class="form_normal-td"><select name="car_divi"
 						class="form_car_select"
 						onChange="change(this.options[this.selectedIndex].value)">
-							<option value="0">선택</option>
-							<option value="1">구입</option>
-							<option value="2">렌트</option>
-							<option value="3">리스</option>
+							<option value="선택">선택</option>
+							<option value="구입">구입</option>
+							<option value="렌트">렌트</option>
+							<option value="리스">리스</option>
 					</select></td>
 					<td class="form_label">
 						<p class="label">차종</p>

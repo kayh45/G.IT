@@ -44,6 +44,8 @@
 					<div id = "repa_s_date">
 						<input type="text" class="form_textbox" name = "repa_s_date" id="repa_s_date">
 					</div>
+					
+					
 					<script type="text/javascript">
 					$('#repa_s_date input').datepicker({dateFormat: "yyyy-mm-dd"});
 					</script>	

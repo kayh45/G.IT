@@ -54,9 +54,9 @@ public class CarWriteAction implements Action {
 
 		/*렌탈/리스와 구입 기준으로 분기한 코드 내용*/
 		CarDAO cDao = CarDAO.getInstance();
-		if (car_divi.equals("2") || car_divi.equals("3")) {
+		if (car_divi.equals("렌트") || car_divi.equals("리스")) {
 			cDao.insertCar_rentalCar(cVo);
-		} else if(car_divi.equals("1")){
+		} else if(car_divi.equals("구입")){
 			cDao.insertCar_payCar(cVo);
 		}
 		/*렌탈/리스와 구입 기준으로 분기한 코드 내용*/
