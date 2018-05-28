@@ -18,6 +18,8 @@ public class CarWriteCheckFormAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String car_reg_no = new String(request.getParameter("car_reg_no").getBytes("UTF-8"));
 		
+	
+		
         System.out.println("레그넘 = "+ car_reg_no);
 		CarDAO cDao = CarDAO.getInstance();
 

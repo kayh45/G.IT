@@ -9,7 +9,7 @@
 <script type="text/javascript" src="js/jquery-ui.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/post.js"></script>
-<script type="text/javascript" src="js/place.js"></script>
+<script type="text/javascript" src="js/place.js?ver=?"></script>
 <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 </head>
@@ -28,7 +28,7 @@
 			<input type="text" class="form_textbox" name="place_no" readonly>
 		</div>
 		<div class="content_cont-box">
-			<p class="content_cont-text">*장소기본정보</p>
+			<p class="content_cont-text">*장소 기본 정보</p>
 			<table class="table table-bordered">
 				<tr>
 					<td class="form_label">
@@ -36,34 +36,20 @@
 						<p class="must">*</p>
 					</td>
 					<td colspan="3"><input type="text" class="form_textbox"
-						name="place_name">
-						
-						<input type = "hidden" name = "place_usable_name">
-					<button type = "button" onClick = "placeNameCheck()" class = "quiet_btn" id = "idCheck">
-					<span id="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
-					</button>
-					</td>
-					
-					
-				</tr>
-				<!-- <tr>
-<td class="form_label">
-<p class="label">장소구분</p>
-<p class="must">*</p>
-</td>
-　　　　　　<td colspan="3"><select class="form_textbox">
-<option value="선택" selected="">선택</option>
-<option value="거래처방문">거래처방문</option>
-<option value="회의참석">회의참석</option>
-<option value="출·퇴근">출·퇴근</option>
-<option value="기타업무목적">기타업무목적</option>
-<option value="업무외사용">업무외사용</option>
-</select> <input type="text" class="form_textbox"></td>
+						name="place_name"> <input type="hidden"
+						name="place_name_ok" class="form_textbox"> <input
+						type="hidden" name="place_usable_name">
+						<button type="button" onClick="placeNameCheck()" class="quiet_btn"
+							id="idCheck">
+							<span id="search-button" class="glyphicon glyphicon-search"
+								aria-hidden="true"></span>
+						</button></td>
 
-</tr> -->
+
+				</tr>
 				<tr>
 					<td class="form_label">
-						<p class="label">우편번호</p>
+						<p class="label">우편 번호</p>
 						<p class="must">*</p>
 					</td>
 					<td colspan="3"><input name="place_p_no" type="text"
@@ -75,12 +61,9 @@
 						<p class="label">주소</p>
 						<p class="must">*</p>
 					</td>
-					<td class="form_normal-td" colspan="3"><input
-						name="place_addr" type="text" id="roadAddress"
-						class="form_textbox">
-
-						<button type="button" onclick="sample6_execDaumPostcode()"
-							class="quiet_btn">
+					<td class="form_normal-td" colspan="3">
+					<input  name = "place_addr" type = "text" id = "roadAddress" class = "form_textbox" readonly>
+							<button type = "button" onclick="sample6_execDaumPostcode()" class = "quiet_btn">
 							<span id="search-button" class="glyphicon glyphicon-search"
 								aria-hidden="true"></span>
 						</button>
@@ -90,16 +73,16 @@
 						<p class="label">상세주소</p>
 						<p class="must">*</p>
 					</td>
-					<td colspan="3"><input type="text" id="form_address"
-						class="form_textbox"></td>
+					<td colspan="3">
+					<input name = "place_addr_dtl" type = "text" id = "roadAddress-detail" class = "form_textbox"></td>
 				</tr>
 
 			</table>
 		</div>
 		<div class="form_btn-group">
-			<button id="ins_btn" type="submit">등록</button>
-			<button>수정</button>
-			<button>삭제</button>
+		<button id="ins_btn" type="submit" onclick = "return placeWriteCheck()">등록</button>
+		<button id="mod_btn" type="submit" onclick = "return placeModifyCheck()" disabled>수정</button>
+		<button id="del_btn" type="button" onclick = "placeDelete()" disabled>삭제</button>
 		</div>
 	</form>
 	</section> </section>
