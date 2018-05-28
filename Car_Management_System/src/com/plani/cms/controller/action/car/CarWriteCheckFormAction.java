@@ -16,7 +16,13 @@ public class CarWriteCheckFormAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String car_reg_no = new String(request.getParameter("car_reg_no").getBytes("UTF-8"));
+	String car_reg_no = null;
+		
+		if(request.getParameter("popup").equals("yes")) { // 한글로 입력 받았을 때 제대로 받을 수 있도록 하기 위함 
+			car_reg_no = request.getParameter("car_reg_no");
+		} else {
+			car_reg_no = new String(request.getParameter("car_reg_no").getBytes("8859_1"),"UTF-8");
+		}
 		
 	
 		

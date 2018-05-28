@@ -28,8 +28,8 @@
 					<input type = "text" name = "cent_name" value = "${cent_name}">
 					<button type = "submit">조회</button>
 				<!-- <input type = "hidden" name = "cent_name_ok" value = "1"> -->
-				<p>'${cent_name}'은 등록되어있지 않습니다. <br> 등록하시겠습니까? 
-					<button type = "button" onclick = "regiCent()">등록</button> 
+				<p>'${cent_name}'은 등록되어있지 않습니다. <br> 등록 창으로 이동하시겠습니까? 
+					<button type = "button" onclick = "regiCent()">이동</button> 
 				</p>
 			</form>
 		</div>			

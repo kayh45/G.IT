@@ -281,7 +281,7 @@ public class CarDAO {
 
 			rs = pstmt.executeQuery();
 
-			if (car_reg_no == "") {
+			if (car_reg_no.equals("")) {
 				result = 0;
 			} else if(rs.next()) {
 				result = 1; // 데이터 존재.
