@@ -30,7 +30,7 @@ public class CourEPlaceWriteCheckFormAction implements Action {
 		request.setAttribute("result", result);
 
 		/* ------------------ place 체크----------------------- */
-		String url = "course/cour_place_check.jsp";
+		String url = "course/cour_eplace_check.jsp";
 
 		List<PlaceVO> placeList = pDao.placeSearchByNameLike(place_name);
 		request.setAttribute("placeList", placeList);

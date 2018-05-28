@@ -9,7 +9,7 @@
 <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery-ui.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
-<script type="text/javascript" src="js/cour.js?ver=1"></script>
+<script type="text/javascript" src="js/course.js?ver=1"></script>
 <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
 </head>
 <body>
@@ -17,10 +17,10 @@
 	<!-- 헤더--> </header>
 	<section id="main"> <aside id="side"> <%@ include
 		file="sideMenu.jsp"%> </aside> <section id="content">
-	<form name="frm" method="post" action="course.do?command=course_write">
+	<form name="frm" method="post" action="course.do?command=cour_write">
 		<div class="content_title-box">
 			<span class="glyphicon glyphicon-pencil" aria-hidden="true"> </span>
-			<p class="content_title-text">경로등록</p>
+			<p class="content_title-text">경로 등록</p>
 		</div>
 		<div class="content_cont-box">
 			<p class="content_cont-text">
@@ -42,31 +42,31 @@
 					<td><input type="text" name="s_place_name" class="form_textbox">
 					<input type="hidden" name="s_place_name_ok" class="form_textbox"> 
 					<input type="hidden" name="s_place_usable_name">
-					<button type="button" onClick="placeNameCheck()" class="quiet_btn" id="idCheck">
+					<button type="button" onClick="splaceNameCheck()" class="quiet_btn" id="idCheck">
 				 	<span id="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
 						</button></td>
 					<td class="form_label">
 						<p class="label">출발지 주소</p>
 
 					</td>
-					<td><input type="text" class="form_textbox" readonly>
+					<td><input type="text" class="form_textbox" name = "s_place_addr" readonly>
 					</td>
 				</tr>
 				<tr>
 					<td class="form_label">
-						<p class="label">도착지</p>
+						<p class="label">도착지</p>  
 						<p class="must">*</p>
 					</td>
 					<td><input type="text" name="e_place_name" class="form_textbox">
 					<input type="hidden" name="e_place_name_ok" class="form_textbox"> 
 					<input type="hidden" name="e_place_usable_name">
-					<button type="button" onClick="placeNameCheck()" class="quiet_btn" id="idCheck">
+					<button type="button" onClick="eplaceNameCheck()" class="quiet_btn" id="idCheck">
 				 	<span id="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
 						</button></td>
 					<td class="form_label">
 						<p class="label">도착지 주소</p>
 					</td>
-					<td><input type="text" class="form_textbox" readonly>
+					<td><input type="text" class="form_textbox" name = "e_place_addr" readonly>
 					</td>
 				</tr>
 				<tr>
