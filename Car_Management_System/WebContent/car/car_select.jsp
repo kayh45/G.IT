@@ -57,10 +57,13 @@
 						<td>${car.car_reg_no}</td>
 						<td><a onclick = "carSelect('${car.car_reg_no}')">${car.car_model}</a></td>		
 						<td>${car.car_divi}</td>
-					</tr>					
+					</tr>	
+					
+					<c:if test="${car.car_divi== '렌탈'}" >				
 					<input type = "hidden" name = "${car.car_reg_no}car_reg_no" value  = "${car.car_reg_no}">
 					<input type = "hidden" name = "${car.car_reg_no}car_model" value  = "${car.car_model}">
 					<input type = "hidden" name = "${car.car_reg_no}car_divi" value  = "${car.car_divi}">
+					<input type = "hidden" name = "${car.car_reg_no}total_dist" value  = "${car.total_dist}">
 					<input type = "hidden" name = "${car.car_reg_no}bo_name" value  = "${car.bo_name}">
 					<input type = "hidden" name = "${car.car_reg_no}bo_divi" value  = "${car.bo_divi}">
 					<input type = "hidden" name = "${car.car_reg_no}bo_age" value  = "${car.bo_age}">
@@ -71,8 +74,19 @@
 					<input type = "hidden" name = "${car.car_reg_no}co_fax" value  = "${car.co_fax}">
 					<input type = "hidden" name = "${car.car_reg_no}ct_date" value  = "${car.ct_date}">
 					<input type = "hidden" name = "${car.car_reg_no}ep_date" value  = "${car.ep_date}">
+				</c:if>
 				
-	
+				<c:if test="${car.car_divi== '구매'}" >	
+					<input type = "hidden" name = "${car.car_reg_no}car_reg_no" value  = "${car.car_reg_no}">
+				    <input type = "hidden" name = "${car.car_reg_no}car_model" value  = "${car.car_model}">
+					<input type = "hidden" name = "${car.car_reg_no}car_divi" value  = "${car.car_divi}">
+					<input type = "hidden" name = "${car.car_reg_no}total_dist" value  = "${car.total_dist}">
+					<input type = "hidden" name = "${car.car_reg_no}bo_name" value  = "${car.bo_name}">
+					<input type = "hidden" name = "${car.car_reg_no}bo_divi" value  = "${car.bo_divi}">
+					<input type = "hidden" name = "${car.car_reg_no}bo_age" value  = "${car.bo_age}">
+					<input type = "hidden" name = "${car.car_reg_no}bo_s_date" value  = "${car.bo_s_date}">
+					<input type = "hidden" name = "${car.car_reg_no}bo_e_date" value  = "${car.bo_e_date}">
+					</c:if>
 					</c:forEach>
 				</table>
 			</div>
@@ -101,6 +115,7 @@
 					<input type = "hidden" name = "${car.car_reg_no}car_reg_no" value  = "${car.car_reg_no}">
 					<input type = "hidden" name = "${car.car_reg_no}car_model" value  = "${car.car_model}">
 					<input type = "hidden" name = "${car.car_reg_no}car_divi" value  = "${car.car_divi}">
+										<input type = "hidden" name = "${car.car_reg_no}total_dist" value  = "${car.total_dist}">
 					<input type = "hidden" name = "${car.car_reg_no}bo_name" value  = "${car.bo_name}">
 					<input type = "hidden" name = "${car.car_reg_no}bo_divi" value  = "${car.bo_divi}">
 					<input type = "hidden" name = "${car.car_reg_no}bo_age" value  = "${car.bo_age}">
