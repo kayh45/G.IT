@@ -176,7 +176,7 @@ public class CarDAO {
 		}
 	}
 	
-	public void updateCar(CarVO cVo) {
+	public void updateCar_rentalCar(CarVO cVo) {
 		String sql = "update car set car_divi=?, car_model=?,"
 				+ "ct_date=?,ep_date=?,co_name=?,co_tel=?,co_fax=?,"
 				+ "bo_name=?, bo_divi=?, bo_age=?,bo_s_date=?,bo_e_date=?,total_dist=? "
@@ -204,6 +204,35 @@ public class CarDAO {
 			pstmt.setInt(13, cVo.getTotal_dist());
 			pstmt.setString(14, cVo.getCar_reg_no());
 
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+	}
+	public void updateCar_payCar(CarVO cVo) {
+		String sql = "update car set car_divi=?, car_model=?,"
+				+ "bo_name=?, bo_divi=?, bo_age=?,bo_s_date=?,bo_e_date=?,total_dist=? "
+				+ "where car_reg_no=?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, cVo.getCar_divi());
+			pstmt.setString(2, cVo.getCar_model());
+			pstmt.setString(3, cVo.getBo_name());
+			pstmt.setString(4, cVo.getBo_divi());
+			pstmt.setInt(5, cVo.getBo_age());
+			pstmt.setString(6, cVo.getBo_s_date());
+			pstmt.setString(7, cVo.getBo_e_date());
+			pstmt.setInt(8, cVo.getTotal_dist());
+			pstmt.setString(9, cVo.getCar_reg_no());
+			
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -253,7 +282,6 @@ public class CarDAO {
 			rs = pstmt.executeQuery();
 
 			if (car_reg_no == "") {
-
 				result = 0;
 			} else if(rs.next()) {
 				result = 1; // 데이터 존재.

@@ -16,12 +16,14 @@ function useCarNo() {
 	opener.frm.car_reg_no.value = document.frm.car_reg_no.value;
 	opener.frm.car_reg_no_ok.value = document.frm.car_reg_no_ok.value;
 	opener.frm.car_usable_no.value = document.frm.car_usable_no.value;
-	if (opener.frm.car_reg_no.value == '') {
+/*	if (opener.frm.car_reg_no.value == '') {
 		opener.document.getElementById("ins_btn").removeAttribute('disabled');
 		opener.document.getElementById("mod_btn").disabled = "true";
 		opener.document.getElementById("del_btn").disabled = "true";
 		opener.frm.action = "car.do?command=car_write";
-	}
+	}*/
+	opener.frm.action = "car.do?command=car_write";
+
 	self.close();
 }
 
@@ -30,11 +32,13 @@ function carSelect(name) {
 	 * 사원 검색에서 사원 이름 누르면 부모 폼으로 들어가는 기능 
 	 * 
 	 */
-	
+	if(document.frm.car_divi.value=="렌탈" || document.frm.car_divi.value=="리스"){
 	var frmName = document.getElementsByName(name + "car_reg_no")[0].value;	
 	
 	opener.frm.cent_no.value = document.getElementsByName(name + "car_reg_no")[0].value;
 	opener.frm.car_model.value = document.getElementsByName(name + "car_model")[0].value;
+	opener.frm.car_divi.value = document.getElementsByName(name + "car_divi")[0].value;
+	opener.frm.total_dist.value = document.getElementsByName(name + "total_dist")[0].value;
 	
 	
 	opener.frm.bo_name.value = document.getElementsByName(name + "bo_name")[0].value;
@@ -59,25 +63,38 @@ function carSelect(name) {
 	opener.frm.ep_date.value = document.getElementsByName(name + "ep_date")[0].value;
 
 	
-	
-	opener.frm.cent_addr.value = document.getElementsByName(name + "cent_addr")[0].value;
-	opener.frm.cent_addr_dtl.value = document.getElementsByName(name + "cent_addr_dtl")[0].value;
+	} else if(document.frm.car_divi.value=="구입"){
+		var frmName = document.getElementsByName(name + "car_reg_no")[0].value;	
+		
+		opener.frm.cent_no.value = document.getElementsByName(name + "car_reg_no")[0].value;
+		opener.frm.car_model.value = document.getElementsByName(name + "car_model")[0].value;
+		opener.frm.car_divi.value = document.getElementsByName(name + "car_divi")[0].value;
+		opener.frm.total_dist.value = document.getElementsByName(name + "total_dist")[0].value;
+		
+		opener.frm.bo_name.value = document.getElementsByName(name + "bo_name")[0].value;
+		opener.frm.bo_divi.value = document.getElementsByName(name + "bo_divi")[0].value;
+		opener.frm.bo_age.value = document.getElementsByName(name + "bo_age")[0].value;
+		opener.frm.bo_s_date.value = document.getElementsByName(name + "bo_s_date")[0].value;
+		opener.frm.bo_e_date.value = document.getElementsByName(name + "bo_e_date")[0].value;
+		
+	}
 	opener.document.getElementById("mod_btn").removeAttribute('disabled');
 	opener.document.getElementById("del_btn").removeAttribute('disabled');
 	opener.document.getElementById("ins_btn").disabled = "true";
-	opener.frm.action = "cent.do?command=cent_modify";
+	opener.frm.action = "car.do?command=car_modify";
+
 	self.close();
 }
 
 function carWriteCheckDivided() {
 
-	if (document.frm.car_divi.value.equals("2") || document.frm.car_divi.value.equals("3")) {
+	if (document.frm.car_divi.value.equals("렌트") || document.frm.car_divi.value.equals("리스")) {
 		carWriteCheck2();
 		return false;
-	} else if (document.frm.car_divi.value.equals("1")) {
+	} else if (document.frm.car_divi.value.equals("구입")) {
 		carWriteCheck1();
 		return false;
-	} else if (document.frm.car_divi.value.equals("0")) {
+	} else if (document.frm.car_divi.value.equals("선택")) {
 		alert("법인차 구분을 선택하세요");
 		document.frm.car_divi.focus();
 		return false;
@@ -204,9 +221,9 @@ function carWriteCheck2() {
 
 function carModifyCheckDivided() {
 
-	if (document.frm.car_divi.value.equals("2") || document.frm.car_divi.value.equals("3")) {
+	if (document.frm.car_divi.value.equals("렌트") || document.frm.car_divi.value.equals("리스")) {
 		carWriteCheck2();
-	} else if (document.frm.car_divi.value.equals("1")) {
+	} else if (document.frm.car_divi.value.equals("구입")) {
 		carWriteCheck1();
 	}
 }

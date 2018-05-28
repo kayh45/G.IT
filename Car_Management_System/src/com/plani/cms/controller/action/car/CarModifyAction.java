@@ -1,12 +1,10 @@
 package com.plani.cms.controller.action.car;
 
 import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.CarDAO;
 import com.plani.cms.dto.CarVO;
@@ -52,7 +50,11 @@ public class CarModifyAction implements Action{
 		cVo.setTotal_dist(Integer.parseInt(total_dist));
 	
 		CarDAO cDao = CarDAO.getInstance();
-		cDao.updateCar(cVo);
+		if (car_divi.equals("렌트") || car_divi.equals("리스")) {
+			cDao.updateCar_rentalCar(cVo);
+		} else if(car_divi.equals("구입")){
+			cDao.updateCar_payCar(cVo);
+		}
 		
 		System.out.println("수정 성공");
 		request.setAttribute("message", "<strong>법인차 수정 성공!</strong> &nbsp 수정된 법인차: " +  car_reg_no);
