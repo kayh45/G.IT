@@ -14,34 +14,34 @@ import com.plani.cms.dto.CarVO;
 
 public class CarWriteCheckFormAction implements Action {
 
-	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String car_reg_no = request.getParameter("car_reg_no");
-		
-		
+   @Override
+   public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      String car_reg_no = request.getParameter("car_reg_no");
+      
+      
         System.out.println("레그넘 = "+ car_reg_no);
-		CarDAO cDao = CarDAO.getInstance();
+      CarDAO cDao = CarDAO.getInstance();
 
-		int result = cDao.confirmCarNo(car_reg_no);
+      int result = cDao.confirmCarNo(car_reg_no);
 
-		System.out.println(result);
+      System.out.println(result);
 
-		request.setAttribute("car_reg_no", car_reg_no);
-		request.setAttribute("result", result);
+      request.setAttribute("car_reg_no", car_reg_no);
+      request.setAttribute("result", result);
 
-		/* ------------------ car 체크----------------------- */
-		String url = "car/car_select.jsp";
+      /* ------------------ car 체크----------------------- */
+      String url = "car/car_select.jsp";
 
-		List<CarVO> carList = cDao.carSearchByNameLike(car_reg_no);
-		request.setAttribute("carList", carList);
-		List<CarVO> carAllList = cDao.selectAllCar();
-		request.setAttribute("carAllList", carAllList);
+      List<CarVO> carList = cDao.carSearchByNameLike(car_reg_no);
+      request.setAttribute("carList", carList);
+      List<CarVO> carAllList = cDao.selectAllCar();
+      request.setAttribute("carAllList", carAllList);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-		dispatcher.forward(request, response);
+      RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+      dispatcher.forward(request, response);
 
-		/*-----------------------List 불러오기 -----------------------*/
+      /*-----------------------List 불러오기 -----------------------*/
 
-	}
+   }
 
 }

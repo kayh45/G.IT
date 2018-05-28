@@ -3,228 +3,227 @@
  */
 function carNoCheck() {
 
-	document.frm.car_reg_no_ok.value = 0; // 중복검사 여부를 0으로 초기화
-	var url = "car.do?popup=no&command=car_write_check_form&car_reg_no="
-			+ encodeURIComponent(document.frm.car_reg_no.value);
-	window
-			.open(url, "_blank_1",
-					"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
+   document.frm.car_reg_no_ok.value = 0; // 중복검사 여부를 0으로 초기화
+   var url = "car.do?popup=no&command=car_write_check_form&car_reg_no="
+         + encodeURIComponent(document.frm.car_reg_no.value);
+   window
+         .open(url, "_blank_1",
+               "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
 }
 
 function useCarNo() {
 
-	opener.frm.car_reg_no.value = document.frm.car_reg_no.value;
-	opener.frm.car_reg_no_ok.value = document.frm.car_reg_no_ok.value;
-	opener.frm.car_usable_no.value = document.frm.car_usable_no.value;
-/*	if (opener.frm.car_reg_no.value == '') {
-		opener.document.getElementById("ins_btn").removeAttribute('disabled');
-		opener.document.getElementById("mod_btn").disabled = "true";
-		opener.document.getElementById("del_btn").disabled = "true";
-		opener.frm.action = "car.do?command=car_write";
-	}*/
-	opener.frm.action = "car.do?command=car_write";
+   opener.frm.car_reg_no.value = document.frm.car_reg_no.value;
+   opener.frm.car_reg_no_ok.value = document.frm.car_reg_no_ok.value;
+   opener.frm.car_usable_no.value = document.frm.car_usable_no.value;
+/*   if (opener.frm.car_reg_no.value == '') {
+      opener.document.getElementById("ins_btn").removeAttribute('disabled');
+      opener.document.getElementById("mod_btn").disabled = "true";
+      opener.document.getElementById("del_btn").disabled = "true";
+      opener.frm.action = "car.do?command=car_write";
+   }*/
+   opener.frm.action = "car.do?command=car_write";
 
-	self.close();
+   self.close();
 }
 
 function carSelect(name) {
-	/*
-	 * 사원 검색에서 사원 이름 누르면 부모 폼으로 들어가는 기능 
-	 * 
-	 */
-	if(document.frm.car_divi.value=="렌탈" || document.frm.car_divi.value=="리스"){
-	var frmName = document.getElementsByName(name + "car_reg_no")[0].value;	
-	
-	opener.frm.cent_no.value = document.getElementsByName(name + "car_reg_no")[0].value;
-	opener.frm.car_model.value = document.getElementsByName(name + "car_model")[0].value;
-	opener.frm.car_divi.value = document.getElementsByName(name + "car_divi")[0].value;
-	opener.frm.total_dist.value = document.getElementsByName(name + "total_dist")[0].value;
-	
-	
-	opener.frm.bo_name.value = document.getElementsByName(name + "bo_name")[0].value;
-	opener.frm.bo_divi.value = document.getElementsByName(name + "bo_divi")[0].value;
-	opener.frm.bo_age.value = document.getElementsByName(name + "bo_age")[0].value;
-	opener.frm.bo_s_date.value = document.getElementsByName(name + "bo_s_date")[0].value;
-	opener.frm.bo_e_date.value = document.getElementsByName(name + "bo_e_date")[0].value;
+   /*
+    * 사원 검색에서 사원 이름 누르면 부모 폼으로 들어가는 기능 
+    * 
+    */
+   if(document.frm.car_divi.value=="렌탈" || document.frm.car_divi.value=="리스"){
+   var frmName = document.getElementsByName(name + "car_reg_no")[0].value;   
+   
+   opener.frm.cent_no.value = document.getElementsByName(name + "car_reg_no")[0].value;
+   opener.frm.car_model.value = document.getElementsByName(name + "car_model")[0].value;
+   opener.frm.car_divi.value = document.getElementsByName(name + "car_divi")[0].value;
+   opener.frm.total_dist.value = document.getElementsByName(name + "total_dist")[0].value;
+   
+   
+   opener.frm.bo_name.value = document.getElementsByName(name + "bo_name")[0].value;
+   opener.frm.bo_divi.value = document.getElementsByName(name + "bo_divi")[0].value;
+   opener.frm.bo_age.value = document.getElementsByName(name + "bo_age")[0].value;
+   opener.frm.bo_s_date.value = document.getElementsByName(name + "bo_s_date")[0].value;
+   opener.frm.bo_e_date.value = document.getElementsByName(name + "bo_e_date")[0].value;
 
-	opener.frm.co_name.value = document.getElementsByName(name + "co_name")[0].value;
+   opener.frm.co_name.value = document.getElementsByName(name + "co_name")[0].value;
 
-	var tell = document.getElementsByName(name + "co_tel")[0].value;
-	opener.frm.co_tell1.value = tell.substr(0,3);
-	opener.frm.co_tell2.value = tell.substr(3,4);
-	opener.frm.co_tell3.value = tell.substr(7,4);
-	
-	var fax = document.getElementsByName(name + "co_tel")[0].value;
-	opener.frm.co_fax1.value = tell.substr(0,3);
-	opener.frm.co_fax2.value = tell.substr(3,4);
-	opener.frm.co_fax3.value = tell.substr(7,4);
-	
-	opener.frm.ct_date.value = document.getElementsByName(name + "ct_date")[0].value;
-	opener.frm.ep_date.value = document.getElementsByName(name + "ep_date")[0].value;
+   var tell = document.getElementsByName(name + "co_tel")[0].value;
+   opener.frm.co_tell1.value = tell.substr(0,3);
+   opener.frm.co_tell2.value = tell.substr(3,4);
+   opener.frm.co_tell3.value = tell.substr(7,4);
+   
+   var fax = document.getElementsByName(name + "co_tel")[0].value;
+   opener.frm.co_fax1.value = tell.substr(0,3);
+   opener.frm.co_fax2.value = tell.substr(3,4);
+   opener.frm.co_fax3.value = tell.substr(7,4);
+   
+   opener.frm.ct_date.value = document.getElementsByName(name + "ct_date")[0].value;
+   opener.frm.ep_date.value = document.getElementsByName(name + "ep_date")[0].value;
 
-	
-	} else if(document.frm.car_divi.value=="구입"){
-		var frmName = document.getElementsByName(name + "car_reg_no")[0].value;	
-		
-		opener.frm.cent_no.value = document.getElementsByName(name + "car_reg_no")[0].value;
-		opener.frm.car_model.value = document.getElementsByName(name + "car_model")[0].value;
-		opener.frm.car_divi.value = document.getElementsByName(name + "car_divi")[0].value;
-		opener.frm.total_dist.value = document.getElementsByName(name + "total_dist")[0].value;
-		
-		opener.frm.bo_name.value = document.getElementsByName(name + "bo_name")[0].value;
-		opener.frm.bo_divi.value = document.getElementsByName(name + "bo_divi")[0].value;
-		opener.frm.bo_age.value = document.getElementsByName(name + "bo_age")[0].value;
-		opener.frm.bo_s_date.value = document.getElementsByName(name + "bo_s_date")[0].value;
-		opener.frm.bo_e_date.value = document.getElementsByName(name + "bo_e_date")[0].value;
-		
-	}
-	opener.document.getElementById("mod_btn").removeAttribute('disabled');
-	opener.document.getElementById("del_btn").removeAttribute('disabled');
-	opener.document.getElementById("ins_btn").disabled = "true";
-	opener.frm.action = "car.do?command=car_modify";
+   
+   } else if(document.frm.car_divi.value=="구입"){
+      var frmName = document.getElementsByName(name + "car_reg_no")[0].value;   
+      
+      opener.frm.cent_no.value = document.getElementsByName(name + "car_reg_no")[0].value;
+      opener.frm.car_model.value = document.getElementsByName(name + "car_model")[0].value;
+      opener.frm.car_divi.value = document.getElementsByName(name + "car_divi")[0].value;
+      opener.frm.total_dist.value = document.getElementsByName(name + "total_dist")[0].value;
+      
+      opener.frm.bo_name.value = document.getElementsByName(name + "bo_name")[0].value;
+      opener.frm.bo_divi.value = document.getElementsByName(name + "bo_divi")[0].value;
+      opener.frm.bo_age.value = document.getElementsByName(name + "bo_age")[0].value;
+      opener.frm.bo_s_date.value = document.getElementsByName(name + "bo_s_date")[0].value;
+      opener.frm.bo_e_date.value = document.getElementsByName(name + "bo_e_date")[0].value;
+      
+   }
+   opener.document.getElementById("mod_btn").removeAttribute('disabled');
+   opener.document.getElementById("del_btn").removeAttribute('disabled');
+   opener.document.getElementById("ins_btn").disabled = "true";
+   opener.frm.action = "car.do?command=car_modify";
 
-	self.close();
+   self.close();
 }
 
 function carWriteCheckDivided() {
 
-	if (document.frm.car_divi.value.equals("렌트") || document.frm.car_divi.value.equals("리스")) {
-		carWriteCheck2();
-		return false;
-	} else if (document.frm.car_divi.value.equals("구입")) {
-		carWriteCheck1();
-		return false;
-	} else if (document.frm.car_divi.value.equals("선택")) {
-		alert("법인차 구분을 선택하세요");
-		document.frm.car_divi.focus();
-		return false;
-	}
+   if (document.frm.car_divi.value.equals("렌트") || document.frm.car_divi.value.equals("리스")) {
+      carWriteCheck2();
+      return false;
+   } else if (document.frm.car_divi.value.equals("구입")) {
+      carWriteCheck1();
+      return false;
+   } else if (document.frm.car_divi.value.equals("선택")) {
+      alert("법인차 구분을 선택하세요");
+      document.frm.car_divi.focus();
+      return false;
+   }
 }
 
 
 
 function carWriteCheck1() {
-	if (document.frm.car_reg_no.value == "") {
-		alert("차량 등록 번호를 입력하세요");
-		document.frm.car_reg_no.focus();
-		return false;
-	} else if (document.frm.car_model.value == "") {
-		alert("차종을 입력해주세요");
-		document.frm.car_model.focus();
-		return false;
-	} else if (document.frm.total_dist.value == "") {
-		alert("주행거리를 입력하세요");
-		document.frm.total_dist.focus();
-		return false;
-	} else if (document.frm.bo_name.value == "") {
-		alert("보험 이름을 입력하세요");
-		document.frm.bo_name.focus();
-		return false;
-	} else if (document.frm.bo_divi.value == "") {
-		alert("보험 구분을 입력하세요");
-		document.frm.bo_divi.focus();
-		return false;
-	} else if (document.frm.bo_age.value == "") {
-		alert("보험 나이제한을 입력하세요");
-		document.frm.bo_age.focus();
-		return false;
-	} else if (document.frm.bo_s_date.value == "") {
-		alert("보험 계약 날짜를 입력하세요");
-		document.frm.bo_s_date.focus();
-		return false;
-	} else if (document.frm.bo_e_date.value == "") {
-		alert("보험 만기 날짜를 입력하세요");
-		document.frm.bo_e_date.focus();
-		return false;
-	} else {
-		var name = document.frm.car_reg_no.value;
-		var isCorrect = confirm(name + " 법인차를 등록하시겠습니까?");
-		if (isCorrect == true) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+   if (document.frm.car_reg_no.value == "") {
+      alert("차량 등록 번호를 입력하세요");
+      document.frm.car_reg_no.focus();
+      return false;
+   } else if (document.frm.car_model.value == "") {
+      alert("차종을 입력해주세요");
+      document.frm.car_model.focus();
+      return false;
+   } else if (document.frm.total_dist.value == "") {
+      alert("주행거리를 입력하세요");
+      document.frm.total_dist.focus();
+      return false;
+   } else if (document.frm.bo_name.value == "") {
+      alert("보험 이름을 입력하세요");
+      document.frm.bo_name.focus();
+      return false;
+   } else if (document.frm.bo_divi.value == "") {
+      alert("보험 구분을 입력하세요");
+      document.frm.bo_divi.focus();
+      return false;
+   } else if (document.frm.bo_age.value == "") {
+      alert("보험 나이제한을 입력하세요");
+      document.frm.bo_age.focus();
+      return false;
+   } else if (document.frm.bo_s_date.value == "") {
+      alert("보험 계약 날짜를 입력하세요");
+      document.frm.bo_s_date.focus();
+      return false;
+   } else if (document.frm.bo_e_date.value == "") {
+      alert("보험 만기 날짜를 입력하세요");
+      document.frm.bo_e_date.focus();
+      return false;
+   } else {
+      var name = document.frm.car_reg_no.value;
+      var isCorrect = confirm(name + " 법인차를 등록하시겠습니까?");
+      if (isCorrect == true) {
+         return true;
+      } else {
+         return false;
+      }
+   }
 }
 
 function carWriteCheck2() {
-	if (document.frm.car_reg_no.value == "") {
-		alert("차량 등록 번호를 입력하세요");
-		document.frm.car_reg_no.focus();
-		return false;
-	}  else if (document.frm.car_model.value == "") {
-		alert("차종을 입력해주세요");
-		document.frm.car_model.focus();
-		return false;
-	} else if (document.frm.total_dist.value == "") {
-		alert("주행거리를 입력하세요");
-		document.frm.total_dist.focus();
-		return false;
-	} else if (document.frm.bo_name.value == "") {
-		alert("보험 이름을 입력하세요");
-		document.frm.bo_name.focus();
-		return false;
-	} else if (document.frm.bo_divi.value == "") {
-		alert("보험 구분을 입력하세요");
-		document.frm.bo_divi.focus();
-		return false;
-	} else if (document.frm.bo_age.value == "") {
-		alert("보험 나이제한을 입력하세요");
-		document.frm.bo_age.focus();
-		return false;
-	} else if (document.frm.bo_s_date.value == "") {
-		alert("보험 계약 날짜를 입력하세요");
-		document.frm.bo_s_date.focus();
-		return false;
-	} else if (document.frm.bo_e_date.value == "") {
-		alert("보험 만기 날짜를 입력하세요");
-		document.frm.bo_e_date.focus();
-		return false;
-	}else if (document.frm.co_name.value == "") {
-		alert("렌트/리스 회사를 입력하세요");
-		document.frm.co_name.focus();
-		return false;
-	}else if (document.frm.co_tel1.value == "") {
-		alert("렌탈/리스 회사의 연락처를 입력하세요");
-		document.frm.co_tel1.focus();
-		return false;
-	} else if (document.frm.co_tel2.value == "") {
-		alert("렌탈/리스 회사의 연락처를 입력하세요");
-		document.frm.co_tel2.focus();
-		return false;
-	}else if (document.frm.co_tel3.value == "") {
-		alert("렌탈/리스 회사의 연락처를 입력하세요");
-		document.frm.co_tel3.focus();
-		return false;
-	}else if (document.frm.co_fax1.value == "") {
-		alert("렌탈/리스 회사의 연락처를 입력하세요");
-		document.frm.co_fax1.focus();
-		return false;
-	}else if (document.frm.co_fax2.value == "") {
-		alert("렌탈/리스 회사의 연락처를 입력하세요");
-		document.frm.co_fax2.focus();
-		return false;
-	}else if (document.frm.co_fax3.value == "") {
-		alert("렌탈/리스 회사의 연락처를 입력하세요");
-		document.frm.co_fax3.focus();
-		return false;
-	}else {
-		var name = document.frm.car_reg_no.value;
-		var isCorrect = confirm(name + " 법인차를 등록하시겠습니까?");
-		if (isCorrect == true) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+   if (document.frm.car_reg_no.value == "") {
+      alert("차량 등록 번호를 입력하세요");
+      document.frm.car_reg_no.focus();
+      return false;
+   }  else if (document.frm.car_model.value == "") {
+      alert("차종을 입력해주세요");
+      document.frm.car_model.focus();
+      return false;
+   } else if (document.frm.total_dist.value == "") {
+      alert("주행거리를 입력하세요");
+      document.frm.total_dist.focus();
+      return false;
+   } else if (document.frm.bo_name.value == "") {
+      alert("보험 이름을 입력하세요");
+      document.frm.bo_name.focus();
+      return false;
+   } else if (document.frm.bo_divi.value == "") {
+      alert("보험 구분을 입력하세요");
+      document.frm.bo_divi.focus();
+      return false;
+   } else if (document.frm.bo_age.value == "") {
+      alert("보험 나이제한을 입력하세요");
+      document.frm.bo_age.focus();
+      return false;
+   } else if (document.frm.bo_s_date.value == "") {
+      alert("보험 계약 날짜를 입력하세요");
+      document.frm.bo_s_date.focus();
+      return false;
+   } else if (document.frm.bo_e_date.value == "") {
+      alert("보험 만기 날짜를 입력하세요");
+      document.frm.bo_e_date.focus();
+      return false;
+   }else if (document.frm.co_name.value == "") {
+      alert("렌트/리스 회사를 입력하세요");
+      document.frm.co_name.focus();
+      return false;
+   }else if (document.frm.co_tel1.value == "") {
+      alert("렌탈/리스 회사의 연락처를 입력하세요");
+      document.frm.co_tel1.focus();
+      return false;
+   } else if (document.frm.co_tel2.value == "") {
+      alert("렌탈/리스 회사의 연락처를 입력하세요");
+      document.frm.co_tel2.focus();
+      return false;
+   }else if (document.frm.co_tel3.value == "") {
+      alert("렌탈/리스 회사의 연락처를 입력하세요");
+      document.frm.co_tel3.focus();
+      return false;
+   }else if (document.frm.co_fax1.value == "") {
+      alert("렌탈/리스 회사의 연락처를 입력하세요");
+      document.frm.co_fax1.focus();
+      return false;
+   }else if (document.frm.co_fax2.value == "") {
+      alert("렌탈/리스 회사의 연락처를 입력하세요");
+      document.frm.co_fax2.focus();
+      return false;
+   }else if (document.frm.co_fax3.value == "") {
+      alert("렌탈/리스 회사의 연락처를 입력하세요");
+      document.frm.co_fax3.focus();
+      return false;
+   }else {
+      var name = document.frm.car_reg_no.value;
+      var isCorrect = confirm(name + " 법인차를 등록하시겠습니까?");
+      if (isCorrect == true) {
+         return true;
+      } else {
+         return false;
+      }
+   }
 }
 
 function carModifyCheckDivided() {
 
-	if (document.frm.car_divi.value.equals("렌트") || document.frm.car_divi.value.equals("리스")) {
-		carWriteCheck2();
-	} else if (document.frm.car_divi.value.equals("구입")) {
-		carWriteCheck1();
-	}
+   if (document.frm.car_divi.value.equals("렌트") || document.frm.car_divi.value.equals("리스")) {
+      carWriteCheck2();
+   } else if (document.frm.car_divi.value.equals("구입")) {
+      carWriteCheck1();
+   }
 }
-
