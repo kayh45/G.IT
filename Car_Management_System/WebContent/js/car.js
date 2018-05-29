@@ -32,10 +32,12 @@ function carSelect(name) {
     * 사원 검색에서 사원 이름 누르면 부모 폼으로 들어가는 기능 
     * 
     */
-   if(document.frm.car_divi.value=="렌탈" || document.frm.car_divi.value=="리스"){
+	
+	
+   if(document.getElementsByName(name + "car_divi")[0].value=="렌탈" || document.getElementsByName(name + "car_divi")[0].value=="리스"){
    var frmName = document.getElementsByName(name + "car_reg_no")[0].value;   
    
-   opener.frm.cent_no.value = document.getElementsByName(name + "car_reg_no")[0].value;
+   opener.frm.car_reg_no.value = document.getElementsByName(name + "car_reg_no")[0].value;
    opener.frm.car_model.value = document.getElementsByName(name + "car_model")[0].value;
    opener.frm.car_divi.value = document.getElementsByName(name + "car_divi")[0].value;
    opener.frm.total_dist.value = document.getElementsByName(name + "total_dist")[0].value;
@@ -63,10 +65,11 @@ function carSelect(name) {
    opener.frm.ep_date.value = document.getElementsByName(name + "ep_date")[0].value;
 
    
-   } else if(document.frm.car_divi.value=="구입"){
+   } else if(document.getElementsByName(name + "car_divi")[0].value=="구입"){
       var frmName = document.getElementsByName(name + "car_reg_no")[0].value;   
       
-      opener.frm.cent_no.value = document.getElementsByName(name + "car_reg_no")[0].value;
+      opener.frm.car_reg_no.value = document.getElementsByName(name + "car_reg_no")[0].value;
+      
       opener.frm.car_model.value = document.getElementsByName(name + "car_model")[0].value;
       opener.frm.car_divi.value = document.getElementsByName(name + "car_divi")[0].value;
       opener.frm.total_dist.value = document.getElementsByName(name + "total_dist")[0].value;
