@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, user-scalable=no">
 <link href="css/popup.css" rel="stylesheet">
 <link href="css/common.css" rel="stylesheet">
-<script type="text/javascript" src="js/place.js"></script>
+<script type="text/javascript" src="js/course.js"></script>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <title>장소 조회</title>
 </head>
@@ -20,7 +20,7 @@
 </div>
 <div class = "popup_body">
 
-		<form name = "frm" method = "post" action = "course.do?command=cour_eplace_write_check_form">
+		<form name = "frm" method = "post" action = "course.do?command=cour_eplace_write_check_form&popup=yes">
 					장소명 &nbsp;
 					<input type = "text" name = "e_place_name" value = "${e_place_name}">
 					<button type = "submit">조회</button>
@@ -51,11 +51,12 @@
 					<c:forEach var = "place" items = "${placeList}">
 				<tr>
 						<td>${place.place_no}</td>
-						<td><a onclick = "placeSelect('${place.place_no}')">${place.place_name}</a></td>		
+						<td><a onclick = "eplaceSelect('${place.place_no}')">${place.place_name}</a></td>		
 						<td>${place.place_addr },${place.place_addr_dtl }</td>		
 					</tr>	
 					
 									
+					<input type = "hidden" name = "${place.place_no}place_no" value  = "${place.place_no}">
 					<input type = "hidden" name = "${place.place_no}place_name" value  = "${place.place_name}">
 					<input type = "hidden" name = "${place.place_no}place_addr" value  = "${place.place_addr}">
 					</c:forEach>
@@ -80,11 +81,11 @@
 					<c:forEach var = "place" items = "${placeAllList}">
 				<tr>
 						<td>${place.place_no}</td>
-						<td><a onclick = "placeSelect('${place.place_no}')">${place.place_name}</a></td>		
+						<td><a onclick = "eplaceSelect('${place.place_no}')">${place.place_name}</a></td>		
 						<td>${place.place_addr },${place.place_addr_dtl }</td>		
 					</tr>	
 					
-									
+				   <input type = "hidden" name = "${place.place_no}place_no" value  = "${place.place_no}">
 					<input type = "hidden" name = "${place.place_no}place_name" value  = "${place.place_name}">
 					<input type = "hidden" name = "${place.place_no}place_addr" value  = "${place.place_addr}">
 					</c:forEach>

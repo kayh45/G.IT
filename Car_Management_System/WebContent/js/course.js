@@ -24,21 +24,26 @@ function eplaceNameCheck() {
 }
 
 
-function placeSelect(name) {
-	/*
-	 * 사원 검색에서 사원 이름 누르면 부모 폼으로 들어가는 기능 
-	 * 
-	 */
+function splaceSelect(name) {
+
 	
-	var frmName = document.getElementsByName(name + "s_place_name")[0].value;	
-	
-	opener.frm.s_place_name.value = document.getElementsByName(name + "s_place_name")[0].value;
-	
-	
-	opener.frm.s_place_addr.value = document.getElementsByName(name + "s_place_addr")[0].value;
-	opener.document.getElementById("mod_btn").removeAttribute('disabled');
+	var frmName = document.getElementsByName(name + "place_name")[0].value;	
+	opener.frm.s_place.value = document.getElementsByName(name + "place_no")[0].value;
+	opener.frm.s_place_name.value = document.getElementsByName(name + "place_name")[0].value;
+	opener.frm.s_place_addr.value = document.getElementsByName(name + "place_addr")[0].value;
+/*	opener.document.getElementById("mod_btn").removeAttribute('disabled');
 	opener.document.getElementById("del_btn").removeAttribute('disabled');
-	opener.document.getElementById("ins_btn").disabled = "true";
-	opener.frm.action = "course.do?command=cour_modify";
+	opener.document.getElementById("ins_btn").disabled = "true";*/
+	self.close();
+}
+function eplaceSelect(name) {
+	
+	var frmName = document.getElementsByName(name + "place_name")[0].value;	
+	opener.frm.e_place.value = document.getElementsByName(name + "place_no")[0].value;
+	opener.frm.e_place_name.value = document.getElementsByName(name + "place_name")[0].value;
+	opener.frm.e_place_addr.value = document.getElementsByName(name + "place_addr")[0].value;
+/*	opener.document.getElementById("mod_btn").removeAttribute('disabled');
+	opener.document.getElementById("del_btn").removeAttribute('disabled');
+	opener.document.getElementById("ins_btn").disabled = "true";*/
 	self.close();
 }

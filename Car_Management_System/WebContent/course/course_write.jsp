@@ -35,6 +35,11 @@
 			<table class="table table-bordered">
 
 				<tr>
+				<td class="form_label">
+						<p class="label">장소 번호</p>
+						<p class="must">*</p>
+					</td>
+					<td class="form_normal-td"><input type="text" class="form_textbox" name="s_place" readonly></td>
 					<td class="form_label">
 						<p class="label">출발지</p>
 						<p class="must">*</p>
@@ -53,6 +58,11 @@
 					</td>
 				</tr>
 				<tr>
+				<td class="form_label">
+						<p class="label">장소 번호</p>
+						<p class="must">*</p>
+					</td>
+					<td class="form_normal-td"><input type="text" class="form_textbox" name="e_place" readonly></td>
 					<td class="form_label">
 						<p class="label">도착지</p>  
 						<p class="must">*</p>
@@ -74,7 +84,7 @@
 						<p class="label">경로 목적</p>
 						<p class="must">*</p>
 					</td>
-					<td colspan="3"><select class="form_textbox" name = "cour_purpo">
+					<td colspan="4"><select class="form_textbox" name = "cour_purpo">
 							<option value="선택" selected="">선택</option>
 							<option value="거래처방문">거래처 방문</option>
 							<option value="회의참석">회의 참석</option>
@@ -89,18 +99,22 @@
 						<p class="label">거리</p>
 						<p class="must">*</p>
 					</td>
-					<td colspan="3" name="distance" class="form_phone-td"><input
-						type="text" class="form_textbox" size="6" maxlength="3"> <b>
-							km</b></td>
+					<td colspan="4"  class="form_phone-td">
+					<input name="distance" type="text" class="form_textbox" size="6" maxlength="3">km</b></td>
 				</tr>
 
 			</table>
 		</div>
 		<div class="form_btn-group">
-		<button id="ins_btn" type="submit" onclick = "return courWriteCheck()">등록</button>
-		<button id="mod_btn" type="submit" onclick = "return courModifyCheck()" disabled>수정</button>
-		<button id="del_btn" type="button" onclick = "courDelete()" disabled>삭제</button>
+		<button id="ins_btn" type="submit">등록</button>
+		<button id="mod_btn" type="submit">수정</button>
+		<button id="del_btn" type="button">삭제</button>
 		</div>
+<!-- 		<div class="form_btn-group">
+		<button id="ins_btn" type="submit" onclick = "return courWriteCheck()">등록</button>
+		<button id="mod_btn" type="submit" onclick = "return courModifyCheck()" >수정</button>
+		<button id="del_btn" type="button" onclick = "courDelete()" >삭제</button>
+		</div> -->
 	</form>
 	</section> </section>
 </body>

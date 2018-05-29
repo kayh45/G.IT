@@ -26,7 +26,7 @@ public class CourEPlaceWriteCheckFormAction implements Action {
 
 		System.out.println(result);
 
-		request.setAttribute("place_name", place_name);
+		request.setAttribute("e_place_name", place_name);
 		request.setAttribute("result", result);
 
 		/* ------------------ place 체크----------------------- */
