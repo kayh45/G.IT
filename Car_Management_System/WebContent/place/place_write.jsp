@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>법인차량관리시스템</title>
 <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, user-scalable=no">
 <script type="text/javascript" src="js/jquery-ui.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/post.js"></script>
