@@ -9,7 +9,7 @@
 <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery-ui.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
-<script type="text/javascript" src="js/cour.js?ver=1"></script>
+<script type="text/javascript" src="js/course.js?ver=1"></script>
 <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
 </head>
 <body>
@@ -17,10 +17,10 @@
 	<!-- 헤더--> </header>
 	<section id="main"> <aside id="side"> <%@ include
 		file="sideMenu.jsp"%> </aside> <section id="content">
-	<form name="frm" method="post" action="course.do?command=course_write">
+	<form name="frm" method="post" action="course.do?command=cour_write">
 		<div class="content_title-box">
 			<span class="glyphicon glyphicon-pencil" aria-hidden="true"> </span>
-			<p class="content_title-text">경로등록</p>
+			<p class="content_title-text">경로 등록</p>
 		</div>
 		<div class="content_cont-box">
 			<p class="content_cont-text">
@@ -35,6 +35,11 @@
 			<table class="table table-bordered">
 
 				<tr>
+				<td class="form_label">
+						<p class="label">장소 번호</p>
+						<p class="must">*</p>
+					</td>
+					<td class="form_normal-td"><input type="text" class="form_textbox" name="s_place" readonly></td>
 					<td class="form_label">
 						<p class="label">출발지</p>
 						<p class="must">*</p>
@@ -42,31 +47,36 @@
 					<td><input type="text" name="s_place_name" class="form_textbox">
 					<input type="hidden" name="s_place_name_ok" class="form_textbox"> 
 					<input type="hidden" name="s_place_usable_name">
-					<button type="button" onClick="placeNameCheck()" class="quiet_btn" id="idCheck">
+					<button type="button" onClick="splaceNameCheck()" class="quiet_btn" id="idCheck">
 				 	<span id="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
 						</button></td>
 					<td class="form_label">
 						<p class="label">출발지 주소</p>
 
 					</td>
-					<td><input type="text" class="form_textbox" readonly>
+					<td><input type="text" class="form_textbox" name = "s_place_addr" readonly>
 					</td>
 				</tr>
 				<tr>
+				<td class="form_label">
+						<p class="label">장소 번호</p>
+						<p class="must">*</p>
+					</td>
+					<td class="form_normal-td"><input type="text" class="form_textbox" name="e_place" readonly></td>
 					<td class="form_label">
-						<p class="label">도착지</p>
+						<p class="label">도착지</p>  
 						<p class="must">*</p>
 					</td>
 					<td><input type="text" name="e_place_name" class="form_textbox">
 					<input type="hidden" name="e_place_name_ok" class="form_textbox"> 
 					<input type="hidden" name="e_place_usable_name">
-					<button type="button" onClick="placeNameCheck()" class="quiet_btn" id="idCheck">
+					<button type="button" onClick="eplaceNameCheck()" class="quiet_btn" id="idCheck">
 				 	<span id="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
 						</button></td>
 					<td class="form_label">
 						<p class="label">도착지 주소</p>
 					</td>
-					<td><input type="text" class="form_textbox" readonly>
+					<td><input type="text" class="form_textbox" name = "e_place_addr" readonly>
 					</td>
 				</tr>
 				<tr>
@@ -74,7 +84,7 @@
 						<p class="label">경로 목적</p>
 						<p class="must">*</p>
 					</td>
-					<td colspan="3"><select class="form_textbox" name = "cour_purpo">
+					<td colspan="4"><select class="form_textbox" name = "cour_purpo">
 							<option value="선택" selected="">선택</option>
 							<option value="거래처방문">거래처 방문</option>
 							<option value="회의참석">회의 참석</option>
@@ -89,18 +99,22 @@
 						<p class="label">거리</p>
 						<p class="must">*</p>
 					</td>
-					<td colspan="3" name="distance" class="form_phone-td"><input
-						type="text" class="form_textbox" size="6" maxlength="3"> <b>
-							km</b></td>
+					<td colspan="4"  class="form_phone-td">
+					<input name="distance" type="text" class="form_textbox" size="6" maxlength="3">km</b></td>
 				</tr>
 
 			</table>
 		</div>
 		<div class="form_btn-group">
-		<button id="ins_btn" type="submit" onclick = "return courWriteCheck()">등록</button>
-		<button id="mod_btn" type="submit" onclick = "return courModifyCheck()" disabled>수정</button>
-		<button id="del_btn" type="button" onclick = "courDelete()" disabled>삭제</button>
+		<button id="ins_btn" type="submit">등록</button>
+		<button id="mod_btn" type="submit">수정</button>
+		<button id="del_btn" type="button">삭제</button>
 		</div>
+<!-- 		<div class="form_btn-group">
+		<button id="ins_btn" type="submit" onclick = "return courWriteCheck()">등록</button>
+		<button id="mod_btn" type="submit" onclick = "return courModifyCheck()" >수정</button>
+		<button id="del_btn" type="button" onclick = "courDelete()" >삭제</button>
+		</div> -->
 	</form>
 	</section> </section>
 </body>

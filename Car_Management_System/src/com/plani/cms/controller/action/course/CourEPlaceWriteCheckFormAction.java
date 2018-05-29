@@ -26,11 +26,11 @@ public class CourEPlaceWriteCheckFormAction implements Action {
 
 		System.out.println(result);
 
-		request.setAttribute("place_name", place_name);
+		request.setAttribute("e_place_name", place_name);
 		request.setAttribute("result", result);
 
 		/* ------------------ place 체크----------------------- */
-		String url = "course/cour_place_check.jsp";
+		String url = "course/cour_eplace_check.jsp";
 
 		List<PlaceVO> placeList = pDao.placeSearchByNameLike(place_name);
 		request.setAttribute("placeList", placeList);

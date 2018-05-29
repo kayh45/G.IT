@@ -14,13 +14,13 @@ public class CourWriteAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	String url = "course.do?command=course_write_form";
+	String url = "course.do?command=cour_write_form";
 		
 		CourseVO cVo = new CourseVO();	
 		
 		
 		int s_place = Integer.parseInt(request.getParameter("s_place"));
-		int e_place = Integer.parseInt(request.getParameter("s_place"));
+		int e_place = Integer.parseInt(request.getParameter("e_place"));
 		int distance = Integer.parseInt(request.getParameter("distance"));
 		String cour_purpo = request.getParameter("cour_purpo");
 		

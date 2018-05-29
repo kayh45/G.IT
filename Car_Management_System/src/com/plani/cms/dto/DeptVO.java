@@ -2,8 +2,8 @@ package com.plani.cms.dto;
 
 public class DeptVO {
 	
-	int dept_no;
-	String dept_name;
+	private int dept_no;
+	private String dept_name;
 	
 	public int getDept_no() {
 		return dept_no;

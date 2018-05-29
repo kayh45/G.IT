@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, user-scalable=no">
 <link href="css/popup.css" rel="stylesheet">
 <link href="css/common.css" rel="stylesheet">
-<script type="text/javascript" src="js/place.js"></script>
+<script type="text/javascript" src="js/course.js"></script>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <title>장소 조회</title>
 </head>
@@ -20,17 +20,17 @@
 </div>
 <div class = "popup_body">
 
-		<form name = "frm" method = "post" action = "course.do?command=cour_place_write_check_form">
+		<form name = "frm" method = "post" action = "course.do?command=cour_splace_write_check_form&popup=yes">
 					장소명 &nbsp;
-					<input type = "text" name = "place_name" value = "${place_name}">
+					<input type = "text" name = "s_place_name" value = "${s_place_name}">
 					<button type = "submit">조회</button>
-				<input type = "hidden" name = "place_name_ok" value = "1">
+				<input type = "hidden" name = "s_place_name_ok" value = "1">
 			
 		<c:if test = "${result==-1}">
 		<div class = "popup_box">
 		
-				<p>'${place_name}'은 등록 되어 있지 않습니다. <br> 등록 하시겠습니까? 
-					<button type = "button" onclick = "regiCent()">등록</button> 
+				<p>'${s_place_name}'은 등록 되어 있지 않습니다. <br> 등록 하시겠습니까? 
+					<button type = "button" onclick = "regiPlace()">등록</button> 
 				</p>
 		
 		</div>			
@@ -39,7 +39,7 @@
 		<c:if test = "${result==1}">
 		
 			<div class = "popup_box">
-				<p class = "search-result_label">'${place_name}'에 대한 조회 결과입니다.</p>
+				<p class = "search-result_label">'${s_place_name}'에 대한 조회 결과입니다.</p>
 					<table class = "table table-condensed table-bordered">					
 					<thead>
 					<tr>
@@ -51,11 +51,12 @@
 					<c:forEach var = "place" items = "${placeList}">
 				<tr>
 						<td>${place.place_no}</td>
-						<td><a onclick = "placeSelect('${place.place_no}')">${place.place_name}</a></td>		
+						<td><a onclick = "splaceSelect('${place.place_no}')">${place.place_name}</a></td>		
 						<td>${place.place_addr },${place.place_addr_dtl }</td>		
 					</tr>	
 					
 									
+					<input type = "hidden" name = "${place.place_no}place_no" value  = "${place.place_no}">
 					<input type = "hidden" name = "${place.place_no}place_name" value  = "${place.place_name}">
 					<input type = "hidden" name = "${place.place_no}place_addr" value  = "${place.place_addr}">
 					</c:forEach>
@@ -80,11 +81,11 @@
 					<c:forEach var = "place" items = "${placeAllList}">
 				<tr>
 						<td>${place.place_no}</td>
-						<td><a onclick = "placeSelect('${place.place_no}')">${place.place_name}</a></td>		
+						<td><a onclick = "splaceSelect('${place.place_no}')">${place.place_name}</a></td>		
 						<td>${place.place_addr },${place.place_addr_dtl }</td>		
 					</tr>	
 					
-									
+				   <input type = "hidden" name = "${place.place_no}place_no" value  = "${place.place_no}">
 					<input type = "hidden" name = "${place.place_no}place_name" value  = "${place.place_name}">
 					<input type = "hidden" name = "${place.place_no}place_addr" value  = "${place.place_addr}">
 					</c:forEach>

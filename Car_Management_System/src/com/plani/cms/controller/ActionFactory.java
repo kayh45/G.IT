@@ -18,6 +18,7 @@ import com.plani.cms.controller.action.course.CourDeleteAction;
 import com.plani.cms.controller.action.course.CourModifyAction;
 import com.plani.cms.controller.action.course.CourSPlaceWriteCheckFormAction;
 import com.plani.cms.controller.action.course.CourWriteAction;
+import com.plani.cms.controller.action.course.CourWriteFormAction;
 import com.plani.cms.controller.action.member.DeptDeleteAction;
 import com.plani.cms.controller.action.member.DeptModifyAction;
 import com.plani.cms.controller.action.member.DeptSearchAction;
@@ -42,6 +43,8 @@ import com.plani.cms.controller.action.repa.RepaMemberSearchAction;
 import com.plani.cms.controller.action.repa.RepaSearchFormAction;
 import com.plani.cms.controller.action.repa.RepaWriteAction;
 import com.plani.cms.controller.action.repa.RepaWriteFormAction;
+import com.plani.cms.controller.action.reserve.ReserveViewScheduleAction;
+import com.plani.cms.controller.action.reserve.ReserveWriteAction;
 import com.plani.cms.controller.action.reserve.ReserveWriteFormAction;
 
 /* ===============================================
@@ -165,9 +168,15 @@ public class ActionFactory {
 	        /* 경로 기능 구현 end */
 		/* 배차관리 기능 구현 start */
 		} else if (command.equals("course_write_form")) {
-			action = new CourSPlaceWriteCheckFormAction();
+			action = new CourWriteFormAction();
+		} else if (command.equals("place_write_form")) {
+			action = new PlaceWriteFormAction();
 		} else if (command.equals("reserve_write_form")) {
 			action = new ReserveWriteFormAction();
+		} else if (command.equals("reserve_write")) {
+			action = new ReserveWriteAction();
+		} else if (command.equals("reserve_view_schedule")) {
+			action = new ReserveViewScheduleAction();
 			/* 배차관리 기능 구현 end */
 		} /* 정비내역 등록 구현 start */
 		else if (command.equals("repa_write")) {
