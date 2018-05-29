@@ -59,7 +59,7 @@
 						<td>${car.car_divi}</td>
 					</tr>	
 					
-					<c:if test="${car.car_divi== '렌탈'}" >				
+					<c:if test="${car.car_divi eq '렌탈'}" >				
 					<input type = "hidden" name = "${car.car_reg_no}car_reg_no" value  = "${car.car_reg_no}">
 					<input type = "hidden" name = "${car.car_reg_no}car_model" value  = "${car.car_model}">
 					<input type = "hidden" name = "${car.car_reg_no}car_divi" value  = "${car.car_divi}">
@@ -76,7 +76,7 @@
 					<input type = "hidden" name = "${car.car_reg_no}ep_date" value  = "${car.ep_date}">
 				</c:if>
 				
-				<c:if test="${car.car_divi== '구매'}" >	
+				<c:if test="${car.car_divi eq '구매'}" >	
 					<input type = "hidden" name = "${car.car_reg_no}car_reg_no" value  = "${car.car_reg_no}">
 				    <input type = "hidden" name = "${car.car_reg_no}car_model" value  = "${car.car_model}">
 					<input type = "hidden" name = "${car.car_reg_no}car_divi" value  = "${car.car_divi}">
