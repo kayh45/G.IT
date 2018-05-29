@@ -102,7 +102,7 @@
 					<th>등록인</th>
 					<th class = "schedule_choice">사용 시간 선택</th>
 				</tr></thead>	
-				<c:if test="${date ne null}">		
+				<c:if test="${car_reg_no ne null}">		
 				<%
 					List<DrivVO> dList = new ArrayList<DrivVO>();
 					DrivVO tempVO = new DrivVO();
