@@ -38,7 +38,7 @@
 					</td>
 					<td class="form_normal-td" colspan="3"><input type="text"
 						class="form_textbox" id="car_reg_no" name="car_reg_no">
-						<button type = "button" onClick = "repaNameCheck();" class = "quiet_btn" id = "idCheck">
+						<button type = "button" onClick = "carNoCheck();" class = "quiet_btn" id = "idCheck">
 								<span id ="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
 							</button>	</td>
 				</tr>
