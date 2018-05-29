@@ -39,7 +39,6 @@ import com.plani.cms.controller.action.place.PlaceWriteCheckFormAction;
 import com.plani.cms.controller.action.place.PlaceWriteFormAction;
 import com.plani.cms.controller.action.repa.RepaCarWriteCheckFormAction;
 import com.plani.cms.controller.action.repa.RepaCentWriteCheckFormAction;
-import com.plani.cms.controller.action.repa.RepaMemberSearchAction;
 import com.plani.cms.controller.action.repa.RepaSearchFormAction;
 import com.plani.cms.controller.action.repa.RepaWriteAction;
 import com.plani.cms.controller.action.repa.RepaWriteFormAction;
@@ -189,8 +188,6 @@ public class ActionFactory {
 			action = new RepaCentWriteCheckFormAction();
 		} else if (command.equals("repa_search_form")) {
 			action = new RepaSearchFormAction();
-		} else if (command.equals("repa_member_search")) {
-			action = new RepaMemberSearchAction();
 		} /* 정비내역 등록 구현 End */
 
 		return action;
