@@ -47,3 +47,8 @@ function eplaceSelect(name) {
 	opener.document.getElementById("ins_btn").disabled = "true";*/
 	self.close();
 }
+
+function courSearch(){
+	var url = "course.do?command=cour_select_form"
+	window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
+}

@@ -24,9 +24,10 @@
 		</div>
 		<div class="content_cont-box">
 			<p class="content_cont-text">
-				<b>경로번호<b>
+				<b>경로 번호<b>
 			</p>
 			<input type="text" class="form_textbox" name="cour_no" readonly>
+				<input type ="button" onclick="courSearch()" value ="조회">
 		</div>
 		<div class="content_cont-box">
 			<p class="content_cont-text">

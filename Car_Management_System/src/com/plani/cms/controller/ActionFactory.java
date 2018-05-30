@@ -17,6 +17,8 @@ import com.plani.cms.controller.action.cent.CentWriteFormAction;
 import com.plani.cms.controller.action.course.CourDeleteAction;
 import com.plani.cms.controller.action.course.CourModifyAction;
 import com.plani.cms.controller.action.course.CourSPlaceWriteCheckFormAction;
+import com.plani.cms.controller.action.course.CourSelectAction;
+import com.plani.cms.controller.action.course.CourSelectFormAction;
 import com.plani.cms.controller.action.course.CourWriteAction;
 import com.plani.cms.controller.action.course.CourWriteFormAction;
 import com.plani.cms.controller.action.member.DeptDeleteAction;
@@ -165,6 +167,10 @@ public class ActionFactory {
 				action = new CourDeleteAction();
 			}else if (command.equals("cour_place_write_check_form")) {
 				action = new CourSPlaceWriteCheckFormAction();
+			}else if (command.equals("cour_select")) {
+				action = new CourSelectAction();
+			}else if (command.equals("cour_select_form")) {
+				action = new CourSelectFormAction();
 	        /* 경로 기능 구현 end */
 		/* 배차관리 기능 구현 start */
 		} else if (command.equals("course_write_form")) {
