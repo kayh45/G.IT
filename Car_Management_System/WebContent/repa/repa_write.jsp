@@ -8,6 +8,10 @@
 <title>법인차량관리시스템</title>
 <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery-ui.js"></script>
+<link href="css/jquery.schedule.css" rel="stylesheet">
+<link href="css/jquery-ui.css" rel="stylesheet">
+<link href="css/segmented-controls.css" rel="stylesheet">
+
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/post.js"></script>
 <script type="text/javascript" src="js/repa.js?ver=2"></script>
@@ -18,8 +22,10 @@
 <body>
 	<header> <%@ include file="../header.jsp"%>
 	<!-- 헤더 --> </header>
-	<section id="main"> <aside id="side"> <%@ include
-		file="sideMenu.jsp"%> </aside> <section id="content">
+	<section id="main"> <aside id="side"> <%@ include file="sideMenu.jsp"%> </aside>
+		 <script type = "text/javascript" src="js/jquery-ui.js"></script>
+		<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+		 <section id="content">
 	<form name="frm" method="post" action="repa.do?command=repa_write">
 		<div class="content_title-box">
 			<span class="glyphicon glyphicon-pencil" aria-hidden="true"> </span>
@@ -70,10 +76,10 @@
 				</td>
 				<td>				
 					<div id = "repa_s_date">
-						<input type="text" class="form_textbox" name = "repa_s_date" id="repa_s_date">
+						<input type="text" class="form_textbox" name = "repa_s_date">
 					</div>
 					<script type="text/javascript">
-					$('#repa_s_date input').datepicker({dateFormat: "yyyy-mm-dd"});
+						$('#repa_s_date input').datepicker({dateFormat: "yy-mm-dd"});
 					</script>	
 				
 				</td>
@@ -83,10 +89,10 @@
 				</td>
 				<td class="form_normal-td">
 					<div id = "repa_e_date">
-						<input type="text" class="form_textbox" name = "repa_e_date" id="repa_e_date">
+						<input type="text" class="form_textbox" name = "repa_e_date">
 					</div>
 					<script type="text/javascript">
-						$('#repa_e_date input').datepicker({dateFormat: "yyyy-mm-dd"});
+						$('#repa_e_date input').datepicker({dateFormat: "yy-mm-dd"});
 					</script>										
 					</td>
 			</tr>

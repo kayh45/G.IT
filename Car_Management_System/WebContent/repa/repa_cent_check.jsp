@@ -9,9 +9,8 @@
 <meta name="viewport" content="width=device-width, user-scalable=no">
 <link href="css/popup.css" rel="stylesheet">
 <link href="css/common.css" rel="stylesheet">
-<script type="text/javascript" src="js/repa.js?ver=2"></script>
+<script type="text/javascript" src="js/repa.js?ver=1"></script>
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<script type = "text/javascript" src="js/member.js"></script>
 <title>정비소</title>
 </head>
 <body>

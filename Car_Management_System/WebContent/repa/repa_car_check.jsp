@@ -10,7 +10,7 @@
 <link href="css/popup.css" rel="stylesheet">
 <link href="css/common.css" rel="stylesheet">
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<script type = "text/javascript" src="js/repa.js"></script>
+<script type = "text/javascript" src="js/repa.js?ver=1"></script>
 
 
 
@@ -34,7 +34,7 @@
 		<div class = "popup_box">
 		
 				<p>'${car_reg_no}'은  등록되어있지 않습니다. <br> 등록 창으로 이동하시겠습니까? 
-					<button type = "button" onclick = "regiCent()">이동</button>  
+					<button type = "button" onclick = "regiCar()">이동</button>  
 				</p>
 		
 		</div>			
