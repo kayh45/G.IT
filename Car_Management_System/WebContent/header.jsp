@@ -27,7 +27,8 @@
 	<img src = "img/car.png">
 <span>법인차량관리시스템</span>
 <span class = "loginfo"> 
-	<b>${LoginUser.mem_name} 님 반갑습니다.</b>
+	<b>${LoginUser.mem_name}님 반갑습니다.</b>
+	<button type = "button" class = "mypage" onclick = "location.href='member.do?command=mypage_home'">My Page</button>
 	<button type = "button" class = "logout" onclick = "logout();">로그아웃</button>
 </span>
 </div>

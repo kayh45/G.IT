@@ -27,6 +27,8 @@ import com.plani.cms.controller.action.member.MemberSearchAction;
 import com.plani.cms.controller.action.member.MemberSearchFormAction;
 import com.plani.cms.controller.action.member.MemberWriteAction;
 import com.plani.cms.controller.action.member.MemberWriteFormAction;
+import com.plani.cms.controller.action.member.MyPageHomeAction;
+import com.plani.cms.controller.action.member.MyPagePwUpdateFormAction;
 import com.plani.cms.controller.action.place.PlaceWriteFormAction;
 import com.plani.cms.controller.action.repa.RepaWriteAction;
 import com.plani.cms.controller.action.repa.RepaWriteCheckFormAction;
@@ -101,6 +103,10 @@ public class ActionFactory {
 			action = new DeptModifyAction();
 		} else if (command.equals("dept_delete")) {
 			action = new DeptDeleteAction();
+		} else if (command.equals("mypage_home")) {
+			action = new MyPageHomeAction();
+		} else if (command.equals("mypage_pwupdate_form")) {
+			action = new MyPagePwUpdateFormAction();
 		}
 		/* 법인차 기능 구현 start */
 		else if (command.equals("car_write_form")) {

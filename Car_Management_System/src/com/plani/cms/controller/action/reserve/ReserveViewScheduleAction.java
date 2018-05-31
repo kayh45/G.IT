@@ -30,8 +30,7 @@ public class ReserveViewScheduleAction implements Action {
 		
 		request.setAttribute("date", date);
 		request.setAttribute("car_reg_no", car_reg_no);
-		request.setAttribute("dVoList", dVoList);
-		
+		request.setAttribute("dVoList", dVoList);		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
