@@ -8,17 +8,24 @@
 <title>법인차량관리시스템</title>
 <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery-ui.js"></script>
+<link href="css/jquery.schedule.css" rel="stylesheet">
+<link href="css/jquery-ui.css" rel="stylesheet">
+<link href="css/segmented-controls.css" rel="stylesheet">
+
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/post.js"></script>
-<script type="text/javascript" src="js/repa.js?ver=1"></script>
+<script type="text/javascript" src="js/repa.js?ver=2"></script>
 <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
-
+							
+									
 </head>
 <body>
 	<header> <%@ include file="../header.jsp"%>
 	<!-- 헤더 --> </header>
-	<section id="main"> <aside id="side"> <%@ include
-		file="sideMenu.jsp"%> </aside> <section id="content">
+	<section id="main"> <aside id="side"> <%@ include file="sideMenu.jsp"%> </aside>
+		 <script type = "text/javascript" src="js/jquery-ui.js"></script>
+		<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+		 <section id="content">
 	<form name="frm" method="post" action="repa.do?command=repa_write">
 		<div class="content_title-box">
 			<span class="glyphicon glyphicon-pencil" aria-hidden="true"> </span>
@@ -37,7 +44,7 @@
 					</td>
 					<td class="form_normal-td" colspan="3"><input type="text"
 						class="form_textbox" id="car_reg_no" name="car_reg_no">
-						<button type = "button" onClick = "repaNameCheck();" class = "quiet_btn" id = "idCheck">
+						<button type = "button" onClick = "carNoCheck();" class = "quiet_btn" id = "idCheck">
 								<span id ="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
 							</button>	</td>
 				</tr>
@@ -51,12 +58,15 @@
 					<td class="form_label">
 						<p class="label">정비소 명</p>
 					</td>
-					<td class="form_normal-td"><input type="text"
-						class="form_textbox" id="cent_name" name="cent_name"><button type="button" onClick="execDaumPostcode();"
-							class="quiet_btn">
-							<span id="search-button" class="glyphicon glyphicon-search"
-								aria-hidden="true"></span>
-						</button></td>
+					<td class="form_normal-td">
+				<input type="text" name="cent_name" class="form_textbox">
+				<input type = "hidden" name = "cent_name_ok" class = "form_textbox">
+					<input type = "hidden" name = "cent_usable_name">
+							<button type = "button" onClick = "centNameCheck();" class = "quiet_btn" id = "idCheck">
+								<span id ="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
+							</button>	
+<!-- 							<span id = "hdn_label" class = "hdn_label">기존: <input type = "text" class = "form_textbox" name = "pre_cent_name" readonly></span>
+ -->						</td>
 				</tr>
 			
 			<tr>
@@ -65,13 +75,11 @@
 					<p class="must">*</p>
 				</td>
 				<td>				
-					<div id = "bo_s_date">
-						<input type="text" class="form_textbox" name = "bo_s_date">
+					<div id = "repa_s_date">
+						<input type="text" class="form_textbox" name = "repa_s_date">
 					</div>
 					<script type="text/javascript">
-						$('#bo_s_date input').datepicker({
-							dateFormat: "yy-mm-dd"
-						});
+						$('#repa_s_date input').datepicker({dateFormat: "yy-mm-dd"});
 					</script>	
 				
 				</td>
@@ -80,13 +88,11 @@
 					<p class="must">*</p>
 				</td>
 				<td class="form_normal-td">
-					<div id = "bo_e_date">
-						<input type="text" class="form_textbox" name = "bo_e_date">
+					<div id = "repa_e_date">
+						<input type="text" class="form_textbox" name = "repa_e_date">
 					</div>
 					<script type="text/javascript">
-						$('#bo_e_date input').datepicker({
-							dateFormat: "yy-mm-dd"
-						});
+						$('#repa_e_date input').datepicker({dateFormat: "yy-mm-dd"});
 					</script>										
 					</td>
 			</tr>
@@ -118,10 +124,10 @@
 
 			</table>
 		</div>
-		<div class="form_btn-group">
-			<button id="ins_btn" type="submit">등록</button>
-			<button id="mod_btn" type="submit">수정</button>
-			<button id="del_btn" type="button">삭제</button>
+			<div class="form_btn-group">
+		<button id="ins_btn" type="submit" onclick = "return centWriteCheck()">등록</button>
+		<button id="mod_btn" type="submit" onclick = "return centModifyCheck()" disabled>수정</button>
+		<button id="del_btn" type="button" onclick = "centDelete()" disabled>삭제</button>
 		</div>
 	</form>
 	</section> </section>

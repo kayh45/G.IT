@@ -51,7 +51,7 @@ function centWriteCheck() {
 		return false;
 }else {
 	var name = document.frm.cent_name.value;
-	var isCorrect = confirm(name + " 정비소를을 등록하시겠습니까?");
+	var isCorrect = confirm(name + " 정비소를 등록하시겠습니까?");
 	if (isCorrect == true) {
 		return true;
 	} else {
@@ -213,7 +213,7 @@ function centSelect(name) {
 function centNameCheck() {
 	if (document.frm.cent_name.value == "") {
 		alert('정비소명을 입력하세요');
-		document.frm.cent_name.focus();
+		document.frm.dept_name.focus();
 		return;
 	}
 	document.frm.cent_name_ok.value = 0; // 중복검사 여부를 0으로 초기화

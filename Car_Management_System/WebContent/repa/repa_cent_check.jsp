@@ -9,9 +9,8 @@
 <meta name="viewport" content="width=device-width, user-scalable=no">
 <link href="css/popup.css" rel="stylesheet">
 <link href="css/common.css" rel="stylesheet">
-<script type="text/javascript" src="js/repa.js?ver=2"></script>
+<script type="text/javascript" src="js/repa.js?ver=1"></script>
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<script type = "text/javascript" src="js/member.js"></script>
 <title>정비소</title>
 </head>
 <body>
@@ -23,27 +22,25 @@
 	<c:choose>
 		<c:when test = "${isLike == 'no'}">
 		<div class = "popup_box">
-				<form name = "frm" method = "post" action = "repa.do?command=repa_write_check_form&popup=yes">
+				<form name = "frm" method = "post" action = "repa.do?command=repa_cent_write_check_form&popup=yes">
 					정비소명 &nbsp;
 					<input type = "text" name = "cent_name" value = "${cent_name}">
 					<button type = "submit">조회</button>
-				<input type = "hidden" name = "cent_name_ok" value = "1">
-				<p>'${cent_name}'은 등록가능합니다. 
-					<button type = "button" onclick = "useCentName()">사용</button> 
+				<!-- <input type = "hidden" name = "cent_name_ok" value = "1"> -->
+				<p>'${cent_name}'은 등록되어있지 않습니다. <br> 등록 창으로 이동하시겠습니까? 
+					<button type = "button" onclick = "regiCent()">이동</button> 
 				</p>
 			</form>
 		</div>			
 		</c:when>
 		<c:when test = "${isLike == 'yes'}">
 			<div class = "popup_box">
-				<form name = "frm" method = "post" action = "repa.do?command=repa_write_check_form&popup=yes">
+				<form name = "frm" method = "post" action = "repa.do?command=repa_cent_write_check_form&popup=yes">
 						<input type = "text" name = "cent_name" value = "${cent_name}">
 						<button type = "submit">조회</button>
 					<c:if test = "${isMatch eq 'no'}">					
 						<input type = "hidden" name = "cent_name_ok" value = "1">
-						<p>'${cent_name}'은 등록가능합니다. 
-							<button type = "button" onclick = "useCentName()">사용</button> 
-						</p>
+					
 					</c:if>
 				</form>
 			</div>
@@ -60,7 +57,7 @@
 					<c:forEach var = "cent" items = "${centList}">
 				<tr>
 						<td>${cent.cent_no}</td>
-						<td><a onclick = "centSelect('${cent.cent_no}')">${cent.cent_name}</a></td>		
+						<td><a onclick = "repaCentSelect('${cent.cent_no}','${cent.cent_name}')">${cent.cent_name}</a></td>		
 						<td>${cent.ceo_name}</td>
 					</tr>					
 					<input type = "hidden" name = "${cent.cent_no}cent_no" value  = "${cent.cent_no}">
