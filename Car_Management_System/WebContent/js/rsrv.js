@@ -2,9 +2,10 @@ function viewOneDay(car_reg_no) {
 	
 	var date = document.frm.date.value;
 	
-	document.frm.car_reg_no.value = car_reg_no;
-	location.href = "rsrv.do?command=reserve_view_schedule&car_reg_no=" + car_reg_no +"&date=" + date;
-	
+	if (rsrvDateCheck()) {
+		document.frm.car_reg_no.value = car_reg_no;
+		location.href = "rsrv.do?command=reserve_view_schedule&car_reg_no=" + car_reg_no +"&date=" + date;				
+	}		
 }
 
 function checkboxControl(curr) {
@@ -63,10 +64,20 @@ function checkboxControl(curr) {
 	
 	if (chk_box[curr_idx].value > min && chk_box[curr_idx].value < max) {			
 		if (chk_box[curr_idx-1].checked && chk_box[curr_idx+1].checked) {
-			console.log("오니");	
 			chk_box[curr_idx].checked = true;
 		}
 	}
 	
+}
+
+function rsrvDateCheck() {
+	var date = document.frm.date.value;	
+	if(date=="" || date.length != 10) {
+		alert("날짜를 확인해주세요");
+		document.frm.date.value.focus();
+		return false;
+	}else {
+		return true;
+	}
 }
 

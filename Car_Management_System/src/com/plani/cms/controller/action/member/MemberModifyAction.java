@@ -6,6 +6,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.MemberDAO;
@@ -23,7 +24,7 @@ public class MemberModifyAction implements Action{
 		String mem_jumin = request.getParameter("mem_jumin1") + request.getParameter("mem_jumin2");
 		String p_no = request.getParameter("mem_p_no");
 		String mem_addr = request.getParameter("mem_addr1");
-		String mem_addr_dtl = request.getParameter("mem_addr_dtl");
+		String mem_addr_dtl = request.getParameter("mem_addr2");
 		String mem_hp = request.getParameter("mem_hp1") + request.getParameter("mem_hp2") + request.getParameter("mem_hp3");
 		String mem_posi = request.getParameter("mem_posi");
 		String mem_auth = request.getParameter("mem_auth");
@@ -55,6 +56,15 @@ public class MemberModifyAction implements Action{
 		
 		System.out.println("수정 성공");
 		request.setAttribute("message", "<strong>사원 수정 성공!</strong> &nbsp 수정한 사원 : " + mem_name + "(" + mem_id+ ")");
+		
+		// 마이페이지에서 내정보수정을 하면 다시 그 페이지로 리다이렉트되도록 하는 if문
+		if(request.getParameter("isMypage").equals("1")) { 
+			HttpSession session = request.getSession();
+			url = "member.do?command=mypage_infoupdate_form";
+			MemberVO sessionVo = mDao.getMemberInfoAll(mVo);
+			session.setAttribute("LoginUser", sessionVo);
+			System.out.println(sessionVo);
+		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

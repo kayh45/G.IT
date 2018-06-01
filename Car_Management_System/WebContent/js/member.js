@@ -320,3 +320,36 @@ function memberDelete() {
 	
 }
 
+function passCheck() {
+	
+	var mem_id = document.frm.mem_id.value;
+	var currPass = document.frm.currPass.value;
+	var modiPass = document.frm.modiPass.value;
+	var modiPassOk = document.frm.modiPassOk.value;
+	
+	if(currPass == "") {
+		alert("현재 비밀번호를 입력해주세요");
+		document.frm.currPass.focus();
+		return false;
+	}else if(modiPass == "") {
+		alert("변경할 비밀번호를 입력해주세요");
+		document.frm.modiPass.focus();
+		return false;
+	}else if(modiPass == currPass) {
+		alert("같은 비밀번호로 변경할 수 없습니다.");
+		document.frm.modiPass.focus();
+		return false;
+	}else if(modiPassOk == "") {
+		alert("변경할 비밀번호를 확인해주세요");
+		document.frm.modiPassOk.focus();
+		return false;
+	}else if(modiPassOk != modiPass) {
+		alert("변경할 비밀번호를 확인해주세요");
+		document.frm.modiPassOk.focus();
+		return false;
+	}else {
+		return true;
+	}
+	
+}
+
