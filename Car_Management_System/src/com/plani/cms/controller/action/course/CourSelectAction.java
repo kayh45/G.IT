@@ -38,10 +38,12 @@ public class CourSelectAction implements Action{
 		
 		System.out.println(cour_divi);
 		if(cour_divi.equals("0")) {
-			s_placeList = cDao.courSplaceSearchByNameLike(place_name);			
+			s_placeList = cDao.courAllplaceSearchByNameLike(place_name);			
 		} else if(cour_divi.equals("1")) {
 			s_placeList = cDao.courSplaceSearchByNameLike(place_name);					
-		}
+		} else if(cour_divi.equals("2")) {
+			s_placeList = cDao.courEplaceSearchByNameLike(place_name);
+	}
 		request.setAttribute("s_placeList", s_placeList);
 		
 /*		List<CarVO> carAllList = cDao.selectAllCar();
