@@ -40,7 +40,7 @@
 						<p class="label">장소 번호</p>
 						<p class="must">*</p>
 					</td>
-					<td class="form_normal-td"><input type="text" class="form_textbox" name="s_place" readonly></td>
+					<td class="form_normal-td"><input type="text" class="form_textbox" name="s_place_no" readonly></td>
 					<td class="form_label">
 						<p class="label">출발지</p>
 						<p class="must">*</p>
@@ -63,7 +63,7 @@
 						<p class="label">장소 번호</p>
 						<p class="must">*</p>
 					</td>
-					<td class="form_normal-td"><input type="text" class="form_textbox" name="e_place" readonly></td>
+					<td class="form_normal-td"><input type="text" class="form_textbox" name="e_place_no" readonly></td>
 					<td class="form_label">
 						<p class="label">도착지</p>  
 						<p class="must">*</p>
@@ -107,9 +107,9 @@
 			</table>
 		</div>
 		<div class="form_btn-group">
-		<button id="ins_btn" type="submit">등록</button>
-		<button id="mod_btn" type="submit">수정</button>
-		<button id="del_btn" type="button">삭제</button>
+			<button id="ins_btn" type="submit" onclick="return carWriteCheck1()">등록</button>
+			<button id="mod_btn" type="submit" onclick="return carModifyCheckDivided()"disabled>수정</button>
+			<button id="del_btn" type="button" onclick="carDelete()" disabled>삭제</button>
 		</div>
 <!-- 		<div class="form_btn-group">
 		<button id="ins_btn" type="submit" onclick = "return courWriteCheck()">등록</button>

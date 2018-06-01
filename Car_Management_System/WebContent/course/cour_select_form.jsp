@@ -66,9 +66,15 @@
 					</tr>	
 					
 									
-					<input type = "hidden" name = "${place.place_no}place_no" value  = "${place.place_no}">
-					<input type = "hidden" name = "${place.place_no}place_name" value  = "${place.place_name}">
-					<input type = "hidden" name = "${place.place_no}place_addr" value  = "${place.place_addr}">
+					<input type = "hidden" name = "${cour.cour_no}cour_no" value  = "${cour.cour_no}">
+					<input type = "hidden" name = "${cour.cour_no}s_place_no" value  = "${cour.s_place_no}">
+					<input type = "hidden" name = "${cour.cour_no}s_place_name" value  = "${cour.s_place_name}">
+					<input type = "hidden" name = "${cour.cour_no}s_place_addr" value  = "${cour.s_place_addr}">
+					<input type = "hidden" name = "${cour.cour_no}e_place_no" value  = "${cour.e_place_no}">
+					<input type = "hidden" name = "${cour.cour_no}e_place_name" value  = "${cour.e_place_name}">
+					<input type = "hidden" name = "${cour.cour_no}e_place_addr" value  = "${cour.e_place_addr}">
+					<input type = "hidden" name = "${cour.cour_no}cour_purpo" value  = "${cour.cour_purpo}">
+					<input type = "hidden" name = "${cour.cour_no}distance" value  = "${cour.distance}">
 					</c:forEach>
 				</table>
 			</div>

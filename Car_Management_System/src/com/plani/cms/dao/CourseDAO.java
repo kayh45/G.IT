@@ -98,10 +98,10 @@ public class CourseDAO {
 		}
 	}
 	public List<PlaceCourVO> courSplaceSearchByNameLike(String name) {
-		String sql ="select c.s_place as 's_place', (select place_name from place where place_no = s_place) as 's_place_name', "
+		String sql ="select c.cour_no, c.s_place as 's_place', (select place_name from place where place_no = s_place) as 's_place_name', "
 				+ "(select place_addr from place where place_no=s_place) as 's_place_addr', c.e_place, "
 				+ "(select place_name from place where place_no = e_place) as 'e_place_name',"
-				+ "(select place_addr from place where place_no=e_place) as 'e_place_addr' from cour c, place p "
+				+ "(select place_addr from place where place_no=e_place) as 'e_place_addr', c.cour_purpo,c.distance from cour c, place p "
 				+ "where p.place_no = c.s_place AND p.place_name like '%" + name + "%'";
 		
 
@@ -119,14 +119,17 @@ public class CourseDAO {
 			while (rs.next()) {
 
 				PlaceCourVO pcVo = new PlaceCourVO();
-			
+				
+				pcVo.setCour_no(rs.getInt("cour_no"));
 				pcVo.setS_place_no(rs.getInt("s_place"));
 				pcVo.setS_place_name(rs.getString("s_place_name"));
 				pcVo.setS_place_addr(rs.getString("s_place_addr"));
 				pcVo.setE_place_no(rs.getInt("e_place"));
 				pcVo.setE_place_name(rs.getString("e_place_name"));
 				pcVo.setE_place_addr(rs.getString("e_place_addr"));
-				
+				pcVo.setCour_purpo(rs.getString("cour_purpo"));
+				pcVo.setDistance(rs.getInt("distance"));
+
 			
 				
 
@@ -141,10 +144,10 @@ public class CourseDAO {
 		return list;
 	}
 	public List<PlaceCourVO> courEplaceSearchByNameLike(String name) {
-		String sql ="select c.s_place as 's_place', (select place_name from place where place_no = s_place) as 's_place_name', "
+		String sql ="select c.cour_no, c.s_place as 's_place', (select place_name from place where place_no = s_place) as 's_place_name', "
 				+ "(select place_addr from place where place_no=s_place) as 's_place_addr', c.e_place, "
 				+ "(select place_name from place where place_no = e_place) as 'e_place_name',"
-				+ "(select place_addr from place where place_no=e_place) as 'e_place_addr' from cour c, place p "
+				+ "(select place_addr from place where place_no=e_place) as 'e_place_addr', c.cour_purpo,c.distance from cour c, place p "
 				+ "where p.place_no = c.e_place AND p.place_name like '%" + name + "%'";
 		
 		
@@ -163,13 +166,16 @@ public class CourseDAO {
 				
 				PlaceCourVO pcVo = new PlaceCourVO();
 				
+				pcVo.setCour_no(rs.getInt("cour_no"));
 				pcVo.setS_place_no(rs.getInt("s_place"));
 				pcVo.setS_place_name(rs.getString("s_place_name"));
 				pcVo.setS_place_addr(rs.getString("s_place_addr"));
 				pcVo.setE_place_no(rs.getInt("e_place"));
 				pcVo.setE_place_name(rs.getString("e_place_name"));
 				pcVo.setE_place_addr(rs.getString("e_place_addr"));
-				
+				pcVo.setCour_purpo(rs.getString("cour_purpo"));
+				pcVo.setDistance(rs.getInt("distance"));
+
 				
 				
 				
@@ -185,10 +191,10 @@ public class CourseDAO {
 	}
 	
 	public List<PlaceCourVO> courAllplaceSearchByNameLike(String name) {
-		String sql ="select c.s_place as 's_place', (select place_name from place where place_no = s_place) as 's_place_name', "
+		String sql ="select c.cour_no, c.s_place as 's_place', (select place_name from place where place_no = s_place) as 's_place_name', "
 				+ "(select place_addr from place where place_no=s_place) as 's_place_addr', c.e_place, "
 				+ "(select place_name from place where place_no = e_place) as 'e_place_name',"
-				+ "(select place_addr from place where place_no=e_place) as 'e_place_addr' from cour c, place p "
+				+ "(select place_addr from place where place_no=e_place) as 'e_place_addr', c.cour_purpo, c.distance from cour c, place p "
 				+ "where p.place_no = c.e_place";
 		
 		
@@ -207,13 +213,16 @@ public class CourseDAO {
 				
 				PlaceCourVO pcVo = new PlaceCourVO();
 				
+				pcVo.setCour_no(rs.getInt("cour_no"));
 				pcVo.setS_place_no(rs.getInt("s_place"));
 				pcVo.setS_place_name(rs.getString("s_place_name"));
 				pcVo.setS_place_addr(rs.getString("s_place_addr"));
 				pcVo.setE_place_no(rs.getInt("e_place"));
 				pcVo.setE_place_name(rs.getString("e_place_name"));
 				pcVo.setE_place_addr(rs.getString("e_place_addr"));
-				
+				pcVo.setCour_purpo(rs.getString("cour_purpo"));
+				pcVo.setDistance(rs.getInt("distance"));
+
 				
 				
 				
@@ -269,6 +278,10 @@ public class CourseDAO {
 		}
 		return list;
 	}
+
+
+
+
 
 }
 

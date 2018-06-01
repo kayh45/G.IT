@@ -2,12 +2,21 @@ package com.plani.cms.dto;
 
 public class PlaceCourVO {
 	
+	private int cour_no;
 	private int s_place_no;
 	private String s_place_name;
 	private String s_place_addr;
 	private int e_place_no;
 	private String e_place_name;
 	private String e_place_addr;
+	private String cour_purpo;
+	private int distance;
+	public int getCour_no() {
+		return cour_no;
+	}
+	public void setCour_no(int cour_no) {
+		this.cour_no = cour_no;
+	}
 	public int getS_place_no() {
 		return s_place_no;
 	}
@@ -44,6 +53,20 @@ public class PlaceCourVO {
 	public void setE_place_addr(String e_place_addr) {
 		this.e_place_addr = e_place_addr;
 	}
+	public String getCour_purpo() {
+		return cour_purpo;
+	}
+	public void setCour_purpo(String cour_purpo) {
+		this.cour_purpo = cour_purpo;
+	}
+	public int getDistance() {
+		return distance;
+	}
+	public void setDistance(int distance) {
+		this.distance = distance;
+	}
+	
+	
 	
 	
 	
