@@ -133,7 +133,7 @@ section#content_car_include {
 .form_label {
 	background-color: #4ab4e1;
 	padding: auto;
-	width: 17%;
+	width: 18%;
 	text-align: center;
 	color: #fff;
 }
@@ -156,7 +156,11 @@ section#content_car_include {
 
 .form_label>.must {
 	color: #ff0000;
-	float: right;
+	display: block;
+	float : right;
+	position : relative;
+	right : 3px;
+	margin : -5px;
 }
 
 .form_phone-td  p,

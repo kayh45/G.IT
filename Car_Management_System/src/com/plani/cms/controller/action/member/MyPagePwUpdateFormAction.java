@@ -16,6 +16,7 @@ public class MyPagePwUpdateFormAction implements Action{
 
 		String url = "myPage/mp_pwUpdate.jsp";
 		
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);		
 	}

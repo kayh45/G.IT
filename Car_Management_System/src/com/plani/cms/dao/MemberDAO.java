@@ -18,8 +18,35 @@ public class MemberDAO {
 
 	public static MemberDAO getInstance() {
 		return instance;
-	} // Singleton 패턴
+	} // Singleton 패턴		
+	
+	
+	public void passwordUpdate(MemberVO mVo) {
+		/**
+		 * 사원 수정
+		 **/
+		String sql = "UPDATE mem SET mem_pw = ? where mem_id = ?";
 
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, mVo.getMem_pw());
+			pstmt.setString(2, mVo.getMem_id());
+
+			pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		} finally {
+			DBManager.close(conn, pstmt);
+
+		}
+	}
 	
 	public void memberInsert(MemberVO mVo) {
 		/**
