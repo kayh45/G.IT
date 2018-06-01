@@ -159,6 +159,7 @@ function memSelect(name) {
 	}
 	opener.frm.dept_no.value = document.getElementsByName(name + "dept_no")[0].value;
 	opener.frm.dept_name.value = document.getElementsByName(name + "dept_name")[0].value;
+	self.close();
 }
 
 function deptWriteCheck() {

@@ -25,8 +25,8 @@ public class CarWriteAction implements Action {
 		String ct_date = request.getParameter("ct_date");
 		String ep_date = request.getParameter("ep_date");
 		String co_name = request.getParameter("co_name");
-		String co_tel = request.getParameter("co_tel");
-		String co_fax = request.getParameter("co_fax");
+		String co_tel = request.getParameter("co_tel1")+"-"+request.getParameter("co_tel2")+"-"+request.getParameter("co_tel3");
+		String co_fax = request.getParameter("co_fax1")+"-"+request.getParameter("co_fax2")+"-"+request.getParameter("co_fax3");
 		String bo_name = request.getParameter("bo_name");
 		String bo_divi = request.getParameter("bo_divi");
 		String bo_age = request.getParameter("bo_age");

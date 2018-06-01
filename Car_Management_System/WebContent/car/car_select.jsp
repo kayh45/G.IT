@@ -10,7 +10,7 @@
 <link href="css/popup.css" rel="stylesheet">
 <link href="css/common.css" rel="stylesheet">
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<script type = "text/javascript" src="js/car.js?ver=2"></script>
+<script type = "text/javascript" src="js/car.js?ver=4"></script>
 
 
 
@@ -27,8 +27,8 @@
 		<form name = "frm" method = "post" action = "car.do?command=car_write_check_form&popup=yes">
 					차량 등록 번호 &nbsp;
 					<input type = "text" name = "car_reg_no" value = "${car_reg_no}">
-					<button type = "submit">조회</button>
-				<input type = "hidden" name = "car_reg_no_ok" value = "1">
+						<button type = "submit">조회</button>
+					<input type = "hidden" name = "car_reg_no_ok" value = "1">
 			
 		<c:if test = "${result==-1}">
 		<div class = "popup_box">
@@ -53,49 +53,45 @@
 					</tr>
 					<thead>
 					<c:forEach var = "car" items = "${carList}">
-				<tr>
+					<tr>
 						<td>${car.car_reg_no}</td>
 						<td><a onclick = "carSelect('${car.car_reg_no}')">${car.car_model}</a></td>		
 						<td>${car.car_divi}</td>
 					</tr>	
-					
-					<c:if test="${car.car_divi eq '렌탈'}" >				
-					<input type = "hidden" name = "${car.car_reg_no}car_reg_no" value  = "${car.car_reg_no}">
-					<input type = "hidden" name = "${car.car_reg_no}car_model" value  = "${car.car_model}">
-					<input type = "hidden" name = "${car.car_reg_no}car_divi" value  = "${car.car_divi}">
-					<input type = "hidden" name = "${car.car_reg_no}total_dist" value  = "${car.total_dist}">
-					<input type = "hidden" name = "${car.car_reg_no}bo_name" value  = "${car.bo_name}">
-					<input type = "hidden" name = "${car.car_reg_no}bo_divi" value  = "${car.bo_divi}">
-					<input type = "hidden" name = "${car.car_reg_no}bo_age" value  = "${car.bo_age}">
-					<input type = "hidden" name = "${car.car_reg_no}bo_s_date" value  = "${car.bo_s_date}">
-					<input type = "hidden" name = "${car.car_reg_no}bo_e_date" value  = "${car.bo_e_date}">
-					<input type = "hidden" name = "${car.car_reg_no}co_name" value  = "${car.co_name}">
-					<input type = "hidden" name = "${car.car_reg_no}co_tel" value  = "${car.co_tel}">
-					<input type = "hidden" name = "${car.car_reg_no}co_fax" value  = "${car.co_fax}">
-					<input type = "hidden" name = "${car.car_reg_no}ct_date" value  = "${car.ct_date}">
-					<input type = "hidden" name = "${car.car_reg_no}ep_date" value  = "${car.ep_date}">
-				</c:if>
-				
-				<c:if test="${car.car_divi eq '구입'}" >	
-					<input type = "hidden" name = "${car.car_reg_no}car_reg_no" value  = "${car.car_reg_no}">
-				    <input type = "hidden" name = "${car.car_reg_no}car_model" value  = "${car.car_model}">
-					<input type = "hidden" name = "${car.car_reg_no}car_divi" value  = "${car.car_divi}">
-					<input type = "hidden" name = "${car.car_reg_no}total_dist" value  = "${car.total_dist}">
-					<input type = "hidden" name = "${car.car_reg_no}bo_name" value  = "${car.bo_name}">
-					<input type = "hidden" name = "${car.car_reg_no}bo_divi" value  = "${car.bo_divi}">
-					<input type = "hidden" name = "${car.car_reg_no}bo_age" value  = "${car.bo_age}">
-					<input type = "hidden" name = "${car.car_reg_no}bo_s_date" value  = "${car.bo_s_date}">
-					<input type = "hidden" name = "${car.car_reg_no}bo_e_date" value  = "${car.bo_e_date}">
-					</c:if>
-					</c:forEach>
+					<c:choose>
+						<c:when test="${car.car_divi eq '렌트' || car.car_divi eq '리스'}" >				
+							<input type = "hidden" name = "${car.car_reg_no}car_reg_no" value  = "${car.car_reg_no}">
+							<input type = "hidden" name = "${car.car_reg_no}car_model" value  = "${car.car_model}">
+							<input type = "hidden" name = "${car.car_reg_no}car_divi" value  = "${car.car_divi}">
+							<input type = "hidden" name = "${car.car_reg_no}total_dist" value  = "${car.total_dist}">
+							<input type = "hidden" name = "${car.car_reg_no}bo_name" value  = "${car.bo_name}">
+							<input type = "hidden" name = "${car.car_reg_no}bo_divi" value  = "${car.bo_divi}">
+							<input type = "hidden" name = "${car.car_reg_no}bo_age" value  = "${car.bo_age}">
+							<input type = "hidden" name = "${car.car_reg_no}bo_s_date" value  = "${car.bo_s_date}">
+							<input type = "hidden" name = "${car.car_reg_no}bo_e_date" value  = "${car.bo_e_date}">
+							<input type = "hidden" name = "${car.car_reg_no}co_name" value  = "${car.co_name}">
+							<input type = "hidden" name = "${car.car_reg_no}co_tel" value  = "${car.co_tel}">
+							<input type = "hidden" name = "${car.car_reg_no}co_fax" value  = "${car.co_fax}">
+							<input type = "hidden" name = "${car.car_reg_no}ct_date" value  = "${car.ct_date}">
+							<input type = "hidden" name = "${car.car_reg_no}ep_date" value  = "${car.ep_date}">
+						</c:when>				
+						<c:when test="${car.car_divi eq '구입'}" >	
+							<input type = "hidden" name = "${car.car_reg_no}car_reg_no" value  = "${car.car_reg_no}">
+						    <input type = "hidden" name = "${car.car_reg_no}car_model" value  = "${car.car_model}">
+							<input type = "hidden" name = "${car.car_reg_no}car_divi" value  = "${car.car_divi}">
+							<input type = "hidden" name = "${car.car_reg_no}total_dist" value  = "${car.total_dist}">
+							<input type = "hidden" name = "${car.car_reg_no}bo_name" value  = "${car.bo_name}">
+							<input type = "hidden" name = "${car.car_reg_no}bo_divi" value  = "${car.bo_divi}">
+							<input type = "hidden" name = "${car.car_reg_no}bo_age" value  = "${car.bo_age}">
+							<input type = "hidden" name = "${car.car_reg_no}bo_s_date" value  = "${car.bo_s_date}">
+							<input type = "hidden" name = "${car.car_reg_no}bo_e_date" value  = "${car.bo_e_date}">
+						</c:when>
+					</c:choose>
+		</c:forEach>
 				</table>
 			</div>
 		</c:if>
-
-		
-	
-			</form>
-		
+			</form>		
 			<div class = "popup_box">
 				<p class = "search-result_label">전체 법인차 리스트</p>
 				<table class = "table table-condensed table-bordered">					
@@ -112,34 +108,35 @@
 						<td><a onclick = "carSelect('${car.car_reg_no}')">${car.car_model}</a></td>		
 						<td>${car.car_divi}</td>
 					</tr>					
-						<c:if test="${car.car_divi eq '렌탈'}" >				
-					<input type = "hidden" name = "${car.car_reg_no}car_reg_no" value  = "${car.car_reg_no}">
-					<input type = "hidden" name = "${car.car_reg_no}car_model" value  = "${car.car_model}">
-					<input type = "hidden" name = "${car.car_reg_no}car_divi" value  = "${car.car_divi}">
-					<input type = "hidden" name = "${car.car_reg_no}total_dist" value  = "${car.total_dist}">
-					<input type = "hidden" name = "${car.car_reg_no}bo_name" value  = "${car.bo_name}">
-					<input type = "hidden" name = "${car.car_reg_no}bo_divi" value  = "${car.bo_divi}">
-					<input type = "hidden" name = "${car.car_reg_no}bo_age" value  = "${car.bo_age}">
-					<input type = "hidden" name = "${car.car_reg_no}bo_s_date" value  = "${car.bo_s_date}">
-					<input type = "hidden" name = "${car.car_reg_no}bo_e_date" value  = "${car.bo_e_date}">
-					<input type = "hidden" name = "${car.car_reg_no}co_name" value  = "${car.co_name}">
-					<input type = "hidden" name = "${car.car_reg_no}co_tel" value  = "${car.co_tel}">
-					<input type = "hidden" name = "${car.car_reg_no}co_fax" value  = "${car.co_fax}">
-					<input type = "hidden" name = "${car.car_reg_no}ct_date" value  = "${car.ct_date}">
-					<input type = "hidden" name = "${car.car_reg_no}ep_date" value  = "${car.ep_date}">
-				</c:if>
-				
-				<c:if test="${car.car_divi eq '구입'}" >	
-					<input type = "hidden" name = "${car.car_reg_no}car_reg_no" value  = "${car.car_reg_no}">
-				    <input type = "hidden" name = "${car.car_reg_no}car_model" value  = "${car.car_model}">
-					<input type = "hidden" name = "${car.car_reg_no}car_divi" value  = "${car.car_divi}">
-					<input type = "hidden" name = "${car.car_reg_no}total_dist" value  = "${car.total_dist}">
-					<input type = "hidden" name = "${car.car_reg_no}bo_name" value  = "${car.bo_name}">
-					<input type = "hidden" name = "${car.car_reg_no}bo_divi" value  = "${car.bo_divi}">
-					<input type = "hidden" name = "${car.car_reg_no}bo_age" value  = "${car.bo_age}">
-					<input type = "hidden" name = "${car.car_reg_no}bo_s_date" value  = "${car.bo_s_date}">
-					<input type = "hidden" name = "${car.car_reg_no}bo_e_date" value  = "${car.bo_e_date}">
-					</c:if>
+					<c:choose>
+						<c:when test="${car.car_divi eq '렌트' || car.car_divi eq '리스'}" >				
+							<input type = "hidden" name = "${car.car_reg_no}car_reg_no" value  = "${car.car_reg_no}">
+							<input type = "hidden" name = "${car.car_reg_no}car_model" value  = "${car.car_model}">
+							<input type = "hidden" name = "${car.car_reg_no}car_divi" value  = "${car.car_divi}">
+							<input type = "hidden" name = "${car.car_reg_no}total_dist" value  = "${car.total_dist}">
+							<input type = "hidden" name = "${car.car_reg_no}bo_name" value  = "${car.bo_name}">
+							<input type = "hidden" name = "${car.car_reg_no}bo_divi" value  = "${car.bo_divi}">
+							<input type = "hidden" name = "${car.car_reg_no}bo_age" value  = "${car.bo_age}">
+							<input type = "hidden" name = "${car.car_reg_no}bo_s_date" value  = "${car.bo_s_date}">
+							<input type = "hidden" name = "${car.car_reg_no}bo_e_date" value  = "${car.bo_e_date}">
+							<input type = "hidden" name = "${car.car_reg_no}co_name" value  = "${car.co_name}">
+							<input type = "hidden" name = "${car.car_reg_no}co_tel" value  = "${car.co_tel}">
+							<input type = "hidden" name = "${car.car_reg_no}co_fax" value  = "${car.co_fax}">
+							<input type = "hidden" name = "${car.car_reg_no}ct_date" value  = "${car.ct_date}">
+							<input type = "hidden" name = "${car.car_reg_no}ep_date" value  = "${car.ep_date}">
+						</c:when>				
+						<c:when test="${car.car_divi eq '구입'}" >	
+							<input type = "hidden" name = "${car.car_reg_no}car_reg_no" value  = "${car.car_reg_no}">
+						    <input type = "hidden" name = "${car.car_reg_no}car_model" value  = "${car.car_model}">
+							<input type = "hidden" name = "${car.car_reg_no}car_divi" value  = "${car.car_divi}">
+							<input type = "hidden" name = "${car.car_reg_no}total_dist" value  = "${car.total_dist}">
+							<input type = "hidden" name = "${car.car_reg_no}bo_name" value  = "${car.bo_name}">
+							<input type = "hidden" name = "${car.car_reg_no}bo_divi" value  = "${car.bo_divi}">
+							<input type = "hidden" name = "${car.car_reg_no}bo_age" value  = "${car.bo_age}">
+							<input type = "hidden" name = "${car.car_reg_no}bo_s_date" value  = "${car.bo_s_date}">
+							<input type = "hidden" name = "${car.car_reg_no}bo_e_date" value  = "${car.bo_e_date}">
+						</c:when>
+					</c:choose>
 					</c:forEach>
 				</table>
 				

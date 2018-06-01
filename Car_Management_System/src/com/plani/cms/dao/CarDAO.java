@@ -51,6 +51,7 @@ public class CarDAO {
 				cVo.setBo_s_date(rs.getString("bo_s_date"));
 				cVo.setBo_e_date(rs.getString("bo_e_date"));
 				cVo.setTotal_dist(rs.getInt("total_dist"));
+				
 
 				list.add(cVo);
 			}

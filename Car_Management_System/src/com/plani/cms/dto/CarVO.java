@@ -115,6 +115,16 @@ public class CarVO {
 	public void setCanUse(int canUse) {
 		this.canUse = canUse;
 	}
+	@Override
+	public String toString() {
+		return "CarVO [car_reg_no=" + car_reg_no + ", car_divi=" + car_divi + ", car_model=" + car_model + ", ct_date="
+				+ ct_date + ", ep_date=" + ep_date + ", co_name=" + co_name + ", co_tel=" + co_tel + ", co_fax="
+				+ co_fax + ", bo_name=" + bo_name + ", bo_divi=" + bo_divi + ", bo_age=" + bo_age + ", bo_s_date="
+				+ bo_s_date + ", bo_e_date=" + bo_e_date + ", total_dist=" + total_dist + ", isUsing=" + isUsing
+				+ ", canUse=" + canUse + "]";
+	}
 
+	
+	
 }
 	
