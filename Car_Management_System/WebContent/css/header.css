@@ -71,7 +71,11 @@
 }
 
 .logout {
-	background-color: #33a6dd;
+	background-color: #eb3240;
+}
+
+.mypage {
+	background-color : #5b84e1;
 }
 
 @media ( max-width : 700px) {
