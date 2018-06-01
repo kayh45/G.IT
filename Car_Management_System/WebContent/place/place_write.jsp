@@ -18,7 +18,14 @@
 	<header> <%@ include file="../header.jsp"%>
 	<!-- 헤더--> </header>
 	<section id="main"> <aside id="side"> <%@ include
-		file="sideMenu.jsp"%> </aside> <section id="content">
+		file="sideMenu.jsp"%> </aside> 
+	<section id="content">
+		<c:if test = "${message ne null}">
+			<div class="alert alert-success alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				  ${message}
+			</div>
+		</c:if>	
 	<div class="content_title-box">
 		<span class="glyphicon glyphicon-pencil" aria-hidden="true"> </span>
 		<p class="content_title-text">장소등록</p>

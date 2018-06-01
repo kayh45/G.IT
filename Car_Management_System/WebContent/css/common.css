@@ -283,6 +283,9 @@ a:hover {
 	#roadAddress-detail {
 		width: 60%;
 	}
+	section#main {
+		height: 100%;
+	}
 }
 
 @media (min-width : 1024px) and (max-width : 1699px) {
