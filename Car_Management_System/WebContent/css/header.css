@@ -90,4 +90,25 @@
 	.navbar-brand img {
 		margin : auto 10px;
 	} /* 네비게이션의 로고 크기 및 마진 지정 (b) */
+	.title_of_top {
+		display: none;
+	} 
+	.dept_of_top {
+		display: none;
+	} 
+	.dropdown-menu a {
+		background-color : inherit;
+		color : #ffffff !important; 
+		padding-left : 12% !important;	
+	} /* 드롭다운 배경색 지정 (b) */
+	.navbar-default .navbar-toggle {
+    	border-color: #fff;
+    	border-width: 2px;
+	}
+	.navbar-default .navbar-toggle .icon-bar {
+    	background-color: #fff !important;
+	}
+	.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+   	 	background-color: #22c5e2;
+	}
 }

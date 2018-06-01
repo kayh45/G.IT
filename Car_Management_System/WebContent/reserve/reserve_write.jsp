@@ -125,7 +125,7 @@
 								
 								out.print("<tr>");
 								out.print("<td class = \"schedule_td\">");
-								out.print(hourSub + "시  00분 ~ " +(hourSub+1) + "시 59분..");
+								out.print(hourSub + "시  00분 ~ " +(hourSub+1) + "시 59분");
 								out.print("</td>");
 								out.print("</tr>");
 								hourSub += 2;

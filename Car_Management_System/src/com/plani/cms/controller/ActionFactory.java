@@ -34,13 +34,14 @@ import com.plani.cms.controller.action.member.MemberSearchAction;
 import com.plani.cms.controller.action.member.MemberSearchFormAction;
 import com.plani.cms.controller.action.member.MemberWriteAction;
 import com.plani.cms.controller.action.member.MemberWriteFormAction;
+import com.plani.cms.controller.action.member.MyPageHomeAction;
+import com.plani.cms.controller.action.member.MyPageInfoUpdateFormAction;
+import com.plani.cms.controller.action.member.MyPagePwUpdateAction;
+import com.plani.cms.controller.action.member.MyPagePwUpdateFormAction;
 import com.plani.cms.controller.action.place.PlaceDeleteAction;
 import com.plani.cms.controller.action.place.PlaceModifyAction;
 import com.plani.cms.controller.action.place.PlaceWriteAction;
 import com.plani.cms.controller.action.place.PlaceWriteCheckFormAction;
-import com.plani.cms.controller.action.member.MyPageHomeAction;
-import com.plani.cms.controller.action.member.MyPagePwUpdateAction;
-import com.plani.cms.controller.action.member.MyPagePwUpdateFormAction;
 import com.plani.cms.controller.action.place.PlaceWriteFormAction;
 import com.plani.cms.controller.action.repa.RepaCarWriteCheckFormAction;
 import com.plani.cms.controller.action.repa.RepaCentWriteCheckFormAction;
@@ -123,6 +124,8 @@ public class ActionFactory {
  			action = new MyPagePwUpdateFormAction();
 		} else if (command.equals("mypage_pwupdate")) {
 			action = new MyPagePwUpdateAction();
+ 		} else if (command.equals("mypage_infoupdate_form")) {
+			action = new MyPageInfoUpdateFormAction();
  		}
 		/* 법인차 기능 구현 start */
 		else if (command.equals("car_write_form")) {

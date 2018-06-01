@@ -25,9 +25,9 @@
 
 <div class = "top-of-top">
 	<img src = "img/car.png">
-<span>법인차량관리시스템</span>
+<span class = "title_of_top">법인차량관리시스템</span>
 <span class = "loginfo"> 
-	<b>${LoginUser.mem_name}님 반갑습니다.</b>
+	<span class= "dept_of_top">${LoginUser.dept_name}</span> <b>${LoginUser.mem_name}</b>님 반갑습니다.
 	<button type = "button" class = "mypage" onclick = "location.href='member.do?command=mypage_home'">My Page</button>
 	<button type = "button" class = "logout" onclick = "logout();">로그아웃</button>
 </span>

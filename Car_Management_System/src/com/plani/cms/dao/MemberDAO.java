@@ -192,7 +192,8 @@ public class MemberDAO {
 		 * 비밀번호는 받지 않는다(보안을 위해)
 		 * @LoginAction 에서 사용
 		 **/
-		String sql = "SELECT * FROM mem WHERE mem_id = '" + tempVo.getMem_id() + "'";
+		String sql = "SELECT * FROM mem m inner join dept d on m.dept_no = d.dept_no"
+				+ " WHERE m.mem_id = '" + tempVo.getMem_id() + "'";
 
 		Connection conn = null;
 		Statement stmt = null;
@@ -215,7 +216,8 @@ public class MemberDAO {
 				mVo.setMem_hp(rs.getString("mem_hp"));
 				mVo.setMem_posi(rs.getString("mem_posi"));
 				mVo.setMem_auth(rs.getString("mem_auth"));
-				mVo.setDept_no(rs.getInt("dept_no"));
+				mVo.setDept_no(rs.getInt("d.dept_no"));
+				mVo.setDept_name(rs.getString("d.dept_name"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

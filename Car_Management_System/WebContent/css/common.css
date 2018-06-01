@@ -236,7 +236,7 @@ a:hover {
 	font-weight : bold;
 }
 
-@media ( max-width : 700px) {
+@media ( max-width : 800px) {
 	.form_label>.label {
 		font-size: 12px;
 	}
@@ -276,6 +276,12 @@ a:hover {
 	}
 	.form_normal-td[colspan = "3"] .form_textbox {
 		width: 35%;
+	}
+	#roadAddress {
+		width: 80%;
+	}
+	#roadAddress-detail {
+		width: 60%;
 	}
 }
 
