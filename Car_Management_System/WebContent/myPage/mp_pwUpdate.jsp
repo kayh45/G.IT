@@ -32,7 +32,7 @@
 			<div class = "content_title-box">
 				<span class="glyphicon glyphicon-pencil" aria-hidden="true">
 				</span>
-				<p class = "content_title-text">비밀번호 수정</p>
+				<p class = "content_title-text">비밀번호 변경</p>
 			</div>
 			<form method = "post" action = "member.do?command=mypage_pwupdate" name = "frm">
 			<div class = "content_cont-box">

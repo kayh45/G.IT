@@ -1,0 +1,30 @@
+.mp_title {
+	margin : 5px 7px;
+	font-size : 18px;
+	font-weight : bold;
+}
+.info_list {
+	margin : 7px;
+}
+.info_list li {
+	list-style : none outside;
+	padding : 5px 7%;
+}
+.info_value {
+	float : right;
+	font-size : 17px;
+}
+.my-info {
+	border-top : 1px solid #ddd;
+	text-align: right !important;
+	padding-top : 2px;
+	margin : 2px 7%;
+}
+.my-info button{
+	width : auto !important;
+	font-size : 16px !important;
+	margin : 5px !important; 
+}
+#cmm_btn {
+	background-color: #b5dcf1;
+}

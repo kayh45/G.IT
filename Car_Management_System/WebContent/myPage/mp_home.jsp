@@ -9,6 +9,7 @@
 <meta name="viewport" content="width=device-width, user-scalable=no">
 <title>법인차량관리시스템</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/mypage.css" rel="stylesheet">
 <script type = "text/javascript" src="js/bootstrap.js"></script>
 <script type = "text/javascript" src="js/common.js"></script>
 </head>
@@ -22,7 +23,45 @@
 			<%@ include file = "sideMenu.jsp" %>
 		</aside>
 		<section id = "content">
-			<h1>이곳에 컨텐츠를 넣어주세요</h1>
+			<div class = "content_title-box">
+				<span class="glyphicon glyphicon-home" aria-hidden="true">
+				</span>
+				<p class = "content_title-text">마이 페이지</p>
+			</div>
+			<div class = "row">
+				<div class = "col-xs-12 col-md-6">
+					<div class = "content_cont-box">
+						<span class = "mp_title">내 정보</span>
+						<ul class = "info_list">
+							<li>
+								<b>아이디</b>
+								<span class = "info_value">${LoginUser.mem_id}</span>	
+							</li>
+							<li>
+								<b>이름</b>	
+								<span class = "info_value">${LoginUser.mem_name}</span>
+							</li>
+							<li>
+								<b>부서</b>	
+								<span class = "info_value">${LoginUser.dept_name}</span>
+							</li>
+							<li>
+								<b>직책</b>	
+								<span class = "info_value">${LoginUser.mem_posi}</span>
+							</li>
+						</ul>
+						<div class = "form_btn-group my-info">
+							<button id = "cmm_btn" type = "button" onclick = "location.href='member.do?command=mypage_infoupdate_form'">내 정보 수정</button>
+							<button id = "cmm_btn" type = "button" onclick = "location.href='member.do?command=mypage_pwupdate_form'">비밀번호 변경</button>
+						</div>
+					</div>
+				</div>
+				<div class = "col-xs-12 col-md-6">		
+					<div class = "content_cont-box">
+						<span class = "mp_title">내 배차내역</span>
+					</div>
+				</div>										
+			</div>
 		</section>
 	</section>
 </body>
