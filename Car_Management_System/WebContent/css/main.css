@@ -1,0 +1,60 @@
+.main_image {
+	height : 320px;
+}
+.main_cont-box {
+	border: none;
+	background-color: #5b5b5b;
+	color : #fff;
+	margin : 10px;
+	height: auto;
+}
+#content > .row {
+	height : auto;
+	overflow: hidden;	
+}
+.main_pic {
+	background-image: url('../img/plani.jpg');
+	background-position : center center;
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin : 10px;
+	height: 320px;
+}
+.main_title-text {
+	font-size : 18px;
+	font-weight : bold;
+	padding : 10px 15px;
+	border-bottom : 3px dashed #ddd;
+}
+.main_car {
+	padding : 30px;
+	padding-bottom : 10px;
+	text-align: center;
+}
+.main_car p {
+	font-weight : bold;
+}
+.car-status {
+	margin-top : 3px;
+	font-size : 16px;
+}
+.car-status-number {
+	font-size : 20px;
+}
+.img_car_info{
+	width : 100px;
+}
+.cont-bottom {
+	float : right;
+	padding : 5px;
+	margin-top : 10px;
+	cursor: pointer;
+}
+@media ( max-width : 800px) {
+	.main_cont-box {
+		margin : 0 10px;
+	}
+
+}

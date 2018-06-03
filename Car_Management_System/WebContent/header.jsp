@@ -42,14 +42,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="main.do"><img alt="Brand" src="img/plani_logo.png"></a>
+      <a class="navbar-brand" href="main.do?command=main"><img alt="Brand" src="img/plani_logo.png"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <c:if test = "${LoginUser.mem_auth eq 1}">
       <ul class="nav navbar-nav">
         <li class="dropdown">
-           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">법인 차 관리 <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">법인 차 관리 <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="car.do?command=car_write_form">법인 차 등록</a></li>
             <li><a href="cent.do?command=cent_write_form">정비소 등록</a></li>
@@ -58,13 +59,14 @@
           </ul>
         </li>
       </ul>
+      </c:if>
       <ul class="nav navbar-nav">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">배차 관리 <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="place.do?command=place_write_form" role="button">장소 등록</a></li>
             <li><a href="course.do?command=course_write_form" role="button">경로 등록</a></li>
-            <li><a href="course.do?command=reserve_write_form">배차 등록</a></li>
+            <li><a href="rsrv.do?command=reserve_write_form">배차 등록</a></li>
           </ul>
         </li>
       </ul>
@@ -77,6 +79,7 @@
           </ul>
         </li>
       </ul>
+      <c:if test = "${LoginUser.mem_auth eq 1}">
       <ul class="nav navbar-nav">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">기초 정보 관리 <span class="caret"></span></a>
@@ -86,7 +89,8 @@
             <li><a href="member.do?command=member_search_form">사원 정보 조회</a></li>
           </ul>
         </li>
-      </ul>      
+      </ul>  
+      </c:if>    
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
