@@ -187,8 +187,58 @@ public class ReserveDAO {
 			DBManager.close(conn, pstmt);
 		}
 	}
+
+	public void deleteReserve(int driv_no) {
+		
+		String sql = "DELETE FROM driv WHERE driv_no = ?";
+		
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, driv_no);	
+			
+			pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+		
+	}
 	
-	
-	
+	public DrivVO selectOneDrive(int driv_no) {
+		String sql = "SELECT *, date(driv_s_date) as date FROM driv WHERE driv_no = ?";
+		
+		DrivVO dVo = new DrivVO();
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, driv_no);	
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				dVo.setCar_reg_no(rs.getString("car_reg_no"));
+				dVo.setDate(rs.getString("date"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+		return dVo;
+	}
+
 	
 }

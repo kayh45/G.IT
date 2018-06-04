@@ -33,6 +33,7 @@ public class DrivVO extends MemberVO {
 	
 	private int s_hour;
 	private int e_hour;
+	private String date;
 	
 	public int getDriv_no() {
 		return driv_no;
@@ -117,6 +118,12 @@ public class DrivVO extends MemberVO {
 	}
 	public void setE_hour(int e_hour) {
 		this.e_hour = e_hour;
+	}
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
 	}
 	@Override
 	public String toString() {

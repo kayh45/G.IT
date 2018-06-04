@@ -1,6 +1,10 @@
 .main_image {
 	height : 320px;
 }
+body {
+	max-width: 100%;
+	overflow-x: hidden;
+}
 .main_cont-box {
 	border: none;
 	background-color: #5b5b5b;
@@ -58,6 +62,13 @@
 .qLink_button {
 	text-align: center;
 	display: inline-block;
+	cursor: pointer;
+}
+.qLink_button:hover {
+	border-color : #25a3ed !important;
+}
+.qLink_button:ACTIVE {
+	background-color : #25a3ed !important;
 }
 .qLink_button img{
 	width : 100px;
@@ -78,16 +89,13 @@
 
 @media ( max-width : 800px) {
 	.main_cont-box {
-		margin : 0 10px;
+		margin : 5px 10px;
 	}
 	.qLink_button img{
 		width : 100px;
 	}
-	.qLink_grp {
-	}
 	.qLink_grp>div {
 		padding : 0;
-		margin : 0 -5px;
 	}
 	.qLink_grp>div>div{
 		padding :  10% 15%;

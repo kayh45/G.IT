@@ -81,3 +81,14 @@ function rsrvDateCheck() {
 	}
 }
 
+function rsrvDelete(driv_no) {
+	var isCorrect = confirm("배차 등록을 취소하시겠습니까?");
+	if (isCorrect == true) {
+		var url = "rsrv.do?&command=reserve_delete&driv_no="
+				+ driv_no;
+		location.replace(url);
+	} else {
+		return false;
+	}
+}
+
