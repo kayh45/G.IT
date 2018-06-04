@@ -54,7 +54,6 @@ public class ReserveWriteAction implements Action{
 		dVoList = rDao.oneDaySchedule(date, car_reg_no);
 		String message = date + " | " + min +"시 ~ " + (max+1) + "시 | " + car_reg_no +" 차량 " + "등록 완료";
 				
-	
 		request.setAttribute("date", date);
 		request.setAttribute("car_reg_no", car_reg_no);
 		request.setAttribute("dVoList", dVoList);	

@@ -48,6 +48,7 @@ import com.plani.cms.controller.action.repa.RepaCentWriteCheckFormAction;
 import com.plani.cms.controller.action.repa.RepaSearchFormAction;
 import com.plani.cms.controller.action.repa.RepaWriteAction;
 import com.plani.cms.controller.action.repa.RepaWriteFormAction;
+import com.plani.cms.controller.action.reserve.ReserveDeleteAction;
 import com.plani.cms.controller.action.reserve.ReserveViewScheduleAction;
 import com.plani.cms.controller.action.reserve.ReserveWriteAction;
 import com.plani.cms.controller.action.reserve.ReserveWriteFormAction;
@@ -194,8 +195,11 @@ public class ActionFactory {
 			action = new ReserveWriteAction();
 		} else if (command.equals("reserve_view_schedule")) {
 			action = new ReserveViewScheduleAction();
-			/* 배차관리 기능 구현 end */
-		} /* 정비내역 등록 구현 start */
+		} else if (command.equals("reserve_delete")) {
+			action = new ReserveDeleteAction();
+		}		
+		/* 배차관리 기능 구현 end */
+		/* 정비내역 등록 구현 start */
 		else if (command.equals("repa_write")) {
 			action = new RepaWriteAction();
 		} else if (command.equals("repa_write_form")) {

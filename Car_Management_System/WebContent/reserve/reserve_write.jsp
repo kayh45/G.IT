@@ -99,13 +99,15 @@
 			<table class  = "table table-bordered">	
 				<thead><tr>
 					<th>사용 시간</th>
-					<th>등록인</th>
-					<th class = "schedule_choice">사용 시간 선택</th>
+					<th>등록 사원</th>
+					<th class = "schedule_choice">비고</th>
 				</tr></thead>	
 				<c:if test="${car_reg_no ne null}">		
 				<%
 					List<DrivVO> dList = new ArrayList<DrivVO>();
 					DrivVO tempVO = new DrivVO();
+					MemberVO logSession = (MemberVO)session.getAttribute("LoginUser");
+					String mem_id = logSession.getMem_id();
 					
 					dList = (List<DrivVO>) request.getAttribute("dVoList");
 					
@@ -121,8 +123,7 @@
 						dif = 0;
 						System.out.println(hour + " " + hourSub);
 						if(hour > hourSub) {
-							for(int hs = hourSub; hs < hour; hs+=2) {
-								
+							for(int hs = hourSub; hs < hour; hs+=2) {								
 								out.print("<tr>");
 								out.print("<td class = \"schedule_td\">");
 								out.print(hourSub + "시  00분 ~ " +(hourSub+1) + "시 59분");
@@ -152,10 +153,21 @@
 						if(isIn == true) {
 							dif = tempVO.getE_hour() - tempVO.getS_hour();								
 							out.print("<td class = \"schedule_td\" rowspan = " + dif/2 + ">");
-							out.print(tempVO.getMem_id());
-							out.print("</td>");
-							out.print("<td class = \"schedule_td\" rowspan = " + dif/2 + ">");
-							out.print("선택 불가");
+							
+							if(tempVO.getMem_id().equals(mem_id)){ // 위에서 정의함
+								out.print(tempVO.getMem_id());
+								out.print("<span class=\"its-mine\">me</span>");
+								out.print("</td>");
+								out.print("<td class = \"schedule_td btn-in\" rowspan = " + dif/2 + ">");								
+								out.print("<button type = \"button\" class = \"rsrv_etc_btn wrt_btn\">운행 일지 작성</button>");
+								out.print("<button onclick =\"rsrvDelete(" + tempVO.getDriv_no() + ")\" type = \"button\" class = \"rsrv_etc_btn cnl_btn\">등록 취소</button>");
+							}else {
+								out.print(tempVO.getMem_id());
+								out.print("</td>");
+								out.print("<td class = \"schedule_td btn-in\" rowspan = " + dif/2 + ">");								
+								out.print("<button class = \"rsrv_etc_btn no-btn\" disabled>이미 예약됨</button>");
+							}
+							
 							out.print("</td>");
 							out.print("</tr>");
 							hour += 2*(dif/2);
@@ -163,7 +175,7 @@
 							jp++;
 						} else {
 							if(dif <= 2){
-								out.print("<td class = \"schedule_td\">-</td>");
+								out.print("<td class = \"schedule_td\"></td>");
 								out.print("<td class = \"schedule_td_selectable\">");
 								out.print("<div class=\"segmented-control\" style=\"width: 100%;\">");
 								out.print("<input onchange = \"checkboxControl(" + hour + ");\" type = \"checkbox\" name = \"time[]\" id = \"chk_" + hour + "\" value = \""+ hour +"\">");
