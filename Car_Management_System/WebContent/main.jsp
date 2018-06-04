@@ -46,27 +46,29 @@
 					</div>
 				</div>
 			</div>
-			<div class = "row">
-				<div class = "col-md-3 col-xs-6">
-					<div class = "content_cont-box">
+			<div class = "main_cont-box no-bg">
+			<div class = "row qLink_grp">
+				<div class = "col-md-3 col-xs-5">
+					<div class = "content_cont-box qLink_button">
 						<img src = "img/temp_icon.png" width = "200">
 					</div>
 				</div>
-				<div class = "col-md-3 col-xs-6">
-					<div class = "content_cont-box">
+				<div class = "col-md-3 col-xs-5">
+					<div class = "content_cont-box qLink_button">
 						<img src = "img/temp_icon.png" width = "200">
 					</div>
 				</div>
-				<div class = "col-md-3 col-xs-6">
-					<div class = "content_cont-box">
+				<div class = "col-md-3 col-xs-5">
+					<div class = "content_cont-box qLink_button">
 						<img src = "img/temp_icon.png" width = "200">
 					</div>
 				</div>
-				<div class = "col-md-3 col-xs-6">
-					<div class = "content_cont-box">
+				<div class = "col-md-3 col-xs-5">
+					<div class = "content_cont-box qLink_button">
 						<img src = "img/temp_icon.png" width = "200">
 					</div>
 				</div>
+			</div>
 			</div>
 		</section>
 	</section>

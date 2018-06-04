@@ -52,9 +52,32 @@
 	margin-top : 10px;
 	cursor: pointer;
 }
+.qLink_grp {
+	text-align: center;
+}
+.qLink_button {
+	text-align: center;
+	display: inline-block;
+}
+.qLink_button img{
+	width : 100px;
+}
+.no-bg {
+	background-color: inherit;
+}
+
+
 @media ( max-width : 800px) {
 	.main_cont-box {
 		margin : 0 10px;
+	}
+	.qLink_button img{
+		width : 60px;
+	}
+	.qLink_grp>div{
+		padding-right : 0 !important;
+		padding-left : 0 !important;
+		padding : 5px 20px;
 	}
 
 }
