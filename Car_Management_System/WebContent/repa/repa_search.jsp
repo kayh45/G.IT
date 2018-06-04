@@ -14,8 +14,8 @@
 <script type = "text/javascript" src="js/bootstrap.js"></script>
 <script type = "text/javascript" src="js/common.js"></script>
 <script type = "text/javascript" src="js/rsrv.js"></script>
-
 </head>
+
 <body>
 	<header> <%@ include file="../header.jsp"%>
 	<!-- 헤더 --> </header>
@@ -23,7 +23,7 @@
 	<script type = "text/javascript" src="js/jquery-ui.js"></script>
 		<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
 	 <section id="content">
-	<form name="frm" method="post" action="repa.do?command=repa_write">
+	<form name="frm" method="post" action="repa.do?command=repa_search_form">
 		<div class="content_title-box">
 			<span class="glyphicon glyphicon-pencil" aria-hidden="true"> </span>
 			<p class="content_title-text">정비 내역 조회</p>
@@ -58,35 +58,6 @@
 					</script>										
 					</td>
 			</tr>
-			<!-- <tr>
-				<td class="form_label">
-					<p class="label">정비 시작 날짜</p>
-					<p class="must">*</p>
-				</td>
-				<td>				
-					<div id = "repa_s_date">
-						<input type="text" class="form_textbox" name = "repa_s_date" id="repa_s_date">
-					</div>
-					
-					
-					<script type="text/javascript">
-					$('#repa_s_date input').datepicker({dateFormat: "yyyy-mm-dd"});
-					</script>	
-				
-				</td>
-				<td class="form_label">
-					<p class="label">정비 종료 날짜</p>
-					<p class="must">*</p>
-				</td>
-				<td class="form_normal-td">
-					<div id = "repa_e_date">
-						<input type="text" class="form_textbox" name = "repa_e_date" id="repa_e_date">
-					</div>
-					<script type="text/javascript">
-						$('#repa_e_date input').datepicker({dateFormat: "yyyy-mm-dd"});
-					</script>										
-					</td>
-			</tr> -->
 				
 				<tr>
 					<td class="form_label">
@@ -120,19 +91,40 @@
 				</tr>
 			</table>
 			<div class="form_btn-group1">
-		<button id="ins_btn" type="button" onclick = "change()">조회</button>
-		
+		<button id="ins_btn" type="submit" onclick="show()">조회</button>
 		</div>
-			
-		<%-- 	
-			<div id="paycar" style="display: NONE;">
-				<jsp:include page="repa_search_sum.jsp" flush="true" />
-			</div> --%>
-			
-			
 		</div>
+			<div class = "content_cont-box"
+			id="content_cont-box1" style=display:block;>
+				<p class = "search-result_label" >조회 리스트</p>
+
+				<table class = "table table-condensed table-bordered" >					
+					<thead>
+					<tr>
+						<th class = "number_th">차량 등록 번호</th>
+						<th>정비 시작 날짜</th>
+						<th>정비 종료 날짜</th>
+						<th>수리 비용</th>
+					</tr>
+					<thead>
+					<c:forEach var = "repa" items = "${repaAllList}">
+				<tr>
+						<td>${repa.car_reg_no}</td>
+						<td><a onclick = "repaCarSelect('${car.car_reg_no}')">${repa.repa_s_date}</a></td>		
+						<td><a onclick = "repaCarSelect('${car.car_reg_no}')">${repa.repa_e_date}</a></td>		
+						<td>${repa.repa_fee}</td>
+					</tr>					
+				
+					</c:forEach>
+				</table>
 			
+				
+				
+			</div>
 	</form>
-	</section> </section>
+	</section> 
+	</section>
+
+		
 </body>
 </html>

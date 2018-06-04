@@ -2,7 +2,10 @@
  정비등록 스크립트
  */
 
-
+  function show(){
+        document.getElementById("content_cont-box1").style.display ='block';
+    }
+    
 
 function carNoCheck() {
 
@@ -52,6 +55,7 @@ function repaMemSelect(mem_no, mem_name) {
 			 * 정비소명 을 검색하고 정비소명을 누르면 해당 정비소의 정비소명과 정비번호가 부모화면의 폼으로 들어간다.
 			 * 
 			 */
+			
 			opener.frm.car_reg_no.value = car_reg_no;
 		
 			self.close();

@@ -196,6 +196,7 @@ public class ActionFactory {
 			action = new ReserveViewScheduleAction();
 			/* 배차관리 기능 구현 end */
 		} /* 정비내역 등록 구현 start */
+		
 		else if (command.equals("repa_write")) {
 			action = new RepaWriteAction();
 		} else if (command.equals("repa_write_form")) {

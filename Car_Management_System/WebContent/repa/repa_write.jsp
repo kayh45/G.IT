@@ -114,7 +114,7 @@
 				</tr>
 				<tr>
 					<td class="form_label">
-						<p class="label">정비내용1</p>
+						<p class="label">정비내용</p>
 					</td>
 					<td class="form_normal-td" colspan="3"><textarea
 							class="form_textarea" id="repa_cont" name="repa_cont" rows="4"
