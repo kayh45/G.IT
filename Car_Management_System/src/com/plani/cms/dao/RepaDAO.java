@@ -93,6 +93,45 @@ public class RepaDAO {
 		}
 		return list;	
 	}
+	
+	public List<RepaVO> selectDateCentReg(String repa_s_date,String repa_e_date,String cent_no,String car_reg_no){
+		String sql = "select * from repa where repa_s_date >='" + repa_s_date + "'and repa_e_date<='" + repa_e_date + "'and cent_no='" + cent_no + "'and car_reg_no='" + car_reg_no + "' ";
+
+		List<RepaVO> list = new ArrayList<RepaVO>();
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = DBManager.getConnection();
+			stmt = conn.createStatement();
+
+			rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+
+				RepaVO rVo = new RepaVO();
+
+				rVo.setRepa_no(rs.getInt("repa_no"));
+				rVo.setCent_no(rs.getInt("cent_no"));
+				rVo.setCar_reg_no(rs.getString("car_reg_no"));
+				rVo.setMechanic_name(rs.getString("mechanic_name"));
+				rVo.setRepa_s_date(rs.getString("repa_s_date"));
+				rVo.setRepa_e_date(rs.getString("repa_e_date"));
+				rVo.setRepa_cont(rs.getString("repa_cont"));
+				rVo.setRepa_fee(rs.getInt("repa_fee"));
+				list.add(rVo);
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, stmt, rs);
+		}
+		return list;	
+	}
+	
+	
 	public List<RepaVO> selectDateReg(String repa_s_date,String repa_e_date,String car_reg_no){
 		String sql = "select * from repa where repa_s_date >='" + repa_s_date + "'and repa_e_date<='" + repa_e_date + "'and car_reg_no='" + car_reg_no + "' ";
 

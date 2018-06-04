@@ -21,23 +21,23 @@ public class RepaSearchFormAction implements Action {
 		String repa_e_date = request.getParameter("repa_e_date");
 		String car_reg_no = request.getParameter("car_reg_no");
 		String cent_no = request.getParameter("cent_no");
+		String cent_name = request.getParameter("cent_name");
 		
 		System.out.println("배차 신청 날짜 :"+ repa_s_date);
 		System.out.println("배차 종료 날짜 :"+ repa_e_date);
 		System.out.println("정비소번호 :"+ cent_no);
 		System.out.println("차량 번호 :"+ car_reg_no);
+		System.out.println("정비소 명 :"+ cent_name);
+		
+		request.setAttribute("repa_s_date", repa_s_date);
+		request.setAttribute("repa_e_date", repa_e_date);
+		request.setAttribute("cent_no", cent_no);
+		request.setAttribute("car_reg_no", car_reg_no);
+		request.setAttribute("cent_name", cent_name);
 		
 		RepaDAO rDao = RepaDAO.getInstance();
 
-		/*int result = rDao.confirmCarNo(car_reg_no);
 
-		System.out.println(result);*/
-/*
-		request.setAttribute("car_reg_no", car_reg_no);
-		request.setAttribute("result", result);*/
-
-		/* ------------------ car 체크----------------------- */
-	
 		if(car_reg_no==null && cent_no==null&& repa_s_date==null && repa_e_date==null ){
 			//최초 실행 시 모두 널 값
 		}
@@ -56,8 +56,8 @@ public class RepaSearchFormAction implements Action {
 		}
 		/*List<RepaVO> repaList = rDao.carSearchByNameLike(car_reg_no);
 		request.setAttribute("repaList", repaList);*/
-		else{
-			List<RepaVO> repaAllList = rDao.selectAllCus();
+		else{ //모두 입력 시 
+			List<RepaVO> repaAllList = rDao.selectDateCentReg(repa_s_date,repa_e_date,cent_no,car_reg_no);
 		request.setAttribute("repaAllList", repaAllList);
 		}
 		

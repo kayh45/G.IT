@@ -2,10 +2,46 @@
  정비등록 스크립트
  */
 
-  function show(){
-        document.getElementById("content_cont-box1").style.display ='block';
+
+
+  function repaSelect(name){
+	/*  window.opener.location.href="repa.do?command=repa_write_form";*/
+	  var url = "repa.do?command=repa_write_form"
+		  window.open(url);
+		
+	  opener.frm.repa_no.value = document.getElementsByName(name + "repa_no")[0].value;
+		opener.frm.car_reg_no.value = document.getElementsByName(name + "car_reg_no")[0].value;
+		
+		/*
+		opener.frm.s_place_name.value = document.getElementsByName(name + "s_place_name")[0].value;
+		opener.frm.s_place_addr.value = document.getElementsByName(name + "s_place_addr")[0].value;
+		opener.frm.e_place_no.value = document.getElementsByName(name + "e_place_no")[0].value;
+		opener.frm.e_place_name.value = document.getElementsByName(name + "e_place_name")[0].value;
+		opener.frm.e_place_addr.value = document.getElementsByName(name + "e_place_addr")[0].value;
+		opener.frm.cour_purpo.value = document.getElementsByName(name + "cour_purpo")[0].value;
+		opener.frm.distance.value = document.getElementsByName(name + "distance")[0].value;
+		opener.document.getElementById("mod_btn").removeAttribute('disabled');
+		opener.document.getElementById("del_btn").removeAttribute('disabled');
+		opener.document.getElementById("ins_btn").disabled = "true";*/
+	  
+	  
     }
-    
+
+  function repaDateCheck() {
+		var repa_s_date = document.frm.repa_s_date.value;	
+		var repa_e_date = document.frm.repa_e_date.value;	
+		if(repa_s_date=="" || repa_s_date.length != 10 || repa_e_date=="" || repa_e_date.length != 10) {
+			alert("날짜를 입력해주세요");
+			document.frm.repa_s_date.value.focus();
+			return false;
+		}else {
+			return true;
+		}
+	}
+  
+ 
+  
+  
 
 function carNoCheck() {
 
