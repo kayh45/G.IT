@@ -48,24 +48,28 @@
 			</div>
 			<div class = "main_cont-box no-bg">
 			<div class = "row qLink_grp">
-				<div class = "col-md-3 col-xs-5">
+				<div class = "col-md-3 col-xs-6">
 					<div class = "content_cont-box qLink_button">
 						<img src = "img/temp_icon.png" width = "200">
+						<p>장소 등록</p>
 					</div>
 				</div>
-				<div class = "col-md-3 col-xs-5">
+				<div class = "col-md-3 col-xs-6">
 					<div class = "content_cont-box qLink_button">
 						<img src = "img/temp_icon.png" width = "200">
+						<p>법인 차 등록</p>
 					</div>
 				</div>
-				<div class = "col-md-3 col-xs-5">
+				<div class = "col-md-3 col-xs-6">
 					<div class = "content_cont-box qLink_button">
 						<img src = "img/temp_icon.png" width = "200">
+						<p>사원 등록</p>
 					</div>
 				</div>
-				<div class = "col-md-3 col-xs-5">
+				<div class = "col-md-3 col-xs-6">
 					<div class = "content_cont-box qLink_button">
 						<img src = "img/temp_icon.png" width = "200">
+						<p>정비소 등록</p>
 					</div>
 				</div>
 			</div>
