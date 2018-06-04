@@ -25,7 +25,6 @@ function eplaceNameCheck() {
 
 
 function splaceSelect(name) {
-	var frmName = document.getElementsByName(name + "s_place_name")[0].value;	
 	opener.frm.cour_no.value = document.getElementsByName(name + "cour_no")[0].value;
 	opener.frm.s_place_no.value = document.getElementsByName(name + "s_place_no")[0].value;
 	opener.frm.s_place_name.value = document.getElementsByName(name + "s_place_name")[0].value;

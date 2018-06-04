@@ -58,14 +58,13 @@
 					<c:forEach var = "cour" items = "${s_placeList}">
 				<tr>
 						<td>${cour.s_place_no}</td>
-						<td><a onclick = "splaceSelect('${cour.s_place_no}')">${cour.s_place_name}</a></td>		
+						<td><a onclick = "splaceSelect('${cour.cour_no}')">${cour.s_place_name}</a></td>		
 						<td>${cour.s_place_addr }</td>		
 						<td>${cour.e_place_no}</td>
 						<td>${cour.e_place_name}</td>		
 						<td>${cour.e_place_addr }</td>		
 					</tr>	
-					
-									
+													
 					<input type = "hidden" name = "${cour.cour_no}cour_no" value  = "${cour.cour_no}">
 					<input type = "hidden" name = "${cour.cour_no}s_place_no" value  = "${cour.s_place_no}">
 					<input type = "hidden" name = "${cour.cour_no}s_place_name" value  = "${cour.s_place_name}">
