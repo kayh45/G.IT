@@ -9,7 +9,7 @@ import com.plani.cms.controller.action.car.CarModifyAction;
 import com.plani.cms.controller.action.car.CarWriteAction;
 import com.plani.cms.controller.action.car.CarWriteCheckFormAction;
 import com.plani.cms.controller.action.car.CarWriteFormAction;
-
+import com.plani.cms.controller.action.carlog.CarlogSelectFormAction;
 import com.plani.cms.controller.action.carlog.CarlogWriteAction;
 import com.plani.cms.controller.action.carlog.CarlogWriteFormAction;
 import com.plani.cms.controller.action.cent.CentDeleteAction;
@@ -221,9 +221,9 @@ public class ActionFactory {
 		/* 운행일지 기능 구현 start */
 		} else if (command.equals("carlog_write_form")) {
 			action = new CarlogWriteFormAction();
-		}
-
-
+		} else if (command.equals("carlog_select_form")) {
+			action = new CarlogSelectFormAction();
+		} 
 		return action;
 
 	}
