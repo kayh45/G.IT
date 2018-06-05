@@ -11,6 +11,22 @@ function carNoCheck() {
                "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
 }
 
+function carSearch() {
+	   document.frm.car_reg_no_ok.value = 0; // 중복검사 여부를 0으로 초기화
+	   var url = "car.do?popup=no&command=car_search&car_reg_no="
+	         + encodeURIComponent(document.frm.car_reg_no.value);
+	   window.open(url, "_blank_1","toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");	   
+}
+
+function carSrchSelect(car_reg_no) {
+	
+	   opener.frm.car_reg_no.value = car_reg_no;
+	   opener.frm.car_reg_no_ok.value = 1;
+	   opener.frm.car_usable_no.value = car_reg_no;
+	   
+	   self.close();
+}
+
 function useCarNo() {
 
    opener.frm.car_reg_no.value = document.frm.car_reg_no.value;

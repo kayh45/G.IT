@@ -54,6 +54,7 @@
 			<p class="content_title-text">법인 차 등록</p>
 		</div>
 		<div class="content_cont-box">
+			
 			<p class="content_cont-text">차량 등록 번호</p>
 			<input type="text" class="form_textbox" name="car_reg_no">
 						<input type = "hidden" name = "car_reg_no_ok" class = "form_textbox">

@@ -8,11 +8,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, user-scalable=no">
 <title>운행 일지 작성 :: 법인차량관리시스템</title>
-<script type="text/javascript" src="../js/bootstrap.js"></script>
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="js/moment.js"></script>
 <script type="text/javascript" src="js/member.js?ver=3"></script>
+<script type="text/javascript" src="js/car.js?ver=3"></script>
 <script type="text/javascript" src="js/common.js"></script>
+<link href="css/jquery-ui.css" rel="stylesheet">
+<link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 </head>
 <body>
 	<header> <%@ include file="../header.jsp"%>
@@ -32,20 +37,47 @@
 		<span class="glyphicon glyphicon-pencil" aria-hidden="true"> </span>
 		<p class="content_title-text">운행일지 자동작성</p>
 	</div>
+	<form name = "frm" action = "post">
 	<div class = "content_cont-box">
-		
+		<p class="content_cont-text">차량 등록 번호</p>
+			<input type="text" class="form_textbox" name="car_reg_no">
+						<input type = "hidden" name = "car_reg_no_ok" class = "form_textbox">
+						<input type = "hidden" name = "car_usable_no">
+			<button type="button" onClick="carSearch()" class="quiet_btn" id="idCheck">
+				<span id="search-button" class="glyphicon glyphicon-search"
+					aria-hidden="true"></span>
+			</button>
 	</div>
-	
-	<div class="form_btn-group">
-		<button id = "ins_btn" type = "submit" onclick = "return deptWriteCheck()">등록</button>
-					<button id = "mod_btn" type = "submit" onclick = "return deptWriteCheck()" disabled>수정</button>
-					<button id = "del_btn" type = "button" onclick = "deptDelete()" disabled>삭제</button>
-	</div>
-	</section> </section>
+	<div class = "content_cont-box">
+		<table class="table table-bordered" id="form_table">
+			<tr>
+				<td class="form_label">
+					<p class="label">일지 작성기간</p>
+					<p class="must">*</p>
+				</td>
+				<td class="form_normal-td">
+					<div id="st_date">
+						<input type="text" class="form_textbox" name="st_date">
+					</div> 
+					<div id="ed_date">
+						<input type="text" class="form_textbox" name="ed_date">
+					</div> 
+					<script type="text/javascript">
+				        $('#st_date input').datepicker({dateFormat : "yy-mm-dd"});
+					</script>
+				</td>
+				<td class="form_label">
+					<p class="label">차종</p>
+					<p class="must">*</p>
+				</td>
+				<td class="form_normal-td">
+					<input type="text" class="form_textbox" name="car_model">
+				</td>
+			</tr>
+		</table>
+	</div>	
+	</form>
+	</section> 
+	</section>
 </body>
 </html>
-<!-- 
-TODO 
-- 이미 저장되어있는 정보 가져오는 부분 만들기 
-- 모바일에 맞게 CSS등 수정
--->
