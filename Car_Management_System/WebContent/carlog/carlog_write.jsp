@@ -130,7 +130,7 @@
 					<tr>
 						<td class="form_label">
 							<p class="label">경로 목적</p>
-							<p class="must">*</p>
+							
 						</td>
 						<td colspan="4"><select class="form_textbox"
 							name="cour_purpo">
@@ -171,7 +171,7 @@
 							</td>
 							<td class="form_normal-td" colspan="3">
 								<div class="radio-group">
-									<input type="radio" value="0" name="card_divi" checked>법인카드
+									<input type="radio" value="0" name="card_divi">법인카드
 									<input type="radio" value="1" name="card_divi">개인카드 <input
 										type="radio" value="2" name="card_divi">미사용
 
@@ -185,7 +185,7 @@
 							</td>
 							<td class="form_normal-td" colspan="3">
 								<div class="radio-group">
-									<input type="checkbox" value="0" name="oil_fee" checked>유류비
+									<input type="checkbox" value="0" name="oil_fee">유류비
 									<input name="oil_fee" type="text" class="form_textbox">원
 
 								</div>
@@ -195,7 +195,7 @@
 						<tr>
 							<td class="form_normal-td" colspan="3">
 								<div class="radio-group">
-									<input type="checkbox" value="0" name="trans_fee" checked>교통비
+									<input type="checkbox" value="0" name="trans_fee">교통비
 									<input name="" trans_fee"" type="text" class="form_textbox">원
 
 								</div>
@@ -207,7 +207,7 @@
 
 							<td class="form_normal-td" colspan="3">
 								<div class="radio-group">
-									<input type="checkbox" value="0" name="etc_fee" checked>기타(직접
+									<input type="checkbox" value="0" name="etc_fee">기타(직접
 									입력) <input name="etc_fee" type="text" class="form_textbox">
 									<input name="etc_fee" type="text" class="form_textbox">원
 
