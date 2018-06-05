@@ -34,3 +34,20 @@ function carlongSearch(){
 	var url = "carlog.do?command=carlog_select_form"
 	window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
 }
+
+function carlongCourseSearch(){
+	var url = "course.do?command=cour_select_form"
+		window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
+}
+
+function splaceSelect(name) {
+	opener.frm.cour_no.value = document.getElementsByName(name + "cour_no")[0].value;
+	opener.frm.s_place_name.value = document.getElementsByName(name + "s_place_name")[0].value;
+	opener.frm.e_place_name.value = document.getElementsByName(name + "e_place_name")[0].value;
+	opener.frm.driv_purpo.value = document.getElementsByName(name + "cour_purpo")[0].value;
+	opener.frm.distance.value = document.getElementsByName(name + "distance")[0].value;
+	opener.document.getElementById("mod_btn").removeAttribute('disabled');
+	opener.document.getElementById("del_btn").removeAttribute('disabled');
+	opener.document.getElementById("ins_btn").disabled = "true";
+	self.close();
+}

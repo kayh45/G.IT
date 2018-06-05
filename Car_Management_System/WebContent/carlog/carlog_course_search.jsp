@@ -29,18 +29,6 @@
 					장소명 &nbsp;
 					<input type = "text" name = "place_name" value = "${place_name}">
 					<button type = "submit" >조회</button>
-			
-		<%-- <c:if test = "${result==-1}">
-		<div class = "popup_box">
-		
-				<p>'${s_place_name}'은 등록 되어 있지 않습니다. <br> 등록 하시겠습니까? 
-					<button type = "button" onclick = "regiPlace()">등록</button> 
-				</p>
-		
-		</div>			
-		</c:if>
-		
-		<c:if test = "${result==1}"> --%>
 			<c:if test = "${place_name ne null}">
 			<div class = "popup_box">
 				<%-- <p class = "search-result_label">'${s_place_name}'에 대한 조회 결과입니다.</p> --%>
@@ -67,12 +55,13 @@
 					<input type = "hidden" name = "${cour.cour_no}cour_no" value  = "${cour.cour_no}">
 					<input type = "hidden" name = "${cour.cour_no}s_place_name" value  = "${cour.s_place_name}">
 					<input type = "hidden" name = "${cour.cour_no}e_place_name" value  = "${cour.e_place_name}">
-					<input type = "hidden" name = "${cour.cour_no}cour_purpo" value  = "${cour.cour_purpo}">
+					<input type = "hidden" name = "${cour.cour_no}driv_purpo" value  = "${cour.cour_purpo}">
 					<input type = "hidden" name = "${cour.cour_no}distance" value  = "${cour.distance}">
 					</c:forEach>
 				</table>
 			</div>
 			</c:if>
+			</form>
 </div>
 </body>
 </html>
