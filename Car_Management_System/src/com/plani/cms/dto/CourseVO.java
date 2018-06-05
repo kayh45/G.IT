@@ -7,6 +7,7 @@ public class CourseVO {
 	private int e_place;
 	private int distance;
 	private String cour_purpo;
+	
 	public int getCour_no() {
 		return cour_no;
 	}

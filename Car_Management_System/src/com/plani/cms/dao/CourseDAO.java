@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.plani.cms.dto.CourseVO;
+import com.plani.cms.dto.PlaceCourVO;
 import com.plani.cms.dto.PlaceVO;
 import com.plani.cms.util.DBManager;
 
@@ -96,7 +97,146 @@ public class CourseDAO {
 
 		}
 	}
+	public List<PlaceCourVO> courSplaceSearchByNameLike(String name) {
+		String sql ="select c.cour_no, c.s_place as 's_place', (select place_name from place where place_no = s_place) as 's_place_name', "
+				+ "(select place_addr from place where place_no=s_place) as 's_place_addr', c.e_place, "
+				+ "(select place_name from place where place_no = e_place) as 'e_place_name',"
+				+ "(select place_addr from place where place_no=e_place) as 'e_place_addr', c.cour_purpo,c.distance from cour c, place p "
+				+ "where p.place_no = c.s_place AND p.place_name like '%" + name + "%'";
+		
+
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+
+		List<PlaceCourVO> list = new ArrayList<PlaceCourVO>();
+		
+		try {
+			conn = DBManager.getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+
+				PlaceCourVO pcVo = new PlaceCourVO();
+				
+				pcVo.setCour_no(rs.getInt("cour_no"));
+				pcVo.setS_place_no(rs.getInt("s_place"));
+				pcVo.setS_place_name(rs.getString("s_place_name"));
+				pcVo.setS_place_addr(rs.getString("s_place_addr"));
+				pcVo.setE_place_no(rs.getInt("e_place"));
+				pcVo.setE_place_name(rs.getString("e_place_name"));
+				pcVo.setE_place_addr(rs.getString("e_place_addr"));
+				pcVo.setCour_purpo(rs.getString("cour_purpo"));
+				pcVo.setDistance(rs.getInt("distance"));
+
+			
+				
+
+				list.add(pcVo);
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, stmt, rs);
+		}
+		return list;
+	}
+	public List<PlaceCourVO> courEplaceSearchByNameLike(String name) {
+		String sql ="select c.cour_no, c.s_place as 's_place', (select place_name from place where place_no = s_place) as 's_place_name', "
+				+ "(select place_addr from place where place_no=s_place) as 's_place_addr', c.e_place, "
+				+ "(select place_name from place where place_no = e_place) as 'e_place_name',"
+				+ "(select place_addr from place where place_no=e_place) as 'e_place_addr', c.cour_purpo,c.distance from cour c, place p "
+				+ "where p.place_no = c.e_place AND p.place_name like '%" + name + "%'";
+		
+		
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		List<PlaceCourVO> list = new ArrayList<PlaceCourVO>();
+		
+		try {
+			conn = DBManager.getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			while (rs.next()) {
+				
+				PlaceCourVO pcVo = new PlaceCourVO();
+				
+				pcVo.setCour_no(rs.getInt("cour_no"));
+				pcVo.setS_place_no(rs.getInt("s_place"));
+				pcVo.setS_place_name(rs.getString("s_place_name"));
+				pcVo.setS_place_addr(rs.getString("s_place_addr"));
+				pcVo.setE_place_no(rs.getInt("e_place"));
+				pcVo.setE_place_name(rs.getString("e_place_name"));
+				pcVo.setE_place_addr(rs.getString("e_place_addr"));
+				pcVo.setCour_purpo(rs.getString("cour_purpo"));
+				pcVo.setDistance(rs.getInt("distance"));
+
+				
+				
+				
+				list.add(pcVo);
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, stmt, rs);
+		}
+		return list;
+	}
 	
+	public List<PlaceCourVO> courAllplaceSearchByNameLike(String name) {
+		String sql ="select c.cour_no, c.s_place as 's_place', (select place_name from place where place_no = s_place) as 's_place_name', "
+				+ "(select place_addr from place where place_no=s_place) as 's_place_addr', c.e_place, "
+				+ "(select place_name from place where place_no = e_place) as 'e_place_name',"
+				+ "(select place_addr from place where place_no=e_place) as 'e_place_addr', c.cour_purpo, c.distance from cour c, place p "
+				+ "where p.place_no = c.e_place";
+		
+		
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		List<PlaceCourVO> list = new ArrayList<PlaceCourVO>();
+		
+		try {
+			conn = DBManager.getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			while (rs.next()) {
+				
+				PlaceCourVO pcVo = new PlaceCourVO();
+				
+				pcVo.setCour_no(rs.getInt("cour_no"));
+				pcVo.setS_place_no(rs.getInt("s_place"));
+				pcVo.setS_place_name(rs.getString("s_place_name"));
+				pcVo.setS_place_addr(rs.getString("s_place_addr"));
+				pcVo.setE_place_no(rs.getInt("e_place"));
+				pcVo.setE_place_name(rs.getString("e_place_name"));
+				pcVo.setE_place_addr(rs.getString("e_place_addr"));
+				pcVo.setCour_purpo(rs.getString("cour_purpo"));
+				pcVo.setDistance(rs.getInt("distance"));
+
+				
+				
+				
+				list.add(pcVo);
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, stmt, rs);
+		}
+		return list;
+	}
+
 	public List<PlaceVO> placeSearchByNameLike(String name) {
 		/**
 		 * 사원 이름에 대한 부분일치 검색
@@ -138,6 +278,10 @@ public class CourseDAO {
 		}
 		return list;
 	}
+
+
+
+
 
 }
 

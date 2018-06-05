@@ -27,7 +27,7 @@
 				</td>
 				<td class="form_normal-td"><select name="bo_divi"
 					class="form_car_select">
-						<option value="0">선택</option>
+						<option value="2">선택</option>
 						<option value="0">일반 법인 차</option>
 						<option value="1">임원 법인 차</option>
 				</select></td>

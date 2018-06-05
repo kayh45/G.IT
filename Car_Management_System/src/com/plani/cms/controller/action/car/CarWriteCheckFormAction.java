@@ -43,6 +43,8 @@ public class CarWriteCheckFormAction implements Action {
 		request.setAttribute("carList", carList);
 		List<CarVO> carAllList = cDao.selectAllCar();
 		request.setAttribute("carAllList", carAllList);
+		
+		System.out.println(carAllList);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

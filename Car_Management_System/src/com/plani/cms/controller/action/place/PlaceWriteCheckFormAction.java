@@ -17,7 +17,13 @@ public class PlaceWriteCheckFormAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String place_name = new String(request.getParameter("place_name").getBytes("UTF-8"));
+		String place_name = null;
+		
+		if(request.getParameter("popup").equals("yes")) { // 한글로 입력 받았을 때 제대로 받을 수 있도록 하기 위함 
+			place_name = request.getParameter("place_name");
+		} else {
+			place_name = new String(request.getParameter("place_name").getBytes("8859_1"),"UTF-8");
+		}
 
         System.out.println("레그넘 = "+ place_name);
 		PlaceDAO pDao = PlaceDAO.getInstance();

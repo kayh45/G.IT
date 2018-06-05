@@ -34,7 +34,7 @@ public class PlaceWriteAction implements Action{
 		pDao.placeInsert(pVo);
 		
 		System.out.println("등록 성공");
-		request.setAttribute("message", "<strong>장소 등록 성공!</strong> &nbsp 등록된 장소이름 : ");
+		request.setAttribute("message", "<strong>장소 등록 성공!</strong> &nbsp 등록된 장소 이름 : " + place_name);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

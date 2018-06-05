@@ -10,7 +10,7 @@
 <link href="css/popup.css" rel="stylesheet">
 <link href="css/common.css" rel="stylesheet">
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<script type = "text/javascript" src="js/member.js?ver=3"></script>
+<script type = "text/javascript" src="js/member.js?ver=5"></script>
 <title>사원 검색</title>
 </head>
 <body>

@@ -9,8 +9,6 @@ import com.plani.cms.controller.action.car.CarModifyAction;
 import com.plani.cms.controller.action.car.CarWriteAction;
 import com.plani.cms.controller.action.car.CarWriteCheckFormAction;
 import com.plani.cms.controller.action.car.CarWriteFormAction;
-import com.plani.cms.controller.action.carlog.CarlogWriteAction;
-import com.plani.cms.controller.action.carlog.CarlogWriteFormAction;
 import com.plani.cms.controller.action.cent.CentDeleteAction;
 import com.plani.cms.controller.action.cent.CentModifyAction;
 import com.plani.cms.controller.action.cent.CentWriteAction;
@@ -19,6 +17,8 @@ import com.plani.cms.controller.action.cent.CentWriteFormAction;
 import com.plani.cms.controller.action.course.CourDeleteAction;
 import com.plani.cms.controller.action.course.CourModifyAction;
 import com.plani.cms.controller.action.course.CourSPlaceWriteCheckFormAction;
+import com.plani.cms.controller.action.course.CourSelectAction;
+import com.plani.cms.controller.action.course.CourSelectFormAction;
 import com.plani.cms.controller.action.course.CourWriteAction;
 import com.plani.cms.controller.action.course.CourWriteFormAction;
 import com.plani.cms.controller.action.member.DeptDeleteAction;
@@ -34,6 +34,10 @@ import com.plani.cms.controller.action.member.MemberSearchAction;
 import com.plani.cms.controller.action.member.MemberSearchFormAction;
 import com.plani.cms.controller.action.member.MemberWriteAction;
 import com.plani.cms.controller.action.member.MemberWriteFormAction;
+import com.plani.cms.controller.action.member.MyPageHomeAction;
+import com.plani.cms.controller.action.member.MyPageInfoUpdateFormAction;
+import com.plani.cms.controller.action.member.MyPagePwUpdateAction;
+import com.plani.cms.controller.action.member.MyPagePwUpdateFormAction;
 import com.plani.cms.controller.action.place.PlaceDeleteAction;
 import com.plani.cms.controller.action.place.PlaceModifyAction;
 import com.plani.cms.controller.action.place.PlaceWriteAction;
@@ -44,6 +48,7 @@ import com.plani.cms.controller.action.repa.RepaCentWriteCheckFormAction;
 import com.plani.cms.controller.action.repa.RepaSearchFormAction;
 import com.plani.cms.controller.action.repa.RepaWriteAction;
 import com.plani.cms.controller.action.repa.RepaWriteFormAction;
+import com.plani.cms.controller.action.reserve.ReserveDeleteAction;
 import com.plani.cms.controller.action.reserve.ReserveViewScheduleAction;
 import com.plani.cms.controller.action.reserve.ReserveWriteAction;
 import com.plani.cms.controller.action.reserve.ReserveWriteFormAction;
@@ -114,7 +119,15 @@ public class ActionFactory {
 			action = new DeptModifyAction();
 		} else if (command.equals("dept_delete")) {
 			action = new DeptDeleteAction();
-		}
+		} else if (command.equals("mypage_home")) {
+ 			action = new MyPageHomeAction();
+ 		} else if (command.equals("mypage_pwupdate_form")) {
+ 			action = new MyPagePwUpdateFormAction();
+		} else if (command.equals("mypage_pwupdate")) {
+			action = new MyPagePwUpdateAction();
+ 		} else if (command.equals("mypage_infoupdate_form")) {
+			action = new MyPageInfoUpdateFormAction();
+ 		}
 		/* 법인차 기능 구현 start */
 		else if (command.equals("car_write_form")) {
 			action = new CarWriteFormAction();
@@ -166,6 +179,10 @@ public class ActionFactory {
 				action = new CourDeleteAction();
 			}else if (command.equals("cour_place_write_check_form")) {
 				action = new CourSPlaceWriteCheckFormAction();
+			}else if (command.equals("cour_select")) {
+				action = new CourSelectAction();
+			}else if (command.equals("cour_select_form")) {
+				action = new CourSelectFormAction();
 	        /* 경로 기능 구현 end */
 		/* 배차관리 기능 구현 start */
 		} else if (command.equals("course_write_form")) {
@@ -180,6 +197,13 @@ public class ActionFactory {
 			action = new ReserveViewScheduleAction();
 			/* 배차관리 기능 구현 end */
 		} /* 정비내역 등록 구현 start */
+		
+		else if (command.equals("reserve_delete")) {
+			action = new ReserveDeleteAction();
+		}		
+		/* 배차관리 기능 구현 end */
+		/* 정비내역 등록 구현 start */
+
 		else if (command.equals("repa_write")) {
 			action = new RepaWriteAction();
 		} else if (command.equals("repa_write_form")) {
@@ -192,9 +216,7 @@ public class ActionFactory {
 			action = new RepaSearchFormAction();
 		} /* 정비내역 등록 구현 End */
 		/* 운행일지 기능 구현 start */
-		else if (command.equals("carlog_write_form")) {
-			action = new CarlogWriteFormAction();
-		}
+		
 		
 
 		return action;

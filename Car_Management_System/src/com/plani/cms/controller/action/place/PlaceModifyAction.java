@@ -36,7 +36,7 @@ public class PlaceModifyAction implements Action {
 		pDao.placeUpdate(pVo);
 		
 		System.out.println("수정 성공");
-		request.setAttribute("message", "<strong>장소 수정 성공!</strong> &nbsp 수정된 법인차: " +  place_no);
+		request.setAttribute("message", "<strong>장소 수정 성공!</strong> &nbsp 수정된 장소 이름: " +  place_name);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

@@ -20,7 +20,7 @@ public class PlaceDeleteAction implements Action {
 		pDao.placeDelete(place_no);
 
 		System.out.println("삭제 성공");
-		request.setAttribute("message", "<strong>정비소 삭제 성공!</strong> &nbsp 삭제한 정비소 : " + place_no);
+		request.setAttribute("message", "<strong>장소 삭제 성공!</strong> &nbsp 삭제한 장소번호 : " + place_no);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

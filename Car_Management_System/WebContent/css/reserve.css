@@ -3,6 +3,10 @@
 	height : 54px;
 }
 
+.btn-in {
+	padding : 5px !important;
+}
+
 .schedule_td_selectable {
 	cursor: pointer;
 }
@@ -26,4 +30,57 @@
 }
 .segmented-control label {
 	color : #06c457;	
+}
+
+.rsrv_etc_btn {
+	width : 48%;
+	margin : 0 2px;
+	height : 100%;
+	border : 1px solid #31a8c1;
+	background-color : inherit;
+	border-radius: 2px;
+}
+.cnl_btn {
+	border-color : #e33909!important;	
+	color : #e33909!important;	
+}
+.cnl_btn:active {
+	background-color : #e33909!important;	
+	color : white !important;	
+}
+.wrt_btn {
+	border-color : #31a8c1!important;	
+	color : #31a8c1 !important;	
+}
+.wrt_btn:active{
+	background-color : #31a8c1!important;	
+	color : white !important;	
+}
+.no-btn {
+	width : 100% !important;
+}
+.no-btn:disabled {
+	border : 1px solid #ddd;
+	background-color : inherit;
+}
+.its-mine {
+	font-size : 10px;
+	background-color : #1d3a7e;
+	color : white;
+	padding : 2px;
+	border-radius: 2px;
+	width : 30px;
+	margin : 2px;
+	cursor : default;
+}
+
+@media ( max-width : 800px) {
+	.rsrv_etc_btn {
+		width : 100%;
+		margin : 2px 0;
+		height : 48%;
+	}
+	.no-btn {
+		height : 100% !important;
+	}
 }

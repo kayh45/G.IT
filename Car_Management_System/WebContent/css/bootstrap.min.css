@@ -1494,7 +1494,7 @@ p {
 	line-height: 1.4
 }
 
-@media ( min-width :768px) {
+@media ( min-width :800px) {
 	.lead {
 		font-size: 21px
 	}
@@ -1675,7 +1675,7 @@ dd {
 	margin-left: 0
 }
 
-@media ( min-width :768px) {
+@media ( min-width :800px) {
 	.dl-horizontal dt {
 		float: left;
 		width: 160px;
@@ -1816,7 +1816,7 @@ pre code {
 	margin-left: auto
 }
 
-@media ( min-width :768px) {
+@media ( min-width :800px) {
 	.container {
 		width: 750px
 	}
@@ -2069,7 +2069,7 @@ pre code {
 	margin-left: 0
 }
 
-@media ( min-width :768px) {
+@media ( min-width :800px) {
 	.col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3,
 		.col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9 {
 		float: left
@@ -2713,7 +2713,7 @@ table td[class*=col-], table th[class*=col-] {
 	overflow-x: auto
 }
 
-@media screen and (max-width:767px) {
+@media screen and (max-width:800px) {
 	.table-responsive {
 		width: 100%;
 		margin-bottom: 15px;
@@ -3190,7 +3190,7 @@ select[multiple].form-group-lg .form-control, textarea.form-group-lg .form-contr
 	color: #737373
 }
 
-@media ( min-width :768px) {
+@media ( min-width :800px) {
 	.form-inline .form-group {
 		display: inline-block;
 		margin-bottom: 0;
@@ -3254,7 +3254,7 @@ select[multiple].form-group-lg .form-control, textarea.form-group-lg .form-contr
 	margin-left: -15px
 }
 
-@media ( min-width :768px) {
+@media ( min-width :800px) {
 	.form-horizontal .control-label {
 		padding-top: 7px;
 		margin-bottom: 0;
@@ -3266,13 +3266,13 @@ select[multiple].form-group-lg .form-control, textarea.form-group-lg .form-contr
 	right: 15px
 }
 
-@media ( min-width :768px) {
+@media ( min-width :800px) {
 	.form-horizontal .form-group-lg .control-label {
 		padding-top: 14.33px
 	}
 }
 
-@media ( min-width :768px) {
+@media ( min-width :800px) {
 	.form-horizontal .form-group-sm .control-label {
 		padding-top: 6px
 	}
@@ -3793,7 +3793,7 @@ tbody.collapse.in {
 	margin-bottom: 2px
 }
 
-@media ( min-width :768px) {
+@media ( min-width :800px) {
 	.navbar-right .dropdown-menu {
 		right: 0;
 		left: auto
@@ -4258,7 +4258,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 	left: auto
 }
 
-@media ( min-width :768px) {
+@media ( min-width :800px) {
 	.nav-tabs.nav-justified>li {
 		display: table-cell;
 		width: 1%
@@ -4278,7 +4278,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 	border: 1px solid #ddd
 }
 
-@media ( min-width :768px) {
+@media ( min-width :800px) {
 	.nav-tabs.nav-justified>li>a {
 		border-bottom: 1px solid #ddd;
 		border-radius: 4px 4px 0 0
@@ -4334,7 +4334,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 	left: auto
 }
 
-@media ( min-width :768px) {
+@media ( min-width :800px) {
 	.nav-justified>li {
 		display: table-cell;
 		width: 1%
@@ -4358,7 +4358,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 	border: 1px solid #ddd
 }
 
-@media ( min-width :768px) {
+@media ( min-width :800px) {
 	.nav-tabs-justified>li>a {
 		border-bottom: 1px solid #ddd;
 		border-radius: 4px 4px 0 0
@@ -4392,13 +4392,13 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 	/* border: 1px solid transparent  표시 안함*/
 }
 
-@media ( min-width :768px) {
+@media ( min-width :800px) {
 	.navbar {
 		border-radius: 4px
 	}
 }
 
-@media ( min-width :768px) {
+@media ( min-width :800px) {
 	.navbar-header {
 		float: left
 	}
@@ -4418,7 +4418,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 	overflow-y: auto
 }
 
-@media ( min-width :768px) {
+@media ( min-width :800px) {
 	.navbar-collapse {
 		width: auto;
 		border-top: 0;
@@ -4460,7 +4460,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 	margin-left: -15px
 }
 
-@media ( min-width :768px) {
+@media ( min-width :800px) {
 	.container-fluid>.navbar-collapse, .container-fluid>.navbar-header,
 		.container>.navbar-collapse, .container>.navbar-header {
 		margin-right: 0;
@@ -4473,7 +4473,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 	border-width: 0 0 1px
 }
 
-@media ( min-width :768px) {
+@media ( min-width :800px) {
 	.navbar-static-top {
 		border-radius: 0
 	}
@@ -4486,7 +4486,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 	z-index: 1030
 }
 
-@media ( min-width :768px) {
+@media ( min-width :800px) {
 	.navbar-fixed-bottom, .navbar-fixed-top {
 		border-radius: 0
 	}
@@ -4519,7 +4519,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 	display: block
 }
 
-@media ( min-width :768px) {
+@media ( min-width :800px) {
 	.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand
 		{
 		margin-left: -15px
@@ -4554,7 +4554,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 	margin-top: 4px
 }
 
-@media ( min-width :768px) {
+@media ( min-width :800px) {
 	.navbar-toggle {
 		display: none
 	}
@@ -4570,7 +4570,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 	line-height: 20px
 }
 
-@media ( max-width :767px) {
+@media ( max-width :800px) {
 	.navbar-nav .open .dropdown-menu {
 		position: static;
 		float: none;
@@ -4594,7 +4594,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 	}
 }
 
-@media ( min-width :768px) {
+@media ( min-width :800px) {
 	.navbar-nav {
 		float: left;
 		margin: 0
@@ -4622,7 +4622,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 		rgba(255, 255, 255, .1)
 }
 
-@media ( min-width :768px) {
+@media ( min-width :800px) {
 	.navbar-form .form-group {
 		display: inline-block;
 		margin-bottom: 0;
@@ -4670,7 +4670,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 	}
 }
 
-@media ( max-width :767px) {
+@media ( max-width :800px) {
 	.navbar-form .form-group {
 		margin-bottom: 5px
 	}
@@ -4679,7 +4679,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 	}
 }
 
-@media ( min-width :768px) {
+@media ( min-width :800px) {
 	.navbar-form {
 		width: auto;
 		padding-top: 0;
@@ -4726,7 +4726,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 	margin-bottom: 15px
 }
 
-@media ( min-width :768px) {
+@media ( min-width :800px) {
 	.navbar-text {
 		float: left;
 		margin-right: 15px;
@@ -4734,7 +4734,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 	}
 }
 
-@media ( min-width :768px) {
+@media ( min-width :800px) {
 	.navbar-left {
 		float: left !important
 	}
@@ -4813,7 +4813,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 	background-color: #e7e7e7
 }
 
-@media ( max-width :767px) {
+@media ( max-width :800px) {
 	.navbar-default .navbar-nav .open .dropdown-menu>li>a {
 		color: #777
 	}
@@ -4922,7 +4922,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 	background-color: #080808
 }
 
-@media ( max-width :767px) {
+@media ( max-width :800px) {
 	.navbar-inverse .navbar-nav .open .dropdown-menu>.dropdown-header {
 		border-color: #080808
 	}
@@ -5281,7 +5281,7 @@ a.badge:focus, a.badge:hover {
 	max-width: 100%
 }
 
-@media screen and (min-width:768px) {
+@media screen and (min-width:800px) {
 	.jumbotron {
 		padding: 48px 0
 	}
@@ -6386,7 +6386,7 @@ button.close {
 	overflow: scroll
 }
 
-@media ( min-width :768px) {
+@media ( min-width :800px) {
 	.modal-dialog {
 		width: 600px;
 		margin: 30px auto
@@ -6886,7 +6886,7 @@ button.close {
 	text-shadow: none
 }
 
-@media screen and (min-width:768px) {
+@media screen and (min-width:800px) {
 	.carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right,
 		.carousel-control .icon-next, .carousel-control .icon-prev {
 		width: 30px;
@@ -6993,7 +6993,7 @@ button.close {
 	display: none !important
 }
 
-@media ( max-width :767px) {
+@media ( max-width :800px) {
 	.visible-xs {
 		display: block !important
 	}
@@ -7008,25 +7008,25 @@ button.close {
 	}
 }
 
-@media ( max-width :767px) {
+@media ( max-width :800px) {
 	.visible-xs-block {
 		display: block !important
 	}
 }
 
-@media ( max-width :767px) {
+@media ( max-width :800px) {
 	.visible-xs-inline {
 		display: inline !important
 	}
 }
 
-@media ( max-width :767px) {
+@media ( max-width :800px) {
 	.visible-xs-inline-block {
 		display: inline-block !important
 	}
 }
 
-@media ( min-width :768px) and (max-width:991px) {
+@media ( min-width :800px) and (max-width:991px) {
 	.visible-sm {
 		display: block !important
 	}
@@ -7041,19 +7041,19 @@ button.close {
 	}
 }
 
-@media ( min-width :768px) and (max-width:991px) {
+@media ( min-width :800px) and (max-width:991px) {
 	.visible-sm-block {
 		display: block !important
 	}
 }
 
-@media ( min-width :768px) and (max-width:991px) {
+@media ( min-width :800px) and (max-width:991px) {
 	.visible-sm-inline {
 		display: inline !important
 	}
 }
 
-@media ( min-width :768px) and (max-width:991px) {
+@media ( min-width :800px) and (max-width:991px) {
 	.visible-sm-inline-block {
 		display: inline-block !important
 	}
@@ -7125,13 +7125,13 @@ button.close {
 	}
 }
 
-@media ( max-width :767px) {
+@media ( max-width :800px) {
 	.hidden-xs {
 		display: none !important
 	}
 }
 
-@media ( min-width :768px) and (max-width:991px) {
+@media ( min-width :800px) and (max-width:991px) {
 	.hidden-sm {
 		display: none !important
 	}

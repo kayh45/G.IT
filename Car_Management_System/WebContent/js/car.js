@@ -15,7 +15,7 @@ function useCarNo() {
 
    opener.frm.car_reg_no.value = document.frm.car_reg_no.value;
    opener.frm.car_reg_no_ok.value = document.frm.car_reg_no_ok.value;
-   opener.frm.car_usable_no.value = document.frm.car_usable_no.value;
+   opener.frm.car_usable_no.value = document.frm.car_reg_no.value;
 /*   if (opener.frm.car_reg_no.value == '') {
       opener.document.getElementById("ins_btn").removeAttribute('disabled');
       opener.document.getElementById("mod_btn").disabled = "true";
@@ -32,10 +32,12 @@ function carSelect(name) {
     * 사원 검색에서 사원 이름 누르면 부모 폼으로 들어가는 기능 
     * 
     */
-   if(document.frm.car_divi.value=="렌탈" || document.frm.car_divi.value=="리스"){
+	
+	
+   if(document.getElementsByName(name + "car_divi")[0].value=="렌트" || document.getElementsByName(name + "car_divi")[0].value=="리스"){
    var frmName = document.getElementsByName(name + "car_reg_no")[0].value;   
    
-   opener.frm.cent_no.value = document.getElementsByName(name + "car_reg_no")[0].value;
+   opener.frm.car_reg_no.value = document.getElementsByName(name + "car_reg_no")[0].value;
    opener.frm.car_model.value = document.getElementsByName(name + "car_model")[0].value;
    opener.frm.car_divi.value = document.getElementsByName(name + "car_divi")[0].value;
    opener.frm.total_dist.value = document.getElementsByName(name + "total_dist")[0].value;
@@ -49,24 +51,31 @@ function carSelect(name) {
 
    opener.frm.co_name.value = document.getElementsByName(name + "co_name")[0].value;
 
-   var tell = document.getElementsByName(name + "co_tel")[0].value;
-   opener.frm.co_tell1.value = tell.substr(0,3);
-   opener.frm.co_tell2.value = tell.substr(3,4);
-   opener.frm.co_tell3.value = tell.substr(7,4);
+   var tel = document.getElementsByName(name + "co_tel")[0].value;
+   var splTel = tel.split("-");
+   opener.frm.co_tel1.value = splTel[0];
+   opener.frm.co_tel2.value = splTel[1];
+   opener.frm.co_tel3.value = splTel[2];
+   console.log(splTel);
    
-   var fax = document.getElementsByName(name + "co_tel")[0].value;
-   opener.frm.co_fax1.value = tell.substr(0,3);
-   opener.frm.co_fax2.value = tell.substr(3,4);
-   opener.frm.co_fax3.value = tell.substr(7,4);
+   var fax = document.getElementsByName(name + "co_fax")[0].value;
+   var splFax = fax.split("-");
+   opener.frm.co_fax1.value = splFax[0];
+   opener.frm.co_fax2.value = splFax[1];
+   opener.frm.co_fax3.value = splFax[2];
    
    opener.frm.ct_date.value = document.getElementsByName(name + "ct_date")[0].value;
    opener.frm.ep_date.value = document.getElementsByName(name + "ep_date")[0].value;
+   
+   opener.paycar.style.display = "inline";
+   opener.rental_lease.style.display = "inline";
 
    
-   } else if(document.frm.car_divi.value=="구입"){
+   } else if(document.getElementsByName(name + "car_divi")[0].value=="구입"){
       var frmName = document.getElementsByName(name + "car_reg_no")[0].value;   
       
-      opener.frm.cent_no.value = document.getElementsByName(name + "car_reg_no")[0].value;
+      opener.frm.car_reg_no.value = document.getElementsByName(name + "car_reg_no")[0].value;
+      
       opener.frm.car_model.value = document.getElementsByName(name + "car_model")[0].value;
       opener.frm.car_divi.value = document.getElementsByName(name + "car_divi")[0].value;
       opener.frm.total_dist.value = document.getElementsByName(name + "total_dist")[0].value;
@@ -76,6 +85,9 @@ function carSelect(name) {
       opener.frm.bo_age.value = document.getElementsByName(name + "bo_age")[0].value;
       opener.frm.bo_s_date.value = document.getElementsByName(name + "bo_s_date")[0].value;
       opener.frm.bo_e_date.value = document.getElementsByName(name + "bo_e_date")[0].value;
+      
+      opener.paycar.style.display = "inline";
+      opener.rental_lease.style.display = "none";
       
    }
    opener.document.getElementById("mod_btn").removeAttribute('disabled');
@@ -185,27 +197,27 @@ function carWriteCheck2() {
       document.frm.co_name.focus();
       return false;
    }else if (document.frm.co_tel1.value == "") {
-      alert("렌탈/리스 회사의 연락처를 입력하세요");
+      alert("렌트/리스 회사의 연락처를 입력하세요");
       document.frm.co_tel1.focus();
       return false;
    } else if (document.frm.co_tel2.value == "") {
-      alert("렌탈/리스 회사의 연락처를 입력하세요");
+      alert("렌트/리스 회사의 연락처를 입력하세요");
       document.frm.co_tel2.focus();
       return false;
    }else if (document.frm.co_tel3.value == "") {
-      alert("렌탈/리스 회사의 연락처를 입력하세요");
+      alert("렌트/리스 회사의 연락처를 입력하세요");
       document.frm.co_tel3.focus();
       return false;
    }else if (document.frm.co_fax1.value == "") {
-      alert("렌탈/리스 회사의 연락처를 입력하세요");
+      alert("렌트/리스 회사의 연락처를 입력하세요");
       document.frm.co_fax1.focus();
       return false;
    }else if (document.frm.co_fax2.value == "") {
-      alert("렌탈/리스 회사의 연락처를 입력하세요");
+      alert("렌트/리스 회사의 연락처를 입력하세요");
       document.frm.co_fax2.focus();
       return false;
    }else if (document.frm.co_fax3.value == "") {
-      alert("렌탈/리스 회사의 연락처를 입력하세요");
+      alert("렌트/리스 회사의 연락처를 입력하세요");
       document.frm.co_fax3.focus();
       return false;
    }else {
