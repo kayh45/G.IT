@@ -102,10 +102,9 @@
 				</tr>
 
 			</table>
-		</div>
-
+		
 		<form method="post" action="carlog.do?command=carlog_write" name="frm">
-			<div class="content_cont-box">
+			<!-- <div class="content_cont-box"> -->
 				<p class="content_cont-text">* 경로 정보</p>
 				<p class="content_cont-text"></p>
 				<table class="table table-bordered" id="form_table">
@@ -115,15 +114,15 @@
 							<p class="label">출발지</p>
 
 						</td>
-						<td><input name="s_place" type="text" class="form_textbox">
-							<input name="s_place" type="hidden" class="form_textbox">
+						<td><input name="s_place_name" type="text" class="form_textbox">
+							<input name="s_place_name" type="hidden" class="form_textbox">
 
 						</td>
 						<td class="form_label">
 							<p class="label">도착지</p>
 						</td>
-						<td class="form_normal-td"><input name="e_place" type="text"
-							class="form_textbox"> <input name="e_place" type="hidden"
+						<td class="form_normal-td"><input name="e_place_name" type="text"
+							class="form_textbox"> <input name="e_place_name" type="hidden"
 							class="form_textbox"></td>
 					</tr>
 
@@ -157,6 +156,8 @@
 							&nbsp;km</td>
 					</tr>
 				</table>
+			</div>
+			</form>
 			</div>
 			<form method="post" action="carlog.do?command=carlog_write"
 				name="frm">
