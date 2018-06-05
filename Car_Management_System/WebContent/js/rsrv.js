@@ -81,6 +81,11 @@ function rsrvDateCheck() {
 	}
 }
 
+function carlogWriteFrm(driv_no) {
+	var url = "rsrv.do?&command=carlog_write_form&driv_no=" + driv_no;
+	location.replace(url);
+}
+
 function rsrvDelete(driv_no) {
 	var isCorrect = confirm("배차 등록을 취소하시겠습니까?");
 	if (isCorrect == true) {

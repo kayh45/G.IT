@@ -33,12 +33,13 @@
 }
 
 .rsrv_etc_btn {
-	width : 48%;
-	margin : 0 2px;
+	width : 45%;
+	margin : 0 3px 0 5px;
 	height : 100%;
 	border : 1px solid #31a8c1;
 	background-color : inherit;
 	border-radius: 2px;
+	vertical-align: middle;
 }
 .cnl_btn {
 	border-color : #e33909!important;	
@@ -72,6 +73,9 @@
 	width : 30px;
 	margin : 2px;
 	cursor : default;
+}
+section#main{
+	height: 100% !important;
 }
 
 @media ( max-width : 800px) {
