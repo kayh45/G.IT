@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.plani.cms.dto.CarlogVO;
+import com.plani.cms.dto.DrivVO;
+import com.plani.cms.dto.MemberVO;
 import com.plani.cms.dto.PlaceCourVO;
 import com.plani.cms.dto.PlaceVO;
 import com.plani.cms.util.DBManager;
@@ -65,9 +67,9 @@ public class CarlogDAO {
 		}
 	}
 	
-	public void DeleteCourse(int course_no) {
+	public void DeleteCarlog(int driv_no) {
 
-		String sql = "DELETE FROM cour WHERE cour_no = ?";
+		String sql = "DELETE FROM driv WHERE driv_no = ?";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -76,7 +78,7 @@ public class CarlogDAO {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setInt(1, course_no);
+			pstmt.setInt(1, driv_no);
 
 			pstmt.executeUpdate();
 
@@ -88,191 +90,133 @@ public class CarlogDAO {
 
 		}
 	}
-	public List<PlaceCourVO> courSplaceSearchByNameLike(String name) {
-		String sql ="select c.cour_no, c.s_place as 's_place', (select place_name from place where place_no = s_place) as 's_place_name', "
-				+ "(select place_addr from place where place_no=s_place) as 's_place_addr', c.e_place, "
-				+ "(select place_name from place where place_no = e_place) as 'e_place_name',"
-				+ "(select place_addr from place where place_no=e_place) as 'e_place_addr', c.cour_purpo,c.distance from cour c, place p "
-				+ "where p.place_no = c.s_place AND p.place_name like '%" + name + "%'";
-		
-
-		Connection conn = null;
-		Statement stmt = null;
-		ResultSet rs = null;
-
-		List<PlaceCourVO> list = new ArrayList<PlaceCourVO>();
-		
-		try {
-			conn = DBManager.getConnection();
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(sql);
-
-			while (rs.next()) {
-
-				PlaceCourVO pcVo = new PlaceCourVO();
-				
-				pcVo.setCour_no(rs.getInt("cour_no"));
-				pcVo.setS_place_no(rs.getInt("s_place"));
-				pcVo.setS_place_name(rs.getString("s_place_name"));
-				pcVo.setS_place_addr(rs.getString("s_place_addr"));
-				pcVo.setE_place_no(rs.getInt("e_place"));
-				pcVo.setE_place_name(rs.getString("e_place_name"));
-				pcVo.setE_place_addr(rs.getString("e_place_addr"));
-				pcVo.setCour_purpo(rs.getString("cour_purpo"));
-				pcVo.setDistance(rs.getInt("distance"));
-
-			
-				
-
-				list.add(pcVo);
-
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			DBManager.close(conn, stmt, rs);
-		}
-		return list;
-	}
-	public List<PlaceCourVO> courEplaceSearchByNameLike(String name) {
-		String sql ="select c.cour_no, c.s_place as 's_place', (select place_name from place where place_no = s_place) as 's_place_name', "
-				+ "(select place_addr from place where place_no=s_place) as 's_place_addr', c.e_place, "
-				+ "(select place_name from place where place_no = e_place) as 'e_place_name',"
-				+ "(select place_addr from place where place_no=e_place) as 'e_place_addr', c.cour_purpo,c.distance from cour c, place p "
-				+ "where p.place_no = c.e_place AND p.place_name like '%" + name + "%'";
-		
-		
-		Connection conn = null;
-		Statement stmt = null;
-		ResultSet rs = null;
-		
-		List<PlaceCourVO> list = new ArrayList<PlaceCourVO>();
-		
-		try {
-			conn = DBManager.getConnection();
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(sql);
-			
-			while (rs.next()) {
-				
-				PlaceCourVO pcVo = new PlaceCourVO();
-				
-				pcVo.setCour_no(rs.getInt("cour_no"));
-				pcVo.setS_place_no(rs.getInt("s_place"));
-				pcVo.setS_place_name(rs.getString("s_place_name"));
-				pcVo.setS_place_addr(rs.getString("s_place_addr"));
-				pcVo.setE_place_no(rs.getInt("e_place"));
-				pcVo.setE_place_name(rs.getString("e_place_name"));
-				pcVo.setE_place_addr(rs.getString("e_place_addr"));
-				pcVo.setCour_purpo(rs.getString("cour_purpo"));
-				pcVo.setDistance(rs.getInt("distance"));
-
-				
-				
-				
-				list.add(pcVo);
-				
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			DBManager.close(conn, stmt, rs);
-		}
-		return list;
-	}
+public List<CarlogVO> drivSearchByNameComplete(String mem_id) {
+	String sql ="select d.driv_no, d.car_reg_no, cc.car_model, m.mem_id, m.mem_name, d.driv_s_date, d.driv_e_date, d.cour_no, d.driv_purpo, "
+			+ "(select place_name from place where place_no = s_place) as 's_place_name', "
+			+ "(select place_name from place where place_no = e_place) as 'e_place_name', "
+			+ "c.distance, d.card_divi, d.oil_fee, d.trans_fee, d.etc_text, d.etc_fee from driv d, mem m, cour c, car cc "
+			+ "where (d.mem_id=m.mem_id) AND (c.cour_no = d.cour_no) AND (d.car_reg_no = cc.car_reg_no) AND m.mem_id= '" + mem_id + "'"
+					+ "order by d.driv_no";
 	
-	public List<PlaceCourVO> courAllplaceSearchByNameLike(String name) {
-		String sql ="select c.cour_no, c.s_place as 's_place', (select place_name from place where place_no = s_place) as 's_place_name', "
-				+ "(select place_addr from place where place_no=s_place) as 's_place_addr', c.e_place, "
-				+ "(select place_name from place where place_no = e_place) as 'e_place_name',"
-				+ "(select place_addr from place where place_no=e_place) as 'e_place_addr', c.cour_purpo, c.distance from cour c, place p "
-				+ "where p.place_no = c.e_place";
+	
+	Connection conn = null;
+	Statement stmt = null;
+	ResultSet rs = null;
+	
+	List<CarlogVO> list = new ArrayList<CarlogVO>();
+	
+	try {
+		conn = DBManager.getConnection();
+		stmt = conn.createStatement();
+		rs = stmt.executeQuery(sql);
 		
-		
-		Connection conn = null;
-		Statement stmt = null;
-		ResultSet rs = null;
-		
-		List<PlaceCourVO> list = new ArrayList<PlaceCourVO>();
-		
-		try {
-			conn = DBManager.getConnection();
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(sql);
+		while (rs.next()) {
 			
-			while (rs.next()) {
-				
-				PlaceCourVO pcVo = new PlaceCourVO();
-				
-				pcVo.setCour_no(rs.getInt("cour_no"));
-				pcVo.setS_place_no(rs.getInt("s_place"));
-				pcVo.setS_place_name(rs.getString("s_place_name"));
-				pcVo.setS_place_addr(rs.getString("s_place_addr"));
-				pcVo.setE_place_no(rs.getInt("e_place"));
-				pcVo.setE_place_name(rs.getString("e_place_name"));
-				pcVo.setE_place_addr(rs.getString("e_place_addr"));
-				pcVo.setCour_purpo(rs.getString("cour_purpo"));
-				pcVo.setDistance(rs.getInt("distance"));
-
-				
-				
-				
-				list.add(pcVo);
-				
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			DBManager.close(conn, stmt, rs);
-		}
-		return list;
-	}
-
-	public List<PlaceVO> placeSearchByNameLike(String name) {
-		/**
-		 * 사원 이름에 대한 부분일치 검색
-		 * @MemberSearchAction 에서 사용
-		 ***/
-		String sql = "select * from place where place_name like '%" + name + "%'";
+			CarlogVO cVo = new CarlogVO();
 			
-
-		Connection conn = null;
-		Statement stmt = null;
-		ResultSet rs = null;
-
-		List<PlaceVO> list = new ArrayList<PlaceVO>();
-
-		try {
-			conn = DBManager.getConnection();
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(sql);
-
-			while (rs.next()) {
-
-				PlaceVO pVo = new PlaceVO();
-
-				pVo.setPlace_no(rs.getInt("place_no"));
-				pVo.setPlace_name(rs.getString("place_name"));
-				pVo.setPlace_p_no(rs.getInt("place_p_no"));
-				pVo.setPlace_addr(rs.getString("place_addr"));
-				pVo.setPlace_addr_dtl(rs.getString("place_addr_dtl"));
-				
-				
-
-				list.add(pVo);
-
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			DBManager.close(conn, stmt, rs);
+			cVo.setDriv_no(rs.getInt("driv_no"));
+			cVo.setCar_reg_no(rs.getString("car_reg_no"));
+			cVo.setCar_model(rs.getString("car_model"));
+			cVo.setMem_id(rs.getString("mem_id"));
+			cVo.setMem_name(rs.getString("mem_name"));
+			cVo.setDriv_s_date(rs.getString("driv_s_date"));
+			cVo.setDriv_e_date(rs.getString("driv_e_date"));
+			cVo.setCour_no(rs.getInt("cour_no"));
+			cVo.setDriv_purpo(rs.getString("driv_purpo"));
+			cVo.setS_place_name(rs.getString("s_place_name"));
+			cVo.setE_place_name(rs.getString("e_place_name"));
+			cVo.setDistance(rs.getInt("distance"));
+			cVo.setCard_divi(rs.getString("card_divi"));
+			cVo.setOil_fee(rs.getInt("oil_fee"));
+			cVo.setTrans_fee(rs.getInt("trans_fee"));
+			cVo.setEtc_text(rs.getString("etc_text"));
+			cVo.setEtc_fee(rs.getInt("etc_fee"));
+			list.add(cVo);
+			
+			
 		}
-		return list;
+	} catch (Exception e) {
+		e.printStackTrace();
+	} finally {
+		DBManager.close(conn, stmt, rs);
 	}
-
-
-
-
-
+	return list;
 }
 
+
+public List<CarlogVO> drivSearchByNameNoncomplete(String mem_id) {
+	String sql ="select d.driv_no, d.car_reg_no, c.car_model, m.mem_name, d.driv_s_date, d.driv_e_date from driv d, mem m, car c "
+			+ "where d.mem_id=m.mem_id AND d.car_reg_no=c.car_reg_no AND d.cour_no is null AND m.mem_id= '" + mem_id + "' "
+					+ "order by d.driv_no";
+	
+	
+	Connection conn = null;
+	Statement stmt = null;
+	ResultSet rs = null;
+	
+	List<CarlogVO> list = new ArrayList<CarlogVO>();
+	
+	try {
+		conn = DBManager.getConnection();
+		stmt = conn.createStatement();
+		rs = stmt.executeQuery(sql);
+		
+		while (rs.next()) {
+			
+			CarlogVO cVo = new CarlogVO();
+			
+			cVo.setDriv_no(rs.getInt("driv_no"));
+			cVo.setCar_reg_no(rs.getString("car_reg_no"));
+			cVo.setCar_model(rs.getString("car_model"));
+			cVo.setMem_name(rs.getString("mem_name"));
+			cVo.setDriv_s_date(rs.getString("driv_s_date"));
+			cVo.setDriv_e_date(rs.getString("driv_e_date"));
+			list.add(cVo);
+			
+		}
+	} catch (Exception e) {
+		e.printStackTrace();
+	} finally {
+		DBManager.close(conn, stmt, rs);
+	}
+	return list;
+}
+}
+
+
+/*public List<CarlogVO> drivSearchAllByName(String mem_id) {
+	String sql ="select d.driv_no, d.car_reg_no, d.driv_s_date, d.driv_e_date, d.cour_no from driv d, mem m "
+			+ "where d.mem_id=m.mem_id AND and m.mem_id= '" + mem_id + "'";
+	
+	
+	
+	Connection conn = null;
+	Statement stmt = null;
+	ResultSet rs = null;
+	
+	List<CarlogVO> list = new ArrayList<CarlogVO>();
+	
+	try {
+		conn = DBManager.getConnection();
+		stmt = conn.createStatement();
+		rs = stmt.executeQuery(sql);
+		
+		while (rs.next()) {
+			
+			CarlogVO cVo = new CarlogVO();
+			
+			cVo.setDriv_no(rs.getInt("driv_no"));
+			cVo.setCar_reg_no(rs.getString("car_reg_no"));
+			cVo.setDriv_s_date(rs.getString("driv_s_date"));
+			cVo.setDriv_e_date(rs.getString("driv_e_date"));
+			cVo.setCour_no(rs.getInt("cour_no"));
+			list.add(cVo);
+			
+		}
+	} catch (Exception e) {
+		e.printStackTrace();
+	} finally {
+		DBManager.close(conn, stmt, rs);
+	}
+	return list;
+}*/

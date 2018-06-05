@@ -9,70 +9,85 @@
 <meta name="viewport" content="width=device-width, user-scalable=no">
 <link href="css/popup.css" rel="stylesheet">
 <link href="css/common.css" rel="stylesheet">
-<script type="text/javascript" src="js/course.js"></script>
+<script type="text/javascript" src="js/carlog.js"></script>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <title>장소 조회</title>
 </head>
-<body onload = "frm.place_name.value = <%= request.getParameter("place_name") %> ">
+<body>
 
 <div class = "popup_header">	 
-	<p><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp;경로 조회</p>
+	<p><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp;배차 조회</p>
 </div>
 <div class = "popup_body">
-
-		<form name = "frm" method = "post" action = "course.do?command=cour_select&popup=yes">
-		<select name="cour_divi">
-							<option value="0">전체</option>
-							<option value="1">출발지</option>
-							<option value="2">도착지</option>
-					</select>
-					장소명 &nbsp;
-					<input type = "text" name = "place_name" value = "${place_name}">
-					<button type = "submit" >조회</button>
-			
-		<%-- <c:if test = "${result==-1}">
-		<div class = "popup_box">
-		
-				<p>'${s_place_name}'은 등록 되어 있지 않습니다. <br> 등록 하시겠습니까? 
-					<button type = "button" onclick = "regiPlace()">등록</button> 
-				</p>
-		
-		</div>			
-		</c:if>
-		
-		<c:if test = "${result==1}"> --%>
-			<c:if test = "${place_name ne null}">
 			<div class = "popup_box">
-				<%-- <p class = "search-result_label">'${s_place_name}'에 대한 조회 결과입니다.</p> --%>
+				 <p class = "search-result_label">미작성 운행 일지</p> 
 					<table class = "table table-condensed table-bordered">					
 					<thead>
 					<tr>
-						<th >장소 번호</th>
-						<th class = "number_th">출발지</th>
-						<th>주소</th>
-						<th>장소 번호</th>
-						<th>도착지</th>
-						<th>주소</th>
+						<th class = "number_th">배차 신청 번호</th>
+						<th>차량 등록 번호</th>
+						<th>운행 기간</th>
 					</tr>
 					<thead>
-					<c:forEach var = "cour" items = "${s_placeList}">
+					<c:forEach var = "nocarlog" items = "${NocarlogList}">
 				<tr>
-						<td>${cour.s_place_no}</td>
-						<td><a onclick = "splaceSelect('${cour.cour_no}')">${cour.s_place_name}</a></td>		
-						<td>${cour.s_place_addr }</td>		
-						<td>${cour.e_place_no}</td>
-						<td>${cour.e_place_name}</td>		
-						<td>${cour.e_place_addr }</td>		
+						<td><a onclick = "nocarlogSelect('${nocarlog.driv_no}')">${nocarlog.driv_no}</a></td>
+						<td>${nocarlog.car_reg_no}</td>		
+						<td>${nocarlog.driv_s_date}~${nocarlog.driv_e_date}</td>		
 					</tr>	
-					<input type = "hidden" name = "${cour.cour_no}cour_no" value  = "${cour.cour_no}">
-					<input type = "hidden" name = "${cour.cour_no}s_place_name" value  = "${cour.s_place_name}">
-					<input type = "hidden" name = "${cour.cour_no}e_place_name" value  = "${cour.e_place_name}">
-					<input type = "hidden" name = "${cour.cour_no}cour_purpo" value  = "${cour.cour_purpo}">
-					<input type = "hidden" name = "${cour.cour_no}distance" value  = "${cour.distance}">
+					<input type = "hidden" name = "${nocarlog.driv_no}driv_no" value  = "${nocarlog.driv_no}">
+					<input type = "hidden" name = "${nocarlog.driv_no}car_reg_no" value  = "${nocarlog.car_reg_no}">
+					<input type = "hidden" name = "${nocarlog.driv_no}car_model" value  = "${nocarlog.car_model}">
+					<input type = "hidden" name = "${nocarlog.driv_no}mem_name" value  = "${nocarlog.mem_name}">
+					<input type = "hidden" name = "${nocarlog.driv_no}driv_s_date" value  = "${nocarlog.driv_s_date}">
+					<input type = "hidden" name = "${nocarlog.driv_no}driv_e_date" value  = "${nocarlog.driv_e_date}">
 					</c:forEach>
 				</table>
 			</div>
-			</c:if>
+		
+			<div class = "popup_box">
+	
+				 <p class = "search-result_label">작성 완료 운행 일지</p> 
+					<table class = "table table-condensed table-bordered">					
+					<thead>
+					<tr>
+						<th class = "number_th">배차 신청 번호</th>
+						<th>차량 등록 번호</th>
+						<th>운행 기간</th>
+						<th>출발지</th>
+						<th>도착지</th>
+						<th>운행 목적</th>
+					</tr>
+					<thead>
+					<c:forEach var = "carlog" items = "${carlogList}">
+				<tr>
+						<td><a onclick = "carlogSelect('${carlog.driv_no}')">${carlog.driv_no}</a></td>
+						<td>${carlog.car_reg_no}</td>		
+						<td>${carlog.driv_s_date}~${carlog.driv_e_date}</td>		
+						<td>${carlog.s_place_name}</td>		
+						<td>${carlog.e_place_name}</td>
+						<td>${carlog.driv_purpo}</td>		
+					</tr>	
+					<input type = "hidden" name = "${carlog.driv_no}driv_no" value  = "${carlog.driv_no}">
+					<input type = "hidden" name = "${carlog.driv_no}car_reg_no" value  = "${carlog.car_reg_no}">
+					<input type = "hidden" name = "${carlog.driv_no}car_model" value  = "${carlog.car_model}">
+					<input type = "hidden" name = "${carlog.driv_no}mem_name" value  = "${carlog.mem_name}">
+					<input type = "hidden" name = "${carlog.driv_no}driv_s_date" value  = "${carlog.driv_s_date}">
+					<input type = "hidden" name = "${carlog.driv_no}driv_e_date" value  = "${carlog.driv_e_date}">
+					<input type = "hidden" name = "${carlog.driv_no}s_place_name" value  = "${carlog.s_place_name}">
+					<input type = "hidden" name = "${carlog.driv_no}e_place_name" value  = "${carlog.e_place_name}">
+					<input type = "hidden" name = "${carlog.driv_no}driv_purpo" value  = "${carlog.driv_purpo}">
+					<input type = "hidden" name = "${carlog.driv_no}distance" value  = "${carlog.distance}">
+					<input type = "hidden" name = "${carlog.driv_no}card_divi" value  = "${carlog.card_divi}">
+					<input type = "hidden" name = "${carlog.driv_no}oil_fee" value  = "${carlog.oil_fee}">
+					<input type = "hidden" name = "${carlog.driv_no}trans_fee" value  = "${carlog.trans_fee}">
+					<input type = "hidden" name = "${carlog.driv_no}etc_text" value  = "${carlog.etc_text}">
+					<input type = "hidden" name = "${carlog.driv_no}etc_fee" value  = "${carlog.etc_fee}">
+
+					</c:forEach>
+				</table>
+			</div>
+			
 </div>
 </body>
 </html>

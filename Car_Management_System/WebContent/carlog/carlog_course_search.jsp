@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, user-scalable=no">
 <link href="css/popup.css" rel="stylesheet">
 <link href="css/common.css" rel="stylesheet">
-<script type="text/javascript" src="js/course.js"></script>
+<script type="text/javascript" src="js/carlog.js"></script>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <title>장소 조회</title>
 </head>
@@ -20,7 +20,7 @@
 </div>
 <div class = "popup_body">
 
-		<form name = "frm" method = "post" action = "course.do?command=cour_select&popup=yes">
+		<form name = "frm" method = "post" action = "carlog.do?command=carlog_course_select&popup=yes">
 		<select name="cour_divi">
 							<option value="0">전체</option>
 							<option value="1">출발지</option>
@@ -52,7 +52,6 @@
 						<td>${cour.e_place_name}</td>		
 						<td>${cour.e_place_addr }</td>		
 					</tr>	
-					<input type = "hidden" name = "${cour.cour_no}cour_no" value  = "${cour.cour_no}">
 					<input type = "hidden" name = "${cour.cour_no}s_place_name" value  = "${cour.s_place_name}">
 					<input type = "hidden" name = "${cour.cour_no}e_place_name" value  = "${cour.e_place_name}">
 					<input type = "hidden" name = "${cour.cour_no}driv_purpo" value  = "${cour.cour_purpo}">

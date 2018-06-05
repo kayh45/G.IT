@@ -30,22 +30,56 @@ function carlogWriteCheck() {
 }
 }
 
-function carlongSearch(){
-	var url = "carlog.do?command=carlog_select_form"
+function carlogSearch(){
+	var url = "carlog.do?command=carlog_select"
 	window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
 }
 
-function carlongCourseSearch(){
-	var url = "course.do?command=cour_select_form"
+function carlogCourseSearch(){
+	var url = "carlog.do?command=carlog_course_select_form"
 		window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
 }
 
 function splaceSelect(name) {
-	opener.frm.cour_no.value = document.getElementsByName(name + "cour_no")[0].value;
 	opener.frm.s_place_name.value = document.getElementsByName(name + "s_place_name")[0].value;
 	opener.frm.e_place_name.value = document.getElementsByName(name + "e_place_name")[0].value;
-	opener.frm.driv_purpo.value = document.getElementsByName(name + "cour_purpo")[0].value;
+	opener.frm.driv_purpo.value = document.getElementsByName(name + "driv_purpo")[0].value;
 	opener.frm.distance.value = document.getElementsByName(name + "distance")[0].value;
+	
+	self.close();
+}
+
+function nocarlogSelect(name) {
+	opener.frm.driv_no.value = document.getElementsByName(name + "driv_no")[0].value;
+	opener.frm.car_reg_no.value = document.getElementsByName(name + "car_reg_no")[0].value;
+	opener.frm.car_model.value = document.getElementsByName(name + "car_model")[0].value;
+	opener.frm.mem_name.value = document.getElementsByName(name + "mem_name")[0].value;
+	opener.frm.driv_s_date.value = document.getElementsByName(name + "driv_s_date")[0].value;
+	opener.frm.driv_e_date.value = document.getElementsByName(name + "driv_e_date")[0].value;
+	self.close();
+}
+
+function carlogSelect(name) {
+	opener.frm.driv_no.value = document.getElementsByName(name + "driv_no")[0].value;
+	opener.frm.car_reg_no.value = document.getElementsByName(name + "car_reg_no")[0].value;
+	opener.frm.car_model.value = document.getElementsByName(name + "car_model")[0].value;
+	opener.frm.mem_name.value = document.getElementsByName(name + "mem_name")[0].value;
+	opener.frm.driv_s_date.value = document.getElementsByName(name + "driv_s_date")[0].value;
+	opener.frm.driv_e_date.value = document.getElementsByName(name + "driv_e_date")[0].value;
+	opener.frm.s_place_name.value = document.getElementsByName(name + "s_place_name")[0].value;
+	opener.frm.e_place_name.value = document.getElementsByName(name + "e_place_name")[0].value;
+	opener.frm.driv_purpo.value = document.getElementsByName(name + "driv_purpo")[0].value;
+	opener.frm.distance.value = document.getElementsByName(name + "distance")[0].value;
+	switch (document.getElementsByName(name + "card_divi")[0].value) {
+	case "법인카드" : 	opener.frm.card_divi.value ="1"; break;
+	case "개인카드" :	opener.frm.card_divi.value ="2"; break;
+	case "미사용" : 	opener.frm.card_divi.value ="0"; break;
+	default : opener.frm.card_divi.value ="0"; break;
+	}
+	opener.frm.oil_fee.value = document.getElementsByName(name + "oil_fee")[0].value;
+	opener.frm.trans_fee.value = document.getElementsByName(name + "trans_fee")[0].value;
+	opener.frm.etc_text.value = document.getElementsByName(name + "etc_text")[0].value;
+	opener.frm.etc_fee.value = document.getElementsByName(name + "etc_fee")[0].value;
 	opener.document.getElementById("mod_btn").removeAttribute('disabled');
 	opener.document.getElementById("del_btn").removeAttribute('disabled');
 	opener.document.getElementById("ins_btn").disabled = "true";

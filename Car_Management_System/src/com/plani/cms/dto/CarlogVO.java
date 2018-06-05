@@ -3,17 +3,54 @@ package com.plani.cms.dto;
 public class CarlogVO {
 	private int driv_no;
 	private String mem_id;
+	private String mem_name;
 	private String car_reg_no;
+	private String car_model;
 	private int cour_no;
+	private String s_place_name;
+	private String e_place_name;
 	private String driv_s_date;
 	private String driv_e_date;
 	private String driv_purpo;
+	private int distance;
 	private String card_divi;
 	private int oil_fee;
 	private int trans_fee;
 	private String etc_text;
 	private int etc_fee;
 	private int befo_dist;
+	
+	
+	public int getDistance() {
+		return distance;
+	}
+	public void setDistance(int distance) {
+		this.distance = distance;
+	}
+	public String getCar_model() {
+		return car_model;
+	}
+	public void setCar_model(String car_model) {
+		this.car_model = car_model;
+	}
+	public String getS_place_name() {
+		return s_place_name;
+	}
+	public void setS_place_name(String s_place_name) {
+		this.s_place_name = s_place_name;
+	}
+	public String getE_place_name() {
+		return e_place_name;
+	}
+	public void setE_place_name(String e_place_name) {
+		this.e_place_name = e_place_name;
+	}
+	public String getMem_name() {
+		return mem_name;
+	}
+	public void setMem_name(String mem_name) {
+		this.mem_name = mem_name;
+	}
 	public int getDriv_no() {
 		return driv_no;
 	}
