@@ -9,6 +9,7 @@ import com.plani.cms.controller.action.car.CarModifyAction;
 import com.plani.cms.controller.action.car.CarWriteAction;
 import com.plani.cms.controller.action.car.CarWriteCheckFormAction;
 import com.plani.cms.controller.action.car.CarWriteFormAction;
+import com.plani.cms.controller.action.carlog.CarlogWriteFormAction;
 import com.plani.cms.controller.action.cent.CentDeleteAction;
 import com.plani.cms.controller.action.cent.CentModifyAction;
 import com.plani.cms.controller.action.cent.CentWriteAction;
@@ -214,11 +215,11 @@ public class ActionFactory {
 			action = new RepaCentWriteCheckFormAction();
 		} else if (command.equals("repa_search_form")) {
 			action = new RepaSearchFormAction();
-		} /* 정비내역 등록 구현 End */
+		/* 정비내역 등록 구현 End */
 		/* 운행일지 기능 구현 start */
-		
-		
-
+		} else if (command.equals("carlog_write_form")) {
+			action = new CarlogWriteFormAction();
+		}
 		return action;
 
 	}
