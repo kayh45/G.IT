@@ -27,7 +27,7 @@
 							<option value="2">도착지</option>
 					</select>
 					장소명 &nbsp;
-					<input type = "text" name = "place_name">
+					<input type = "text" name = "place_name" value = "${place_name}">
 					<button type = "submit" >조회</button>
 			
 		<%-- <c:if test = "${result==-1}">
@@ -41,7 +41,7 @@
 		</c:if>
 		
 		<c:if test = "${result==1}"> --%>
-		
+			<c:if test = "${place_name ne null}">
 			<div class = "popup_box">
 				<%-- <p class = "search-result_label">'${s_place_name}'에 대한 조회 결과입니다.</p> --%>
 					<table class = "table table-condensed table-bordered">					
@@ -77,6 +77,7 @@
 					</c:forEach>
 				</table>
 			</div>
+			</c:if>
 	<%-- 	</c:if>
  --%>
 		

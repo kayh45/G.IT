@@ -19,10 +19,6 @@ public class CourSelectAction implements Action{
 		String place_name = new String(request.getParameter("place_name").getBytes("UTF-8"));
 		String cour_divi = request.getParameter("cour_divi");
 		
-
-		
-	
-		
         System.out.println("레그넘 = "+ place_name);
 		CourseDAO cDao = CourseDAO.getInstance();
 		
@@ -45,7 +41,7 @@ public class CourSelectAction implements Action{
 			s_placeList = cDao.courEplaceSearchByNameLike(place_name);
 		}
 		request.setAttribute("s_placeList", s_placeList);
-		
+		request.setAttribute("place_name", place_name);
 /*		List<CarVO> carAllList = cDao.selectAllCar();
 		request.setAttribute("carAllList", carAllList);*/
 
