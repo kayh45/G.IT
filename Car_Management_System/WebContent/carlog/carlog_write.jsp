@@ -196,7 +196,7 @@
 							<td class="form_normal-td" colspan="3">
 								<div class="radio-group">
 									<input type="checkbox" value="0" name="trans_fee">교통비
-									<input name="" trans_fee"" type="text" class="form_textbox">원
+									<input name="trans_fee" type="text" class="form_textbox">원
 
 								</div>
 							</td>
