@@ -71,7 +71,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">운행일지 관리 <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">운행 일지 작성</a></li>
+            <li><a href="carlog.do?command=carlog_write_form">운행 일지 작성</a></li>
             <li><a href="#">운행 일지 조회</a></li>
           </ul>
         </li>

@@ -102,7 +102,6 @@
 					<td colspan="4"  class="form_phone-td">
 					<input name="distance" type="text" class="form_textbox" size="6" maxlength="3">km</b></td>
 				</tr>
-
 			</table>
 		</div>
 		<div class="form_btn-group">

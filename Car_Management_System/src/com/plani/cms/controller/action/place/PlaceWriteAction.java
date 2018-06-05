@@ -24,7 +24,7 @@ public class PlaceWriteAction implements Action{
 		String place_addr = request.getParameter("place_addr");
 		String place_addr_dtl = request.getParameter("place_addr_dtl");
 		
-		
+	
 		pVo.setPlace_name(place_name);
 		pVo.setPlace_p_no(place_p_no);
 		pVo.setPlace_addr(place_addr);
