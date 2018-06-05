@@ -55,7 +55,7 @@
 					<c:forEach var = "car" items = "${carList}">
 				<tr>
 						<td>${car.car_reg_no}</td>
-						<td><a onclick = "carSelect('${car.car_reg_no}')">${car.car_model}</a></td>		
+						<td><a onclick = "repaCarSelect('${car.car_reg_no}')">${car.car_model}</a></td>		
 						<td>${car.car_divi}</td>
 					</tr>	
 			
@@ -68,7 +68,7 @@
 
 		
 	
-			</form>
+			
 		
 			<div class = "popup_box">
 				<p class = "search-result_label">전체 법인차 리스트</p>
@@ -110,6 +110,7 @@
 				
 				
 			</div>
+			</form>
 </div>
 </body>
 </html>

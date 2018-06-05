@@ -11,7 +11,7 @@ import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.RepaDAO;
 import com.plani.cms.dto.RepaVO;
 
-public class RepaWriteAction implements Action{
+public class RepaModifyAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,7 +28,7 @@ public class RepaWriteAction implements Action{
 		private int repa_fee;*/
 
 		
-			
+		String repa_no = request.getParameter("repa_no");	
 		String cent_no = request.getParameter("cent_no");
 		String car_reg_no = request.getParameter("car_reg_no");
 		String mechanic_name = request.getParameter("mechanic_name");
@@ -38,22 +38,21 @@ public class RepaWriteAction implements Action{
 		String repa_fee = request.getParameter("repa_fee");
 		String repa_divi = request.getParameter("repa_divi");
 		
-		System.out.println("정비구분"+ repa_divi);
 		
+		rVo.setRepa_no(Integer.parseInt(repa_no));
 		rVo.setCent_no(Integer.parseInt(cent_no));
 		rVo.setCar_reg_no(car_reg_no);
 		rVo.setMechanic_name(mechanic_name);
 		rVo.setRepa_s_date(repa_s_date);	
 		rVo.setRepa_e_date(repa_e_date);	
 		rVo.setRepa_cont(repa_cont);	
-		rVo.setRepa_fee(Integer.parseInt(repa_fee));
+		rVo.setRepa_fee(Integer.parseInt(repa_fee));	
 		rVo.setRepa_divi(repa_divi);	
-		
 		RepaDAO rDao = RepaDAO.getInstance();
-		rDao.insertRepa(rVo);
+		rDao.updateRepa(rVo);
 		
 		System.out.println("등록성공");
-		request.setAttribute("message", "<strong>정비 내역 등록 성공!</strong> &nbsp 등록된 정비 내역 번호 : ");
+		request.setAttribute("message", "<strong>정비 내역 수정 성공!</strong> &nbsp 등록된 정비 내역 번호 : "+ repa_no);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

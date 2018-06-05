@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.plani.cms.dto.CarVO;
-import com.plani.cms.dto.CentVO;
 import com.plani.cms.dto.RepaVO;
 import com.plani.cms.util.DBManager;
 
@@ -47,6 +46,7 @@ public class RepaDAO {
 				rVo.setRepa_e_date(rs.getString("repa_e_date"));
 				rVo.setRepa_cont(rs.getString("repa_cont"));
 				rVo.setRepa_fee(rs.getInt("repa_fee"));
+				rVo.setRepa_divi(rs.getString("repa_divi"));
 				list.add(rVo);
 
 			}
@@ -83,6 +83,7 @@ public class RepaDAO {
 				rVo.setRepa_e_date(rs.getString("repa_e_date"));
 				rVo.setRepa_cont(rs.getString("repa_cont"));
 				rVo.setRepa_fee(rs.getInt("repa_fee"));
+				rVo.setRepa_divi(rs.getString("repa_divi"));
 				list.add(rVo);
 
 			}
@@ -120,6 +121,7 @@ public class RepaDAO {
 				rVo.setRepa_e_date(rs.getString("repa_e_date"));
 				rVo.setRepa_cont(rs.getString("repa_cont"));
 				rVo.setRepa_fee(rs.getInt("repa_fee"));
+				rVo.setRepa_divi(rs.getString("repa_divi"));
 				list.add(rVo);
 
 			}
@@ -158,6 +160,7 @@ public class RepaDAO {
 				rVo.setRepa_e_date(rs.getString("repa_e_date"));
 				rVo.setRepa_cont(rs.getString("repa_cont"));
 				rVo.setRepa_fee(rs.getInt("repa_fee"));
+				rVo.setRepa_divi(rs.getString("repa_divi"));
 				list.add(rVo);
 
 			}
@@ -209,7 +212,7 @@ public class RepaDAO {
 	}
 
 	public void insertRepa(RepaVO rVo) {
-		String sql = "insert into repa(cent_no, car_reg_no,mechanic_name,repa_s_date,repa_e_date,repa_cont,repa_fee) values(?,?,?,?,?,?,?)";
+		String sql = "insert into repa(cent_no, car_reg_no,mechanic_name,repa_s_date,repa_e_date,repa_cont,repa_fee,repa_divi) values(?,?,?,?,?,?,?,?)";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -225,6 +228,8 @@ public class RepaDAO {
 			pstmt.setString(5, rVo.getRepa_e_date());
 			pstmt.setString(6, rVo.getRepa_cont());
 			pstmt.setInt(7, rVo.getRepa_fee());
+			pstmt.setString(8, rVo.getRepa_divi());
+		
 
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -233,45 +238,87 @@ public class RepaDAO {
 			DBManager.close(conn, pstmt);
 		}
 	}
+	public void updateRepa(RepaVO rVo) {
+		String sql = "update repa set cent_no=?, car_reg_no=?,"
+				+ "mechanic_name=?,repa_s_date=?,repa_e_date=?,repa_cont=?,repa_fee=?,repa_divi=? where repa_no=?";
 
-	/*
-	 * public void updateCent(CentVO cVo) { String sql =
-	 * "update cent set cent_name=?, ceo_name=?," +
-	 * "cent_tell=?,cent_fax=?,cent_p_no=?,cent_addr=? where cent_no=?";
-	 * 
-	 * Connection conn = null; PreparedStatement pstmt = null;
-	 * 
-	 * try { conn = DBManager.getConnection(); pstmt =
-	 * conn.prepareStatement(sql);
-	 * 
-	 * pstmt.setString(1, cVo.getCent_name()); pstmt.setString(2,
-	 * cVo.getCeo_name()); pstmt.setString(3, cVo.getCent_tell());
-	 * pstmt.setString(4, cVo.getCent_fax()); pstmt.setInt(5,
-	 * cVo.getCent_p_no()); pstmt.setString(6, cVo.getCent_addr());
-	 * pstmt.setInt(7, cVo.getCent_no());
-	 * 
-	 * pstmt.executeUpdate(); } catch (SQLException e) { e.printStackTrace(); }
-	 * finally { DBManager.close(conn, pstmt); } }
-	 * 
-	 * public void DeleteCent(int cent_no) {
-	 * 
-	 * String sql = "DELETE FROM cent WHERE cent_no = ?";
-	 * 
-	 * Connection conn = null; PreparedStatement pstmt = null;
-	 * 
-	 * try { conn = DBManager.getConnection(); pstmt =
-	 * conn.prepareStatement(sql);
-	 * 
-	 * pstmt.setInt(1, cent_no);
-	 * 
-	 * pstmt.executeUpdate();
-	 * 
-	 * } catch (SQLException e) { e.printStackTrace();
-	 * 
-	 * } finally { DBManager.close(conn, pstmt);
-	 * 
-	 * } }
-	 */
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, rVo.getCent_no());
+			pstmt.setString(2, rVo.getCar_reg_no());
+			pstmt.setString(3, rVo.getMechanic_name());
+			pstmt.setString(4, rVo.getRepa_s_date());
+			pstmt.setString(5, rVo.getRepa_e_date());
+			pstmt.setString(6, rVo.getRepa_cont());
+			pstmt.setInt(7, rVo.getRepa_fee());
+			pstmt.setString(8, rVo.getRepa_divi());
+			pstmt.setInt(9, rVo.getRepa_no());
+
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+	}
+	
+	public void DeleteRepa(int repa_no) {
+
+		String sql = "DELETE FROM repa WHERE repa_no = ?";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, repa_no);
+
+			pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		} finally {
+			DBManager.close(conn, pstmt);
+
+		}
+	}
+	
+	
+	public void DeleteCent(int cent_no) {
+
+		String sql = "DELETE FROM cent WHERE cent_no = ?";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, cent_no);
+
+			pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		} finally {
+			DBManager.close(conn, pstmt);
+
+		}
+	}
+	
+	
+	
+	
 	public RepaVO repaSearchByCarRegNo(String car_reg_no) {
 
 		String sql = "select * from repa where car_reg_no = '" + car_reg_no + "'";
@@ -287,12 +334,6 @@ public class RepaDAO {
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 
-			/*
-			 * private int repa_no; private int cent_no; private String
-			 * car_reg_no; private String mechanic_name; private String
-			 * repa_s_date; private String repa_e_date; private String
-			 * repa_cont; private int repa_fee;
-			 */
 
 			while (rs.next()) {
 				rVo.setRepa_no(rs.getInt("repa_no"));

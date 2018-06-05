@@ -45,7 +45,10 @@ import com.plani.cms.controller.action.place.PlaceWriteCheckFormAction;
 import com.plani.cms.controller.action.place.PlaceWriteFormAction;
 import com.plani.cms.controller.action.repa.RepaCarWriteCheckFormAction;
 import com.plani.cms.controller.action.repa.RepaCentWriteCheckFormAction;
+import com.plani.cms.controller.action.repa.RepaDeleteAction;
+import com.plani.cms.controller.action.repa.RepaModifyAction;
 import com.plani.cms.controller.action.repa.RepaSearchFormAction;
+import com.plani.cms.controller.action.repa.RepaSearchMoveFormAction;
 import com.plani.cms.controller.action.repa.RepaWriteAction;
 import com.plani.cms.controller.action.repa.RepaWriteFormAction;
 import com.plani.cms.controller.action.reserve.ReserveDeleteAction;
@@ -206,7 +209,11 @@ public class ActionFactory {
 
 		else if (command.equals("repa_write")) {
 			action = new RepaWriteAction();
-		} else if (command.equals("repa_write_form")) {
+		}else if (command.equals("repa_modify")){
+			action = new RepaModifyAction();
+		}else if (command.equals("repa_delete")){
+			action = new RepaDeleteAction();
+		}else if (command.equals("repa_write_form")) {
 			action = new RepaWriteFormAction();
 		} else if (command.equals("repa_car_write_check_form")) {
 			action = new RepaCarWriteCheckFormAction();
@@ -214,8 +221,11 @@ public class ActionFactory {
 			action = new RepaCentWriteCheckFormAction();
 		} else if (command.equals("repa_search_form")) {
 			action = new RepaSearchFormAction();
+		} 
+		else if (command.equals("repa_search_move_form")) {
+			action = new RepaSearchMoveFormAction();
 		} /* 정비내역 등록 구현 End */
-
+		
 		return action;
 
 	}
