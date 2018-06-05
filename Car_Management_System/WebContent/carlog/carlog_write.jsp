@@ -13,6 +13,10 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript" src="js/member.js?ver=3"></script>
 <script type="text/javascript" src="js/common.js"></script>
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/kayh45/G.IT
 </head>
 <body>
 	<header> <%@ include file="../header.jsp"%>

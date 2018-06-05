@@ -9,6 +9,8 @@ import com.plani.cms.controller.action.car.CarModifyAction;
 import com.plani.cms.controller.action.car.CarWriteAction;
 import com.plani.cms.controller.action.car.CarWriteCheckFormAction;
 import com.plani.cms.controller.action.car.CarWriteFormAction;
+
+import com.plani.cms.controller.action.carlog.CarlogWriteAction;
 import com.plani.cms.controller.action.carlog.CarlogWriteFormAction;
 import com.plani.cms.controller.action.cent.CentDeleteAction;
 import com.plani.cms.controller.action.cent.CentModifyAction;
@@ -220,6 +222,8 @@ public class ActionFactory {
 		} else if (command.equals("carlog_write_form")) {
 			action = new CarlogWriteFormAction();
 		}
+
+
 		return action;
 
 	}
