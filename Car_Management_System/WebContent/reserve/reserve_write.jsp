@@ -159,7 +159,7 @@
 								out.print("<span class=\"its-mine\">me</span>");
 								out.print("</td>");
 								out.print("<td class = \"schedule_td btn-in\" rowspan = " + dif/2 + ">");								
-								out.print("<button type = \"button\" class = \"rsrv_etc_btn wrt_btn\">운행 일지 작성</button>");
+								out.print("<button onclick =\"carlogWriteFrm(" + tempVO.getDriv_no() + ")\"  type = \"button\" class = \"rsrv_etc_btn wrt_btn\">운행 일지 작성</button>");
 								out.print("<button onclick =\"rsrvDelete(" + tempVO.getDriv_no() + ")\" type = \"button\" class = \"rsrv_etc_btn cnl_btn\">등록 취소</button>");
 							}else {
 								out.print(tempVO.getMem_id());

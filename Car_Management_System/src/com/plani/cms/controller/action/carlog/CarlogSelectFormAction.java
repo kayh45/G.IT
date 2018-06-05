@@ -1,4 +1,4 @@
-package com.plani.cms.controller.action.course;
+package com.plani.cms.controller.action.carlog;
 
 import java.io.IOException;
 
@@ -9,15 +9,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.plani.cms.controller.action.Action;
 
-public class CourSelectFormAction implements Action{
+public class CarlogSelectFormAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "course/cour_select_form.jsp";
+
 		
-		
+		String url = "carlog/carlog_search.jsp";
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}
+
 }

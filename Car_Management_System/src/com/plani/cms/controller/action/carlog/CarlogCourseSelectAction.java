@@ -1,4 +1,4 @@
-package com.plani.cms.controller.action.course;
+package com.plani.cms.controller.action.carlog;
 
 import java.io.IOException;
 import java.util.List;
@@ -12,10 +12,11 @@ import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.CourseDAO;
 import com.plani.cms.dto.PlaceCourVO;
 
-public class CourSelectAction implements Action{
+public class CarlogCourseSelectAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String place_name = new String(request.getParameter("place_name").getBytes("UTF-8"));
 		String cour_divi = request.getParameter("cour_divi");
 		
@@ -29,7 +30,7 @@ public class CourSelectAction implements Action{
 		request.setAttribute("place_name", place_name);
 
 		/* ------------------ car 체크----------------------- */
-		String url = "course/cour_select_form.jsp";
+		String url = "carlog/carlog_course_search.jsp";
 		List<PlaceCourVO> s_placeList = null;
 		
 		System.out.println(cour_divi);
