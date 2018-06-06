@@ -26,7 +26,7 @@ function placeWriteCheck() {
 	} 
 	else {
 	var name = document.frm.place_name.value;
-	var isCorrect = confirm(name + " 장소를 등록 하시겠습니까?");
+	var isCorrect = confirm(name + "장소를 등록 하시겠습니까?");
 	if (isCorrect == true) {
 		return true;
 	} else {

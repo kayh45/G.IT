@@ -203,7 +203,7 @@ public int confirmPlaceName(String place_name) {
 
 			rs = pstmt.executeQuery();
 
-			if (place_name == "") {
+			if (place_name.equals("")) {
 				result = 0;
 			} else if(rs.next()) {
 				result = 1; // 데이터 존재.

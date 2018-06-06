@@ -107,6 +107,13 @@
 
 
 				</tr>
+						<tr>
+					<td class="form_label">
+						<p class="label">주행 전 거리</p>
+					</td>
+					<td class="form_normal-td" colspan="3"><input name="befo_dist"
+						type="text" size="13" class="form_textbox">&nbsp;km</td>
+				</tr>
 
 			</table>
 
@@ -157,9 +164,11 @@
 					<td class="form_label">
 						<p class="label">주행거리</p>
 					</td>
-					<td class="form_normal-td" colspan="3"><input name="distance"
+					<td class="form_normal-td" colspan="3"><input name="driv_dist"
 						type="text" size="13" class="form_textbox">&nbsp;km</td>
 				</tr>
+				
+		
 			</table>
 		</div>
 
