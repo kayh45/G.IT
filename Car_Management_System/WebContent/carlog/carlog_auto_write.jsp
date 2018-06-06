@@ -16,6 +16,7 @@
 <script type="text/javascript" src="js/moment.js"></script>
 <script type="text/javascript" src="js/member.js?ver=4"></script>
 <script type="text/javascript" src="js/car.js?ver=3"></script>
+<script type="text/javascript" src="js/carlog.js?ver=3"></script>
 <script type="text/javascript" src="js/common.js"></script>
 </head>
 <body>
@@ -37,7 +38,7 @@
 		<span class="glyphicon glyphicon-pencil" aria-hidden="true"> </span>
 		<p class="content_title-text">운행일지 일괄작성</p>
 	</div>
-	<form name="frm" action="post">
+	<form name="frm" method="post" action = "carlog.do?command=carlog_auto_write_next">
 		<input type = "hidden" name = "demand" value = "id">
 		<div class="content_cont-box">
 			<p class="content_cont-text">차량 등록 번호</p>
@@ -59,11 +60,12 @@
 						<p class="must">*</p>
 					</td>
 					<td class="form_normal-td" colspan="3">
-					<select class="form_car_select select_sm">
+					<select class="form_car_select select_sm" name = "carlog_year">
 							<option value="${curYear - 2}">${curYear - 2}년</option>
 							<option value="${curYear - 1}">${curYear - 1}년</option>
 							<option value="${curYear}" selected>${curYear}년</option>
-					</select> <select class="form_car_select select_sm">
+					</select> 
+					<select class="form_car_select select_sm" name = "carlog_month">
 							<c:forEach varStatus="month" begin="1" end="12" step="1">
 								<option value="${month.count}">${month.count}월</option>
 							</c:forEach>
@@ -96,7 +98,7 @@
 						<p class="must">*</p>
 					</td>
 					<td>
-						<select class = "form_car_select text_half">
+						<select class = "form_car_select text_half" name = "rate_oil">
 							<option value = "16">16km/ℓ</option>
 							<option value = "14">14km/ℓ</option>
 							<option value = "12">12km/ℓ</option>
@@ -104,29 +106,67 @@
 						</select>
 					</td>
 				</tr>
+			</table>
+		</div>
+		<div class = "content_cont-box">
+		<p class="content_cont-text">* 주 이용 (출·퇴근) 경로 정보</p>
+			<p class="content_cont-text"></p>
+			<input name="cour_no" type="hidden" class="form_textbox">
+			<table class="table table-bordered" id="form_table">
+
 				<tr>
 					<td class="form_label">
-						<p class="label">주요 경로</p>
-						<p class="must">*</p>
+						<p class="label">출발지</p>
+
 					</td>
-					<td class="form_normal-td" colspan = "3">
-						<input name="cour_search_name" type="text" class="form_textbox">
-						<input name = "cour_name" type = "hidden">
-						<input name = "cour_no" type = "hidden">
-						<button type="button" onClick="memSearchByName();" class="quiet_btn">
-							<span id="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
-						</button>
+					<td><input name="s_place_name" type="text"
+						class="form_textbox" readonly>
+						<button type="button" onClick="carlogCourseSearch();"
+							class="quiet_btn" id="idCheck">
+							<span id="search-button" class="glyphicon glyphicon-search"
+								aria-hidden="true"></span>
+						</button></td>
+					<td class="form_label">
+						<p class="label">도착지</p>
 					</td>
+					<td class="form_normal-td"><input name="e_place_name"
+						type="text" class="form_textbox" readonly></td>
+				</tr>
+
+				<tr>
+					<td class="form_label">
+						<p class="label">경로 목적</p>
+
+					</td>
+					<td colspan="4"><select class="form_textbox" name="driv_purpo">
+							<option value="선택" selected>선택</option>
+							<option value="거래처방문">거래처 방문</option>
+							<option value="회의참석">회의 참석</option>
+							<option selected value="출·퇴근">출·퇴근</option>
+							<option value="기타업무">기타업무</option>
+							<option value="업무외사용">업무외 사용</option>
+					</select></td>
+
+
+				</tr>
+
+
+				<tr>
+					<td class="form_label">
+						<p class="label">주행거리</p>
+					</td>
+					<td class="form_normal-td" colspan="3"><input name="distance"
+						type="text" size="13" class="form_textbox">&nbsp;km</td>
 				</tr>
 			</table>
 		</div>
+		
 		<script type = "text/javascript">
 		$(document).ready(function(){
             // 옵션추가 버튼 클릭시
             $("#addItemBtn").click(function(){
                 // item 의 최대번호 구하기
                 var lastItemNo = $("#example tr:last").attr("class").replace("item", "");
- 
                 var newitem = $("#example tr:eq(1)").clone();
                 newitem.removeClass();
                 newitem.find("td:eq(0)").attr("rowspan", "1");
@@ -170,19 +210,21 @@
 				</tr></thead>
 				<tbody>
 					<tr class = "item1">
-						<td><input class = "form_textbox text_short" maxlength="2" type = text>일</td>
-						<td><input class = "form_textbox" type = text>원</td>
-						<td><input class = "form_textbox" type = text>원</td>
-						<td><input class = "form_textbox" type = text></td>
-						<td><button type = "button" class = "delBtn quiet_btn">
+						<td><input name = "card_day" class = "form_textbox text_short" maxlength="2" type = text>일</td>
+						<td><input name = "card_oil" class = "form_textbox" type = text>원</td>
+						<td><input name = "card_trans" class = "form_textbox" type = text>원</td>
+						<td><input name = "card_course" class = "form_textbox" type = text></td>
+						<td>
+							<button type = "button" class = "delBtn quiet_btn">
 								<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-							</button></td>
+							</button>
+						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 		<div class = "form_btn-group">
-			<button type = "submit">다음</button>
+			<button type = "submit" onclick="return carLogAutoNext()">다음</button>
 		</div>
 	</form>
 	</section> 

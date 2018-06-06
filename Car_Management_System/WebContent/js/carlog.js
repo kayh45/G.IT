@@ -135,3 +135,51 @@ function carlogSelect(name) {
 	opener.document.getElementById("ins_btn").disabled = "true";
 	self.close();
 }
+
+function carLogAutoNext() {
+	
+	if (document.frm.car_usable_no.value == "") {
+		alert("차량을 선택하세요");
+		document.frm.car_reg_no.focus();
+	}else if (document.frm.mem_id.value == "") {
+		alert("운전자를 선택하세요");
+		document.frm.mem_id.focus();		
+	}else if (document.frm.avg_oil.value == "") {
+		alert("평균 유가를 입력하세요");
+		document.frm.avg_oil.focus();		
+	}else if (document.frm.cour_no.value == "") {
+		alert("주요 경로를 선택하세요");
+		document.frm.s_place_name.focus();		
+	}else if (document.frm.driv_purpo.value == "") {
+		alert("사용 목적을 입력 하세요.");
+		document.frm.driv_purpo.focus();
+		return false;
+	}else if (document.frm.distance.value == "") {
+		alert("주행 거리를 입력하세요");
+		document.frm.distance.focus();
+		return false;
+	}else {
+		var lastItemNo = $("#example tr:last").attr("class").replace("item", "");
+		var currItem;
+		for(var i = 1; i <= lastItemNo; i++) {
+			currItem = $(".item" + i);
+			console.log(currItem);
+			var td = currItem.children();
+			console.log(td.eq(0).children("input").eq(0).val());
+			if (td.eq(0).children("input").eq(0).val() == "") {
+				if(td.eq(1).children("input").children("input").eq(0).val() != "" || td.eq(2).children("input").children("input").eq(0).val() != "" || td.children("input").children("input").eq(0).val() != "") {
+					alert("일자를 입력하거나 다른 값을 지우세요");
+					return false;
+				}
+			}else if(td.eq(0).children("input").eq(0).val() != "" && td.eq(1).children("input").eq(0).val() == "" && td.eq(2).children("input").eq(0).val() == "" && td.eq(3).children("input").eq(0).val() == ""){
+				alert("일자를 지우거나 다른 값을 입력하세요");
+				return false;
+			}else if(td.eq(2).children("input").eq(0).val() != "" && td.eq(3).children("input").eq(0).val() == ""){
+				alert("교통비를 지우거나 경로를 선택하세요");
+				return false;
+			}else {
+				return true;
+			}
+		}
+	}
+}
