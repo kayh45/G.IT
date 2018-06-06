@@ -117,7 +117,10 @@ function repaWriteCheck() {
 		document.frm.car_reg_no.focus();
 		return false;
 	}
+<<<<<<< HEAD
 	
+=======
+>>>>>>> branch 'master' of https://github.com/kayh45/G.IT
 	else if (document.frm.cent_no.value == "") {
 		alert("정비소 번호를 입력하세요.");
 		document.frm.cent_no.focus();
