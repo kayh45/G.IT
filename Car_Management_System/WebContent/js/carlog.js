@@ -12,8 +12,7 @@ function carNoCheck() {
 	document.frm.car_reg_no_ok.value = 0; // 중복검사 여부를 0으로 초기화
    var url = "repa.do?popup=no&command=repa_car_write_check_form&car_reg_no="
          + encodeURIComponent(document.frm.car_reg_no.value);
-   window
-         .open(url, "_blank_1",
+   window.open(url, "_blank_1",
                "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
 }
   function carlogDateCheck() {
@@ -244,4 +243,30 @@ function carLogAutoNext() {
 			}
 		}
 	}
+}
+
+function canWrite() {
+	
+	var car_reg_no = document.frm.car_usable_no.value;
+	var year = document.frm.carlog_year.value;
+	var month = document.frm.carlog_month.value;
+	
+	if (car_reg_no != "") {
+		 var url = "carlog.do?popup=no&command=carlog_auto_check&car_reg_no="+encodeURIComponent(car_reg_no)
+		   				+"&year="+year+"&month="+month;
+		 window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
+	}	
+}
+
+function autoCheckClose() {
+	opener.frm.canWrites.value = 0;
+	opener.document.getElementById("ins_btn").disabled = "true";
+	
+	self.close();
+}
+function autoCheckOk() {
+	opener.frm.canWrites.value = 1;
+	opener.document.getElementById("ins_btn").removeAttribute('disabled');
+	
+	self.close();
 }

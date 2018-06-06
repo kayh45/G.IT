@@ -10,6 +10,7 @@ import com.plani.cms.controller.action.car.CarSearchAction;
 import com.plani.cms.controller.action.car.CarWriteAction;
 import com.plani.cms.controller.action.car.CarWriteCheckFormAction;
 import com.plani.cms.controller.action.car.CarWriteFormAction;
+import com.plani.cms.controller.action.carlog.CarlogAutoCheckAction;
 import com.plani.cms.controller.action.carlog.CarlogAutoWriteFormAction;
 import com.plani.cms.controller.action.carlog.CarlogAutoWriteNextAction;
 import com.plani.cms.controller.action.carlog.CarlogCourseSelectAction;
@@ -259,16 +260,18 @@ public class ActionFactory {
 			action = new CarlogCourseSelectAction();
 		} else if (command.equals("carlog_auto_write_form")) {
 			action = new CarlogAutoWriteFormAction();
-		}else if (command.equals("carlog_view_form")) {
+		} else if (command.equals("carlog_view_form")) {
 			action = new CarlogViewFormAction();
+		} else if (command.equals("carlog_member_search")) {
+			action = new CarlogMemberWriteFormAction();	
 		}else if (command.equals("excel_form")) {
-		action = new ExcelFormAction();
-	}
-	else if (command.equals("carlog_member_search")) {
-		action = new CarlogMemberWriteFormAction();
-	
+			action = new ExcelFormAction();
+		}else if (command.equals("carlog_member_search")) {
+			action = new CarlogMemberWriteFormAction();	
 		} else if (command.equals("carlog_auto_write_next")) {
 			action = new CarlogAutoWriteNextAction();
+		} else if (command.equals("carlog_auto_check")) {
+			action = new CarlogAutoCheckAction();
 		}
 		return action;
 

@@ -1,6 +1,6 @@
 package com.plani.cms.dto;
 
-public class CarlogVO {
+public class CarlogVO extends DrivVO{
 	private int driv_no;
 	private String mem_id;
 	private String mem_name;

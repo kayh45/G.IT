@@ -1,5 +1,5 @@
 * {
-	font-size : 17px;
+	font-size : 15px;
 }
 
 .popup_header {
@@ -23,7 +23,7 @@
 
 .popup_box {
 	margin : 10px;
-	padding : 10px;
+	padding : 5px;
 	background-color: #fff;
 	border : 1px solid #ddd;
 }
@@ -34,7 +34,7 @@
 
 .popup_box table {
 	font-size : 14px;
-	width : 90%;
+	width : 95%;
 	margin : auto;
 }
 
@@ -53,4 +53,8 @@
 
 a:hover {
 	cursor: pointer;
+}
+
+.popup_notice {
+	font-size : 14px;
 }
