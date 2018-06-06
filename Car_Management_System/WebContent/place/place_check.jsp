@@ -27,13 +27,13 @@
 				<input type = "hidden" name = "place_name_ok" value = "1">
 			
 		<c:if test = "${result==-1}">
-		<div class = "popup_box">
+		<%-- <div class = "popup_box">
 		
 				<p>'${place_name}'은 등록가능합니다. 
 					<button type = "button" onclick = "usePlaceName()">사용</button> 
 				</p>
 		
-		</div>			
+		</div>	 --%>		
 		</c:if>
 		
 		<c:if test = "${result==1}">
