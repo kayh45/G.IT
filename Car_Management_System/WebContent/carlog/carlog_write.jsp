@@ -195,34 +195,21 @@
 						<p class="label">비용 구분</p>
 					</td>
 					<td class="form_normal-td" colspan="3">
-						<div class="radio-group">
-							<input type="checkbox" name="oil_fee_check">유류비 <input
-								name="oil_fee" type="text" class="form_textbox" value = 0>원
-
-						</div>
+							유류비 <input name="oil_fee" type="text" class="form_textbox" value = 0>원
 					</td>
 				</tr>
 
 				<tr>
 					<td class="form_normal-td" colspan="3">
-						<div class="radio-group">
-							<input type="checkbox" name="trans_fee_check">교통비 <input
+							교통비 <input
 								name="trans_fee" type="text" class="form_textbox" value = 0>원
-
-						</div>
 					</td>
-
 				</tr>
-
 				<tr>
 
 					<td class="form_normal-td" colspan="3">
-						<div class="radio-group">
-							<input type="checkbox" name="etc_fee_check">기타(직접 입력)
-							<input name="etc_text" type="text" class="form_textbox"> <input
+							기타(직접 입력) <input name="etc_text" type="text" class="form_textbox"> <input
 								name="etc_fee" type="text" class="form_textbox" value = 0>원
-
-						</div>
 					</td>
 				</tr>
 			</table>
