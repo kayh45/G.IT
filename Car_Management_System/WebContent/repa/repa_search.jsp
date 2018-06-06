@@ -86,6 +86,7 @@
 					<input type = "hidden" name ="temp_repa_no" value="false">
 					<input type = "hidden" name ="temp_car_reg_no" value="false">
 					<input type = "hidden" name ="temp_cent_no" value="false">
+					<input type = "hidden" name ="temp_cent_name" value="false">
 					<input type = "hidden" name ="temp_repa_s_date" value="false">
 			 		<input type = "hidden" name ="temp_repa_e_date" value="false">
 					<input type = "hidden" name ="temp_mechanic_name" value="false">
@@ -145,7 +146,7 @@
 				    <input type = "hidden" name = "${repa.repa_no}repa_no" value  = "${repa.repa_no}">
 					<input type = "hidden" name = "${repa.repa_no}car_reg_no" value  = "${repa.car_reg_no}">
 					<input type = "hidden" name = "${repa.repa_no}cent_no" value  = "${repa.cent_no}">
-					<%-- <input type = "hidden" name = "${repa.cent_name}cent_name" value  = "${repa.cent_name}"> --%>
+					<input type = "hidden" name = "${repa.repa_no}cent_name" value  = "${repa.cent_name}"> 
 					<input type = "hidden" name = "${repa.repa_no}repa_s_date" value  = "${repa.repa_s_date}">
 					<input type = "hidden" name = "${repa.repa_no}repa_e_date" value  = "${repa.repa_e_date}">
 					<input type = "hidden" name = "${repa.repa_no}mechanic_name" value  = "${repa.mechanic_name}">

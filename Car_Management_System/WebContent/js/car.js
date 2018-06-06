@@ -50,7 +50,7 @@ function carSelect(name) {
 	 * 사원 검색에서 사원 이름 누르면 부모 폼으로 들어가는 기능
 	 * 
 	 */
-
+	opener.frm.car_reg_no_ok.value = 1;
 	if (document.getElementsByName(name + "car_divi")[0].value == "렌트"
 			|| document.getElementsByName(name + "car_divi")[0].value == "리스") {
 		var frmName = document.getElementsByName(name + "car_reg_no")[0].value;

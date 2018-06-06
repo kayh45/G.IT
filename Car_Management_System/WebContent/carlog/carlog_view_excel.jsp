@@ -18,7 +18,8 @@ response.setHeader("Content-Description", "JSP Generated Data");
 %>
 <style>
 table{
-border="1"
+ border: 1px solid #fff;
+
 }
 </style>
 </head>

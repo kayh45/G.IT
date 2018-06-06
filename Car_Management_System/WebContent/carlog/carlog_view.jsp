@@ -16,7 +16,19 @@
 <script type = "text/javascript" src="js/common.js"></script>
 <script type = "text/javascript" src="js/rsrv.js"></script>
 <script type = "text/javascript" src="js/carlog.js?ver=2"></script>
-
+<style>
+.right {
+	text-align : right;
+}
+.box {
+	width : 100%;
+	height : 100%;
+ 	text-align : right;
+}
+div .box button{
+	background-color: #368AFF;
+}
+</style>
 
 
 </head>
@@ -69,7 +81,7 @@
 						<p class="label">차량 등록 번호</p>
 					</td>
 					<td class="form_normal-td" colspan="3"><input type="text"
-						class="form_textbox" id="car_reg_no" name="car_reg_no" value="${ car_reg_no}">
+						class="form_textbox" id="car_reg_no" name="car_reg_no" value="${ car_reg_no}" readonly>
 							<input type = "hidden" name = "car_reg_no_ok" value = "0">
 						<button type = "button" onClick = "carNoCheck();" class = "quiet_btn" id = "idCheck">
 								<span id ="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -88,8 +100,8 @@
 					<thead>
 					<tr>
 						<th class = "number_th">일자</th>
-						<th>부서</th>
-						<th>직책</th>
+						<!-- <th>부서</th>
+						<th>직책</th> -->
 						<th>성명</th>
 						<th>사용목적</th>
 						<th>출발지</th>
@@ -98,24 +110,24 @@
 						<th>주행전누적거리(km)</th>
 						<th>주행거리(km)</th>
 						<th>주행후누적거리(km)</th>
-						<th>비고</th>
+						<!-- <th>비고</th> -->
 					</tr>
 					<thead>
 					<c:forEach var = "carlog" items = "${carlogAllList}">
 					
 				<tr>		               
 						<td>${carlog.driv_s_date}</a></td>
-						<td>${carlog.dept_name}</td>
-						<td>${carlog.mem_posi}</td>
+						<%-- <td>${carlog.dept_name}</td>
+						<td>${carlog.mem_posi}</td> --%>
 						<td>${carlog.mem_name}</td>
 						<td>${carlog.driv_purpo}</td>
 						<td>${carlog.s_place_name}</td>
 						<td>${carlog.e_place_name}</td>
-						<td>${carlog.total_fee}</td>
-						<td>${carlog.befo_dist}</td>
-						<td>${carlog.distance}</td>
-						<td>${carlog.after_dist}</td>
-						<td>
+						<td class="right">${carlog.total_fee}</td>
+						<td class="right">${carlog.befo_dist}</td>
+						<td class="right">${carlog.distance}</td>
+						<td class="right">${carlog.after_dist}</td>
+					<%-- 	<td>
 						<c:choose>
 						<c:when test="${carlog.card_divi eq '미사용'}">
 							-
@@ -128,7 +140,7 @@
 						</c:when>
 						</c:choose>
 						</td>
-					</tr>					
+					</tr>			 --%>		
 				 <%--    <input type = "hidden" name = "${repa.repa_no}repa_no" value  = "${repa.repa_no}">
 					<input type = "hidden" name = "${repa.repa_no}car_reg_no" value  = "${repa.car_reg_no}">
 					<input type = "hidden" name = "${repa.repa_no}cent_no" value  = "${repa.cent_no}">
@@ -147,8 +159,11 @@
 				
 					</c:forEach>
 				</table>
+			<div class="box">
+			<button type = "submit" name="excelConverBtn" id="excelConverBtn" value="엑셀출력" onclick="excelConver()" style="cursor:hand">
+			엑셀 출력</button>
 			
-		<input type = "submit" name="excelConverBtn" id="excelConverBtn" value="엑셀출력" onclick="excelConver()" style="cursor:hand"/>
+			</div>
 				
 				
 			</div>

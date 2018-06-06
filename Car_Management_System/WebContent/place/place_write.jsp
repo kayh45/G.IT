@@ -45,7 +45,7 @@
 					</td>
 					<td colspan="3"><input type="text" class="form_textbox"
 						name="place_name"> <input type="hidden"
-						name="place_name_ok" class="form_textbox"> <input
+						name="place_name_ok" class="form_textbox" value="0"> <input
 						type="hidden" name="place_usable_name">
 						<button type="button" onClick="placeNameCheck()" class="quiet_btn"
 							id="idCheck">

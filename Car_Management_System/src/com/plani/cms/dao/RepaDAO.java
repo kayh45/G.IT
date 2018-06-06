@@ -21,7 +21,9 @@ public class RepaDAO {
 	
 	
 	public List<RepaVO> selectOnlyDate(String repa_s_date,String repa_e_date){
-		String sql = "select * from repa where repa_s_date >='" + repa_s_date + "'and repa_e_date<='" + repa_e_date + "' ";
+		String sql = "select r.repa_no, r.cent_no, c.cent_name, r.car_reg_no, r.mechanic_name, r.repa_s_date, r.repa_e_date,"
+				+ "r.repa_cont, r.repa_fee, r.repa_divi "
+				+ "from repa r, cent c where r.cent_no = c.cent_no AND r.repa_s_date >='" + repa_s_date + "'and r.repa_e_date<='" + repa_e_date + "' ";
 
 		List<RepaVO> list = new ArrayList<RepaVO>();
 		Connection conn = null;
@@ -40,6 +42,7 @@ public class RepaDAO {
 
 				rVo.setRepa_no(rs.getInt("repa_no"));
 				rVo.setCent_no(rs.getInt("cent_no"));
+				rVo.setCent_name(rs.getString("cent_name"));
 				rVo.setCar_reg_no(rs.getString("car_reg_no"));
 				rVo.setMechanic_name(rs.getString("mechanic_name"));
 				rVo.setRepa_s_date(rs.getString("repa_s_date"));
@@ -58,7 +61,9 @@ public class RepaDAO {
 		return list;	
 	}
 	public List<RepaVO> selectDateCent(String repa_s_date,String repa_e_date,String cent_no){
-		String sql = "select * from repa where repa_s_date >='" + repa_s_date + "'and repa_e_date<='" + repa_e_date + "'and cent_no='" + cent_no + "' ";
+		String sql = "select r.repa_no, r.cent_no, c.cent_name, r.car_reg_no, r.mechanic_name, r.repa_s_date, r.repa_e_date,"
+				+ "r.repa_cont, r.repa_fee, r.repa_divi "
+				+ "from repa r, cent c where r.cent_no = c.cent_no AND r.repa_s_date >='" + repa_s_date + "'and r.repa_e_date<='" + repa_e_date + "'and r.cent_no='" + cent_no + "' ";
 
 		List<RepaVO> list = new ArrayList<RepaVO>();
 		Connection conn = null;
@@ -77,6 +82,7 @@ public class RepaDAO {
 
 				rVo.setRepa_no(rs.getInt("repa_no"));
 				rVo.setCent_no(rs.getInt("cent_no"));
+				rVo.setCent_name(rs.getString("cent_name"));
 				rVo.setCar_reg_no(rs.getString("car_reg_no"));
 				rVo.setMechanic_name(rs.getString("mechanic_name"));
 				rVo.setRepa_s_date(rs.getString("repa_s_date"));
@@ -96,7 +102,10 @@ public class RepaDAO {
 	}
 	
 	public List<RepaVO> selectDateCentReg(String repa_s_date,String repa_e_date,String cent_no,String car_reg_no){
-		String sql = "select * from repa where repa_s_date >='" + repa_s_date + "'and repa_e_date<='" + repa_e_date + "'and cent_no='" + cent_no + "'and car_reg_no='" + car_reg_no + "' ";
+		String sql = "select r.repa_no, r.cent_no, c.cent_name, r.car_reg_no, r.mechanic_name, r.repa_s_date, r.repa_e_date,"
+				+ "r.repa_cont, r.repa_fee, r.repa_divi "
+				+ "from repa r, cent c where r.cent_no = c.cent_no and "
+				+ "r.repa_s_date >='" + repa_s_date + "'and r.repa_e_date<='" + repa_e_date + "'and r.cent_no='" + cent_no + "'and r.car_reg_no='" + car_reg_no + "' ";
 
 		List<RepaVO> list = new ArrayList<RepaVO>();
 		Connection conn = null;
@@ -115,6 +124,7 @@ public class RepaDAO {
 
 				rVo.setRepa_no(rs.getInt("repa_no"));
 				rVo.setCent_no(rs.getInt("cent_no"));
+				rVo.setCent_name(rs.getString("cent_name"));
 				rVo.setCar_reg_no(rs.getString("car_reg_no"));
 				rVo.setMechanic_name(rs.getString("mechanic_name"));
 				rVo.setRepa_s_date(rs.getString("repa_s_date"));
@@ -135,7 +145,9 @@ public class RepaDAO {
 	
 	
 	public List<RepaVO> selectDateReg(String repa_s_date,String repa_e_date,String car_reg_no){
-		String sql = "select * from repa where repa_s_date >='" + repa_s_date + "'and repa_e_date<='" + repa_e_date + "'and car_reg_no='" + car_reg_no + "' ";
+		String sql = "select r.repa_no, r.cent_no, c.cent_name, r.car_reg_no, r.mechanic_name, r.repa_s_date, r.repa_e_date,"
+				+ "r.repa_cont, r.repa_fee, r.repa_divi "
+				+ "from repa r, cent c where r.cent_no = c.cent_no and r.repa_s_date >='" + repa_s_date + "'and r.repa_e_date<='" + repa_e_date + "'and r.car_reg_no='" + car_reg_no + "' ";
 
 		List<RepaVO> list = new ArrayList<RepaVO>();
 		Connection conn = null;

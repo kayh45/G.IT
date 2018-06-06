@@ -19,7 +19,6 @@ function carNoCheck() {
 		var repa_s_date = document.frm.repa_s_date.value;	
 		var repa_e_date = document.frm.repa_e_date.value;	
 		var car_reg_no = document.frm.car_reg_no.value;
-		var car_reg_no_ok = document.frm.car_reg_no_ok.value;
 		if(repa_s_date=="" || repa_s_date.length != 10 || repa_e_date=="" || repa_e_date.length != 10) {
 			alert("날짜를 입력해주세요");
 			document.frm.repa_s_date.value.focus();
@@ -29,10 +28,11 @@ function carNoCheck() {
 			alert("차량 등록 번호를 입력하세요")
 			return false;
 		}
+		/*}
 		else if(car_reg_no !="" && car_reg_no_ok==0){
 				alert("차량 등록 번호 돋보기를 클릭하세요.");
 				return false;
-		}else{
+		}*/else{
 			return true;
 		}
 	}

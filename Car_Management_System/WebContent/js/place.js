@@ -106,7 +106,8 @@ function placeSelect(name) {
 	 * 사원 검색에서 사원 이름 누르면 부모 폼으로 들어가는 기능 
 	 * 
 	 */
-	
+	opener.frm.place_name_ok.value = 1;
+
 	var frmName = document.getElementsByName(name + "place_name")[0].value;	
 	
 	opener.frm.place_no.value = document.getElementsByName(name + "place_no")[0].value;

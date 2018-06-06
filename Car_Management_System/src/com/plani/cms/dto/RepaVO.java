@@ -16,6 +16,7 @@ public class RepaVO {
 			#차량 정비내역 테이블 생성*/
 	private int repa_no;
 	private int cent_no;
+	private String cent_name;
 	private String car_reg_no;
 	private String mechanic_name;
 	private String repa_s_date;
@@ -24,6 +25,13 @@ public class RepaVO {
 	private int repa_fee;
 	private String repa_divi;
 	
+	
+	public String getCent_name() {
+		return cent_name;
+	}
+	public void setCent_name(String cent_name) {
+		this.cent_name = cent_name;
+	}
 	public int getRepa_no() {
 		return repa_no;
 	}
