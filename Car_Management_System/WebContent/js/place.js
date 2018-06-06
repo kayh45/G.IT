@@ -75,7 +75,7 @@ function placeDelete() {
 			var isisCorrect = confirm("삭제한 정보는 되돌릴수 없습니다.")
 			if(isisCorrect == true) {
 				var url = "place.do?&command=place_delete&place_no="
-					+ document.frm.place_no.value +"&cent_name=" + document.frm.place_name.value;
+					+ document.frm.place_no.value +"&place_name=" + document.frm.place_name.value;
 			location.replace(url);
 			}else {
 				return false;

@@ -56,9 +56,9 @@
 					</tr>	
 					
 									
-					<input type = "hidden" name = "${place.place_no}place_no" value  = "${place.place_no}">
-					<input type = "hidden" name = "${place.place_no}place_name" value  = "${place.place_name}">
-					<input type = "hidden" name = "${place.place_no}place_addr" value  = "${place.place_addr}">
+					<input type = "hidden" name = "${place.place_no}s_place_no" value  = "${place.place_no}">
+					<input type = "hidden" name = "${place.place_no}s_place_name" value  = "${place.place_name}">
+					<input type = "hidden" name = "${place.place_no}s_place_addr" value  = "${place.place_addr}">
 					</c:forEach>
 				</table>
 			</div>
@@ -85,9 +85,9 @@
 						<td>${place.place_addr },${place.place_addr_dtl }</td>		
 					</tr>	
 					
-				   <input type = "hidden" name = "${place.place_no}place_no" value  = "${place.place_no}">
-					<input type = "hidden" name = "${place.place_no}place_name" value  = "${place.place_name}">
-					<input type = "hidden" name = "${place.place_no}place_addr" value  = "${place.place_addr}">
+				   <input type = "hidden" name = "${place.place_no}s_place_no" value  = "${place.place_no}">
+					<input type = "hidden" name = "${place.place_no}s_place_name" value  = "${place.place_name}">
+					<input type = "hidden" name = "${place.place_no}s_place_addr" value  = "${place.place_addr}">
 					</c:forEach>
 				</table>
 				

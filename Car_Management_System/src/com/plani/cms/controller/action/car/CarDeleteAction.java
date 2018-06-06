@@ -15,9 +15,11 @@ public class CarDeleteAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "car.do?command=car_write_form";
-		String car_reg_no = request.getParameter("car_reg_no");
+		String car_reg_no = new String(request.getParameter("car_reg_no").getBytes("8859_1"),"UTF-8");
+		
 
 		CarDAO cDao = CarDAO.getInstance();
+		System.out.println(car_reg_no);
 		cDao.DeleteCar(car_reg_no);
 
 		System.out.println("삭제 성공");

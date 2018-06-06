@@ -17,10 +17,11 @@ public class CourDeleteAction implements Action {
 		String url = "course.do?command=cour_write_form";
 
 		
-		int course_no = Integer.parseInt(request.getParameter("course_no"));
+		int cour_no = Integer.parseInt(request.getParameter("cour_no"));
 
+		
 		CourseDAO cDao = CourseDAO.getInstance();
-		cDao.DeleteCourse(course_no);
+		cDao.DeleteCourse(cour_no);
 
 		System.out.println("삭제 성공");
 		request.setAttribute("message", "<strong>정비소 삭제 성공!</strong>");
