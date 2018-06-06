@@ -116,17 +116,8 @@ function repaWriteCheck() {
 		document.frm.car_reg_no.focus();
 		return false;
 	}
-	else if (document.frm.car_reg_no_ok.value == "0") {
-		alert("차량 등록 번호 돋보기를 클릭하세요.");
-		document.frm.cent_no.focus();
-		return false;
-	}
 	else if (document.frm.cent_no.value == "") {
 		alert("정비소 번호를 입력하세요.");
-		document.frm.cent_no.focus();
-		return false;
-	}else if (document.frm.cent_name_ok.value == "0") {
-		alert("차량 등록 번호 돋보기를 클릭하세요.");
 		document.frm.cent_no.focus();
 		return false;
 	}
