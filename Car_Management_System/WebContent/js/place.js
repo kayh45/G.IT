@@ -7,11 +7,11 @@ function placeWriteCheck() {
 		alert("장소명을 입력하세요");
 		document.frm.place_name.focus();
 		return false;
-	} else if (document.frm.place_name_ok.value == "0") {
+	} /*else if (document.frm.place_name_ok.value == "0") {
 		alert("장소명을 중복체크를 해주세요");
 		document.frm.place_name_ok.focus();
 		return false;
-	} else if (document.frm.place_p_no.value == "") {
+	}*/ else if (document.frm.place_p_no.value == "") {
 		alert("우편번호를 입력하세요");
 		document.frm.place_p_no.focus();
 		return false;
@@ -26,7 +26,7 @@ function placeWriteCheck() {
 	} 
 	else {
 	var name = document.frm.place_name.value;
-	var isCorrect = confirm(name + " 장소를 등록 하시겠습니까?");
+	var isCorrect = confirm(name + "장소를 등록 하시겠습니까?");
 	if (isCorrect == true) {
 		return true;
 	} else {
