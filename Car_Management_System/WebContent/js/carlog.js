@@ -1,6 +1,61 @@
 /**
  * 유효성 검사.
  */
+function carNoCheck() {
+	document.frm.car_reg_no_ok.value = 0; // 중복검사 여부를 0으로 초기화
+   var url = "repa.do?popup=no&command=repa_car_write_check_form&car_reg_no="
+         + encodeURIComponent(document.frm.car_reg_no.value);
+   window
+         .open(url, "_blank_1",
+               "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
+}
+  function carlogDateCheck() {
+		var repa_s_date = document.frm.repa_s_date.value;	
+		var repa_e_date = document.frm.repa_e_date.value;	
+		var car_reg_no = document.frm.car_reg_no.value;
+		var car_reg_no_ok = document.frm.car_reg_no_ok.value;
+		if(repa_s_date=="" || repa_s_date.length != 10 || repa_e_date=="" || repa_e_date.length != 10) {
+			alert("날짜를 입력해주세요");
+			document.frm.repa_s_date.value.focus();
+			return false;
+		}
+		else if(car_reg_no ==""){
+			alert("차량 등록 번호를 입력하세요")
+			return false;
+		}
+		else if(car_reg_no !="" && car_reg_no_ok==0){
+				alert("차량 등록 번호 돋보기를 클릭하세요.");
+				return false;
+		}else{
+			return true;
+		}
+	}
+  
+function carlogMemSelect(mem_id, mem_name) {
+	/*
+	 * repa_cent_check.jsp 에서 사용
+
+
+	 * 정비소명 을 검색하고 정비소명을 누르면 해당 정비소의 정비소명과 정비번호가 부모화면의 폼으로 들어간다.
+	 * 
+	 */
+	opener.frm.mem_id.value = mem_id;
+	opener.frm.mem_search_name.value = mem_name;
+	self.close();
+}
+
+function memSearchByName() {
+	/*
+	 * @member_search.jsp 에서 사용
+	 * 
+	 * 
+	 */
+	var url = "carlog.do?popup=no&command=carlog_member_search&mem_name="
+			+ encodeURIComponent(document.frm.mem_search_name.value);
+	window.open(url, "_blank_1",
+					"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
+}
+
 
 function carlogWriteCheck() {
 	if (document.frm.driv_no.value == "") {
