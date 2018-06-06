@@ -64,6 +64,61 @@ public class CarlogDAO {
 		}
 	}
 	
+	public void updateCarlogNofee(CarlogVO cVo) {
+		String sql = "update driv set cour_no=?, driv_purpo=?, card_divi=?, befo_dist=? "
+				+ "where driv_no=?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, cVo.getCour_no());
+			pstmt.setString(2, cVo.getDriv_purpo());
+			pstmt.setString(3, cVo.getCard_divi());
+			pstmt.setInt(4, cVo.getBefo_dist());
+			pstmt.setInt(5, cVo.getDriv_no());
+			
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+	}
+	public void updateCarlogOilfee(CarlogVO cVo) {
+		String sql = "update driv set cour_no=?, driv_purpo=?, card_divi=?, oil_fee=0, trans_fee=?, etc_text=?, etc_fee=?, befo_dist=? "
+				+ "where driv_no=?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, cVo.getCour_no());
+			pstmt.setString(2, cVo.getDriv_purpo());
+			pstmt.setString(3, cVo.getCard_divi());
+			pstmt.setInt(4, cVo.getOil_fee());
+			pstmt.setInt(5, cVo.getTrans_fee());
+			pstmt.setString(6, cVo.getEtc_text());
+			pstmt.setInt(7, cVo.getEtc_fee());
+			pstmt.setInt(8, cVo.getBefo_dist());
+			pstmt.setInt(9, cVo.getDriv_no());
+			
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+	}
+	
 	public void DeleteCarlog(int driv_no) {
 
 		String sql = "DELETE FROM driv WHERE driv_no = ?";

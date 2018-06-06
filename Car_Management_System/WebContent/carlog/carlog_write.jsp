@@ -177,7 +177,6 @@
 							 <input type="radio" value="미사용" name="card_divi" checked>미사용
 							<input type="radio" value="법인카드" name="card_divi">법인카드
 							 <input type="radio" value="개인카드" name="card_divi">개인카드 
-
 						</div>
 					</td>
 				</tr>
@@ -189,7 +188,7 @@
 					<td class="form_normal-td" colspan="3">
 						<div class="radio-group">
 							<input type="checkbox" name="oil_fee_check">유류비 <input
-								name="oil_fee" type="text" class="form_textbox">원
+								name="oil_fee" type="text" class="form_textbox" value = 0>원
 
 						</div>
 					</td>
@@ -199,7 +198,7 @@
 					<td class="form_normal-td" colspan="3">
 						<div class="radio-group">
 							<input type="checkbox" name="trans_fee_check">교통비 <input
-								name="trans_fee" type="text" class="form_textbox">원
+								name="trans_fee" type="text" class="form_textbox" value = 0>원
 
 						</div>
 					</td>
@@ -212,7 +211,7 @@
 						<div class="radio-group">
 							<input type="checkbox" name="etc_fee_check">기타(직접 입력)
 							<input name="etc_text" type="text" class="form_textbox"> <input
-								name="etc_fee" type="text" class="form_textbox">원
+								name="etc_fee" type="text" class="form_textbox" value = 0>원
 
 						</div>
 					</td>

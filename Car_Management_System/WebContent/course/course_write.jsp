@@ -36,16 +36,13 @@
 			<table class="table table-bordered">
 
 				<tr>
-				<td class="form_label">
-						<p class="label">장소 번호</p>
-						<p class="must">*</p>
-					</td>
-					<td class="form_normal-td"><input type="text" class="form_textbox" name="s_place_no" readonly></td>
+				
 					<td class="form_label">
 						<p class="label">출발지</p>
 						<p class="must">*</p>
+						<input type="hidden" class="form_textbox" name="s_place_no" readonly>
 					</td>
-					<td><input type="text" name="s_place_name" class="form_textbox">
+					<td><input type="text" name="s_place_name" class="form_textbox" readonly>
 					<input type="hidden" name="s_place_name_ok" class="form_textbox"> 
 					<input type="hidden" name="s_place_usable_name">
 					<button type="button" onClick="splaceNameCheck()" class="quiet_btn" id="idCheck">
@@ -59,16 +56,13 @@
 					</td>
 				</tr>
 				<tr>
-				<td class="form_label">
-						<p class="label">장소 번호</p>
-						<p class="must">*</p>
-					</td>
-					<td class="form_normal-td"><input type="text" class="form_textbox" name="e_place_no" readonly></td>
+				
 					<td class="form_label">
 						<p class="label">도착지</p>  
 						<p class="must">*</p>
+						<input type="hidden" class="form_textbox" name="e_place_no" readonly>
 					</td>
-					<td><input type="text" name="e_place_name" class="form_textbox">
+					<td><input type="text" name="e_place_name" class="form_textbox" readonly>
 					<input type="hidden" name="e_place_name_ok" class="form_textbox"> 
 					<input type="hidden" name="e_place_usable_name">
 					<button type="button" onClick="eplaceNameCheck()" class="quiet_btn" id="idCheck">
