@@ -18,9 +18,10 @@ response.setHeader("Content-Description", "JSP Generated Data");
 %>
 <style>
 table{
-border="1"
+border:"1"
 }
 </style>
+
 </head>
 <body>
 <h3> 차량운행일지 </h3>
@@ -69,25 +70,9 @@ border="1"
 						</c:choose>
 						</td>
 					</tr>					
-				 <%--    <input type = "hidden" name = "${repa.repa_no}repa_no" value  = "${repa.repa_no}">
-					<input type = "hidden" name = "${repa.repa_no}car_reg_no" value  = "${repa.car_reg_no}">
-					<input type = "hidden" name = "${repa.repa_no}cent_no" value  = "${repa.cent_no}">
-					<input type = "hidden" name = "${repa.cent_name}cent_name" value  = "${repa.cent_name}">
-					<input type = "hidden" name = "${repa.repa_no}repa_s_date" value  = "${repa.repa_s_date}">
-					<input type = "hidden" name = "${repa.repa_no}repa_e_date" value  = "${repa.repa_e_date}">
-					<input type = "hidden" name = "${repa.repa_no}mechanic_name" value  = "${repa.mechanic_name}">
-					<input type = "hidden" name = "${repa.repa_no}repa_fee" value  = "${repa.repa_fee}">
-					<input type = "hidden" name = "${repa.repa_no}repa_cont" value  = "${repa.repa_cont}">
-					<input type = "hidden" name = "${repa.repa_no}repa_divi" value  = "${repa.repa_divi}">
- --%>
-					
-				
-				
-				
 				
 					</c:forEach>
 				</table>
-	
 	
 </body>
 </html>

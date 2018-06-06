@@ -16,7 +16,7 @@ public class ExcelFormAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "carlog/carlog_view_excel.jsp";
+		String url = "carlog/carlog_view_excel1.jsp";
 		String repa_s_date = request.getParameter("repa_s_date");
 		String repa_e_date = request.getParameter("repa_e_date");
 		String car_reg_no = request.getParameter("car_reg_no");
