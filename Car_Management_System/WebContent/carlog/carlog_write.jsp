@@ -11,7 +11,7 @@
 <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery-ui.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
-<script type="text/javascript" src="js/carlog.js?ver=1"></script>
+<script type="text/javascript" src="js/carlog.js?ver=2"></script>
 <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/jquery.schedule.css" rel="stylesheet">
@@ -224,7 +224,7 @@
 
 		<div class="form_btn-group">
 			<button id="ins_btn" type="submit" onclick="return carlogWriteCheck()">등록</button>
-			<button id="mod_btn" type="submit" onclick="return carlogWriteCheck()" disabled>수정</button>
+			<button id="mod_btn" type="submit" onclick="return carlogModifyCheck()" disabled>수정</button>
 			<button id="del_btn" type="button" onclick="carlogDelete()" disabled>삭제</button>
 		</div>
 	</form>

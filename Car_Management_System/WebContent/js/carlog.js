@@ -29,6 +29,33 @@ function carlogWriteCheck() {
 }
 }
 
+function carlogModifyCheck() {
+	if (document.frm.driv_no.value == "") {
+		alert("배차 신청 번호를 입력 하세요.");
+		document.frm.driv_no.focus();
+		return false;
+	} else if (document.frm.cour_no.value == "") {
+		alert("경로를 선택 하세요.");
+		return false;
+	} else if (document.frm.driv_purpo.value == "") {
+		alert("사용 목적을 입력 하세요.");
+		document.frm.driv_purpo.focus();
+		return false;
+	} else if (document.frm.distance.value == "") {
+		alert("주행 거리를 입력하세요");
+		document.frm.distance.focus();
+		return false;
+	} else {
+		var name = document.frm.mem_name.value;
+		var isCorrect = confirm(name + "님 차량운행일지를 수정하시겠습니까?");
+		if (isCorrect == true) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+}
+
 function carlogDelete() {
 	if (document.frm.driv_no.value == "") {
 		alert("삭제할 운행일지를 먼저 선택해 주세요");
