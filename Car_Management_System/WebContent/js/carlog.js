@@ -73,10 +73,10 @@ function carlogSelect(name) {
 	opener.frm.driv_purpo.value = document.getElementsByName(name + "driv_purpo")[0].value;
 	opener.frm.distance.value = document.getElementsByName(name + "distance")[0].value;
 	switch (document.getElementsByName(name + "card_divi")[0].value) {
-	case "법인카드" : 	opener.frm.card_divi.value ="1"; break;
-	case "개인카드" :	opener.frm.card_divi.value ="2"; break;
-	case "미사용" : 	opener.frm.card_divi.value ="0"; break;
-	default : opener.frm.card_divi.value ="0"; break;
+	case "법인카드" : 	opener.frm.card_divi.value ="법인카드"; break;
+	case "개인카드" :	opener.frm.card_divi.value ="개인카드"; break;
+	case "미사용" : 	opener.frm.card_divi.value ="미사용"; break;
+	default : opener.frm.card_divi.value ="미사용"; break;
 	}
 	opener.frm.oil_fee.value = document.getElementsByName(name + "oil_fee")[0].value;
 	opener.frm.trans_fee.value = document.getElementsByName(name + "trans_fee")[0].value;

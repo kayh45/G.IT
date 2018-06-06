@@ -24,6 +24,7 @@ public class CarlogWriteAction implements Action {
 		String driv_s_date = request.getParameter("driv_s_date");
 		String driv_e_date = request.getParameter("driv_e_date");*/
 		
+		int driv_no = Integer.parseInt(request.getParameter("driv_no"));
 		int cour_no = Integer.parseInt(request.getParameter("cour_no"));
 		String driv_purpo = request.getParameter("driv_purpo");
 		int befo_dist =Integer.parseInt(request.getParameter("distance"));
@@ -33,6 +34,7 @@ public class CarlogWriteAction implements Action {
 		String etc_text = request.getParameter("etc_text");
 		int etc_fee = Integer.parseInt(request.getParameter("etc_fee"));
 		
+		cVo.setDriv_no(driv_no);
 		cVo.setCour_no(cour_no);
 		cVo.setDriv_purpo(driv_purpo);
 		cVo.setBefo_dist(befo_dist);

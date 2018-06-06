@@ -32,7 +32,7 @@
 	</div>
 	<form method="post" action="place.do?command=place_write" name="frm">
 		<div class="content_cont-box">
-			<p class="content_cont-text">장소번호</p>
+			<p class="content_cont-text">장소 번호</p>
 			<input type="text" class="form_textbox" name="place_no" readonly>
 		</div>
 		<div class="content_cont-box">

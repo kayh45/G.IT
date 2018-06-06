@@ -50,7 +50,7 @@
 
 					</td>
 					<td class="form_normal-td" colspan="3"><input name="driv_no"
-						type="text" class="form_textbox">
+						type="text" class="form_textbox" readonly>
 
 						<button type="button" onClick="carlogSearch();" class="quiet_btn"
 							id="idCheck">
@@ -65,25 +65,25 @@
 						<p class="label">차량 등록 번호</p>
 
 					</td>
-					<td><input name="car_reg_no" type="text" class="form_textbox">
+					<td><input name="car_reg_no" type="text" class="form_textbox" readonly>
 
 					</td>
 					<td class="form_label">
 						<p class="label">차종</p>
 					</td>
 					<td class="form_normal-td"><input name="car_model" type="text"
-						class="form_textbox"></td>
+						class="form_textbox" readonly></td>
 				</tr>
 
 				<tr>
 					<td class="form_label">
 						<p class="label">사원 이름</p>
-					<input name="mem_id" type="hidden" class="form_textbox">
+					<input name="mem_id" type="hidden" class="form_textbox" readonly>
 
 
 					</td>
 					<td class="form_normal-td" colspan="3"><input name="mem_name"
-						type="text" class="form_textbox"></td>
+						type="text" class="form_textbox" readonly></td>
 
 				</tr>
 
@@ -94,23 +94,15 @@
 
 					<td >
 						<div id="driv_s_date">
-							<input type="text" class="form_textbox" name="driv_s_date"> </div>
-							<script type="text/javascript">
-								$('#driv_s_date input').datepicker({
-									dateFormat : "yy-mm-dd"
-								});
-							</script>
+							<input type="text" class="form_textbox" name="driv_s_date" readonly> </div>
+					
 							</td>
 							<td class="form_label">
 						<p class="label">운행 기간(종료)</p>
 					</td>
 							<td>
-							<div id="driv_e_date"><input type="text" class="form_textbox" name="driv_e_date"></div>
-							<script type="text/javascript">
-								$('#driv_e_date input').datepicker({
-									dateFormat : "yy-mm-dd"
-								});
-							</script>
+							<div id="driv_e_date"><input type="text" class="form_textbox" name="driv_e_date" readonly></div>
+						
 					</td>
 
 
@@ -130,7 +122,7 @@
 
 					</td>
 					<td><input name="s_place_name" type="text"
-						class="form_textbox">
+						class="form_textbox" readonly>
 						<button type="button" onClick="carlogCourseSearch();"
 							class="quiet_btn" id="idCheck">
 							<span id="search-button" class="glyphicon glyphicon-search"
@@ -140,7 +132,7 @@
 						<p class="label">도착지</p>
 					</td>
 					<td class="form_normal-td"><input name="e_place_name"
-						type="text" class="form_textbox"></td>
+						type="text" class="form_textbox" readonly></td>
 				</tr>
 
 				<tr>
@@ -182,9 +174,9 @@
 					</td>
 					<td class="form_normal-td" colspan="3">
 						<div class="radio-group">
-							 <input type="radio" value="0" name="card_divi" checked>미사용
-							<input type="radio" value="1" name="card_divi">법인카드
-							 <input type="radio" value="2" name="card_divi">개인카드 
+							 <input type="radio" value="미사용" name="card_divi" checked>미사용
+							<input type="radio" value="법인카드" name="card_divi">법인카드
+							 <input type="radio" value="개인카드" name="card_divi">개인카드 
 
 						</div>
 					</td>
@@ -196,7 +188,7 @@
 					</td>
 					<td class="form_normal-td" colspan="3">
 						<div class="radio-group">
-							<input type="checkbox" value="0" name="oil_fee">유류비 <input
+							<input type="checkbox" name="oil_fee_check">유류비 <input
 								name="oil_fee" type="text" class="form_textbox">원
 
 						</div>
@@ -206,7 +198,7 @@
 				<tr>
 					<td class="form_normal-td" colspan="3">
 						<div class="radio-group">
-							<input type="checkbox" value="0" name="trans_fee">교통비 <input
+							<input type="checkbox" name="trans_fee_check">교통비 <input
 								name="trans_fee" type="text" class="form_textbox">원
 
 						</div>
@@ -218,7 +210,7 @@
 
 					<td class="form_normal-td" colspan="3">
 						<div class="radio-group">
-							<input type="checkbox" value="0" name="etc_fee">기타(직접 입력)
+							<input type="checkbox" name="etc_fee_check">기타(직접 입력)
 							<input name="etc_text" type="text" class="form_textbox"> <input
 								name="etc_fee" type="text" class="form_textbox">원
 
