@@ -9,14 +9,13 @@ function carlogWriteCheck() {
 		return false;
 	} else if (document.frm.cour_no.value == "") {
 		alert("경로를 선택 하세요.");
-		document.frm.cour_no.focus();
 		return false;
 	} else if (document.frm.driv_purpo.value == "") {
 		alert("사용 목적을 입력 하세요.");
 		document.frm.driv_purpo.focus();
 		return false;
 	} else if (document.frm.distance.value == "") {
-		alert("정비소 대표 이름을 입력하세요");
+		alert("주행 거리를 입력하세요");
 		document.frm.distance.focus();
 		return false;
 	} else {
@@ -28,6 +27,28 @@ function carlogWriteCheck() {
 		return false;
 	}
 }
+}
+
+function carlogDelete() {
+	if (document.frm.driv_no.value == "") {
+		alert("삭제할 운행일지를 먼저 선택해 주세요");
+		return false;
+	} else {
+		var isCorrect = confirm("선택한 운행일지를 삭제하시겠습니까?");
+		if (isCorrect == true) {
+			var isisCorrect = confirm("삭제한 정보는 되돌릴수 없습니다.")
+			if(isisCorrect == true) {
+				var url = "carlog.do?&command=carlog_delete&driv_no="
+					+ document.frm.driv_no.value;
+			location.replace(url);
+			}else {
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
+	
 }
 
 function carlogSearch(){

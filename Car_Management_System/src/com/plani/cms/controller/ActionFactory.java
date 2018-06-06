@@ -12,6 +12,7 @@ import com.plani.cms.controller.action.car.CarWriteCheckFormAction;
 import com.plani.cms.controller.action.car.CarWriteFormAction;
 import com.plani.cms.controller.action.carlog.CarlogCourseSelectAction;
 import com.plani.cms.controller.action.carlog.CarlogCourseSelectFormAction;
+import com.plani.cms.controller.action.carlog.CarlogDeleteAction;
 import com.plani.cms.controller.action.carlog.CarlogSelectAction;
 import com.plani.cms.controller.action.carlog.CarlogWriteAction;
 import com.plani.cms.controller.action.carlog.CarlogAutoWriteFormAction;
@@ -241,7 +242,9 @@ public class ActionFactory {
 			action = new CarlogWriteFormAction();
 		} else if (command.equals("carlog_write")) {
 			action = new CarlogWriteAction();
-		} else if (command.equals("carlog_select")) {
+		} else if (command.equals("carlog_delete")) {
+			action = new CarlogDeleteAction();
+		}else if (command.equals("carlog_select")) {
 			action = new CarlogSelectAction();
 		} else if (command.equals("carlog_course_select_form")) {
 			action = new CarlogCourseSelectFormAction();

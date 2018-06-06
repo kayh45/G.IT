@@ -224,10 +224,9 @@
 
 
 		<div class="form_btn-group">
-			<button id="ins_btn" type="submit" onclick="return deptWriteCheck()">등록</button>
-			<button id="mod_btn" type="submit" onclick="return deptWriteCheck()"
-				disabled>수정</button>
-			<button id="del_btn" type="button" onclick="deptDelete()" disabled>삭제</button>
+			<button id="ins_btn" type="submit" onclick="return carlogWriteCheck()">등록</button>
+			<button id="mod_btn" type="submit" onclick="return carlogWriteCheck()" disabled>수정</button>
+			<button id="del_btn" type="button" onclick="carlogDelete()" disabled>삭제</button>
 		</div>
 	</form>
 	</section> </section>
