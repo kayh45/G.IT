@@ -240,6 +240,19 @@ a:hover {
 	width : 90px !important;
 }
 
+.text_short {
+	width : 50% !important;
+}
+
+.td_short {
+	width : 15%;
+}
+
+.tbl_card td,
+.tbl_card th{
+	text-align : center;
+}
+
 @media ( max-width : 800px) {
 	.form_label>.label {
 		font-size: 12px;
@@ -261,7 +274,7 @@ a:hover {
 	.form_car_select {
 		margin: 0 2px;
 		margin-right: 0;
-		width: 150px;
+		width: 80px;
 	}
 	.content_cont-box {
 		padding: 5px 2px;
