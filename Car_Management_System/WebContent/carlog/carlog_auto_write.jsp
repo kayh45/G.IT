@@ -10,6 +10,7 @@
 <title>운행 일지 작성 :: 법인차량관리시스템</title>
 <link href="css/jquery-ui.css" rel="stylesheet">
 <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+<link href="css/carlog.css" rel="stylesheet">
 <script type="text/javascript" src="js/bootstrap.js"></script>
 
 <script type="text/javascript" src="js/moment.js"></script>
@@ -73,7 +74,7 @@
 						<p class="label">운전자</p>
 						<p class="must">*</p>
 					</td>
-					<td class="form_normal-td">
+					<td class="form_normal-td" colspan = "3">
 						<input name="mem_search_name" type="text" class="form_textbox">
 						<input name = "mem_name" type = "hidden">
 						<input name = "mem_id" type = "hidden">
@@ -81,11 +82,6 @@
 							<span id="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
 						</button>
 					</td>
-					<td class="form_label">
-						<p class="label">주행거리</p>
-						<p class="must">*</p>
-					</td>
-					<td class="form_normal-td"><input type="text" class="form_textbox" name="total_dist"> km</td>
 				</tr>
 				<tr>
 					<td class="form_label">
@@ -108,10 +104,85 @@
 						</select>
 					</td>
 				</tr>
+				<tr>
+					<td class="form_label">
+						<p class="label">주요 경로</p>
+						<p class="must">*</p>
+					</td>
+					<td class="form_normal-td" colspan = "3">
+						<input name="cour_search_name" type="text" class="form_textbox">
+						<input name = "cour_name" type = "hidden">
+						<input name = "cour_no" type = "hidden">
+						<button type="button" onClick="memSearchByName();" class="quiet_btn">
+							<span id="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
+						</button>
+					</td>
+				</tr>
 			</table>
 		</div>
+		<script type = "text/javascript">
+		$(document).ready(function(){
+            // 옵션추가 버튼 클릭시
+            $("#addItemBtn").click(function(){
+                // item 의 최대번호 구하기
+                var lastItemNo = $("#example tr:last").attr("class").replace("item", "");
+ 
+                var newitem = $("#example tr:eq(1)").clone();
+                newitem.removeClass();
+                newitem.find("td:eq(0)").attr("rowspan", "1");
+                newitem.addClass("item"+(parseInt(lastItemNo)+1));
+ 
+                $("#example").append(newitem);
+            });
+            
+            $("#example").on("click", ".delBtn", function(){
+                var clickedRow = $(this).parent().parent();
+                var cls = clickedRow.attr("class");
+                
+                if (cls != "item1") {
+                // 각 항목의 첫번째 row를 삭제한 경우 다음 row에 td 하나를 추가해 준다.
+                	if( clickedRow.find("td:eq(0)").attr("rowspan") ){
+                 	   if( clickedRow.next().hasClass(cls) ){
+                   	     clickedRow.next().prepend(clickedRow.find("td:eq(0)"));
+                  	  }
+              	 	}
+	                clickedRow.remove();
+                }
+ 
+ 
+                // rowspan 조정
+                // resizeRowspan(cls);
+            });
+
+		})
+		</script>
 		<div class="content_cont-box">
-			카드 비용 들어갈 곳
+			법인카드 사용 내역  <button class = "quiet_btn" type = "button" id = "addItemBtn">
+								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+							</button>
+			<table id = "example" class = "table tbl_card">
+				<thead><tr>
+					<th class = "td_short">일자</th>
+					<th>유류비</th>
+					<th>교통비</th>
+					<th>경로</th>
+					<th class = "td_short">비고</th>
+				</tr></thead>
+				<tbody>
+					<tr class = "item1">
+						<td><input class = "form_textbox text_short" maxlength="2" type = text>일</td>
+						<td><input class = "form_textbox" type = text>원</td>
+						<td><input class = "form_textbox" type = text>원</td>
+						<td><input class = "form_textbox" type = text></td>
+						<td><button type = "button" class = "delBtn quiet_btn">
+								<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+							</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class = "form_btn-group">
+			<button type = "submit">다음</button>
 		</div>
 	</form>
 	</section> 
