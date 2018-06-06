@@ -22,8 +22,16 @@ public class RepaVO {
 	private String repa_e_date;
 	private String repa_cont;
 	private int repa_fee;
+	private String repa_divi;
+	
 	public int getRepa_no() {
 		return repa_no;
+	}
+	public String getRepa_divi() {
+		return repa_divi;
+	}
+	public void setRepa_divi(String repa_divi) {
+		this.repa_divi = repa_divi;
 	}
 	public void setRepa_no(int repa_no) {
 		this.repa_no = repa_no;

@@ -10,6 +10,10 @@ import com.plani.cms.controller.action.car.CarSearchAction;
 import com.plani.cms.controller.action.car.CarWriteAction;
 import com.plani.cms.controller.action.car.CarWriteCheckFormAction;
 import com.plani.cms.controller.action.car.CarWriteFormAction;
+import com.plani.cms.controller.action.carlog.CarlogCourseSelectAction;
+import com.plani.cms.controller.action.carlog.CarlogCourseSelectFormAction;
+import com.plani.cms.controller.action.carlog.CarlogSelectAction;
+import com.plani.cms.controller.action.carlog.CarlogWriteAction;
 import com.plani.cms.controller.action.carlog.CarlogAutoWriteFormAction;
 import com.plani.cms.controller.action.carlog.CarlogWriteFormAction;
 import com.plani.cms.controller.action.cent.CentDeleteAction;
@@ -48,7 +52,10 @@ import com.plani.cms.controller.action.place.PlaceWriteCheckFormAction;
 import com.plani.cms.controller.action.place.PlaceWriteFormAction;
 import com.plani.cms.controller.action.repa.RepaCarWriteCheckFormAction;
 import com.plani.cms.controller.action.repa.RepaCentWriteCheckFormAction;
+import com.plani.cms.controller.action.repa.RepaDeleteAction;
+import com.plani.cms.controller.action.repa.RepaModifyAction;
 import com.plani.cms.controller.action.repa.RepaSearchFormAction;
+import com.plani.cms.controller.action.repa.RepaSearchMoveFormAction;
 import com.plani.cms.controller.action.repa.RepaWriteAction;
 import com.plani.cms.controller.action.repa.RepaWriteFormAction;
 import com.plani.cms.controller.action.reserve.ReserveDeleteAction;
@@ -123,14 +130,14 @@ public class ActionFactory {
 		} else if (command.equals("dept_delete")) {
 			action = new DeptDeleteAction();
 		} else if (command.equals("mypage_home")) {
- 			action = new MyPageHomeAction();
- 		} else if (command.equals("mypage_pwupdate_form")) {
- 			action = new MyPagePwUpdateFormAction();
+			action = new MyPageHomeAction();
+		} else if (command.equals("mypage_pwupdate_form")) {
+			action = new MyPagePwUpdateFormAction();
 		} else if (command.equals("mypage_pwupdate")) {
 			action = new MyPagePwUpdateAction();
- 		} else if (command.equals("mypage_infoupdate_form")) {
+		} else if (command.equals("mypage_infoupdate_form")) {
 			action = new MyPageInfoUpdateFormAction();
- 		}
+		}
 		/* 법인차 기능 구현 start */
 		else if (command.equals("car_write_form")) {
 			action = new CarWriteFormAction();
@@ -161,35 +168,35 @@ public class ActionFactory {
 		} else if (command.equals("cent_write_check_form")) {
 			action = new CentWriteCheckFormAction();
 			/* 정비소 기능 구현 end */
-		}  /* 장소 기능 구현 start */
+		} /* 장소 기능 구현 start */
 		else if (command.equals("place_write_form")) {
 			action = new PlaceWriteFormAction();
-		}else if (command.equals("place_write")) {
-				action = new PlaceWriteAction();
-		}else if (command.equals("place_modify")) {
+		} else if (command.equals("place_write")) {
+			action = new PlaceWriteAction();
+		} else if (command.equals("place_modify")) {
 			action = new PlaceModifyAction();
-		}else if (command.equals("place_delete")) {
+		} else if (command.equals("place_delete")) {
 			action = new PlaceDeleteAction();
-		}else if (command.equals("place_write_check_form")) {
+		} else if (command.equals("place_write_check_form")) {
 			action = new PlaceWriteCheckFormAction();
-        /* 장소 기능 구현 end */
-			 /* 경로 기능 구현 start */
-		}else if (command.equals("cour_write_form")) {
-				action = new CourSPlaceWriteCheckFormAction();
-			}else if (command.equals("cour_write")) {
-					action = new CourWriteAction();
-			}else if (command.equals("cour_modify")) {
-				action = new CourModifyAction();
-			}else if (command.equals("cour_delete")) {
-				action = new CourDeleteAction();
-			}else if (command.equals("cour_place_write_check_form")) {
-				action = new CourSPlaceWriteCheckFormAction();
-			}else if (command.equals("cour_select")) {
-				action = new CourSelectAction();
-			}else if (command.equals("cour_select_form")) {
-				action = new CourSelectFormAction();
-	        /* 경로 기능 구현 end */
-		/* 배차관리 기능 구현 start */
+			/* 장소 기능 구현 end */
+			/* 경로 기능 구현 start */
+		} else if (command.equals("cour_write_form")) {
+			action = new CourSPlaceWriteCheckFormAction();
+		} else if (command.equals("cour_write")) {
+			action = new CourWriteAction();
+		} else if (command.equals("cour_modify")) {
+			action = new CourModifyAction();
+		} else if (command.equals("cour_delete")) {
+			action = new CourDeleteAction();
+		} else if (command.equals("cour_place_write_check_form")) {
+			action = new CourSPlaceWriteCheckFormAction();
+		} else if (command.equals("cour_select")) {
+			action = new CourSelectAction();
+		} else if (command.equals("cour_select_form")) {
+			action = new CourSelectFormAction();
+			/* 경로 기능 구현 end */
+			/* 배차관리 기능 구현 start */
 		} else if (command.equals("course_write_form")) {
 			action = new CourWriteFormAction();
 		} else if (command.equals("place_write_form")) {
@@ -202,16 +209,20 @@ public class ActionFactory {
 			action = new ReserveViewScheduleAction();
 			/* 배차관리 기능 구현 end */
 		} /* 정비내역 등록 구현 start */
-		
+
 		else if (command.equals("reserve_delete")) {
 			action = new ReserveDeleteAction();
-		}		
+		}
 		/* 배차관리 기능 구현 end */
 		/* 정비내역 등록 구현 start */
 
 		else if (command.equals("repa_write")) {
 			action = new RepaWriteAction();
-		} else if (command.equals("repa_write_form")) {
+		}else if (command.equals("repa_modify")){
+			action = new RepaModifyAction();
+		}else if (command.equals("repa_delete")){
+			action = new RepaDeleteAction();
+		}else if (command.equals("repa_write_form")) {
 			action = new RepaWriteFormAction();
 		} else if (command.equals("repa_car_write_check_form")) {
 			action = new RepaCarWriteCheckFormAction();
@@ -219,15 +230,26 @@ public class ActionFactory {
 			action = new RepaCentWriteCheckFormAction();
 		} else if (command.equals("repa_search_form")) {
 			action = new RepaSearchFormAction();
-		/* 정비내역 등록 구현 End */
-		/* 운행일지 기능 구현 start */
-		} else if (command.equals("carlog_write_form")) {
+		} 
+		else if (command.equals("repa_search_move_form")) {
+			action = new RepaSearchMoveFormAction();
+		} /* 정비내역 등록 구현 End */
+		
+			/* 정비내역 등록 구현 End */
+			/* 운행일지 기능 구현 start */
+		 else if (command.equals("carlog_write_form")) {
 			action = new CarlogWriteFormAction();
-		}	else if (command.equals("carlog_auto_write_form")) {
+		} else if (command.equals("carlog_write")) {
+			action = new CarlogWriteAction();
+		} else if (command.equals("carlog_select")) {
+			action = new CarlogSelectAction();
+		} else if (command.equals("carlog_course_select_form")) {
+			action = new CarlogCourseSelectFormAction();
+		} else if (command.equals("carlog_course_select")) {
+			action = new CarlogCourseSelectAction();
+		} else if (command.equals("carlog_auto_write_form")) {
 			action = new CarlogAutoWriteFormAction();
 		}
-
-
 		return action;
 
 	}
