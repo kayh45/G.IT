@@ -358,6 +358,121 @@ public List<CarlogVO> drivSearchByNameNoncomplete(String mem_id) {
 		return cVoList;
 	}
 	
+	public int getPreMonthBefoDist(String car_reg_no, int year, int month) {
+		String sql = "select befo_dist from driv where car_reg_no = ? "
+				+ "and befo_dist is not null and year(driv_e_date) = ? "
+				+ "and month(driv_e_date) = ? order by befo_dist desc limit 1";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int befo_dist = 0;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);						
+
+			String strYear = year + "";
+			String strMonth = month + "";
+			pstmt.setString(1, car_reg_no);
+			pstmt.setString(2, strYear);
+			pstmt.setString(3, strMonth);
+
+			rs = pstmt.executeQuery();
+						
+			if(rs.next()) {				
+				befo_dist = rs.getInt(0);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+				
+		return befo_dist;
+	}
+	
+	public void writeOneAutoCarlog(CarlogVO cVo) {
+		String sql = "INSERT INTO driv(driv_s_date, driv_e_date, car_reg_no, mem_id"
+				+ ", cour_no, driv_purpo, befo_dist, driv_dist"
+				+ ", card_divi";
+		
+		if (cVo.getOil_fee() != 0 && cVo.getTrans_fee() != 0) {
+			sql += ", trans_fee, oil_fee) values(?,?,?,?,?,?,?,?,?,?,?)";
+		}else if(cVo.getOil_fee() != 0) {
+			sql += ", oil_fee) values(?,?,?,?,?,?,?,?,?,?)";
+		}else if(cVo.getTrans_fee() != 0){
+			sql += ", trans_fee) values(?,?,?,?,?,?,?,?,?,?)";
+		}else {
+			sql += ") values(?,?,?,?,?,?,?,?,?)";
+		}
+		
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, cVo.getDriv_s_date());
+			pstmt.setString(2, cVo.getDriv_e_date());
+			pstmt.setString(3, cVo.getCar_reg_no());		
+			pstmt.setString(4, cVo.getMem_id());		
+			pstmt.setInt(5, cVo.getCour_no());		
+			pstmt.setString(6, cVo.getDriv_purpo());		
+			pstmt.setLong(7, cVo.getBefo_dist());		
+			pstmt.setLong(8, cVo.getDriv_dist());		
+			pstmt.setString(9, cVo.getCard_divi());	
+			
+			if (cVo.getOil_fee() != 0 && cVo.getTrans_fee() != 0) {
+				pstmt.setLong(10, cVo.getTrans_fee());	
+				pstmt.setLong(11, cVo.getOil_fee());	
+			}else if(cVo.getOil_fee() != 0) {
+				pstmt.setLong(10, cVo.getOil_fee());
+			}else if(cVo.getTrans_fee() != 0){
+				pstmt.setLong(10, cVo.getTrans_fee());
+			}else {
+				
+			}
+			
+			pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+	}
+	
+	public void autoUpdateCarDist(String car_reg_no, int dist) {
+		String sql = "update driv d join car c "
+				+ "on d.car_reg_no = d.car_reg_no and "
+				+ "c.car_reg_no = ? and d.driv_no = ? "
+				+ "set c.total_dist = c.total_dist + d.driv_dist";
+
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, car_reg_no);
+			pstmt.setInt(2, dist);
+	
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+	}
+	
 }
 
 /*

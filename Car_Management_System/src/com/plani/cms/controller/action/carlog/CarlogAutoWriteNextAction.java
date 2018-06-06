@@ -1,9 +1,7 @@
 package com.plani.cms.controller.action.carlog;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Random;
 
 import javax.servlet.RequestDispatcher;
@@ -12,12 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.plani.cms.controller.action.Action;
+import com.plani.cms.dao.CarlogDAO;
+import com.plani.cms.dto.CarlogVO;
 
 public class CarlogAutoWriteNextAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "index.jsp";
+		String url = "carlog.do?command=carlog_auto_write_form";
 		
 		String car_reg_no = request.getParameter("car_usable_no");
 		String carlog_year = request.getParameter("carlog_year");
@@ -147,11 +147,55 @@ public class CarlogAutoWriteNextAction implements Action{
 			}
 			
 		}
-		
-			for(int j = 1; j < carlogArr[0].length; j++) {
-				System.out.print("일자: " + carlogArr[0][j] + ", 거리:  " + carlogArr[1][j]);
-				System.out.println();
+			
+		CarlogDAO cDao = CarlogDAO.getInstance();
+			int count = 0;
+			for(int j = 1; j < carlogArr[0].length; j++) {				
+				if(carlogArr[0][j] != 0) {
+					String day_j;
+					if(j < 10){
+						day_j = "0" + j;
+					}else {
+						day_j = "" + j;
+					}
+					CarlogVO cVo = new CarlogVO();
+					cVo.setDriv_s_date(carlog_year+"-"+carlog_month+"-"+day_j+" 09:00:00");
+					cVo.setDriv_e_date(carlog_year+"-"+carlog_month+"-"+day_j+" 18:00:00");
+					cVo.setCar_reg_no(car_reg_no);
+					cVo.setMem_id(mem_id);
+					if(carlogArr[3][j] != 0) {
+						cVo.setCour_no(carlogArr[4][j]);
+						cVo.setDriv_purpo("거래처 방문");
+					}else {
+						cVo.setCour_no(Integer.parseInt(cour_no));
+						cVo.setDriv_purpo(driv_purpo);
+					}
+					int c_year = Integer.parseInt(carlog_year);
+					int c_month = Integer.parseInt(carlog_month);
+					if(count == 0) {
+						if (c_month == 1) {
+							cVo.setBefo_dist(cDao.getPreMonthBefoDist(car_reg_no, c_year-1, 12));
+						}else {
+							cVo.setBefo_dist(cDao.getPreMonthBefoDist(car_reg_no, c_year, c_month-1));
+						}						
+					}else {
+						cVo.setBefo_dist(count);
+					}
+					
+					cVo.setDriv_dist(carlogArr[1][j]);
+					count = cVo.getBefo_dist() + cVo.getDriv_dist();
+					
+					cVo.setCard_divi("법인카드");
+					cVo.setOil_fee(carlogArr[2][j]);
+					cVo.setTrans_fee(carlogArr[3][j]);
+					
+					cDao.writeOneAutoCarlog(cVo);
+				}											
 			}
+			cDao.autoUpdateCarDist(car_reg_no, count);
+			
+						
+			
 			
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
