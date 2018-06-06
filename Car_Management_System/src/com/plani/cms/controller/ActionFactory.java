@@ -10,12 +10,13 @@ import com.plani.cms.controller.action.car.CarSearchAction;
 import com.plani.cms.controller.action.car.CarWriteAction;
 import com.plani.cms.controller.action.car.CarWriteCheckFormAction;
 import com.plani.cms.controller.action.car.CarWriteFormAction;
+import com.plani.cms.controller.action.carlog.CarlogAutoWriteFormAction;
+import com.plani.cms.controller.action.carlog.CarlogAutoWriteNextAction;
 import com.plani.cms.controller.action.carlog.CarlogCourseSelectAction;
 import com.plani.cms.controller.action.carlog.CarlogCourseSelectFormAction;
 import com.plani.cms.controller.action.carlog.CarlogDeleteAction;
 import com.plani.cms.controller.action.carlog.CarlogSelectAction;
 import com.plani.cms.controller.action.carlog.CarlogWriteAction;
-import com.plani.cms.controller.action.carlog.CarlogAutoWriteFormAction;
 import com.plani.cms.controller.action.carlog.CarlogWriteFormAction;
 import com.plani.cms.controller.action.cent.CentDeleteAction;
 import com.plani.cms.controller.action.cent.CentModifyAction;
@@ -222,11 +223,11 @@ public class ActionFactory {
 
 		else if (command.equals("repa_write")) {
 			action = new RepaWriteAction();
-		} else if (command.equals("repa_modify")) {
+		}else if (command.equals("repa_modify")){
 			action = new RepaModifyAction();
-		} else if (command.equals("repa_delete")) {
+		}else if (command.equals("repa_delete")){
 			action = new RepaDeleteAction();
-		} else if (command.equals("repa_write_form")) {
+		}else if (command.equals("repa_write_form")) {
 			action = new RepaWriteFormAction();
 		} else if (command.equals("repa_car_write_check_form")) {
 			action = new RepaCarWriteCheckFormAction();
@@ -234,19 +235,20 @@ public class ActionFactory {
 			action = new RepaCentWriteCheckFormAction();
 		} else if (command.equals("repa_search_form")) {
 			action = new RepaSearchFormAction();
-		} else if (command.equals("repa_search_move_form")) {
+		} 
+		else if (command.equals("repa_search_move_form")) {
 			action = new RepaSearchMoveFormAction();
 		} /* 정비내역 등록 구현 End */
-
-		/* 정비내역 등록 구현 End */
-		/* 운행일지 기능 구현 start */
-		else if (command.equals("carlog_write_form")) {
+		
+			/* 정비내역 등록 구현 End */
+			/* 운행일지 기능 구현 start */
+		 else if (command.equals("carlog_write_form")) {
 			action = new CarlogWriteFormAction();
 		} else if (command.equals("carlog_write")) {
 			action = new CarlogWriteAction();
 		} else if (command.equals("carlog_delete")) {
 			action = new CarlogDeleteAction();
-		} else if (command.equals("carlog_select")) {
+		}else if (command.equals("carlog_select")) {
 			action = new CarlogSelectAction();
 		} else if (command.equals("carlog_course_select_form")) {
 			action = new CarlogCourseSelectFormAction();
@@ -254,6 +256,8 @@ public class ActionFactory {
 			action = new CarlogCourseSelectAction();
 		} else if (command.equals("carlog_auto_write_form")) {
 			action = new CarlogAutoWriteFormAction();
+		} else if (command.equals("carlog_auto_write_next")) {
+			action = new CarlogAutoWriteNextAction();
 		}
 		return action;
 
