@@ -114,7 +114,7 @@ section#content_car_include {
 }
 
 .form_car_select {
-	margin: 0 2px;
+	margin: 0 10px;
 	margin-right: 0;
 	width: 150px;
 }
@@ -258,6 +258,11 @@ a:hover {
 		margin-right: 0;
 		width: 60px;
 	}
+	.form_car_select {
+		margin: 0 2px;
+		margin-right: 0;
+		width: 150px;
+	}
 	.content_cont-box {
 		padding: 5px 2px;
 		margin: 5px 0;
@@ -305,6 +310,11 @@ a:hover {
 		margin: 0 2px !important;
 		margin-right: 0;
 		width: 100px;
+	}
+	.form_car_select {
+		margin: 0 2px;
+		margin-right: 0;
+		width: 150px;
 	}
 }
 

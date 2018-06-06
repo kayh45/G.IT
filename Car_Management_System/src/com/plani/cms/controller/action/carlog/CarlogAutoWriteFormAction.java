@@ -18,6 +18,8 @@ public class CarlogAutoWriteFormAction implements Action{
 		
 		ReserveDAO rDao = ReserveDAO.getInstance();
 		
+		System.out.println(url);
+		
 		int curYear = Integer.parseInt(rDao.getSysDate().substring(0, 4));
 
 		request.setAttribute("curYear", curYear);

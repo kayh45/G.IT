@@ -104,6 +104,8 @@ public class ReserveDAO {
 			
 			if(rs.next()){				
 				date = rs.getString(1);
+				
+				System.out.println(date);
 			}
 			
 		} catch (SQLException e){
