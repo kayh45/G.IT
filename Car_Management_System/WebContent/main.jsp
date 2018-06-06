@@ -69,7 +69,7 @@
 				<div class = "col-md-3 col-xs-6">
 					<div class = "content_cont-box qLink_button" onclick = "location.href='carlog.do?command=carlog_auto_write_form'">
 						<img src = "img/temp_icon.png" width = "200">
-						<p>운행일지 자동작성</p>
+						<p>운행일지 일괄작성</p>
 					</div>
 				</div>
 			</div>

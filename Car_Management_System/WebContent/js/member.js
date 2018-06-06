@@ -131,34 +131,42 @@ function memSelect(name) {
 	
 	var frmName = document.getElementsByName(name + "mem_id")[0].value;	
 	
-	opener.frm.mem_id.value = document.getElementsByName(name + "mem_id")[0].value;
-	opener.frm.mem_name.value = document.getElementsByName(name + "mem_name")[0].value;
+	if (opener.frm.demand.value == "id") {
+		opener.frm.mem_id.value = document.getElementsByName(name + "mem_id")[0].value;
+		opener.frm.mem_name.value = document.getElementsByName(name + "mem_name")[0].value;
+		opener.frm.mem_search_name.value = document.getElementsByName(name + "mem_name")[0].value;
+	}else if(opener.frm.demand.value == "all") {
+		opener.frm.mem_id.value = document.getElementsByName(name + "mem_id")[0].value;
+		opener.frm.mem_name.value = document.getElementsByName(name + "mem_name")[0].value;
+		
+		var jumin = document.getElementsByName(name + "mem_jumin")[0].value;
+		opener.frm.mem_jumin1.value = jumin.substr(0,6);
+		opener.frm.mem_jumin2.value = jumin.substr(6,7);
+		
+		var hp = document.getElementsByName(name + "mem_hp")[0].value;
+		opener.frm.mem_hp1.value = hp.substr(0,3);
+		opener.frm.mem_hp2.value = hp.substr(3,4);
+		opener.frm.mem_hp3.value = hp.substr(7,4);
+		
+		opener.frm.mem_p_no.value = document.getElementsByName(name + "mem_p_no")[0].value;
+		opener.frm.mem_addr1.value = document.getElementsByName(name + "mem_addr")[0].value;
+		opener.frm.mem_addr2.value = document.getElementsByName(name + "mem_addr_dtl")[0].value;
+		opener.frm.mem_auth.value = document.getElementsByName(name + "mem_auth")[0].value;
+		switch (document.getElementsByName(name + "mem_posi")[0].value) {
+			case "인턴" : 	opener.frm.mem_posi.value ="1"; break;
+			case "사원" :	opener.frm.mem_posi.value ="2"; break;
+			case "대리" : 	opener.frm.mem_posi.value ="3"; break;
+			case "팀장" : 	opener.frm.mem_posi.value ="4"; break;
+			case "그룹장" : 	opener.frm.mem_posi.value ="5"; break;
+			case "임원" : 	opener.frm.mem_posi.value ="6"; break;
+			case "사장" : 	opener.frm.mem_posi.value ="7"; break;
+			default : opener.frm.mem_posi.value ="0"; break;
+		}
+		opener.frm.dept_no.value = document.getElementsByName(name + "dept_no")[0].value;
+		opener.frm.dept_name.value = document.getElementsByName(name + "dept_name")[0].value;
+	}		
 	
-	var jumin = document.getElementsByName(name + "mem_jumin")[0].value;
-	opener.frm.mem_jumin1.value = jumin.substr(0,6);
-	opener.frm.mem_jumin2.value = jumin.substr(6,7);
 	
-	var hp = document.getElementsByName(name + "mem_hp")[0].value;
-	opener.frm.mem_hp1.value = hp.substr(0,3);
-	opener.frm.mem_hp2.value = hp.substr(3,4);
-	opener.frm.mem_hp3.value = hp.substr(7,4);
-	
-	opener.frm.mem_p_no.value = document.getElementsByName(name + "mem_p_no")[0].value;
-	opener.frm.mem_addr1.value = document.getElementsByName(name + "mem_addr")[0].value;
-	opener.frm.mem_addr2.value = document.getElementsByName(name + "mem_addr_dtl")[0].value;
-	opener.frm.mem_auth.value = document.getElementsByName(name + "mem_auth")[0].value;
-	switch (document.getElementsByName(name + "mem_posi")[0].value) {
-		case "인턴" : 	opener.frm.mem_posi.value ="1"; break;
-		case "사원" :	opener.frm.mem_posi.value ="2"; break;
-		case "대리" : 	opener.frm.mem_posi.value ="3"; break;
-		case "팀장" : 	opener.frm.mem_posi.value ="4"; break;
-		case "그룹장" : 	opener.frm.mem_posi.value ="5"; break;
-		case "임원" : 	opener.frm.mem_posi.value ="6"; break;
-		case "사장" : 	opener.frm.mem_posi.value ="7"; break;
-		default : opener.frm.mem_posi.value ="0"; break;
-	}
-	opener.frm.dept_no.value = document.getElementsByName(name + "dept_no")[0].value;
-	opener.frm.dept_name.value = document.getElementsByName(name + "dept_name")[0].value;
 	self.close();
 }
 
