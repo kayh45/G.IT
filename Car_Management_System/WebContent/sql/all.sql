@@ -105,6 +105,7 @@ CREATE TABLE if not exists `cms`.`driv` (
   `etc_fee` INT NULL,
   `befo_dist` INT NULL,
   `driv_dist` INT NULL,  
+  `bee_go` VARCHAR(255) NULL,  
   PRIMARY KEY (`driv_no`),
 CONSTRAINT FK_cms_mem_id FOREIGN KEY(mem_id) REFERENCES mem(mem_id),
 CONSTRAINT FK_cms_car_reg_no FOREIGN KEY(car_reg_no) REFERENCES car(car_reg_no),

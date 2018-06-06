@@ -128,7 +128,8 @@
 				<tr>		               
 						<td><a onclick ="repaSelect('${repa.repa_no}')">${repa.repa_no}</a></td>
 						<td>${repa.car_reg_no}</td>
-						<td>	<c:choose>
+						<td>	
+						<c:choose>
 					<c:when test="${repa.repa_divi=='0'}">
 					정기점검
 					</c:when>

@@ -1,6 +1,13 @@
 /**
  * 유효성 검사.
  */
+function excelConver(){
+	 var url = "carlog.do?command=excel_form";
+		document.frm.action=url; 	
+		document.frm.submit();
+	
+}
+
 function carNoCheck() {
 	document.frm.car_reg_no_ok.value = 0; // 중복검사 여부를 0으로 초기화
    var url = "repa.do?popup=no&command=repa_car_write_check_form&car_reg_no="

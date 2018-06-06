@@ -1,7 +1,7 @@
 package com.plani.cms.dto;
 
 public class CarviewVO {
-	private String driv_s_date;//일자         12개
+	private String driv_s_date;//일자         17개
 	private String dept_name;//부서
 	private String mem_posi;//직책
 	private String mem_name;//이름
@@ -12,7 +12,41 @@ public class CarviewVO {
 	private int befo_dist;//주행전누적거리
 	private int distance;//주행거리
 	private int after_dist;//주행후누적거리
-	private String etc_text; //비고 
+	private String etc_text; //기타내용
+	private String card_divi;//카드구분
+	private int oil_fee;//주류비
+	private int trans_fee;//교통비
+	private int etc_fee;//기타비
+	
+	
+	
+	
+	public String getCard_divi() {
+		return card_divi;
+	}
+	public void setCard_divi(String card_divi) {
+		this.card_divi = card_divi;
+	}
+	public int getOil_fee() {
+		return oil_fee;
+	}
+	public void setOil_fee(int oil_fee) {
+		this.oil_fee = oil_fee;
+	}
+	public int getTrans_fee() {
+		return trans_fee;
+	}
+	public void setTrans_fee(int trans_fee) {
+		this.trans_fee = trans_fee;
+	}
+	public int getEtc_fee() {
+		return etc_fee;
+	}
+	public void setEtc_fee(int etc_fee) {
+		this.etc_fee = etc_fee;
+	}
+	
+	
 	public String getDriv_s_date() {
 		return driv_s_date;
 	}
@@ -86,12 +120,5 @@ public class CarviewVO {
 	}
 	public void setEtc_text(String etc_text) {
 		this.etc_text = etc_text;
-	}
-	
-
-	
-
-	
-	
-	
+	}	
 }
