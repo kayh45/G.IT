@@ -16,7 +16,7 @@
 <script type="text/javascript" src="js/moment.js"></script>
 <script type="text/javascript" src="js/member.js?ver=4"></script>
 <script type="text/javascript" src="js/car.js?ver=3"></script>
-<script type="text/javascript" src="js/carlog.js?ver=8"></script>
+<script type="text/javascript" src="js/carlog.js?ver=2"></script>
 <script type="text/javascript" src="js/common.js"></script>
 </head>
 <body>
