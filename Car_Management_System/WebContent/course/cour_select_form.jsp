@@ -58,7 +58,7 @@
 					<c:forEach var = "cour" items = "${s_placeList}">
 				<tr>
 						<td>${cour.s_place_no}</td>
-						<td><a onclick = "splaceSelect('${cour.cour_no}')">${cour.s_place_name}</a></td>		
+						<td><a onclick = "courseSelect('${cour.cour_no}')">${cour.s_place_name}</a></td>		
 						<td>${cour.s_place_addr }</td>		
 						<td>${cour.e_place_no}</td>
 						<td>${cour.e_place_name}</td>		

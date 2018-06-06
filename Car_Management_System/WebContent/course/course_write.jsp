@@ -6,11 +6,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, user-scalable=no">
 <title>경로 등록 :: 법인차량관리시스템</title>
-<link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, user-scalable=no">
 <script type="text/javascript" src="js/jquery-ui.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
-<script type="text/javascript" src="js/course.js?ver=1"></script>
+<script type="text/javascript" src="js/course.js"></script>
 <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 </head>
 <body>
 	<header> <%@ include file="../header.jsp"%>
@@ -95,20 +96,16 @@
 						<p class="must">*</p>
 					</td>
 					<td colspan="4"  class="form_phone-td">
-					<input name="distance" type="text" class="form_textbox" size="6" maxlength="3">km</b></td>
+					<input name="distance" type="text" class="form_textbox" size="6" maxlength="3">&nbsp;km</b></td>
 				</tr>
 			</table>
 		</div>
 		<div class="form_btn-group">
-			<button id="ins_btn" type="submit" onclick="return carWriteCheck1()">등록</button>
-			<button id="mod_btn" type="submit" onclick="return carModifyCheckDivided()"disabled>수정</button>
-			<button id="del_btn" type="button" onclick="carDelete()" disabled>삭제</button>
+			<button id="ins_btn" type="submit" onclick="return courseWrite()">등록</button>
+			<button id="mod_btn" type="submit" onclick="return courseModify()"disabled>수정</button>
+			<button id="del_btn" type="button" onclick="courseDelete()" disabled>삭제</button>
 		</div>
-<!-- 		<div class="form_btn-group">
-		<button id="ins_btn" type="submit" onclick = "return courWriteCheck()">등록</button>
-		<button id="mod_btn" type="submit" onclick = "return courModifyCheck()" >수정</button>
-		<button id="del_btn" type="button" onclick = "courDelete()" >삭제</button>
-		</div> -->
+
 	</form>
 	</section> </section>
 </body>
