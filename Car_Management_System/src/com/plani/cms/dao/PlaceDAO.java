@@ -211,7 +211,7 @@ public int confirmPlaceName(String place_name) {
 			} else {
 				result = -1;
 			}
-		}// 데이터 없음.
+		}
 		catch (Exception e) {
 			e.printStackTrace();
 		} finally {
