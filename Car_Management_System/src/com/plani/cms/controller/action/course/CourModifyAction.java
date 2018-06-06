@@ -19,12 +19,13 @@ public class CourModifyAction implements Action {
 
 		CourseVO cVo = new CourseVO();	
 
-		
-		int s_place = Integer.parseInt(request.getParameter("s_place"));
-		int e_place = Integer.parseInt(request.getParameter("s_place"));
+		int cour_no = Integer.parseInt(request.getParameter("cour_no"));
+		int s_place = Integer.parseInt(request.getParameter("s_place_no"));
+		int e_place = Integer.parseInt(request.getParameter("e_place_no"));
 		int distance = Integer.parseInt(request.getParameter("distance"));
 		String cour_purpo = request.getParameter("cour_purpo");
-
+		
+		cVo.setCour_no(cour_no);
 		cVo.setS_place(s_place);
 		cVo.setE_place(e_place);
 		cVo.setDistance(distance);
@@ -34,7 +35,7 @@ public class CourModifyAction implements Action {
 		
 		cDao.updateCourse(cVo);
 		System.out.println("수정 성공");
-		request.setAttribute("message", "<strong>법인차 수정 성공!</strong>");
+		request.setAttribute("message", "<strong> 경로 수정 성공!</strong>");
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

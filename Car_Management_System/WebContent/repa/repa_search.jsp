@@ -140,7 +140,7 @@
 						<td>${repa.repa_e_date}</td>		
 						<td>${repa.repa_fee}</td>
 						
-					</tr>					
+					</tr>		
 				    <input type = "hidden" name = "${repa.repa_no}repa_no" value  = "${repa.repa_no}">
 					<input type = "hidden" name = "${repa.repa_no}car_reg_no" value  = "${repa.car_reg_no}">
 					<input type = "hidden" name = "${repa.repa_no}cent_no" value  = "${repa.cent_no}">

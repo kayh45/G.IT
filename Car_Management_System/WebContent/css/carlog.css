@@ -1,0 +1,9 @@
+.glyphicon-plus {
+	color : green;
+}
+.glyphicon-minus {
+	color : red;
+}
+section#main{
+	height: 100% !important;
+}

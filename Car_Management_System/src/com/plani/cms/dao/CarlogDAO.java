@@ -1,6 +1,7 @@
 package com.plani.cms.dao;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,10 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.plani.cms.dto.CarlogVO;
-import com.plani.cms.dto.DrivVO;
-import com.plani.cms.dto.MemberVO;
-import com.plani.cms.dto.PlaceCourVO;
-import com.plani.cms.dto.PlaceVO;
 import com.plani.cms.util.DBManager;
 
 public class CarlogDAO {
@@ -38,8 +35,8 @@ public class CarlogDAO {
 	private int befo_dist;*/
 	
 	public void updateCarlog(CarlogVO cVo) {
-		String sql = "update cour set cour_no=?, driv_purpo=?, card_divi=?, oil_fee=?, trans_fee=?, etc_text=?, etc_fee=?, befo_dist=? "
-				+ "from driv where driv_no=?";
+		String sql = "update driv set cour_no=?, driv_purpo=?, card_divi=?, oil_fee=?, trans_fee=?, etc_text=?, etc_fee=?, befo_dist=? "
+				+ "where driv_no=?";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -58,6 +55,61 @@ public class CarlogDAO {
 			pstmt.setInt(8, cVo.getBefo_dist());
 			pstmt.setInt(9, cVo.getDriv_no());
 	
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+	}
+	
+	public void updateCarlogNofee(CarlogVO cVo) {
+		String sql = "update driv set cour_no=?, driv_purpo=?, card_divi=?, befo_dist=? "
+				+ "where driv_no=?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, cVo.getCour_no());
+			pstmt.setString(2, cVo.getDriv_purpo());
+			pstmt.setString(3, cVo.getCard_divi());
+			pstmt.setInt(4, cVo.getBefo_dist());
+			pstmt.setInt(5, cVo.getDriv_no());
+			
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+	}
+	public void updateCarlogOilfee(CarlogVO cVo) {
+		String sql = "update driv set cour_no=?, driv_purpo=?, card_divi=?, oil_fee=0, trans_fee=?, etc_text=?, etc_fee=?, befo_dist=? "
+				+ "where driv_no=?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, cVo.getCour_no());
+			pstmt.setString(2, cVo.getDriv_purpo());
+			pstmt.setString(3, cVo.getCard_divi());
+			pstmt.setInt(4, cVo.getOil_fee());
+			pstmt.setInt(5, cVo.getTrans_fee());
+			pstmt.setString(6, cVo.getEtc_text());
+			pstmt.setInt(7, cVo.getEtc_fee());
+			pstmt.setInt(8, cVo.getBefo_dist());
+			pstmt.setInt(9, cVo.getDriv_no());
+			
 			pstmt.executeUpdate();
 			
 		} catch (SQLException e) {

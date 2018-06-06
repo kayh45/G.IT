@@ -1,6 +1,7 @@
 package com.plani.cms.controller;
 
 import com.plani.cms.controller.action.Action;
+
 import com.plani.cms.controller.action.LoginAction;
 import com.plani.cms.controller.action.LogoutAction;
 import com.plani.cms.controller.action.MainAction;
@@ -11,9 +12,12 @@ import com.plani.cms.controller.action.car.CarWriteAction;
 import com.plani.cms.controller.action.car.CarWriteCheckFormAction;
 import com.plani.cms.controller.action.car.CarWriteFormAction;
 import com.plani.cms.controller.action.carlog.CarlogAutoWriteFormAction;
+
+import com.plani.cms.controller.action.carlog.CarlogAutoWriteNextAction;
 import com.plani.cms.controller.action.carlog.CarlogCourseSelectAction;
 import com.plani.cms.controller.action.carlog.CarlogCourseSelectFormAction;
 import com.plani.cms.controller.action.carlog.CarlogMemberWriteFormAction;
+import com.plani.cms.controller.action.carlog.CarlogDeleteAction;
 import com.plani.cms.controller.action.carlog.CarlogSelectAction;
 import com.plani.cms.controller.action.carlog.CarlogViewFormAction;
 import com.plani.cms.controller.action.carlog.CarlogWriteAction;
@@ -24,6 +28,7 @@ import com.plani.cms.controller.action.cent.CentWriteAction;
 import com.plani.cms.controller.action.cent.CentWriteCheckFormAction;
 import com.plani.cms.controller.action.cent.CentWriteFormAction;
 import com.plani.cms.controller.action.course.CourDeleteAction;
+import com.plani.cms.controller.action.course.CourEPlaceWriteCheckFormAction;
 import com.plani.cms.controller.action.course.CourModifyAction;
 import com.plani.cms.controller.action.course.CourSPlaceWriteCheckFormAction;
 import com.plani.cms.controller.action.course.CourSelectAction;
@@ -184,15 +189,17 @@ public class ActionFactory {
 			/* 장소 기능 구현 end */
 			/* 경로 기능 구현 start */
 		} else if (command.equals("cour_write_form")) {
-			action = new CourSPlaceWriteCheckFormAction();
+			action = new CourWriteFormAction();
 		} else if (command.equals("cour_write")) {
 			action = new CourWriteAction();
 		} else if (command.equals("cour_modify")) {
 			action = new CourModifyAction();
 		} else if (command.equals("cour_delete")) {
 			action = new CourDeleteAction();
-		} else if (command.equals("cour_place_write_check_form")) {
+		} else if (command.equals("cour_splace_write_check_form")) {
 			action = new CourSPlaceWriteCheckFormAction();
+		} else if (command.equals("cour_eplace_write_check_form")) {
+			action = new CourEPlaceWriteCheckFormAction();
 		} else if (command.equals("cour_select")) {
 			action = new CourSelectAction();
 		} else if (command.equals("cour_select_form")) {
@@ -243,7 +250,9 @@ public class ActionFactory {
 			action = new CarlogWriteFormAction();
 		} else if (command.equals("carlog_write")) {
 			action = new CarlogWriteAction();
-		} else if (command.equals("carlog_select")) {
+		} else if (command.equals("carlog_delete")) {
+			action = new CarlogDeleteAction();
+		}else if (command.equals("carlog_select")) {
 			action = new CarlogSelectAction();
 		} else if (command.equals("carlog_course_select_form")) {
 			action = new CarlogCourseSelectFormAction();
@@ -256,7 +265,10 @@ public class ActionFactory {
 		}
 	else if (command.equals("carlog_member_search")) {
 		action = new CarlogMemberWriteFormAction();
-	}
+	
+		} else if (command.equals("carlog_auto_write_next")) {
+			action = new CarlogAutoWriteNextAction();
+		}
 		return action;
 
 	}

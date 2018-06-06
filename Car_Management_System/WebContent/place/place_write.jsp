@@ -10,7 +10,7 @@
 <script type="text/javascript" src="js/jquery-ui.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/post.js"></script>
-<script type="text/javascript" src="js/place.js?ver=?"></script>
+<script type="text/javascript" src="js/place.js"></script>
 <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 </head>
@@ -32,7 +32,7 @@
 	</div>
 	<form method="post" action="place.do?command=place_write" name="frm">
 		<div class="content_cont-box">
-			<p class="content_cont-text">장소번호</p>
+			<p class="content_cont-text">장소 번호</p>
 			<input type="text" class="form_textbox" name="place_no" readonly>
 		</div>
 		<div class="content_cont-box">

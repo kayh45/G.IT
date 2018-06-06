@@ -6,11 +6,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, user-scalable=no">
 <title>경로 등록 :: 법인차량관리시스템</title>
-<link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, user-scalable=no">
 <script type="text/javascript" src="js/jquery-ui.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
-<script type="text/javascript" src="js/course.js?ver=1"></script>
+<script type="text/javascript" src="js/course.js"></script>
 <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 </head>
 <body>
 	<header> <%@ include file="../header.jsp"%>
@@ -36,16 +37,13 @@
 			<table class="table table-bordered">
 
 				<tr>
-				<td class="form_label">
-						<p class="label">장소 번호</p>
-						<p class="must">*</p>
-					</td>
-					<td class="form_normal-td"><input type="text" class="form_textbox" name="s_place_no" readonly></td>
+				
 					<td class="form_label">
 						<p class="label">출발지</p>
 						<p class="must">*</p>
+						<input type="hidden" class="form_textbox" name="s_place_no" readonly>
 					</td>
-					<td><input type="text" name="s_place_name" class="form_textbox">
+					<td><input type="text" name="s_place_name" class="form_textbox" readonly>
 					<input type="hidden" name="s_place_name_ok" class="form_textbox"> 
 					<input type="hidden" name="s_place_usable_name">
 					<button type="button" onClick="splaceNameCheck()" class="quiet_btn" id="idCheck">
@@ -59,16 +57,13 @@
 					</td>
 				</tr>
 				<tr>
-				<td class="form_label">
-						<p class="label">장소 번호</p>
-						<p class="must">*</p>
-					</td>
-					<td class="form_normal-td"><input type="text" class="form_textbox" name="e_place_no" readonly></td>
+				
 					<td class="form_label">
 						<p class="label">도착지</p>  
 						<p class="must">*</p>
+						<input type="hidden" class="form_textbox" name="e_place_no" readonly>
 					</td>
-					<td><input type="text" name="e_place_name" class="form_textbox">
+					<td><input type="text" name="e_place_name" class="form_textbox" readonly>
 					<input type="hidden" name="e_place_name_ok" class="form_textbox"> 
 					<input type="hidden" name="e_place_usable_name">
 					<button type="button" onClick="eplaceNameCheck()" class="quiet_btn" id="idCheck">
@@ -101,20 +96,16 @@
 						<p class="must">*</p>
 					</td>
 					<td colspan="4"  class="form_phone-td">
-					<input name="distance" type="text" class="form_textbox" size="6" maxlength="3">km</b></td>
+					<input name="distance" type="text" class="form_textbox" size="6" maxlength="3">&nbsp;km</b></td>
 				</tr>
 			</table>
 		</div>
 		<div class="form_btn-group">
-			<button id="ins_btn" type="submit" onclick="return carWriteCheck1()">등록</button>
-			<button id="mod_btn" type="submit" onclick="return carModifyCheckDivided()"disabled>수정</button>
-			<button id="del_btn" type="button" onclick="carDelete()" disabled>삭제</button>
+			<button id="ins_btn" type="submit" onclick="return courseWrite()">등록</button>
+			<button id="mod_btn" type="submit" onclick="return courseModify()"disabled>수정</button>
+			<button id="del_btn" type="button" onclick="courseDelete()" disabled>삭제</button>
 		</div>
-<!-- 		<div class="form_btn-group">
-		<button id="ins_btn" type="submit" onclick = "return courWriteCheck()">등록</button>
-		<button id="mod_btn" type="submit" onclick = "return courModifyCheck()" >수정</button>
-		<button id="del_btn" type="button" onclick = "courDelete()" >삭제</button>
-		</div> -->
+
 	</form>
 	</section> </section>
 </body>
