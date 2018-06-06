@@ -266,42 +266,124 @@ public List<CarlogVO> drivSearchByNameNoncomplete(String mem_id) {
 	}
 	return list;
 }
+
+	public List<CarlogVO> preMonthNoneBefoDistCount(String car_reg_no, int year, int month) {
+		String sql = "SELECT driv_no, m.mem_id, mem_name, driv_s_date, driv_e_date "
+				+ "FROM driv AS d INNER JOIN mem AS m ON d.mem_id = m.mem_id "
+				+ "WHERE car_reg_no = ? AND year(driv_e_date) = ? AND month(driv_e_date) = ? AND befo_dist is null";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		CarlogVO cVo = null;
+		List<CarlogVO> cVoList = new ArrayList<CarlogVO>();
+
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);						
+
+			String strYear = year + "";
+			String strMonth = month + "";
+			
+			pstmt.setString(1, car_reg_no);
+			pstmt.setString(2, strYear);
+			pstmt.setString(3, strMonth);
+
+			rs = pstmt.executeQuery();
+						
+			while(rs.next()) {
+				
+				cVo = new CarlogVO();
+				
+				cVo.setDriv_no(rs.getInt("driv_no"));
+				cVo.setMem_id(rs.getString("mem_Id"));
+				cVo.setMem_name(rs.getString("mem_name"));
+				cVo.setDriv_s_date(rs.getString("driv_s_date"));
+				cVo.setDriv_e_date(rs.getString("driv_e_date"));
+				
+				cVoList.add(cVo);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+		return cVoList;
+	}
+	
+	public List<CarlogVO> thisMonthDoneList(String car_reg_no, int year, int month) {
+		String sql = "SELECT driv_no, m.mem_id, mem_name, driv_s_date, driv_e_date "
+				+ "FROM driv AS d INNER JOIN mem AS m ON d.mem_id = m.mem_id "
+				+ "WHERE car_reg_no = ? AND year(driv_e_date) = ? AND month(driv_e_date) = ?";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		CarlogVO cVo = null;
+		List<CarlogVO> cVoList = new ArrayList<CarlogVO>();
+
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);						
+
+			String strYear = year + "";
+			String strMonth = month + "";
+			System.out.println(car_reg_no);			
+			pstmt.setString(1, car_reg_no);
+			pstmt.setString(2, strYear);
+			pstmt.setString(3, strMonth);
+
+			rs = pstmt.executeQuery();
+						
+			while(rs.next()) {
+				cVo = new CarlogVO();
+				
+				cVo.setDriv_no(rs.getInt("driv_no"));
+				cVo.setMem_id(rs.getString("mem_Id"));
+				cVo.setMem_name(rs.getString("mem_name"));
+				cVo.setDriv_s_date(rs.getString("driv_s_date"));
+				cVo.setDriv_e_date(rs.getString("driv_e_date"));
+				
+				cVoList.add(cVo);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+		return cVoList;
+	}
+	
 }
 
-
-/*public List<CarlogVO> drivSearchAllByName(String mem_id) {
-	String sql ="select d.driv_no, d.car_reg_no, d.driv_s_date, d.driv_e_date, d.cour_no from driv d, mem m "
-			+ "where d.mem_id=m.mem_id AND and m.mem_id= '" + mem_id + "'";
-	
-	
-	
-	Connection conn = null;
-	Statement stmt = null;
-	ResultSet rs = null;
-	
-	List<CarlogVO> list = new ArrayList<CarlogVO>();
-	
-	try {
-		conn = DBManager.getConnection();
-		stmt = conn.createStatement();
-		rs = stmt.executeQuery(sql);
-		
-		while (rs.next()) {
-			
-			CarlogVO cVo = new CarlogVO();
-			
-			cVo.setDriv_no(rs.getInt("driv_no"));
-			cVo.setCar_reg_no(rs.getString("car_reg_no"));
-			cVo.setDriv_s_date(rs.getString("driv_s_date"));
-			cVo.setDriv_e_date(rs.getString("driv_e_date"));
-			cVo.setCour_no(rs.getInt("cour_no"));
-			list.add(cVo);
-			
-		}
-	} catch (Exception e) {
-		e.printStackTrace();
-	} finally {
-		DBManager.close(conn, stmt, rs);
-	}
-	return list;
-}*/
+/*
+ * public List<CarlogVO> drivSearchAllByName(String mem_id) { String sql
+ * ="select d.driv_no, d.car_reg_no, d.driv_s_date, d.driv_e_date, d.cour_no from driv d, mem m "
+ * + "where d.mem_id=m.mem_id AND and m.mem_id= '" + mem_id + "'";
+ * 
+ * 
+ * 
+ * Connection conn = null; Statement stmt = null; ResultSet rs = null;
+ * 
+ * List<CarlogVO> list = new ArrayList<CarlogVO>();
+ * 
+ * try { conn = DBManager.getConnection(); stmt = conn.createStatement(); rs =
+ * stmt.executeQuery(sql);
+ * 
+ * while (rs.next()) {
+ * 
+ * CarlogVO cVo = new CarlogVO();
+ * 
+ * cVo.setDriv_no(rs.getInt("driv_no"));
+ * cVo.setCar_reg_no(rs.getString("car_reg_no"));
+ * cVo.setDriv_s_date(rs.getString("driv_s_date"));
+ * cVo.setDriv_e_date(rs.getString("driv_e_date"));
+ * cVo.setCour_no(rs.getInt("cour_no")); list.add(cVo);
+ * 
+ * } } catch (Exception e) { e.printStackTrace(); } finally {
+ * DBManager.close(conn, stmt, rs); } return list; }
+ */
