@@ -115,9 +115,19 @@
 						<td>${carlog.befo_dist}</td>
 						<td>${carlog.distance}</td>
 						<td>${carlog.after_dist}</td>
-						<td>${carlog.etc_text}</td>
-						
-						
+						<td>
+						<c:choose>
+						<c:when test="${carlog.card_divi eq '미사용'}">
+							-
+						</c:when>
+						<c:when test="${carlog.card_divi eq '개인카드'}">
+						${carlog.card_divi}->유류비:${carlog.oil_fee}원+교통비:${carlog.trans_fee}원+${carlog.etc_text}:${carlog.etc_fee}
+						</c:when>
+						<c:when test="${carlog.card_divi eq '법인카드'}">
+						${carlog.card_divi}->유류비:${carlog.oil_fee}원+교통비:${carlog.trans_fee}원+${carlog.etc_text}:${carlog.etc_fee}
+						</c:when>
+						</c:choose>
+						</td>
 					</tr>					
 				 <%--    <input type = "hidden" name = "${repa.repa_no}repa_no" value  = "${repa.repa_no}">
 					<input type = "hidden" name = "${repa.repa_no}car_reg_no" value  = "${repa.car_reg_no}">

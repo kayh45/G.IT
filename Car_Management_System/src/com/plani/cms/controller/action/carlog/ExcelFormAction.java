@@ -41,7 +41,7 @@ public class ExcelFormAction implements Action {
 			List<CarviewVO> carlogAllList = vDao.selectDateCar(repa_s_date,repa_e_date,car_reg_no);
 		request.setAttribute("carlogAllList", carlogAllList);
 		}
-		
+		System.out.println("차량등록번호은?!!?!?!?"+car_reg_no);
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 

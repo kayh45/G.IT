@@ -10,11 +10,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <%
-String a = new String(request.getParameter("car_reg_no").getBytes("UTF-8"));
+request.setCharacterEncoding("UTF-8");
+String car_reg_no = new String(request.getParameter("car_reg_no").getBytes("8859_1"),"UTF-8");
 
 java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyyMM");
 String today = formatter.format(new java.util.Date());
-response.setHeader("Content-Disposition","attachment;filename="+a+"_"+today+".xls");
+response.setHeader("Content-Disposition","attachment;filename="+car_reg_no+"_"+today+".xls");
 response.setHeader("Content-Description", "JSP Generated Data");
 %>
 <style>
@@ -24,8 +25,8 @@ border="1"
 </style>
 </head>
 <body>
-
-	<table>					
+<h3> 차량운행일지 </h3>
+<table>					
 					<thead>
 					<tr>
 						<th class = "number_th">일자</th>
@@ -45,7 +46,7 @@ border="1"
 					<c:forEach var = "carlog" items = "${carlogAllList}">
 					
 				<tr>		               
-						<td>${carlog.driv_s_date}</td>
+						<td>${carlog.driv_s_date}</a></td>
 						<td>${carlog.dept_name}</td>
 						<td>${carlog.mem_posi}</td>
 						<td>${carlog.mem_name}</td>
@@ -56,9 +57,19 @@ border="1"
 						<td>${carlog.befo_dist}</td>
 						<td>${carlog.distance}</td>
 						<td>${carlog.after_dist}</td>
-						<td>${carlog.etc_text}</td>
-						
-						
+						<td>
+						<c:choose>
+						<c:when test="${carlog.card_divi eq '미사용'}">
+							-
+						</c:when>
+						<c:when test="${carlog.card_divi eq '개인카드'}">
+						${carlog.card_divi}->유류비:${carlog.oil_fee}원+교통비:${carlog.trans_fee}원+${carlog.etc_text}:${carlog.etc_fee}
+						</c:when>
+						<c:when test="${carlog.card_divi eq '법인카드'}">
+						${carlog.card_divi}->유류비:${carlog.oil_fee}원+교통비:${carlog.trans_fee}원+${carlog.etc_text}:${carlog.etc_fee}
+						</c:when>
+						</c:choose>
+						</td>
 					</tr>					
 				 <%--    <input type = "hidden" name = "${repa.repa_no}repa_no" value  = "${repa.repa_no}">
 					<input type = "hidden" name = "${repa.repa_no}car_reg_no" value  = "${repa.car_reg_no}">
@@ -78,5 +89,7 @@ border="1"
 				
 					</c:forEach>
 				</table>
+	
+	
 </body>
 </html>
