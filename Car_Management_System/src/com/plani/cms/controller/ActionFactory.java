@@ -10,6 +10,8 @@ import com.plani.cms.controller.action.car.CarSearchAction;
 import com.plani.cms.controller.action.car.CarWriteAction;
 import com.plani.cms.controller.action.car.CarWriteCheckFormAction;
 import com.plani.cms.controller.action.car.CarWriteFormAction;
+import com.plani.cms.controller.action.carlog.CarlogAutoWriteFormAction;
+import com.plani.cms.controller.action.carlog.CarlogAutoWriteNextAction;
 import com.plani.cms.controller.action.carlog.CarlogCourseSelectAction;
 import com.plani.cms.controller.action.carlog.CarlogCourseSelectFormAction;
 import com.plani.cms.controller.action.carlog.CarlogDeleteAction;
