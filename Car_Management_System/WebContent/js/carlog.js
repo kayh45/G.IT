@@ -41,6 +41,7 @@ function carlogCourseSearch(){
 }
 
 function splaceSelect(name) {
+	opener.frm.cour_no.value = document.getElementsByName(name + "cour_no")[0].value;
 	opener.frm.s_place_name.value = document.getElementsByName(name + "s_place_name")[0].value;
 	opener.frm.e_place_name.value = document.getElementsByName(name + "e_place_name")[0].value;
 	opener.frm.driv_purpo.value = document.getElementsByName(name + "driv_purpo")[0].value;
@@ -66,6 +67,7 @@ function carlogSelect(name) {
 	opener.frm.mem_name.value = document.getElementsByName(name + "mem_name")[0].value;
 	opener.frm.driv_s_date.value = document.getElementsByName(name + "driv_s_date")[0].value;
 	opener.frm.driv_e_date.value = document.getElementsByName(name + "driv_e_date")[0].value;
+	opener.frm.cour_no.value = document.getElementsByName(name + "cour_no")[0].value;
 	opener.frm.s_place_name.value = document.getElementsByName(name + "s_place_name")[0].value;
 	opener.frm.e_place_name.value = document.getElementsByName(name + "e_place_name")[0].value;
 	opener.frm.driv_purpo.value = document.getElementsByName(name + "driv_purpo")[0].value;

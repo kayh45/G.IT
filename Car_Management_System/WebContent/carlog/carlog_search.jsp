@@ -74,6 +74,7 @@
 					<input type = "hidden" name = "${carlog.driv_no}mem_name" value  = "${carlog.mem_name}">
 					<input type = "hidden" name = "${carlog.driv_no}driv_s_date" value  = "${carlog.driv_s_date}">
 					<input type = "hidden" name = "${carlog.driv_no}driv_e_date" value  = "${carlog.driv_e_date}">
+					<input type = "hidden" name = "${carlog.driv_no}cour_no" value  = "${carlog.cour_no}">
 					<input type = "hidden" name = "${carlog.driv_no}s_place_name" value  = "${carlog.s_place_name}">
 					<input type = "hidden" name = "${carlog.driv_no}e_place_name" value  = "${carlog.e_place_name}">
 					<input type = "hidden" name = "${carlog.driv_no}driv_purpo" value  = "${carlog.driv_purpo}">

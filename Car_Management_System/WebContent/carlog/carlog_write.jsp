@@ -78,6 +78,7 @@
 				<tr>
 					<td class="form_label">
 						<p class="label">사원 이름</p>
+					<input name="mem_id" type="hidden" class="form_textbox">
 
 
 					</td>
@@ -120,6 +121,7 @@
 			<!-- <div class="content_cont-box"> -->
 			<p class="content_cont-text">* 경로 정보</p>
 			<p class="content_cont-text"></p>
+			<input name="cour_no" type="hidden" class="form_textbox">
 			<table class="table table-bordered" id="form_table">
 
 				<tr>

@@ -38,8 +38,8 @@ public class CarlogDAO {
 	private int befo_dist;*/
 	
 	public void updateCarlog(CarlogVO cVo) {
-		String sql = "update cour set cour_no=?, driv_purpo=?, card_divi=?, oil_fee=?, trans_fee=?, etc_text=?, etc_fee=?, "
-				+ "befo_dist=? where driv_no=?";
+		String sql = "update cour set cour_no=?, driv_purpo=?, card_divi=?, oil_fee=?, trans_fee=?, etc_text=?, etc_fee=?, befo_dist=? "
+				+ "from driv where driv_no=?";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;

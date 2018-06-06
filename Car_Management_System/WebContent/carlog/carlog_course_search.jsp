@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, user-scalable=no">
 <link href="css/popup.css" rel="stylesheet">
 <link href="css/common.css" rel="stylesheet">
-<script type="text/javascript" src="js/carlog.js"></script>
+<script type="text/javascript" src="js/carlog.js?ver=2"></script>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <title>장소 조회</title>
 </head>
@@ -52,6 +52,7 @@
 						<td>${cour.e_place_name}</td>		
 						<td>${cour.e_place_addr }</td>		
 					</tr>	
+					<input type = "hidden" name = "${cour.cour_no}cour_no" value  = "${cour.cour_no}">
 					<input type = "hidden" name = "${cour.cour_no}s_place_name" value  = "${cour.s_place_name}">
 					<input type = "hidden" name = "${cour.cour_no}e_place_name" value  = "${cour.e_place_name}">
 					<input type = "hidden" name = "${cour.cour_no}driv_purpo" value  = "${cour.cour_purpo}">
