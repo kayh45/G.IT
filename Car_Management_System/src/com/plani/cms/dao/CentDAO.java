@@ -18,7 +18,49 @@ public class CentDAO {
 	public static CentDAO getInstance() {
 		return instance;
 	}
+	
+public int confirmCentName(String cent_name) {
+		
+		int result = -1;
+		String sql = "select cent_no from cent where cent_no=?";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 
+		try {
+			conn = DBManager.getConnection();
+
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, cent_name);
+
+			rs = pstmt.executeQuery();
+
+			if (cent_name.equals("")) {
+				result = 0;
+			} else if(rs.next()) {
+				result = 1; // 데이터 존재.
+			System.out.println(result +":통과");
+			} else {
+				result = -1;
+			}
+		}// 데이터 없음.
+		catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
 	public List<CentVO> selectAllCent() {
 
 		String sql = "select * from cent order by cent_no desc";
