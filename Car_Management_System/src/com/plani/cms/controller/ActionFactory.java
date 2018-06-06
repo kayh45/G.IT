@@ -262,17 +262,12 @@ public class ActionFactory {
 			action = new CarlogAutoWriteFormAction();
 		} else if (command.equals("carlog_view_form")) {
 			action = new CarlogViewFormAction();
-<<<<<<< HEAD
 		} else if (command.equals("carlog_member_search")) {
 			action = new CarlogMemberWriteFormAction();	
-=======
 		}else if (command.equals("excel_form")) {
-		action = new ExcelFormAction();
-	}
-	else if (command.equals("carlog_member_search")) {
-		action = new CarlogMemberWriteFormAction();
-	
->>>>>>> branch 'master' of https://github.com/kayh45/G.IT.git
+			action = new ExcelFormAction();
+		}else if (command.equals("carlog_member_search")) {
+			action = new CarlogMemberWriteFormAction();	
 		} else if (command.equals("carlog_auto_write_next")) {
 			action = new CarlogAutoWriteNextAction();
 		} else if (command.equals("carlog_auto_check")) {
