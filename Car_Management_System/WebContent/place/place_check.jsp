@@ -33,7 +33,7 @@
 					<button type = "button" onclick = "usePlaceName()">사용</button> 
 				</p>
 		
-		</div>			
+		</div>	 	
 		</c:if>
 		
 		<c:if test = "${result==1}">

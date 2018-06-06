@@ -56,7 +56,7 @@
 					<input type = "hidden" name = "${cour.cour_no}s_place_name" value  = "${cour.s_place_name}">
 					<input type = "hidden" name = "${cour.cour_no}e_place_name" value  = "${cour.e_place_name}">
 					<input type = "hidden" name = "${cour.cour_no}driv_purpo" value  = "${cour.cour_purpo}">
-					<input type = "hidden" name = "${cour.cour_no}distance" value  = "${cour.distance}">
+					<input type = "hidden" name = "${cour.cour_no}driv_dist" value  = "${cour.distance}">
 					</c:forEach>
 				</table>
 			</div>

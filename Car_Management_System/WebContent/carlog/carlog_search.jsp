@@ -78,7 +78,8 @@
 					<input type = "hidden" name = "${carlog.driv_no}s_place_name" value  = "${carlog.s_place_name}">
 					<input type = "hidden" name = "${carlog.driv_no}e_place_name" value  = "${carlog.e_place_name}">
 					<input type = "hidden" name = "${carlog.driv_no}driv_purpo" value  = "${carlog.driv_purpo}">
-					<input type = "hidden" name = "${carlog.driv_no}distance" value  = "${carlog.distance}">
+					<input type = "hidden" name = "${carlog.driv_no}driv_dist" value  = "${carlog.driv_dist}">
+					<input type = "hidden" name = "${carlog.driv_no}befo_dist" value  = "${carlog.befo_dist}">
 					<input type = "hidden" name = "${carlog.driv_no}card_divi" value  = "${carlog.card_divi}">
 					<input type = "hidden" name = "${carlog.driv_no}oil_fee" value  = "${carlog.oil_fee}">
 					<input type = "hidden" name = "${carlog.driv_no}trans_fee" value  = "${carlog.trans_fee}">

@@ -147,8 +147,7 @@ function splaceSelect(name) {
 	opener.frm.s_place_name.value = document.getElementsByName(name + "s_place_name")[0].value;
 	opener.frm.e_place_name.value = document.getElementsByName(name + "e_place_name")[0].value;
 	opener.frm.driv_purpo.value = document.getElementsByName(name + "driv_purpo")[0].value;
-	opener.frm.distance.value = document.getElementsByName(name + "distance")[0].value;
-	
+	opener.frm.driv_dist.value = document.getElementsByName(name + "driv_dist")[0].value;
 	self.close();
 }
 
@@ -173,7 +172,8 @@ function carlogSelect(name) {
 	opener.frm.s_place_name.value = document.getElementsByName(name + "s_place_name")[0].value;
 	opener.frm.e_place_name.value = document.getElementsByName(name + "e_place_name")[0].value;
 	opener.frm.driv_purpo.value = document.getElementsByName(name + "driv_purpo")[0].value;
-	opener.frm.distance.value = document.getElementsByName(name + "distance")[0].value;
+	opener.frm.befo_dist.value = document.getElementsByName(name + "befo_dist")[0].value;
+	opener.frm.driv_dist.value = document.getElementsByName(name + "driv_dist")[0].value;
 	switch (document.getElementsByName(name + "card_divi")[0].value) {
 	case "법인카드" : 	opener.frm.card_divi.value ="법인카드"; break;
 	case "개인카드" :	opener.frm.card_divi.value ="개인카드"; break;

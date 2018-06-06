@@ -27,13 +27,13 @@
 				<input type = "hidden" name = "e_place_name_ok" value = "1">
 			
 		<c:if test = "${result==-1}">
-		<div class = "popup_box">
+	<%-- 	<div class = "popup_box">
 		
 				<p>'${e_place_name}'은 등록 되어 있지 않습니다. <br> 등록 하시겠습니까? 
 					<button type = "button" onclick = "regiPlace()">등록</button> 
 				</p>
 		
-		</div>			
+		</div>	 --%> 	
 		</c:if>
 		
 		<c:if test = "${result==1}">
