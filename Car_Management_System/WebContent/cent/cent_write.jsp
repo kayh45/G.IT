@@ -37,7 +37,7 @@
 				</td>
 				<td class="form_normal-td">
 				<input type="text" name="cent_name" class="form_textbox">
-				<input type = "hidden" name = "cent_name_ok" class = "form_textbox">
+				<input type = "hidden" name = "cent_name_ok" value="0" class = "form_textbox">
 					<input type = "hidden" name = "cent_usable_name">
 							<button type = "button" onClick = "centNameCheck()" class = "quiet_btn" id = "idCheck">
 								<span id ="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
