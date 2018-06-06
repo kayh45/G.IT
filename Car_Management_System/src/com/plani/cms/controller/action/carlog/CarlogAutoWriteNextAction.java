@@ -112,7 +112,7 @@ public class CarlogAutoWriteNextAction implements Action{
 				}
 				System.out.println(i);
 				carlogArr[0][i] = i;
-				System.out.println(total_dist + ", " + notTol + ", " + isOil);
+				System.out.println(total_dist + ", " + remainDist + ", " + notTol + ", " + isOil);
 				
 				if(total_dist >= 0) {
 					if(notTol) {
@@ -149,10 +149,14 @@ public class CarlogAutoWriteNextAction implements Action{
 		}
 			
 		CarlogDAO cDao = CarlogDAO.getInstance();
+			cDao.deleteAllAutoOneMonth(car_reg_no, carlog_year, carlog_month);		
 			int count = 0;
+			int numOfRaw = 0;
 			for(int j = 1; j < carlogArr[0].length; j++) {				
 				if(carlogArr[0][j] != 0) {
 					String day_j;
+					numOfRaw++;
+					
 					if(j < 10){
 						day_j = "0" + j;
 					}else {
@@ -194,8 +198,7 @@ public class CarlogAutoWriteNextAction implements Action{
 			}
 			cDao.autoUpdateCarDist(car_reg_no, count);
 			
-						
-			
+			request.setAttribute("message", numOfRaw + "행이 새로 등록되었습니다.");			
 			
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

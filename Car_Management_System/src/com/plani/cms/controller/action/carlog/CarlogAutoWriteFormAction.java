@@ -23,6 +23,9 @@ public class CarlogAutoWriteFormAction implements Action{
 		int curYear = Integer.parseInt(rDao.getSysDate().substring(0, 4));
 
 		request.setAttribute("curYear", curYear);
+		if(request.getParameter("message") != null) {
+			request.setAttribute("message", request.getParameter("message"));			
+		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

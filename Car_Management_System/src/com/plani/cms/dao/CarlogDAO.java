@@ -358,6 +358,32 @@ public List<CarlogVO> drivSearchByNameNoncomplete(String mem_id) {
 		return cVoList;
 	}
 	
+	public void deleteAllAutoOneMonth(String car_reg_no, String year, String month) {
+		String sql = "DELETE FROM driv WHERE car_reg_no = ? AND year(driv_e_date) = ? "
+				+ "and month(driv_e_date) = ?";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, car_reg_no);
+			pstmt.setString(2, year);
+			pstmt.setString(3, month);
+
+			pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		} finally {
+			DBManager.close(conn, pstmt);
+
+		}
+	}
+	
 	public int getPreMonthBefoDist(String car_reg_no, int year, int month) {
 		String sql = "select befo_dist from driv where car_reg_no = ? "
 				+ "and befo_dist is not null and year(driv_e_date) = ? "
@@ -382,7 +408,7 @@ public List<CarlogVO> drivSearchByNameNoncomplete(String mem_id) {
 			rs = pstmt.executeQuery();
 						
 			if(rs.next()) {				
-				befo_dist = rs.getInt(0);
+				befo_dist = rs.getInt(1);
 			}
 
 		} catch (SQLException e) {
