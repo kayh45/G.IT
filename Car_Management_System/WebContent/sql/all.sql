@@ -65,6 +65,7 @@ CREATE TABLE if not exists `cms`.`repa` (
   `repa_e_date` DATE NOT NULL,
   `repa_cont` VARCHAR(500) NULL,
   `repa_fee` INT NULL,
+  `repa_divi` CHAR(1) NOT NULL default 0
   PRIMARY KEY (`repa_no`),
 CONSTRAINT FK_cms_cent FOREIGN KEY(cent_no) REFERENCES cent(cent_no),
 CONSTRAINT FK_cms_car FOREIGN KEY(car_reg_no) REFERENCES car(car_reg_no));
