@@ -11,10 +11,9 @@
 <body class = "side_body">
 
 	<ul class = "side_ul">
-		<li class = "side_title">메뉴 타이틀</li>
-		<li class = "side_sub-menu">부 메뉴</li>
-		<li class = "side_sub-menu">부 메뉴</li>
-		<li class = "side_sub-menu">부 메뉴</li>
+		<li class = "side_title">운행일지 관리</li>
+		<li class = "side_sub-menu">운행일지 작성</li>
+		<li class = "side_sub-menu">운행일지 조회</li>
 	</ul>
 
 </body>

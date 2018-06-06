@@ -10,6 +10,7 @@
 	document.frm.temp_repa_no.value = document.getElementsByName(name + "repa_no")[0].value;
 	document.frm.temp_car_reg_no.value =document.getElementsByName(name + "car_reg_no")[0].value;
 	document.frm.temp_cent_no.value =document.getElementsByName(name + "cent_no")[0].value;
+	document.frm.temp_cent_name.value =document.getElementsByName(name + "cent_name")[0].value;
 	document.frm.temp_repa_s_date.value =document.getElementsByName(name + "repa_s_date")[0].value;
 	document.frm.temp_repa_e_date.value =document.getElementsByName(name + "repa_e_date")[0].value;
 	document.frm.temp_mechanic_name.value =document.getElementsByName(name + "mechanic_name")[0].value;
@@ -23,7 +24,7 @@
 		var repa_s_date = document.frm.repa_s_date.value;	
 		var repa_e_date = document.frm.repa_e_date.value;	
 		var car_reg_no = document.frm.car_reg_no.value;
-		var car_reg_no_ok = document.frm.car_reg_no_ok.value;ㅅ
+		var car_reg_no_ok = document.frm.car_reg_no_ok.value;
 	
 		if(repa_s_date=="" || repa_s_date.length != 10 || repa_e_date=="" || repa_e_date.length != 10) {
 			alert("날짜를 입력해주세요");
@@ -82,7 +83,6 @@ function repaMemSelect(mem_no, mem_name) {
 			 */
 			opener.frm.car_reg_no_ok.value = document.frm.car_reg_no.value;;
 			opener.frm.car_reg_no.value = car_reg_no;
-			opener.frm.mem_id_ok.value = document.frm.mem_id_ok.value;
 
 			self.close();
 		}
