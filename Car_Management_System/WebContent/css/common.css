@@ -236,6 +236,10 @@ a:hover {
 	font-weight : bold;
 }
 
+.select_sm {
+	width : 90px !important;
+}
+
 @media ( max-width : 800px) {
 	.form_label>.label {
 		font-size: 12px;
@@ -253,6 +257,11 @@ a:hover {
 		margin: 0 2px !important;
 		margin-right: 0;
 		width: 60px;
+	}
+	.form_car_select {
+		margin: 0 2px;
+		margin-right: 0;
+		width: 150px;
 	}
 	.content_cont-box {
 		padding: 5px 2px;
@@ -287,6 +296,7 @@ a:hover {
 	section#main {
 		height: 100%;
 	}
+	
 }
 
 @media (min-width : 1024px) and (max-width : 1699px) {
@@ -296,11 +306,25 @@ a:hover {
 	section#content {
 		padding : 30px 5%;
 	}
+	.form_textbox {
+		margin: 0 2px !important;
+		margin-right: 0;
+		width: 100px;
+	}
+	.form_car_select {
+		margin: 0 2px;
+		margin-right: 0;
+		width: 150px;
+	}
 }
 
 @media ( min-width : 1700px) {
 	section#content {
 		padding: 30px 100px;
 		padding-right: 500px;
+	}
+	
+	.text_half {
+		width : 45% !important;
 	}
 }

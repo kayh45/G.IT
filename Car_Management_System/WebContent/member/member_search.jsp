@@ -88,6 +88,7 @@
 				<p class = "content_title-text">사원 정보 조회</p>
 			</div>
 			<form method = "post" action = "member.do?command=member_modify" name = "frm">
+			<input type = "hidden" name = "demand" value = "all">
 			<div class = "content_cont-box">
 				<p class = "content_cont-text">사원 이름으로 검색</p>	
 				<input name = "mem_search_name" type = "text" class = "form_textbox">

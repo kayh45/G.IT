@@ -20,7 +20,7 @@
 </div>
 <div class = "popup_body">
 
-		<form name = "frm" method = "post" action = "place.do?command=place_write_check_form">
+		<form name = "frm" method = "post" action = "place.do?command=place_write_check_form&popup=yes">
 					장소명 &nbsp;
 					<input type = "text" name = "place_name" value = "${place_name}">
 					<button type = "submit">조회</button>
