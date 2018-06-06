@@ -3,7 +3,6 @@
  */
 
 
-
   function repaSelect(name){
 	
 	  var url = "repa.do?command=repa_search_move_form";
@@ -24,15 +23,16 @@
 		var repa_s_date = document.frm.repa_s_date.value;	
 		var repa_e_date = document.frm.repa_e_date.value;	
 		var car_reg_no = document.frm.car_reg_no.value;
-		var car_reg_no_ok = document.frm.car_reg_no_ok.value;
+		var car_reg_no_ok = document.frm.car_reg_no_ok.value;ㅅ
 	
 		if(repa_s_date=="" || repa_s_date.length != 10 || repa_e_date=="" || repa_e_date.length != 10) {
 			alert("날짜를 입력해주세요");
 			document.frm.repa_s_date.value.focus();
 			return false;
 		}
-			else if(car_reg_no !="" &&car_reg_no_ok==0){
+			else if(car_reg_no !="" &&car_reg_no_ok== 0){
 				alert("차량 등록 번호 돋보기를 클릭하세요.");
+				return false;
 		}else {
 			return true;
 		}
@@ -80,9 +80,10 @@ function repaMemSelect(mem_no, mem_name) {
 			 * 정비소명 을 검색하고 정비소명을 누르면 해당 정비소의 정비소명과 정비번호가 부모화면의 폼으로 들어간다.
 			 * 
 			 */
-			opener.frm.car_reg_no_ok.value = document.frm.car_reg_no_ok.value;
+			opener.frm.car_reg_no_ok.value = document.frm.car_reg_no.value;;
 			opener.frm.car_reg_no.value = car_reg_no;
-		
+			opener.frm.mem_id_ok.value = document.frm.mem_id_ok.value;
+
 			self.close();
 		}
 
@@ -116,17 +117,9 @@ function repaWriteCheck() {
 		document.frm.car_reg_no.focus();
 		return false;
 	}
-	else if (document.frm.car_reg_no_ok.value == "0") {
-		alert("차량 등록 번호 돋보기를 클릭하세요.");
-		document.frm.cent_no.focus();
-		return false;
-	}
+	
 	else if (document.frm.cent_no.value == "") {
 		alert("정비소 번호를 입력하세요.");
-		document.frm.cent_no.focus();
-		return false;
-	}else if (document.frm.cent_name_ok.value == "0") {
-		alert("차량 등록 번호 돋보기를 클릭하세요.");
 		document.frm.cent_no.focus();
 		return false;
 	}
