@@ -16,10 +16,12 @@
 <script type = "text/javascript" src="js/common.js"></script>
 <script type = "text/javascript" src="js/rsrv.js"></script>
 <script type = "text/javascript" src="js/carlog.js?ver=2"></script>
+
+
+
 </head>
 
 <body>
-	
 	<header> <%@ include file="../header.jsp"%>
 	<!-- 헤더 --> </header>
 	<section id="main"> <aside id="side"> <%@ include file="sideMenu.jsp"%> </aside>
@@ -136,6 +138,7 @@
 					</c:forEach>
 				</table>
 			
+		<input type = "submit" name="excelConverBtn" id="excelConverBtn" value="엑셀출력" onclick="excelConver()" style="cursor:hand"/>
 				
 				
 			</div>
