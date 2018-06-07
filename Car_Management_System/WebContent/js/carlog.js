@@ -215,9 +215,9 @@ function carLogAutoNext() {
 		alert("사용 목적을 입력 하세요.");
 		document.frm.driv_purpo.focus();
 		return false;
-	}else if (document.frm.distance.value == "") {
+	}else if (document.frm.driv_dist.value == "") {
 		alert("주행 거리를 입력하세요");
-		document.frm.distance.focus();
+		document.frm.driv_dist.focus();
 		return false;
 	}else {
 		var lastItemNo = $("#example tr:last").attr("class").replace("item", "");

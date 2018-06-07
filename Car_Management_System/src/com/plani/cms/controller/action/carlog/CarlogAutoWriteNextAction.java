@@ -27,7 +27,7 @@ public class CarlogAutoWriteNextAction implements Action{
 		int rate_oil = Integer.parseInt(request.getParameter("rate_oil"));
 		String cour_no = request.getParameter("cour_no");
 		String driv_purpo = request.getParameter("driv_purpo");
-		int distance = Integer.parseInt(request.getParameter("distance"));
+		int distance = Integer.parseInt(request.getParameter("driv_dist"));
 		
 		String[] card_day = request.getParameterValues("card_day");		
 		String[] card_oil = request.getParameterValues("card_oil");		
