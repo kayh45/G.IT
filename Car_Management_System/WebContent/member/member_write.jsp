@@ -9,10 +9,10 @@
 <meta name="viewport" content="width=device-width, user-scalable=no">
 <title>사원 등록 :: 법인차량관리시스템</title>
 <script type = "text/javascript" src="../js/bootstrap.js"></script>
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script type="text/javascript" src="js/post.js"></script>
 <script type = "text/javascript" src="js/member.js?ver=3"></script>
 <script type = "text/javascript" src="js/common.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
     function execDaumPostcode() {
@@ -184,7 +184,7 @@
 						</td>
 						<td class = "form_normal-td"  colspan = "3">
 							<input  name = "mem_addr1" type = "text" id = "roadAddress" class = "form_textbox" readonly>
-							<button type = "button" onClick = "execDaumPostcode();" class = "quiet_btn">
+							<button type = "button" onclick="sample6_execDaumPostcode()" class = "quiet_btn">
 								<span id ="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
 							</button>
 						</td>
