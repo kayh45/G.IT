@@ -10,22 +10,18 @@
 <title>법인차량관리시스템</title>
 <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery-ui.js"></script>
-<link href="css/jquery.schedule.css" rel="stylesheet">
-<link href="css/jquery-ui.css" rel="stylesheet">
-<link href="css/segmented-controls.css" rel="stylesheet">
-
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/post.js"></script>
-<script type="text/javascript" src="js/repa.js?ver=2"></script>
+<script type="text/javascript" src="js/repa.js?ver=1"></script>
 <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 							
 									
 </head>
 <body>
 	<header> <%@ include file="../header.jsp"%>
 	<!-- 헤더 --> </header>
-
- <
+	
 	<section id="main"> <aside id="side"> <%@ include file="sideMenu.jsp"%> </aside>
 		 <script type = "text/javascript" src="js/jquery-ui.js"></script>
 		<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
@@ -47,24 +43,12 @@
 						<p class="label">차량 등록 번호</p>
 						<p class="must">*</p>
 					</td>
-					<c:choose>
-								<c:when test="${repa_no eq null}">
-								<td class="form_normal-td" colspan="3"><input type="text"
-						class="form_textbox" id="car_reg_no" name="car_reg_no" value="${car_reg_no}">
-						<input type = "hidden" name = "car_reg_no_ok" value = "0">
-						<button type = "button" onClick = "carNoCheck();" class = "quiet_btn" id = "idCheck">
-								<span id ="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
-							</button>	</td>
-								</c:when>
-								<c:otherwise>
 								<td class="form_normal-td" colspan="3"><input type="text"
 						class="form_textbox" id="car_reg_no" name="car_reg_no" value="${car_reg_no}" readonly>
 						<input type = "hidden" name = "car_reg_no_ok" value = "0">
 						<button type = "button" onClick = "carNoCheck();" class = "quiet_btn" id = "idCheck">
 								<span id ="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
 							</button>	</td>
-								</c:otherwise>
-							</c:choose>
 				</tr>
 				<tr>
 					<td class="form_label">
@@ -77,7 +61,7 @@
 						<p class="label">정비소 명</p>
 					</td>
 					<td class="form_normal-td">
-				<input type="text" name="cent_name" class="form_textbox">
+				<input type="text" name="cent_name" value="${cent_name}" class="form_textbox">
 				<input type = "hidden" name = "cent_name_ok" class = "form_textbox">
 					<input type = "hidden" name = "cent_usable_name">
 							<button type = "button" onClick = "centNameCheck();" class = "quiet_btn" id = "idCheck">

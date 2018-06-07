@@ -1,6 +1,67 @@
 /**
  * 유효성 검사.
  */
+function excelConver(){
+	 var url = "carlog.do?command=excel_form";
+		document.frm.action=url; 	
+		document.frm.submit();
+	
+}
+
+function carNoCheck() {
+	document.frm.car_reg_no_ok.value = 0; // 중복검사 여부를 0으로 초기화
+   var url = "repa.do?popup=no&command=repa_car_write_check_form&car_reg_no="
+         + encodeURIComponent(document.frm.car_reg_no.value);
+   window.open(url, "_blank_1",
+               "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
+}
+  function carlogDateCheck() {
+		var repa_s_date = document.frm.repa_s_date.value;	
+		var repa_e_date = document.frm.repa_e_date.value;	
+		var car_reg_no = document.frm.car_reg_no.value;
+		if(repa_s_date=="" || repa_s_date.length != 10 || repa_e_date=="" || repa_e_date.length != 10) {
+			alert("날짜를 입력해주세요");
+			document.frm.repa_s_date.value.focus();
+			return false;
+		}
+		else if(car_reg_no ==""){
+			alert("차량 등록 번호를 입력하세요")
+			return false;
+		}
+		/*}
+		else if(car_reg_no !="" && car_reg_no_ok==0){
+				alert("차량 등록 번호 돋보기를 클릭하세요.");
+				return false;
+		}*/else{
+			return true;
+		}
+	}
+  
+function carlogMemSelect(mem_id, mem_name) {
+	/*
+	 * repa_cent_check.jsp 에서 사용
+
+
+	 * 정비소명 을 검색하고 정비소명을 누르면 해당 정비소의 정비소명과 정비번호가 부모화면의 폼으로 들어간다.
+	 * 
+	 */
+	opener.frm.mem_id.value = mem_id;
+	opener.frm.mem_search_name.value = mem_name;
+	self.close();
+}
+
+function memSearchByName() {
+	/*
+	 * @member_search.jsp 에서 사용
+	 * 
+	 * 
+	 */
+	var url = "carlog.do?popup=no&command=carlog_member_search&mem_name="
+			+ encodeURIComponent(document.frm.mem_search_name.value);
+	window.open(url, "_blank_1",
+					"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
+}
+
 
 function carlogWriteCheck() {
 	if (document.frm.driv_no.value == "") {
@@ -93,8 +154,7 @@ function splaceSelect(name) {
 	opener.frm.s_place_name.value = document.getElementsByName(name + "s_place_name")[0].value;
 	opener.frm.e_place_name.value = document.getElementsByName(name + "e_place_name")[0].value;
 	opener.frm.driv_purpo.value = document.getElementsByName(name + "driv_purpo")[0].value;
-	opener.frm.distance.value = document.getElementsByName(name + "distance")[0].value;
-	
+	opener.frm.driv_dist.value = document.getElementsByName(name + "driv_dist")[0].value;
 	self.close();
 }
 
@@ -119,7 +179,8 @@ function carlogSelect(name) {
 	opener.frm.s_place_name.value = document.getElementsByName(name + "s_place_name")[0].value;
 	opener.frm.e_place_name.value = document.getElementsByName(name + "e_place_name")[0].value;
 	opener.frm.driv_purpo.value = document.getElementsByName(name + "driv_purpo")[0].value;
-	opener.frm.distance.value = document.getElementsByName(name + "distance")[0].value;
+	opener.frm.befo_dist.value = document.getElementsByName(name + "befo_dist")[0].value;
+	opener.frm.driv_dist.value = document.getElementsByName(name + "driv_dist")[0].value;
 	switch (document.getElementsByName(name + "card_divi")[0].value) {
 	case "법인카드" : 	opener.frm.card_divi.value ="법인카드"; break;
 	case "개인카드" :	opener.frm.card_divi.value ="개인카드"; break;
@@ -182,4 +243,30 @@ function carLogAutoNext() {
 			}
 		}
 	}
+}
+
+function canWrite() {
+	
+	var car_reg_no = document.frm.car_usable_no.value;
+	var year = document.frm.carlog_year.value;
+	var month = document.frm.carlog_month.value;
+	
+	if (car_reg_no != "") {
+		 var url = "carlog.do?popup=no&command=carlog_auto_check&car_reg_no="+encodeURIComponent(car_reg_no)
+		   				+"&year="+year+"&month="+month;
+		 window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
+	}	
+}
+
+function autoCheckClose() {
+	opener.frm.canWrites.value = 0;
+	opener.document.getElementById("ins_btn").disabled = "true";
+	
+	self.close();
+}
+function autoCheckOk() {
+	opener.frm.canWrites.value = 1;
+	opener.document.getElementById("ins_btn").removeAttribute('disabled');
+	
+	self.close();
 }

@@ -2,7 +2,6 @@
  * 법인차 유효성 검사
  */
 function carNoCheck() {
-
 	document.frm.car_reg_no_ok.value = 0; // 중복검사 여부를 0으로 초기화
 	var url = "car.do?popup=no&command=car_write_check_form&car_reg_no="
 			+ encodeURIComponent(document.frm.car_reg_no.value);
@@ -51,7 +50,7 @@ function carSelect(name) {
 	 * 사원 검색에서 사원 이름 누르면 부모 폼으로 들어가는 기능
 	 * 
 	 */
-
+	opener.frm.car_reg_no_ok.value = 1;
 	if (document.getElementsByName(name + "car_divi")[0].value == "렌트"
 			|| document.getElementsByName(name + "car_divi")[0].value == "리스") {
 		var frmName = document.getElementsByName(name + "car_reg_no")[0].value;
@@ -150,7 +149,7 @@ function carWriteCheck1() {
 		return false;
 	} else if (document.frm.car_reg_no_ok.value == "0") {
 		alert("차량 등록 번호를 중복 검사 해주세요");
-		document.frm.car_reg_no.focus();
+		document.frm.car_reg_no_ok.focus();
 		return false;
 	} else if (document.frm.car_model.value == "") {
 		alert("차종을 입력해주세요");
@@ -198,7 +197,7 @@ function carWriteCheck2() {
 		return false;
 	} else if (document.frm.car_reg_no_ok.value == "0") {
 		alert("차량 등록 번호를 중복 검사 해주세요");
-		document.frm.car_reg_no.focus();
+		document.frm.car_reg_no_ok.focus();
 		return false;
 	} else if (document.frm.car_model.value == "") {
 		alert("차종을 입력해주세요");

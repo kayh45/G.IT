@@ -18,16 +18,19 @@ public class RepaSearchMoveFormAction implements Action {
 		String repa_no=request.getParameter("temp_repa_no");
 		String car_reg_no=request.getParameter("temp_car_reg_no");
 		String cent_no=request.getParameter("temp_cent_no");
+		String cent_name=request.getParameter("temp_cent_name");
 		String repa_s_date=request.getParameter("temp_repa_s_date");
 		String repa_e_date=request.getParameter("temp_repa_e_date");
 		String _mechanic_name=request.getParameter("temp_mechanic_name");
 		String repa_fee=request.getParameter("temp_repa_fee");
 		String repa_cont=request.getParameter("temp_repa_cont");
 		String repa_divi=request.getParameter("temp_repa_divi");
+		
 		System.out.println("운행일지 번호:" + repa_no);
 		System.out.println("차량 등록 번호:" + car_reg_no);
 		System.out.println("정비소 번호:" + cent_no);
-			System.out.println("정비 시작 날짜:" + repa_s_date);
+		System.out.println("정비소 번호:" + cent_name);
+		System.out.println("정비 시작 날짜:" + repa_s_date);
 		System.out.println("정비 종료 날짜:" + repa_e_date);
 		System.out.println("정비 담당자:" + _mechanic_name);
 		System.out.println("수리비용:" + repa_fee);
@@ -37,6 +40,7 @@ public class RepaSearchMoveFormAction implements Action {
 		request.setAttribute("repa_no", repa_no);
 		request.setAttribute("car_reg_no", car_reg_no);
 		request.setAttribute("cent_no", cent_no);
+		request.setAttribute("cent_name", cent_name);
 		request.setAttribute("repa_s_date", repa_s_date);
 		request.setAttribute("repa_e_date", repa_e_date);
 		request.setAttribute("mechanic_name", _mechanic_name);

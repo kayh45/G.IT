@@ -10,14 +10,18 @@ import com.plani.cms.controller.action.car.CarSearchAction;
 import com.plani.cms.controller.action.car.CarWriteAction;
 import com.plani.cms.controller.action.car.CarWriteCheckFormAction;
 import com.plani.cms.controller.action.car.CarWriteFormAction;
+import com.plani.cms.controller.action.carlog.CarlogAutoCheckAction;
 import com.plani.cms.controller.action.carlog.CarlogAutoWriteFormAction;
 import com.plani.cms.controller.action.carlog.CarlogAutoWriteNextAction;
 import com.plani.cms.controller.action.carlog.CarlogCourseSelectAction;
 import com.plani.cms.controller.action.carlog.CarlogCourseSelectFormAction;
 import com.plani.cms.controller.action.carlog.CarlogDeleteAction;
+import com.plani.cms.controller.action.carlog.CarlogMemberWriteFormAction;
 import com.plani.cms.controller.action.carlog.CarlogSelectAction;
+import com.plani.cms.controller.action.carlog.CarlogViewFormAction;
 import com.plani.cms.controller.action.carlog.CarlogWriteAction;
 import com.plani.cms.controller.action.carlog.CarlogWriteFormAction;
+import com.plani.cms.controller.action.carlog.ExcelFormAction;
 import com.plani.cms.controller.action.cent.CentDeleteAction;
 import com.plani.cms.controller.action.cent.CentModifyAction;
 import com.plani.cms.controller.action.cent.CentWriteAction;
@@ -256,8 +260,18 @@ public class ActionFactory {
 			action = new CarlogCourseSelectAction();
 		} else if (command.equals("carlog_auto_write_form")) {
 			action = new CarlogAutoWriteFormAction();
+		} else if (command.equals("carlog_view_form")) {
+			action = new CarlogViewFormAction();
+		} else if (command.equals("carlog_member_search")) {
+			action = new CarlogMemberWriteFormAction();	
+		}else if (command.equals("excel_form")) {
+			action = new ExcelFormAction();
+		}else if (command.equals("carlog_member_search")) {
+			action = new CarlogMemberWriteFormAction();	
 		} else if (command.equals("carlog_auto_write_next")) {
 			action = new CarlogAutoWriteNextAction();
+		} else if (command.equals("carlog_auto_check")) {
+			action = new CarlogAutoCheckAction();
 		}
 		return action;
 	}

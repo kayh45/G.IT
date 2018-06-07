@@ -58,7 +58,7 @@ public class MemberModifyAction implements Action{
 		request.setAttribute("message", "<strong>사원 수정 성공!</strong> &nbsp 수정한 사원 : " + mem_name + "(" + mem_id+ ")");
 		
 		// 마이페이지에서 내정보수정을 하면 다시 그 페이지로 리다이렉트되도록 하는 if문
-		if(request.getParameter("isMypage").equals("1")) { 
+		if(request.getParameter("isMypage") != null && request.getParameter("isMypage").equals("1")) { 
 			HttpSession session = request.getSession();
 			url = "member.do?command=mypage_infoupdate_form";
 			MemberVO sessionVo = mDao.getMemberInfoAll(mVo);

@@ -194,7 +194,7 @@
 							<p class = "label">상세 주소</p>				
 						</td>
 						<td class = "form_normal-td"  colspan = "3">
-							<input name = "mem_addr2" type = "text" id = "roadAddress-detail" class = "form_textbox">
+							<input name = "mem_addr_dtl" type = "text" id = "roadAddress-detail" class = "form_textbox">
 						</td>
 					</tr>
 					<tr>

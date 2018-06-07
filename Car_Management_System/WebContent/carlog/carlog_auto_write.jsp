@@ -16,7 +16,7 @@
 <script type="text/javascript" src="js/moment.js"></script>
 <script type="text/javascript" src="js/member.js?ver=4"></script>
 <script type="text/javascript" src="js/car.js?ver=3"></script>
-<script type="text/javascript" src="js/carlog.js?ver=3"></script>
+<script type="text/javascript" src="js/carlog.js?ver=2"></script>
 <script type="text/javascript" src="js/common.js"></script>
 </head>
 <body>
@@ -69,7 +69,9 @@
 							<c:forEach varStatus="month" begin="1" end="12" step="1">
 								<option value="${month.count}">${month.count}월</option>
 							</c:forEach>
-					</select></td>
+					</select>
+					<button type = "button" onclick = "canWrite()">가능 여부</button>
+					</td>
 				</tr>
 				<tr>
 					<td class="form_label">
@@ -189,7 +191,6 @@
 	                clickedRow.remove();
                 }
  
- 
                 // rowspan 조정
                 // resizeRowspan(cls);
             });
@@ -223,8 +224,9 @@
 				</tbody>
 			</table>
 		</div>
+		<input type = "hidden" name = "canWrites" value = "0">
 		<div class = "form_btn-group">
-			<button type = "submit" onclick="return carLogAutoNext()">다음</button>
+			<button id = "ins_btn" type = "submit" onclick="return carLogAutoNext()" disabled>다음</button>
 		</div>
 	</form>
 	</section> 

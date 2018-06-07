@@ -7,8 +7,12 @@
 <meta name="viewport" content="width=device-width, user-scalable=no">
 <title>경로 등록 :: 법인차량관리시스템</title>
 <meta name="viewport" content="width=device-width, user-scalable=no">
-<script type="text/javascript" src="js/jquery-ui.js"></script>
-<script type="text/javascript" src="js/bootstrap.js"></script>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/jquery.schedule.css" rel="stylesheet">
+<link href="css/jquery-ui.css" rel="stylesheet">
+<link href="css/segmented-controls.css" rel="stylesheet">
+<script type = "text/javascript" src="js/bootstrap.js"></script>
+<script type = "text/javascript" src="js/common.js"></script>
 <script type="text/javascript" src="js/course.js"></script>
 <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
