@@ -260,7 +260,6 @@ public class ActionFactory {
 			action = new CarlogAutoWriteNextAction();
 		}
 		return action;
-
 	}
 
 }
