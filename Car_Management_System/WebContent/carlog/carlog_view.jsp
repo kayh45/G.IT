@@ -50,7 +50,7 @@ div .box button{
 			<table class="table table-bordered" id="form_table">
 			<tr>
 				<td class="form_label">
-					<p class="label">정비 시작 날짜</p>
+					<p class="label">운행 날짜(시작)</p>
 					<p class="must">*</p>
 				</td>
 				<td>				
@@ -63,7 +63,7 @@ div .box button{
 				
 				</td>
 				<td class="form_label">
-					<p class="label">정비 종료 날짜</p>
+					<p class="label">운행 날짜(종료)</p>
 					<p class="must">*</p>
 				</td>
 				<td class="form_normal-td">
