@@ -21,7 +21,7 @@ public class CarviewDAO {
 	public List<CarviewVO> selectDateCar(String repa_s_date, String repa_e_date,String car_reg_no){
 		String sql = "select left(dd.driv_s_date,16) as 'driv_s_date',  d.dept_name, m.mem_posi, m.mem_name, dd.driv_purpo,"
 +"(select place_name from place where place_no = s_place) as 's_place_name',"
-+"(select place_name from place where place_no = e_place) as 'e_place_name', (dd.oil_fee+dd.trans_fee+dd.etc_fee) as 'fee',"
++"(select place_name from place where place_no = e_place) as 'e_place_name',"
 +"dd.befo_dist,dd.driv_dist,(dd.befo_dist+dd.driv_dist) as 'total_dist', dd.etc_text, dd.card_divi, dd.oil_fee, dd.trans_fee, dd.etc_fee from driv dd, dept d, mem m, cour c, car cc " 
 +"where dd.car_reg_no = cc.car_reg_no AND dd.mem_id = m.mem_id AND d.dept_no = m.dept_no AND dd.cour_no=c.cour_no and dd.car_reg_no='" + car_reg_no + "'and dd.driv_s_date between '" + repa_s_date + "' and '" + repa_e_date + "' order by dd.driv_s_date asc;";
 
@@ -47,7 +47,6 @@ public class CarviewDAO {
 				cVo.setDriv_purpo(rs.getString("driv_purpo"));
 				cVo.setS_place_name(rs.getString("s_place_name"));
 				cVo.setE_place_name(rs.getString("e_place_name"));
-				cVo.setTotal_fee(rs.getInt("fee"));
 				cVo.setBefo_dist(rs.getInt("befo_dist"));
 				cVo.setDistance(rs.getInt("driv_dist"));
 				cVo.setAfter_dist(rs.getInt("total_dist"));
@@ -56,6 +55,7 @@ public class CarviewDAO {
 				cVo.setOil_fee(rs.getInt("oil_fee"));
 				cVo.setTrans_fee(rs.getInt("trans_fee"));
 				cVo.setEtc_fee(rs.getInt("etc_fee"));
+				cVo.setTotal_fee(cVo.getOil_fee() + cVo.getTrans_fee() + cVo.getEtc_fee());
 				list.add(cVo);
 
 			}

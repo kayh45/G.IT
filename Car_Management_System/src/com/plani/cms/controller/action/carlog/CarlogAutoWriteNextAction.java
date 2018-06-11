@@ -34,11 +34,14 @@ public class CarlogAutoWriteNextAction implements Action{
 		String[] card_trans = request.getParameterValues("card_trans");		
 		String[] card_course = request.getParameterValues("card_course");		
 		
+		
+		
 		int extra_options = card_day.length;
 		
 		int card_arr[][] = new int[4][extra_options];
 		for(int j = 0; j <= 3; j++) {
 			for(int i = 0; i < extra_options; i++) {
+				System.out.println(card_day[i]);
 				switch (j) {
 				 case 0 : card_arr[0][i] = (card_day[i]==""?0:Integer.parseInt(card_day[i])); break;
 				 case 1 : card_arr[1][i] = (card_oil[i]==""?0:Integer.parseInt(card_oil[i])); break;

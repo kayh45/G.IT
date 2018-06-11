@@ -216,7 +216,7 @@
 						<td><input name = "card_day" class = "form_textbox text_short" maxlength="2" type = text>일</td>
 						<td><input name = "card_oil" class = "form_textbox" type = "text">원</td>
 						<td><input name = "card_trans" class = "form_textbox" type = "text">원</td>
-						<td><input id = "card_course1" name = "card_course" class = "form_textbox" type = "text" disabled>
+						<td><input value = "" id = "card_course1" name = "card_course" class = "form_textbox" type = "text" readonly>
 						<button type = "button" class = "quiet_btn" onClick="carlogCourseSearchAuto('1');">
 								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 							</button></td>

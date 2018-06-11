@@ -45,7 +45,7 @@ table{
 					<c:forEach var = "carlog" items = "${carlogAllList}">
 					
 				<tr>		               
-						<td>${carlog.driv_s_date}</a></td>
+						<td>${carlog.driv_s_date}</td>
 						<td>${carlog.dept_name}</td>
 						<td>${carlog.mem_posi}</td>
 						<td>${carlog.mem_name}</td>
