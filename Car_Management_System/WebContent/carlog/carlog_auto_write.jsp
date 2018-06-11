@@ -172,7 +172,9 @@
                 var newitem = $("#example tr:eq(1)").clone();
                 newitem.removeClass();
                 newitem.find("td:eq(0)").attr("rowspan", "1");
-                newitem.addClass("item"+(parseInt(lastItemNo)+1));
+                newitem.find("td:eq(3)").children("button").attr("onclick", "carlogCourseSearchAuto('" + (parseInt(lastItemNo)+1) + "')");
+                newitem.find("td:eq(3)").children("input").attr("id", "card_course"+(parseInt(lastItemNo)+1))
+                newitem.addClass("item"+(parseInt(lastItemNo)+1)); 
  
                 $("#example").append(newitem);
             });
@@ -212,9 +214,12 @@
 				<tbody>
 					<tr class = "item1">
 						<td><input name = "card_day" class = "form_textbox text_short" maxlength="2" type = text>일</td>
-						<td><input name = "card_oil" class = "form_textbox" type = text>원</td>
-						<td><input name = "card_trans" class = "form_textbox" type = text>원</td>
-						<td><input name = "card_course" class = "form_textbox" type = text></td>
+						<td><input name = "card_oil" class = "form_textbox" type = "text">원</td>
+						<td><input name = "card_trans" class = "form_textbox" type = "text">원</td>
+						<td><input id = "card_course1" name = "card_course" class = "form_textbox" type = "text" disabled>
+						<button type = "button" class = "quiet_btn" onClick="carlogCourseSearchAuto('1');">
+								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+							</button></td>
 						<td>
 							<button type = "button" class = "delBtn quiet_btn">
 								<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>

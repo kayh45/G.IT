@@ -149,6 +149,16 @@ function carlogCourseSearch(){
 		window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
 }
 
+function carlogCourseSearchAuto(rownum){
+	var url = "carlog.do?command=carlog_course_select_form_auto&rownum="+rownum;
+		window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
+}
+
+function splaceSelectAuto(name, rownum) {
+	opener.document.getElementById("card_course"+rownum).value = document.getElementsByName(name + "cour_no")[0].value;	
+	self.close();
+}
+
 function splaceSelect(name) {
 	opener.frm.cour_no.value = document.getElementsByName(name + "cour_no")[0].value;
 	opener.frm.s_place_name.value = document.getElementsByName(name + "s_place_name")[0].value;
