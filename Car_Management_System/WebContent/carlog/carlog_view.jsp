@@ -34,6 +34,8 @@ div .box button{
 </head>
 
 <body>
+
+
 	<header> <%@ include file="../header.jsp"%>
 	<!-- 헤더 --> </header>
 	<section id="main"> <aside id="side"> <%@ include file="sideMenu.jsp"%> </aside>

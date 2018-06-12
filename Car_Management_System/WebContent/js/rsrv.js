@@ -1,16 +1,16 @@
-function viewOneDay(car_reg_no) {
+function viewOneDay() {
 	
 	var date = document.frm.date.value;
+	var mem_id = document.frm.mem_id.value;
 	
 	if (rsrvDateCheck()) {
-		document.frm.car_reg_no.value = car_reg_no;
-		location.href = "rsrv.do?command=reserve_view_schedule&car_reg_no=" + car_reg_no +"&date=" + date;				
+		location.href = "rsrv.do?command=reserve_view_schedule&mem_id=" + mem_id +"&date=" + date;				
 	}		
 }
 
 function checkboxControl(curr) {
 	
-	var chk_box = document.frm.elements['time[]'];	
+	var chk_box = document.frm.elements['time'];	
 	var len = chk_box.length;
 	var tempArr = new Array();
 	var chkdArr = new Array();
@@ -49,7 +49,7 @@ function checkboxControl(curr) {
 	console.log(cmax);	
 	
 	for(var i = 0; i < len ; i++) {
-		if (chk_box[i].value < cmin - 2 || chk_box[i].value > cmax + 2) {
+		if (chk_box[i].value < cmin - 1 || chk_box[i].value > cmax + 1) {
 			chk_box[i].disabled = true;
 		}else {
 			chk_box[i].removeAttribute('disabled');
@@ -95,5 +95,19 @@ function rsrvDelete(driv_no) {
 	} else {
 		return false;
 	}
+}
+
+function timeCheck() {
+	
+	var timecheckbox = document.frm.time.value;
+	
+	if(timecheckbox == null) {
+		alert("시간을 선택해주세요");
+		return false;
+	}else {
+		return true;
+	}
+	return false;
+	
 }
 

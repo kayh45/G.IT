@@ -23,13 +23,14 @@ public class ReserveWriteAction implements Action{
 		
 		String car_reg_no = request.getParameter("car_reg_no");
 		String date = request.getParameter("date");
-		String[] times = request.getParameterValues("time[]");
+		String[] times = request.getParameterValues("time");
 		String mem_id = request.getParameter("mem_id");
 		
 		request.setAttribute("date", date);
 		request.setAttribute("car_reg_no", car_reg_no);
 		
-		System.out.println(times);
+		
+		System.out.println("times = " + times);
 		
 		int min = 99, max = 0;
 		
@@ -39,7 +40,7 @@ public class ReserveWriteAction implements Action{
 		}
 		
 		String driv_s_date = date + " " + min + ":00:00";
-		String driv_e_date = date + " " + (max+2) + ":00:00";
+		String driv_e_date = date + " " + (max+1) + ":00:00";
 		
 		DrivVO dVo = new DrivVO();
 		dVo.setDriv_s_date(driv_s_date);

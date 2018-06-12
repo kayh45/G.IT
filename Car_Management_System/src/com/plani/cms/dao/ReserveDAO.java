@@ -5,12 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
+import com.plani.cms.dto.CarVO;
 import com.plani.cms.dto.DrivVO;
 import com.plani.cms.util.DBManager;
 
@@ -62,7 +60,7 @@ public class ReserveDAO {
 		String sql = "SELECT car_reg_no FROM driv "
 				+ "WHERE date(driv_s_date) = date(now()) AND driv_s_date > now() "
 				+ "GROUP BY car_reg_no "
-				+ "HAVING min(driv_s_date) < date_add(now(), interval 3 hour)";
+				+ "HAVING min(driv_s_date) < date_add(now(), interval 1 hour)";
 		
 		List<String> usingList = new ArrayList<String>();
 		Connection conn = null;
@@ -117,13 +115,14 @@ public class ReserveDAO {
 		return date;
 	}
 	
-	public List<DrivVO> oneDaySchedule(String date, String car_reg_no) {
+	public List<DrivVO> oneDaySchedule(String date, String mem_id) {
 		/**
-		 * 바로 사용 가능 상태가 아닌 차등록번호 가져오기
+		 * 하루 스케쥴 가져오기
 		 * @ReserveWriteFormAction 에서 사용
 		 **/
 		
-		String sql = "SELECT *, hour(driv_s_date) as s_hour, hour(driv_e_date) as e_hour FROM driv WHERE date(driv_s_date) = ? AND car_reg_no = ? ORDER BY driv_s_date ASC";
+		String sql = "SELECT *, hour(driv_s_date) as s_hour, hour(driv_e_date) as e_hour FROM driv WHERE date(driv_s_date) = ? "
+				+ "AND mem_id = ? ORDER BY driv_s_date ASC";
 		
 		List<DrivVO> scheduleList = new ArrayList<DrivVO>();		
 		
@@ -136,7 +135,7 @@ public class ReserveDAO {
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, date);
-			pstmt.setString(2, car_reg_no);		
+			pstmt.setString(2, mem_id);
 			
 			rs = pstmt.executeQuery();
 
@@ -241,6 +240,52 @@ public class ReserveDAO {
 		}
 		return dVo;
 	}
-
 	
+	public List<CarVO> unuseList(String date, String s_date, String e_date) {
+		
+		/*
+		 * 해당 날짜에 사용 가능한 차량 리스트를 받아오는 메소드
+		 * date = 선택한 날짜
+		 * s_date, e_date = 선택한 시간
+		 */
+		
+		String sql = "select * from car where car_reg_no " + 
+				"not in (select car_reg_no from driv " +
+				"where date(driv_s_date) = date(?) and " + 
+				"(hour(driv_s_date) > ? or hour(driv_e_date) < ?))";
+		
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		CarVO cVo = null;
+		List<CarVO> cVoList = new ArrayList<CarVO>();
+
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, date);	
+			pstmt.setString(2, s_date);	
+			pstmt.setString(3, e_date);	
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				cVo = new CarVO();
+				
+				cVo.setCar_reg_no(rs.getString("car_reg_no"));
+				cVo.setCar_model(rs.getString("car_model"));
+				
+				cVoList.add(cVo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+		
+		return cVoList;
+	}
 }
