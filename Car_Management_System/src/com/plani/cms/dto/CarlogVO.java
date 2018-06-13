@@ -1,6 +1,7 @@
 package com.plani.cms.dto;
 
 public class CarlogVO extends DrivVO{
+	
 	private int driv_no;
 	private String mem_id;
 	private String mem_name;
@@ -11,7 +12,6 @@ public class CarlogVO extends DrivVO{
 	private String e_place_name;
 	private String driv_s_date;
 	private String driv_e_date;
-	private String driv_purpo;
 	private int driv_dist;
 	private int distance;
 	private String card_divi;
@@ -20,8 +20,16 @@ public class CarlogVO extends DrivVO{
 	private String etc_text;
 	private int etc_fee;
 	private int befo_dist;
+	private String driv_divi;
+	private String driv_purpo;
 	
 	
+	public String getDriv_divi() {
+		return driv_divi;
+	}
+	public void setDriv_divi(String driv_divi) {
+		this.driv_divi = driv_divi;
+	}
 	public int getDriv_dist() {
 		return driv_dist;
 	}

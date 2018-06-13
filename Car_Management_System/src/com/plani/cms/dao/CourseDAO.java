@@ -24,7 +24,7 @@ public class CourseDAO {
 
 	public void insertCourse(CourseVO cVo) {
 		String sql = "insert into cour(s_place, e_place,"
-				+ "distance,cour_purpo) values(?,?,?,?)";
+				+ "distance,cour_purpo, cour_divi) values(?,?,?,?,?)";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -38,6 +38,7 @@ public class CourseDAO {
 			pstmt.setInt(2, cVo.getE_place());
 			pstmt.setInt(3, cVo.getDistance());
 			pstmt.setString(4, cVo.getCour_purpo());
+			pstmt.setString(5, cVo.getCour_divi());
 			
 
 			pstmt.executeUpdate();
@@ -50,7 +51,7 @@ public class CourseDAO {
 	
 	public void updateCourse(CourseVO cVo) {
 		String sql = "update cour set s_place=?,"
-				+ "e_place=?,distance=?,cour_purpo=? where cour_no=?";
+				+ "e_place=?,distance=?,cour_purpo=?, cour_divi=? where cour_no=?";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -63,7 +64,8 @@ public class CourseDAO {
 			pstmt.setInt(2, cVo.getE_place());
 			pstmt.setInt(3, cVo.getDistance());
 			pstmt.setString(4, cVo.getCour_purpo());
-			pstmt.setInt(5, cVo.getCour_no());
+			pstmt.setString(5, cVo.getCour_divi());
+			pstmt.setInt(6, cVo.getCour_no());
 	
 			pstmt.executeUpdate();
 			
@@ -99,10 +101,10 @@ public class CourseDAO {
 	}
 	public List<PlaceCourVO> courSplaceSearchByNameLike(String name) {
 		String sql ="select c.cour_no, c.s_place as 's_place', (select place_name from place where place_no = s_place) as 's_place_name', "
-				+ "(select place_addr from place where place_no=s_place) as 's_place_addr', c.e_place, "
-				+ "(select place_name from place where place_no = e_place) as 'e_place_name',"
-				+ "(select place_addr from place where place_no=e_place) as 'e_place_addr', c.cour_purpo,c.distance from cour c, place p "
-				+ "where p.place_no = c.s_place AND p.place_name like '%" + name + "%'";
+				+ "(select place_addr from place where place_no=s_place) as 's_place_addr', (select place_divi from place where place_no=s_place) as 's_place_divi', "
+				+ "c.e_place, (select place_name from place where place_no = e_place) as 'e_place_name',"
+				+ "(select place_addr from place where place_no=e_place) as 'e_place_addr', (select place_divi from place where place_no=e_place) as 'e_place_divi', "
+				+ "c.cour_purpo,c.distance,c.cour_divi from cour c, place p where p.place_no = c.s_place AND p.place_name like '%" + name + "%' ORDER BY c.s_place";
 		
 
 		Connection conn = null;
@@ -124,11 +126,15 @@ public class CourseDAO {
 				pcVo.setS_place_no(rs.getInt("s_place"));
 				pcVo.setS_place_name(rs.getString("s_place_name"));
 				pcVo.setS_place_addr(rs.getString("s_place_addr"));
+				pcVo.setS_place_divi(rs.getString("s_place_divi"));
 				pcVo.setE_place_no(rs.getInt("e_place"));
 				pcVo.setE_place_name(rs.getString("e_place_name"));
 				pcVo.setE_place_addr(rs.getString("e_place_addr"));
+				pcVo.setE_place_divi(rs.getString("e_place_divi"));
 				pcVo.setCour_purpo(rs.getString("cour_purpo"));
 				pcVo.setDistance(rs.getInt("distance"));
+				pcVo.setCour_divi(rs.getString("cour_divi"));
+
 
 			
 				
@@ -145,10 +151,10 @@ public class CourseDAO {
 	}
 	public List<PlaceCourVO> courEplaceSearchByNameLike(String name) {
 		String sql ="select c.cour_no, c.s_place as 's_place', (select place_name from place where place_no = s_place) as 's_place_name', "
-				+ "(select place_addr from place where place_no=s_place) as 's_place_addr', c.e_place, "
-				+ "(select place_name from place where place_no = e_place) as 'e_place_name',"
-				+ "(select place_addr from place where place_no=e_place) as 'e_place_addr', c.cour_purpo,c.distance from cour c, place p "
-				+ "where p.place_no = c.e_place AND p.place_name like '%" + name + "%'";
+				+ "(select place_addr from place where place_no=s_place) as 's_place_addr', (select place_divi from place where place_no=s_place) as 's_place_divi', "
+				+ "c.e_place, (select place_name from place where place_no = e_place) as 'e_place_name',"
+				+ "(select place_addr from place where place_no=e_place) as 'e_place_addr', (select place_divi from place where place_no=e_place) as 'e_place_divi', "
+				+ "c.cour_purpo,c.distance, c.cour_divi from cour c, place p where p.place_no = c.e_place AND p.place_name like '%" + name + "%' ORDER BY c.e_place";
 		
 		
 		Connection conn = null;
@@ -170,11 +176,15 @@ public class CourseDAO {
 				pcVo.setS_place_no(rs.getInt("s_place"));
 				pcVo.setS_place_name(rs.getString("s_place_name"));
 				pcVo.setS_place_addr(rs.getString("s_place_addr"));
+				pcVo.setS_place_divi(rs.getString("s_place_divi"));
 				pcVo.setE_place_no(rs.getInt("e_place"));
 				pcVo.setE_place_name(rs.getString("e_place_name"));
 				pcVo.setE_place_addr(rs.getString("e_place_addr"));
+				pcVo.setE_place_divi(rs.getString("e_place_divi"));
 				pcVo.setCour_purpo(rs.getString("cour_purpo"));
 				pcVo.setDistance(rs.getInt("distance"));
+				pcVo.setCour_divi(rs.getString("cour_divi"));
+
 
 				
 				
@@ -192,10 +202,10 @@ public class CourseDAO {
 	
 	public List<PlaceCourVO> courAllplaceSearchByNameLike(String name) {
 		String sql ="select c.cour_no, c.s_place as 's_place', (select place_name from place where place_no = s_place) as 's_place_name', "
-				+ "(select place_addr from place where place_no=s_place) as 's_place_addr', c.e_place, "
-				+ "(select place_name from place where place_no = e_place) as 'e_place_name',"
-				+ "(select place_addr from place where place_no=e_place) as 'e_place_addr', c.cour_purpo, c.distance from cour c, place p "
-				+ "where p.place_no = c.e_place";
+				+ "(select place_addr from place where place_no=s_place) as 's_place_addr', (select place_divi from place where place_no=s_place) as 's_place_divi',"
+				+ "c.e_place, (select place_name from place where place_no = e_place) as 'e_place_name',"
+				+ "(select place_addr from place where place_no=e_place) as 'e_place_addr', (select place_divi from place where place_no=e_place) as 'e_place_divi', "
+				+ "c.cour_purpo, c.distance, c.cour_divi from cour c, place p where p.place_no = c.e_place ORDER BY c.s_place";
 		
 		
 		Connection conn = null;
@@ -217,11 +227,15 @@ public class CourseDAO {
 				pcVo.setS_place_no(rs.getInt("s_place"));
 				pcVo.setS_place_name(rs.getString("s_place_name"));
 				pcVo.setS_place_addr(rs.getString("s_place_addr"));
+				pcVo.setS_place_divi(rs.getString("s_place_divi"));
 				pcVo.setE_place_no(rs.getInt("e_place"));
 				pcVo.setE_place_name(rs.getString("e_place_name"));
 				pcVo.setE_place_addr(rs.getString("e_place_addr"));
+				pcVo.setE_place_divi(rs.getString("e_place_divi"));
 				pcVo.setCour_purpo(rs.getString("cour_purpo"));
 				pcVo.setDistance(rs.getInt("distance"));
+				pcVo.setCour_divi(rs.getString("cour_divi"));
+
 
 				
 				

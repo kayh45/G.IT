@@ -16,7 +16,7 @@ public class CourSelectAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String place_name = new String(request.getParameter("place_name").getBytes("UTF-8"));
+		String place_name = new String(request.getParameter("place_name").getBytes("8859_1"),"UTF-8");
 		String cour_divi = request.getParameter("cour_divi");
 		
         System.out.println("레그넘 = "+ place_name);

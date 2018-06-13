@@ -106,6 +106,13 @@ section#content_car_include {
 	width: 150px;
 	padding : 0 3px;
 }
+.form_juso_textbox {
+	margin: 0 10px;
+	margin-right: 0;
+	width: 400px;
+	padding : 0 3px;
+}
+
 .form_textarea{
 	margin: 0 10px;
 	margin-right: 0;
@@ -119,6 +126,12 @@ section#content_car_include {
 	width: 150px;
 }
 
+.form_juso_textbox[readonly] {
+	background-color: #d8d8d8;
+	margin-left: 20px;
+	margin: 0 10px;
+	margin-right: 0;
+}
 .form_textbox[readonly] {
 	background-color: #d8d8d8;
 	margin-left: 20px;

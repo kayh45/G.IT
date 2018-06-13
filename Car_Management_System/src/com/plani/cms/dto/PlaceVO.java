@@ -3,13 +3,20 @@ package com.plani.cms.dto;
 public class PlaceVO {
 
 
-int place_no;
-String place_name;
-int place_p_no;
-String place_addr;
-String place_addr_dtl;
+private int place_no;
+private String place_name;
+private int place_p_no;
+private String place_addr;
+private String place_addr_dtl;
+private String place_divi;
 
 
+public String getPlace_divi() {
+	return place_divi;
+}
+public void setPlace_divi(String place_divi) {
+	this.place_divi = place_divi;
+}
 public String getPlace_addr_dtl() {
 return place_addr_dtl;
 }
