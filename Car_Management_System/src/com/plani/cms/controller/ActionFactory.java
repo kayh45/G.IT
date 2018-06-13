@@ -18,6 +18,7 @@ import com.plani.cms.controller.action.carlog.CarlogCourseSelectAutoAction;
 import com.plani.cms.controller.action.carlog.CarlogCourseSelectFormAction;
 import com.plani.cms.controller.action.carlog.CarlogCourseSelectFormAutoAction;
 import com.plani.cms.controller.action.carlog.CarlogDeleteAction;
+import com.plani.cms.controller.action.carlog.CarlogMemberSearchAction;
 import com.plani.cms.controller.action.carlog.CarlogMemberWriteFormAction;
 import com.plani.cms.controller.action.carlog.CarlogSelectAction;
 import com.plani.cms.controller.action.carlog.CarlogViewForm0Action;
@@ -69,6 +70,7 @@ import com.plani.cms.controller.action.repa.RepaSearchMoveFormAction;
 import com.plani.cms.controller.action.repa.RepaWriteAction;
 import com.plani.cms.controller.action.repa.RepaWriteFormAction;
 import com.plani.cms.controller.action.reserve.ReserveDeleteAction;
+import com.plani.cms.controller.action.reserve.ReserveViewCarsAction;
 import com.plani.cms.controller.action.reserve.ReserveViewScheduleAction;
 import com.plani.cms.controller.action.reserve.ReserveWriteAction;
 import com.plani.cms.controller.action.reserve.ReserveWriteFormAction;
@@ -215,6 +217,8 @@ public class ActionFactory {
 			action = new PlaceWriteFormAction();
 		} else if (command.equals("reserve_write_form")) {
 			action = new ReserveWriteFormAction();
+		} else if (command.equals("reserve_view_cars")) {
+			action = new ReserveViewCarsAction();
 		} else if (command.equals("reserve_write")) {
 			action = new ReserveWriteAction();
 		} else if (command.equals("reserve_view_schedule")) {
@@ -281,7 +285,9 @@ public class ActionFactory {
 			action = new CarlogCourseSelectFormAutoAction();
 		} else if (command.equals("carlog_course_select_auto")) {
 			action = new CarlogCourseSelectAutoAction();
-		}
+		} else if (command.equals("carlog_member_search")) {
+		action = new CarlogMemberSearchAction();
+	}
 		return action;
 	}
 

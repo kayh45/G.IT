@@ -11,30 +11,42 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.ReserveDAO;
-import com.plani.cms.dto.DrivVO;
+import com.plani.cms.dto.CarVO;
 
-public class ReserveViewScheduleAction implements Action {
-
+public class ReserveViewCarsAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String url = "rsrv.do?command=reserve_write_form";
+		String url = "rsrv.do?command=reserve_view_schedule";
 		
-		String mem_id = request.getParameter("mem_id");
 		String date = request.getParameter("date");
 		
-		List<DrivVO> dVoList = new ArrayList<DrivVO>();
+		String[] times = request.getParameterValues("time");
+		
+		System.out.println("times = " + times);
+		
+		int min = 99, max = 0;
+		
+		for(String time : times) {			
+			min = min > Integer.parseInt(time)?Integer.parseInt(time):min; 
+			max = max < Integer.parseInt(time)?Integer.parseInt(time):max; 
+		}
+		
+		String s_date = min + "";
+		String e_date = (max+1) + "";
+		
 		ReserveDAO rDao = ReserveDAO.getInstance();
+		List<CarVO> cVoList = new ArrayList<CarVO>();
 		
-		dVoList = rDao.oneDaySchedule(date, mem_id);
+		cVoList = rDao.unuseList(date, s_date, e_date);
 		
-		request.setAttribute("date", date);
-		request.setAttribute("mem_id", mem_id);
-		request.setAttribute("dVoList", dVoList);		
+		request.setAttribute("cVoList", cVoList);
+		request.setAttribute("s_date", s_date);
+		request.setAttribute("e_date", e_date);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 		
 	}
-
+	
 }

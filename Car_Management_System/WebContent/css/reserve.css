@@ -78,6 +78,10 @@ section#main{
 	height: 100% !important;
 }
 
+.long_btn {
+	width: 200px !important;
+}
+
 @media ( max-width : 800px) {
 	.rsrv_etc_btn {
 		width : 100%;

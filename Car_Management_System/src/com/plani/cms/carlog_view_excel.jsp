@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="application/vnd.ms-excel;charset=UTF-8" pageEncoding="UTF-8"%>
     	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -11,6 +10,7 @@
 <%
 request.setCharacterEncoding("UTF-8");
 String car_reg_no = new String(request.getParameter("car_reg_no").getBytes("8859_1"),"UTF-8");
+
 java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyyMM");
 String today = formatter.format(new java.util.Date());
 response.setHeader("Content-Disposition","attachment;filename="+car_reg_no+"_"+today+".xls");
@@ -19,6 +19,7 @@ response.setHeader("Content-Description", "JSP Generated Data");
 <style>
 table{
  border: 1px solid #fff;
+
 }
 </style>
 </head>
@@ -27,39 +28,34 @@ table{
 <table>					
 					<thead>
 					<tr>
-						<th class = "number_th">년도</th>
-						<th>월</th>
-						<th>일</th>
+						<th class = "number_th">일자</th>
 						<th>부서</th>
+						<th>직책</th>
 						<th>성명</th>
-						<th>구분</th>
-						<th>분류(출)</th>
-						<th>출발지 명</th>
-						<th>주소</th>
-						<th>분류(도)</th>
-						<th>도착지명</th>
-						<th>주소</th>
-						<th>주행Km</th>
+						<th>사용목적</th>
+						<th>출발지</th>
+						<th>도착지</th>
+						<th>법인카드 사용금액</th>
+						<th>주행전누적거리(km)</th>
+						<th>주행거리(km)</th>
+						<th>주행후누적거리(km)</th>
 						<th>비고</th>
 					</tr>
 					<thead>
 					<c:forEach var = "carlog" items = "${carlogAllList}">
 					
-				<tr>
-						<td>${carlog.driv_year}</td>
-						<td>${carlog.driv_month}</td>
-						<td>${carlog.driv_day}</td>
+				<tr>		               
+						<td>${carlog.driv_s_date}</td>
 						<td>${carlog.dept_name}</td>
+						<td>${carlog.mem_posi}</td>
 						<td>${carlog.mem_name}</td>
-						<td>${carlog.driv_divi}</td>
-						<td>${carlog.place_s_divi}</td>
-						<td>${carlog.s_place_name}</td>
-						<td>${carlog.s_place_addr}</td>
-						<td>${carlog.place_e_divi}</td>
-						<td>${carlog.e_place_name}</td>
-						<td>${carlog.e_place_addr}</td>
-						<td>${carlog.distance}</td>
 						<td>${carlog.driv_purpo}</td>
+						<td>${carlog.s_place_name}</td>
+						<td>${carlog.e_place_name}</td>
+						<td>${carlog.total_fee}</td>
+						<td>${carlog.befo_dist}</td>
+						<td>${carlog.distance}</td>
+						<td>${carlog.after_dist}</td>
 						<td>
 						<c:choose>
 						<c:when test="${carlog.card_divi eq '미사용'}">

@@ -10,7 +10,7 @@
 <link href="css/popup.css" rel="stylesheet">
 <link href="css/common.css" rel="stylesheet">
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<script type = "text/javascript" src="js/repa.js?ver=1"></script>
+<script type = "text/javascript" src="js/repa.js?ver=2"></script>
 
 
 
@@ -55,7 +55,7 @@
 					<c:forEach var = "car" items = "${carList}">
 				<tr>
 						<td>${car.car_reg_no}</td>
-						<td><a onclick = "repaCarSelect('${car.car_reg_no}')">${car.car_model}</a></td>		
+						<td><a onclick = "repaCarSelect('${car.car_reg_no}','${car.car_model}')">${car.car_model}</a></td>		
 						<td>${car.car_divi}</td>
 					</tr>	
 			
@@ -85,7 +85,7 @@
 						<td>${car.car_reg_no}</td>
 						
 						
-						<td><a onclick = "repaCarSelect('${car.car_reg_no}')">${car.car_model}</a></td>		
+						<td><a onclick = "repaCarSelect('${car.car_reg_no}','${car.car_model}')">${car.car_model}</a></td>		
 						<td>${car.car_divi}</td>
 					</tr>					
 					<input type = "hidden" name = "${car.car_reg_no}car_reg_no" value  = "${car.car_reg_no}">

@@ -55,6 +55,7 @@
 								<span id ="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
 							</button>	</td>
 				</tr>
+				
 				<tr>
 					<td class="form_label">
 						<p class="label">정비소 번호</p>
@@ -167,7 +168,8 @@
 			
 			</c:choose>
 			
-			
+			<td class="form_normal-td"><input type="hidden"
+						class="form_textbox" id="car_model" name="car_model" value="${car_model}"readonly></td>
 	
 		</div>
 	</form>

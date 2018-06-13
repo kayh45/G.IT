@@ -74,15 +74,16 @@ function repaMemSelect(mem_no, mem_name) {
 	self.close();
 }
 
-		function repaCarSelect(car_reg_no) {
+		function repaCarSelect(car_reg_no, car_model) {
 			/*
 			 * repa_cent_check.jsp 에서 사용
 			 * 
 			 * 정비소명 을 검색하고 정비소명을 누르면 해당 정비소의 정비소명과 정비번호가 부모화면의 폼으로 들어간다.
 			 * 
 			 */
-			opener.frm.car_reg_no_ok.value = document.frm.car_reg_no.value;;
+			opener.frm.car_reg_no_ok.value = document.frm.car_reg_no.value;
 			opener.frm.car_reg_no.value = car_reg_no;
+			opener.frm.car_model.value =car_model;
 
 			self.close();
 		}
