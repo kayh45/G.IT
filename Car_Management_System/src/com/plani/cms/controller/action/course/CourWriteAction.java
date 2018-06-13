@@ -24,7 +24,8 @@ public class CourWriteAction implements Action{
 		int e_place = Integer.parseInt(request.getParameter("e_place_no"));
 		int distance = Integer.parseInt(request.getParameter("distance"));
 		String cour_purpo = request.getParameter("cour_purpo");
-		
+		String cour_divi = request.getParameter("cour_divi");
+
 		
 		
 		
@@ -32,6 +33,7 @@ public class CourWriteAction implements Action{
 		cVo.setE_place(e_place);
 		cVo.setDistance(distance);
 		cVo.setCour_purpo(cour_purpo);	
+		cVo.setCour_divi(cour_divi);	
 		
 		CourseDAO cDao = CourseDAO.getInstance();
 		cDao.insertCourse(cVo);

@@ -7,7 +7,14 @@ public class CourseVO {
 	private int e_place;
 	private int distance;
 	private String cour_purpo;
+	private String cour_divi;
 	
+	public String getCour_divi() {
+		return cour_divi;
+	}
+	public void setCour_divi(String cour_divi) {
+		this.cour_divi = cour_divi;
+	}
 	public int getCour_no() {
 		return cour_no;
 	}

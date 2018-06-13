@@ -24,12 +24,14 @@ public class PlaceWriteAction implements Action{
 		int place_p_no = Integer.parseInt(request.getParameter("place_p_no"));
 		String place_addr = request.getParameter("place_addr");
 		String place_addr_dtl = request.getParameter("place_addr_dtl");
+		String place_divi = request.getParameter("place_divi");
 		
 	
 		pVo.setPlace_name(place_name);
 		pVo.setPlace_p_no(place_p_no);
 		pVo.setPlace_addr(place_addr);
 		pVo.setPlace_addr_dtl(place_addr_dtl);
+		pVo.setPlace_divi(place_divi);
 		
 		PlaceDAO pDao = PlaceDAO.getInstance();
 		pDao.placeInsert(pVo);

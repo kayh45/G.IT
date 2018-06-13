@@ -27,8 +27,8 @@ public class PlaceDAO {
 	public void placeInsert(PlaceVO pVo) {
 		
 		
-		String sql = "insert into place(place_name, place_p_no, place_addr, place_addr_dtl)"
-				+ " values(?,?,?,?)";
+		String sql = "insert into place(place_name, place_p_no, place_addr, place_addr_dtl, place_divi)"
+				+ " values(?,?,?,?,?)";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -42,6 +42,7 @@ public class PlaceDAO {
 			pstmt.setInt(2, pVo.getPlace_p_no());
 			pstmt.setString(3, pVo.getPlace_addr());
 			pstmt.setString(4, pVo.getPlace_addr_dtl());
+			pstmt.setString(5, pVo.getPlace_divi());
 			
 			pstmt.executeUpdate();
 
@@ -57,7 +58,7 @@ public class PlaceDAO {
 	public void placeUpdate(PlaceVO pVo) {
 		
 		
-		String sql = "UPDATE place SET place_name = ?, place_p_no = ?, place_addr = ?, place_addr_dtl=? " 
+		String sql = "UPDATE place SET place_name = ?, place_p_no = ?, place_addr = ?, place_addr_dtl=?, place_divi=? " 
 		+ "where place_no = ?";
 
 		Connection conn = null;
@@ -71,7 +72,8 @@ public class PlaceDAO {
 			pstmt.setInt(2, pVo.getPlace_p_no());
 			pstmt.setString(3, pVo.getPlace_addr());
 			pstmt.setString(4, pVo.getPlace_addr_dtl());
-			pstmt.setInt(5, pVo.getPlace_no());
+			pstmt.setString(5, pVo.getPlace_divi());
+			pstmt.setInt(6, pVo.getPlace_no());
 			
 
 			pstmt.executeUpdate();
@@ -172,6 +174,7 @@ public class PlaceDAO {
 				pVo.setPlace_p_no(rs.getInt("place_p_no"));
 				pVo.setPlace_addr(rs.getString("place_addr"));
 				pVo.setPlace_addr_dtl(rs.getString("place_addr_dtl"));
+				pVo.setPlace_divi(rs.getString("place_divi"));
 				
 				
 
@@ -253,6 +256,8 @@ public List<PlaceVO> selectAllPlace() {
 			pVo.setPlace_p_no(rs.getInt("place_p_no"));
 			pVo.setPlace_addr(rs.getString("place_addr"));
 			pVo.setPlace_addr_dtl(rs.getString("place_addr_dtl"));
+			pVo.setPlace_divi(rs.getString("place_divi"));
+
 
 			list.add(pVo);
 		}

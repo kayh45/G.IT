@@ -6,11 +6,34 @@ public class PlaceCourVO {
 	private int s_place_no;
 	private String s_place_name;
 	private String s_place_addr;
+	private String s_place_divi;
 	private int e_place_no;
 	private String e_place_name;
 	private String e_place_addr;
+	private String e_place_divi;
 	private String cour_purpo;
+	private String cour_divi;
 	private int distance;
+	
+	
+	public String getCour_divi() {
+		return cour_divi;
+	}
+	public void setCour_divi(String cour_divi) {
+		this.cour_divi = cour_divi;
+	}
+	public String getS_place_divi() {
+		return s_place_divi;
+	}
+	public void setS_place_divi(String s_place_divi) {
+		this.s_place_divi = s_place_divi;
+	}
+	public String getE_place_divi() {
+		return e_place_divi;
+	}
+	public void setE_place_divi(String e_place_divi) {
+		this.e_place_divi = e_place_divi;
+	}
 	public int getCour_no() {
 		return cour_no;
 	}

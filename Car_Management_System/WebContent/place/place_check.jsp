@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, user-scalable=no">
 <link href="css/popup.css" rel="stylesheet">
 <link href="css/common.css" rel="stylesheet">
-<script type="text/javascript" src="js/place.js"></script>
+<script type="text/javascript" src="js/place.js?ver=1"></script>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <title>장소 조회</title>
 </head>
@@ -44,6 +44,7 @@
 					<thead>
 					<tr>
 						<th >장소 번호</th>
+						<th >장소 구분</th>
 						<th class = "number_th">장소명</th>
 						<th>주소</th>
 					</tr>
@@ -51,6 +52,7 @@
 					<c:forEach var = "place" items = "${placeList}">
 				<tr>
 						<td>${place.place_no}</td>
+						<td>${place.place_divi}</td>
 						<td><a onclick = "placeSelect('${place.place_no}')">${place.place_name}</a></td>		
 						<td>${place.place_addr },${place.place_addr_dtl }</td>		
 					</tr>	
@@ -61,6 +63,7 @@
 					<input type = "hidden" name = "${place.place_no}place_p_no" value  = "${place.place_p_no}">
 					<input type = "hidden" name = "${place.place_no}place_addr" value  = "${place.place_addr}">
 					<input type = "hidden" name = "${place.place_no}place_addr_dtl" value  = "${place.place_addr_dtl}">
+					<input type = "hidden" name = "${place.place_no}place_divi" value  = "${place.place_divi}">
 					</c:forEach>
 				</table>
 			</div>
@@ -76,6 +79,7 @@
 					<thead>
 					<tr>
 						<th>장소 번호</th>
+						<th>장소 구분</th>
 							<th class = "number_th">장소명</th>
 						<th>주소</th>
 					</tr>
@@ -83,6 +87,7 @@
 					<c:forEach var = "place" items = "${placeAllList}">
 				<tr>
 						<td>${place.place_no}</td>
+						<td>${place.place_divi}</td>
 						<td><a onclick = "placeSelect('${place.place_no}')">${place.place_name}</a></td>		
 						<td>${place.place_addr },${place.place_addr_dtl }</td>		
 					</tr>	
@@ -93,6 +98,8 @@
 					<input type = "hidden" name = "${place.place_no}place_p_no" value  = "${place.place_p_no}">
 					<input type = "hidden" name = "${place.place_no}place_addr" value  = "${place.place_addr}">
 					<input type = "hidden" name = "${place.place_no}place_addr_dtl" value  = "${place.place_addr_dtl}">
+					<input type = "hidden" name = "${place.place_no}place_divi" value  = "${place.place_divi}">
+					
 					</c:forEach>
 				</table>
 				

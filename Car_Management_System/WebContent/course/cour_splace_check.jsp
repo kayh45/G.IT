@@ -44,6 +44,7 @@
 					<thead>
 					<tr>
 						<th >장소 번호</th>
+						<th >장소 구분</th>
 						<th class = "number_th">장소명</th>
 						<th>주소</th>
 					</tr>
@@ -51,12 +52,14 @@
 					<c:forEach var = "place" items = "${placeList}">
 				<tr>
 						<td>${place.place_no}</td>
+						<td>${place.place_divi}</td>
 						<td><a onclick = "splaceSelect('${place.place_no}')">${place.place_name}</a></td>		
 						<td>${place.place_addr },${place.place_addr_dtl }</td>		
 					</tr>	
 					
 									
 					<input type = "hidden" name = "${place.place_no}s_place_no" value  = "${place.place_no}">
+					<input type = "hidden" name = "${place.place_no}s_place_divi" value  = "${place.place_divi}">
 					<input type = "hidden" name = "${place.place_no}s_place_name" value  = "${place.place_name}">
 					<input type = "hidden" name = "${place.place_no}s_place_addr" value  = "${place.place_addr}">
 					</c:forEach>
@@ -74,6 +77,7 @@
 					<thead>
 					<tr>
 						<th>장소 번호</th>
+						<th>장소 구분</th>
 							<th class = "number_th">장소명</th>
 						<th>주소</th>
 					</tr>
@@ -81,11 +85,13 @@
 					<c:forEach var = "place" items = "${placeAllList}">
 				<tr>
 						<td>${place.place_no}</td>
+						<td>${place.place_divi}</td>
 						<td><a onclick = "splaceSelect('${place.place_no}')">${place.place_name}</a></td>		
 						<td>${place.place_addr },${place.place_addr_dtl }</td>		
 					</tr>	
 					
-				   <input type = "hidden" name = "${place.place_no}s_place_no" value  = "${place.place_no}">
+				    <input type = "hidden" name = "${place.place_no}s_place_no" value  = "${place.place_no}">
+				    <input type = "hidden" name = "${place.place_no}s_place_divi" value  = "${place.place_divi}">
 					<input type = "hidden" name = "${place.place_no}s_place_name" value  = "${place.place_name}">
 					<input type = "hidden" name = "${place.place_no}s_place_addr" value  = "${place.place_addr}">
 					</c:forEach>

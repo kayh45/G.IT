@@ -23,7 +23,11 @@ function placeWriteCheck() {
 		alert("상세 주소를 입력하세요");
 		document.frm.place_addr_dtl.focus();
 		return false;
-	} 
+	} else if (document.frm.place_divi.value == "") {
+		alert("상세 주소를 입력하세요");
+		document.frm.place_divi.focus();
+		return false;
+	}
 	else {
 	var name = document.frm.place_name.value;
 	var isCorrect = confirm(name + "장소를 등록 하시겠습니까?");
@@ -52,7 +56,11 @@ function placeModifyCheck() {
 		alert("상세 주소를 입력하세요");
 		document.frm.place_addr_dtl.focus();
 		return false;
-	} 
+	} else if (document.frm.place_divi.value == "") {
+		alert("상세 주소를 입력하세요");
+		document.frm.place_divi.focus();
+		return false;
+	}
 	else {
 		var name = document.frm.place_name.value;
 		var isCorrect = confirm(name + " 장소를 수정 하시겠습니까?");
@@ -117,6 +125,7 @@ function placeSelect(name) {
 	opener.frm.place_p_no.value = document.getElementsByName(name + "place_p_no")[0].value;
 	opener.frm.place_addr.value = document.getElementsByName(name + "place_addr")[0].value;
 	opener.frm.place_addr_dtl.value = document.getElementsByName(name + "place_addr_dtl")[0].value;
+	opener.frm.place_divi.value = document.getElementsByName(name + "place_divi")[0].value;
 	opener.document.getElementById("mod_btn").removeAttribute('disabled');
 	opener.document.getElementById("del_btn").removeAttribute('disabled');
 	opener.document.getElementById("ins_btn").disabled = "true";
@@ -130,7 +139,7 @@ function placeNameCheck() {
 			+ encodeURIComponent(document.frm.place_name.value);
 	window
 			.open(url, "_blank_1",
-					"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
+					"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=1000, height=400");
 }
 
 

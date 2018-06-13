@@ -29,37 +29,49 @@
 		</div>
 		<div class="content_cont-box">
 			<p class="content_cont-text">
-				<b>경로 번호<b>
+				<b>경로 번호</b>
 			</p>
 			<input type="text" class="form_textbox" name="cour_no" readonly>
 				<input type ="button" onclick="courSearch()" value ="조회">
 		</div>
 		<div class="content_cont-box">
 			<p class="content_cont-text">
-				<b>*경로 기본 정보</b>
+				<b>*장소 정보</b>
 			</p>
 			<table class="table table-bordered">
 
 				<tr>
-				
 					<td class="form_label">
 						<p class="label">출발지</p>
 						<p class="must">*</p>
 						<input type="hidden" class="form_textbox" name="s_place_no" readonly>
 					</td>
+					
 					<td><input type="text" name="s_place_name" class="form_textbox" readonly>
 					<input type="hidden" name="s_place_name_ok" class="form_textbox"> 
 					<input type="hidden" name="s_place_usable_name">
 					<button type="button" onClick="splaceNameCheck()" class="quiet_btn" id="idCheck">
 				 	<span id="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
 						</button></td>
+						
+						<td class="form_label">
+						<p class="label">출발지 구분</p>
+						</td>
+						
+					<td>
+					<input type="text" class="form_textbox" name = "s_place_divi" readonly>
+					</td>
+				</tr>
+				<tr>
 					<td class="form_label">
 						<p class="label">출발지 주소</p>
 
 					</td>
-					<td><input type="text" class="form_textbox" name = "s_place_addr" readonly>
+					<td colspan="3">
+					<input type="text" class="form_juso_textbox" name = "s_place_addr" readonly>
 					</td>
 				</tr>
+					
 				<tr>
 				
 					<td class="form_label">
@@ -72,25 +84,60 @@
 					<input type="hidden" name="e_place_usable_name">
 					<button type="button" onClick="eplaceNameCheck()" class="quiet_btn" id="idCheck">
 				 	<span id="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
-						</button></td>
+						</button>
+					</td>
+						<td class="form_label">
+						<p class="label">도착지 구분</p>
+
+					</td>
+					<td>
+					<input type="text" class="form_textbox" name = "e_place_divi" readonly>
+					</td>
+				</tr>
+						
+				<tr>
 					<td class="form_label">
 						<p class="label">도착지 주소</p>
 					</td>
-					<td><input type="text" class="form_textbox" name = "e_place_addr" readonly>
+					
+					<td colspan="3">
+					<input type="text" class="form_juso_textbox" name = "e_place_addr" readonly>
 					</td>
 				</tr>
+				</table>
+				<p class="content_cont-text">
+				<b>*경로 입력 정보</b>
+				</p>
+				<table class="table table-bordered">
+				
 				<tr>
+				
+				<td class="form_label">
+						<p class="label">경로 구분</p>
+						<p class="must">*</p>
+					</td>
+					<td ><select class="form_textbox" name = "cour_divi">
+							<option value="선택" selected>선택</option>
+							<option value="1.출근용">1.출근용</option>
+							<option value="2.퇴근용">2.퇴근용</option>
+							<option value="3.업무용">3.업무용</option>
+							<option value="4.비업무">4.비업무</option>
+					</select>
+					</td>
+					
 					<td class="form_label">
 						<p class="label">경로 목적</p>
 						<p class="must">*</p>
 					</td>
-					<td colspan="4"><select class="form_textbox" name = "cour_purpo">
-							<option value="선택" selected="">선택</option>
-							<option value="거래처방문">거래처 방문</option>
-							<option value="회의참석">회의 참석</option>
-							<option value="출·퇴근">출·퇴근</option>
-							<option value="기타업무">기타업무</option>
-							<option value="업무외사용">업무외 사용</option>
+
+					<td><select class="form_textbox" name = "cour_purpo">
+							<option value="선택" selected>선택</option>
+							<option value="1">1.거래처방문</option>
+							<option value="2">2.제조시설등 사업장방문</option>
+							<option value="3">3.회의참석</option>
+							<option value="4">4.판촉활동</option>
+							<option value="5">5.교육등 기타업무활동</option>
+							<option value="기타">기타</option>
 					</select></td>
 
 				</tr>

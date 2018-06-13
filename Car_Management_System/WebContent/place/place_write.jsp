@@ -10,7 +10,7 @@
 <script type="text/javascript" src="js/jquery-ui.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/post.js"></script>
-<script type="text/javascript" src="js/place.js"></script>
+<script type="text/javascript" src="js/place.js?ver=1"></script>
 <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 </head>
@@ -52,6 +52,20 @@
 							<span id="search-button" class="glyphicon glyphicon-search"
 								aria-hidden="true"></span>
 						</button></td>
+
+
+				</tr>
+				<tr>
+					<td class="form_label">
+						<p class="label">장소 구분</p>
+						<p class="must">*</p>
+					</td>
+					<td colspan="3"><select class="form_textbox" name = "place_divi">
+							<option value="선택" selected>선택</option>
+							<option value="회사">회사</option>
+							<option value="자택">자택</option>
+							<option value="거래처">거래처</option>
+					</select></td>
 
 
 				</tr>

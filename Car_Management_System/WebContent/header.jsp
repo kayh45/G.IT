@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>헤더</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/common.css" rel="stylesheet">
+<link href="css/common.css?ver=1" rel="stylesheet">
 <link href="css/header.css" rel="stylesheet">
 <script type = "text/javascript" src="js/jquery-3.3.1.min.js"></script>
 <script type = "text/javascript" src="js/bootstrap.js"></script>
