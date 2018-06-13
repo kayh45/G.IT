@@ -76,6 +76,7 @@ CREATE TABLE if not exists `cms`.`place` (
   `place_name` VARCHAR(50) NOT NULL,
   `place_p_no` INT NULL,
   `place_addr` VARCHAR(255) NULL,
+  `place_divi` VARCHAR(50) NULL,
   PRIMARY KEY (`place_no`));
 #장소 테이블 생성
 
@@ -85,6 +86,7 @@ CREATE TABLE if not exists `cms`.`cour` (
   `e_place` INT NOT NULL,
   `distance` INT NOT NULL,
   `cour_purpo` VARCHAR(50) NOT NULL,
+  `cour_divi` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`cour_no`),
 CONSTRAINT FK_cms_s_place FOREIGN KEY(s_place) REFERENCES place(place_no),
 CONSTRAINT FK_cms_e_place FOREIGN KEY(e_place) REFERENCES place(place_no)
@@ -103,9 +105,9 @@ CREATE TABLE if not exists `cms`.`driv` (
   `trans_fee` INT NULL,
   `etc_text` VARCHAR(100) NULL,
   `etc_fee` INT NULL,
-  `befo_dist` INT NULL,
   `driv_dist` INT NULL,  
   `bee_go` VARCHAR(255) NULL,  
+  `drive_divi` VARCHAR(50) NULL, 
   PRIMARY KEY (`driv_no`),
 CONSTRAINT FK_cms_mem_id FOREIGN KEY(mem_id) REFERENCES mem(mem_id),
 CONSTRAINT FK_cms_car_reg_no FOREIGN KEY(car_reg_no) REFERENCES car(car_reg_no),

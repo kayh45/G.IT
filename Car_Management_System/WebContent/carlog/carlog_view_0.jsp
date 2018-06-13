@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, user-scalable=no">
-<title>법인차량관리시스템</title>
+<title>법인차량관리시스템(사용자용)</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/jquery.schedule.css" rel="stylesheet">
 <link href="css/jquery-ui.css" rel="stylesheet">
@@ -34,18 +34,13 @@ div .box button{
 </head>
 
 <body>
-<c:if test = "${LoginUser.mem_auth eq 0}">
-      <% 
-         response.sendRedirect("carlog.do?command=carlog_view_form_0");    
-      %>
-   </c:if>
 	<header> <%@ include file="../header.jsp"%>
 	<!-- 헤더 --> </header>
 	<section id="main"> <aside id="side"> <%@ include file="sideMenu.jsp"%> </aside>
 	<script type = "text/javascript" src="js/jquery-ui.js"></script>
 		<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
 	 <section id="content">
-	<form name="frm" method="post" action="carlog.do?command=carlog_view_form">
+	<form name="frm" method="post" action="carlog.do?command=carlog_view_form_0">
 		<div class="content_title-box">
 			<span class="glyphicon glyphicon-pencil" aria-hidden="true"> </span>
 			<p class="content_title-text">운행 일지 조회</p>

@@ -20,6 +20,7 @@ import com.plani.cms.controller.action.carlog.CarlogCourseSelectFormAutoAction;
 import com.plani.cms.controller.action.carlog.CarlogDeleteAction;
 import com.plani.cms.controller.action.carlog.CarlogMemberWriteFormAction;
 import com.plani.cms.controller.action.carlog.CarlogSelectAction;
+import com.plani.cms.controller.action.carlog.CarlogViewForm0Action;
 import com.plani.cms.controller.action.carlog.CarlogViewFormAction;
 import com.plani.cms.controller.action.carlog.CarlogWriteAction;
 import com.plani.cms.controller.action.carlog.CarlogWriteFormAction;
@@ -245,7 +246,7 @@ public class ActionFactory {
 		else if (command.equals("repa_search_move_form")) {
 			action = new RepaSearchMoveFormAction();
 		} /* 정비내역 등록 구현 End */
-		
+
 			/* 정비내역 등록 구현 End */
 			/* 운행일지 기능 구현 start */
 		 else if (command.equals("carlog_write_form")) {
@@ -264,6 +265,8 @@ public class ActionFactory {
 			action = new CarlogAutoWriteFormAction();
 		} else if (command.equals("carlog_view_form")) {
 			action = new CarlogViewFormAction();
+		} else if (command.equals("carlog_view_form_0")) {//세션권한이 일반사용자면 이쪽폼으로 이동
+			action = new CarlogViewForm0Action();
 		} else if (command.equals("carlog_member_search")) {
 			action = new CarlogMemberWriteFormAction();	
 		}else if (command.equals("excel_form")) {
