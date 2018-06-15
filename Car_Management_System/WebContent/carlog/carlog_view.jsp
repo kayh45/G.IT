@@ -34,16 +34,13 @@ div .box button{
 </head>
 
 <body>
-<<<<<<< HEAD
 <c:if test = "${LoginUser.mem_auth eq 0}">
       <% 
          response.sendRedirect("carlog.do?command=carlog_view_form_0");    
       %>
    </c:if>
-=======
 
 
->>>>>>> branch 'master' of https://github.com/kayh45/G.IT
 	<header> <%@ include file="../header.jsp"%>
 	<!-- 헤더 --> </header>
 	<section id="main"> <aside id="side"> <%@ include file="sideMenu.jsp"%> </aside>
@@ -167,6 +164,7 @@ div .box button{
 						</c:choose>
 						</td>
 					</tr>			 
+					
 				 <%--    <input type = "hidden" name = "${repa.repa_no}repa_no" value  = "${repa.repa_no}">
 					<input type = "hidden" name = "${repa.repa_no}car_reg_no" value  = "${repa.car_reg_no}">
 					<input type = "hidden" name = "${repa.repa_no}cent_no" value  = "${repa.cent_no}">
@@ -185,6 +183,17 @@ div .box button{
 				
 					</c:forEach>
 				</table>
+				<jsp:include page="paging.jsp">
+        <jsp:param value="${repa_s_date}" name="s_date"/>
+        <jsp:param value="${repa_e_date}" name="e_date"/>
+        <jsp:param value="${paging.page}" name="page"/>
+        <jsp:param value="${paging.beginPage}" name="begin"/>
+        <jsp:param value="${paging.endPage}" name="end"/>
+        <jsp:param value="${paging.prev}" name="prev"/>
+        <jsp:param value="${paging.next}" name="next"/>
+</jsp:include>
+
+
 			<div class="box">
 			<button type = "submit" name="excelConverBtn" id="excelConverBtn" value="엑셀출력" onclick="excelConver()" style="cursor:hand">
 			엑셀 출력</button>
