@@ -19,7 +19,7 @@ public class ReserveWriteAction implements Action{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String url = "rsrv.do?command=reserve_write_form";
+		String url = "rsrv.do?command=reserve_view_schedule";
 		
 		String car_reg_no = new String(request.getParameter("car_reg_no").getBytes("8859_1"),"UTF-8");
 		String date = request.getParameter("date");

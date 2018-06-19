@@ -33,9 +33,9 @@
 }
 
 .rsrv_etc_btn {
-	width : 45%;
-	margin : 0 3px 0 5px;
-	height : 100%;
+	width : 100%;
+	height : 48%;
+	margin : 2px;
 	border : 1px solid #31a8c1;
 	background-color : inherit;
 	border-radius: 2px;

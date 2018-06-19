@@ -88,9 +88,11 @@ function carlogWriteFrm(driv_no) {
 
 function rsrvDelete(driv_no) {
 	var isCorrect = confirm("배차 등록을 취소하시겠습니까?");
+	var date = document.frm.date.value;
+	var mem_id = document.frm.mem_id.value;
 	if (isCorrect == true) {
 		var url = "rsrv.do?&command=reserve_delete&driv_no="
-				+ driv_no;
+				+ driv_no + "&date=" + date + "&mem_id=" + mem_id;
 		location.replace(url);
 	} else {
 		return false;
@@ -99,9 +101,21 @@ function rsrvDelete(driv_no) {
 
 function timeCheck() {
 	
-	var timecheckbox = document.frm.time.value;
+	var timecheckbox = document.frm.elements['time'];
+	var checkCount = 0;
 	
-	if(timecheckbox == null) {
+	
+	for(var i = 0; i < timecheckbox.length; i++) {
+		if(timecheckbox[i].checked) {
+			checkCount++;
+		}
+	}
+	
+	if(timecheckbox.checked) {
+		checkCount++;
+	}
+	
+	if(checkCount <= 0) {
 		alert("시간을 선택해주세요");
 		return false;
 	}else {

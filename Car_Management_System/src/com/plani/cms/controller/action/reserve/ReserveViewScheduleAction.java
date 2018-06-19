@@ -23,6 +23,8 @@ public class ReserveViewScheduleAction implements Action {
 		String mem_id = request.getParameter("mem_id");
 		String date = request.getParameter("date");
 		
+		System.out.println("mem_id in view schedule = " + mem_id + " , date =" + date);
+		
 		List<DrivVO> dVoList = new ArrayList<DrivVO>();
 		ReserveDAO rDao = ReserveDAO.getInstance();
 		
