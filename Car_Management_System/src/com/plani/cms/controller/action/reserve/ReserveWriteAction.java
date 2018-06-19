@@ -21,26 +21,17 @@ public class ReserveWriteAction implements Action{
 
 		String url = "rsrv.do?command=reserve_write_form";
 		
-		String car_reg_no = request.getParameter("car_reg_no");
+		String car_reg_no = new String(request.getParameter("car_reg_no").getBytes("8859_1"),"UTF-8");
 		String date = request.getParameter("date");
-		String[] times = request.getParameterValues("time");
 		String mem_id = request.getParameter("mem_id");
+		String min = request.getParameter("s_date");
+		String max = request.getParameter("e_date");
+		String driv_s_date = date + " " + min + ":00:00";
+		String driv_e_date = date + " " + max + ":00:00";
 		
 		request.setAttribute("date", date);
 		request.setAttribute("car_reg_no", car_reg_no);
-		
-		
-		System.out.println("times = " + times);
-		
-		int min = 99, max = 0;
-		
-		for(String time : times) {			
-			min = min > Integer.parseInt(time)?Integer.parseInt(time):min; 
-			max = max < Integer.parseInt(time)?Integer.parseInt(time):max; 
-		}
-		
-		String driv_s_date = date + " " + min + ":00:00";
-		String driv_e_date = date + " " + (max+1) + ":00:00";
+	
 		
 		DrivVO dVo = new DrivVO();
 		dVo.setDriv_s_date(driv_s_date);
@@ -53,10 +44,10 @@ public class ReserveWriteAction implements Action{
 		
 		List<DrivVO> dVoList = new ArrayList<DrivVO>();
 		dVoList = rDao.oneDaySchedule(date, car_reg_no);
-		String message = date + " | " + min +"시 ~ " + (max+1) + "시 | " + car_reg_no +" 차량 " + "등록 완료";
+		String message = date + " | " + min +"시 ~ " + max + "시 | " + car_reg_no +" 차량 " + "등록 완료";
 				
 		request.setAttribute("date", date);
-		request.setAttribute("car_reg_no", car_reg_no);
+		request.setAttribute("mem_id", mem_id);
 		request.setAttribute("dVoList", dVoList);	
 		request.setAttribute("message", message);
 		

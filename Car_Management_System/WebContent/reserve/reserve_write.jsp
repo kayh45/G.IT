@@ -18,7 +18,7 @@
 <link href="css/segmented-controls.css" rel="stylesheet">
 <script type = "text/javascript" src="js/bootstrap.js"></script>
 <script type = "text/javascript" src="js/common.js"></script>
-<script type = "text/javascript" src="js/rsrv.js"></script>
+<script type = "text/javascript" src="js/rsrv.js?ver=1.1"></script>
 </head>
 <body>
 	<header>
@@ -44,7 +44,6 @@
 				<p class = "content_title-text">배차 등록</p>
 			</div>
 			<form name = "frm" method = "post" action = "rsrv.do?command=reserve_view_cars">
-			<input type = "hidden" name = "car_reg_no" value = "${car_reg_no}">
 			<input type = "hidden" name = "mem_id" value = "${LoginUser.mem_id}">
 			<div class = "content_cont-box">
 				<p class = "content_title-text">사용 일자</p>
@@ -184,7 +183,7 @@
 							<td>${car.car_model}</td>
 							<td>${car.car_reg_no}</td>
 							<td>
-								<button>이 차량으로 등록</button>
+								<button type = "button" onclick = "selectThisCar('${date}', '${s_date}', '${e_date}', '${car.car_reg_no}')">이 차량으로 등록</button>
 							</td>
 						</tr>
 					</c:forEach>

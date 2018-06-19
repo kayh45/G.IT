@@ -111,3 +111,24 @@ function timeCheck() {
 	
 }
 
+function selectThisCar(date, s_date, e_date, car_reg_no) {
+	
+	var mem_id = document.frm.mem_id.value;
+	var url = "rsrv.do?&command=reserve_write" +
+	"&mem_id=" + mem_id +
+	"&date=" + date +
+	"&s_date=" + s_date +
+	"&e_date=" + e_date +
+	"&car_reg_no=" + car_reg_no;
+	
+	var isCorrect = confirm("배차 정보 : " + date + " " + s_date + "시~" + e_date + 
+			"시 " + car_reg_no + " 차량\n" + "등록하시겠습니까?");
+	if (isCorrect == true) {
+		location.replace(url);
+	} else {
+		return false;
+	}
+	
+	location.replace(url);
+}
+
