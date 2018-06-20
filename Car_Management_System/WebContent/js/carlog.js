@@ -160,17 +160,17 @@ function carlogDelete() {
 
 function carlogSearch(){
 	var url = "carlog.do?command=carlog_select"
-	window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
+	window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=1000, height=400");
 }
 
 function carlogCourseSearch(){
 	var url = "carlog.do?command=carlog_course_select_form"
-		window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
+		window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=1000, height=400");
 }
 
 function carlogCourseSearchAuto(rownum){
 	var url = "carlog.do?command=carlog_course_select_form_auto&rownum="+rownum;
-		window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
+		window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=1000, height=400");
 }
 
 function splaceSelectAuto(name, rownum) {

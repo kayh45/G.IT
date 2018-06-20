@@ -173,7 +173,7 @@ public class CarlogDAO {
 		}
 	}
 public List<CarlogVO> drivSearchByNameComplete(String mem_id) {
-	String sql ="select d.driv_no, d.car_reg_no, cc.car_model, m.mem_id, m.mem_name, d.driv_s_date, d.driv_e_date, d.cour_no, d.driv_purpo,"
+	String sql ="select d.driv_no, d.car_reg_no, cc.car_model, m.mem_id, m.mem_name, left(d.driv_s_date,16) as 'driv_s_date' , left(d.driv_e_date,16) as 'driv_e_date', d.cour_no, d.driv_purpo,"
 			+ "d.driv_divi,(select place_name from place where place_no = s_place) as 's_place_name', (select place_divi from place where place_no = s_place) as 's_place_divi',"
 			+ "(select place_name from place where place_no = e_place) as 'e_place_name', (select place_divi from place where place_no = e_place) as 'e_place_divi',"
 			+ "c.distance, d.card_divi, d.oil_fee, d.trans_fee, d.etc_text, d.etc_fee, d .driv_dist from driv d, mem m, cour c, car cc "
@@ -231,7 +231,7 @@ public List<CarlogVO> drivSearchByNameComplete(String mem_id) {
 
 
 public List<CarlogVO> drivSearchByNameNoncomplete(String mem_id) {
-	String sql ="select d.driv_no, d.car_reg_no, c.car_model, m.mem_name, d.driv_s_date, d.driv_e_date,d.driv_dist from driv d, mem m, car c "
+	String sql ="select d.driv_no, d.car_reg_no, c.car_model, m.mem_name, left(d.driv_s_date,16) as 'driv_s_date' , left(d.driv_e_date,16) as 'driv_e_date',d.driv_dist from driv d, mem m, car c "
 			+ "where d.mem_id=m.mem_id AND d.car_reg_no=c.car_reg_no AND d.cour_no is null AND m.mem_id= '" + mem_id + "' "
 					+ "order by d.driv_no";
 	
