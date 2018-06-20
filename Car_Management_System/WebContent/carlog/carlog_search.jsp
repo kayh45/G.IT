@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -32,7 +34,7 @@
 					<c:forEach var = "nocarlog" items = "${NocarlogList}">
 				<tr>
 						<td><a onclick = "nocarlogSelect('${nocarlog.driv_no}')">${nocarlog.driv_no}</a></td>
-						<td>${nocarlog.car_reg_no}</td>		
+						<td>${nocarlog.car_reg_no}</td>	
 						<td>${nocarlog.driv_s_date}~${nocarlog.driv_e_date}</td>		
 					</tr>	
 					<input type = "hidden" name = "${nocarlog.driv_no}driv_no" value  = "${nocarlog.driv_no}">
@@ -76,10 +78,12 @@
 					<input type = "hidden" name = "${carlog.driv_no}driv_e_date" value  = "${carlog.driv_e_date}">
 					<input type = "hidden" name = "${carlog.driv_no}cour_no" value  = "${carlog.cour_no}">
 					<input type = "hidden" name = "${carlog.driv_no}s_place_name" value  = "${carlog.s_place_name}">
+					<input type = "hidden" name = "${carlog.driv_no}s_place_divi" value  = "${carlog.s_place_divi}">
 					<input type = "hidden" name = "${carlog.driv_no}e_place_name" value  = "${carlog.e_place_name}">
+					<input type = "hidden" name = "${carlog.driv_no}e_place_divi" value  = "${carlog.e_place_divi}">
 					<input type = "hidden" name = "${carlog.driv_no}driv_purpo" value  = "${carlog.driv_purpo}">
+					<input type = "hidden" name = "${carlog.driv_no}driv_divi" value  = "${carlog.driv_divi}">
 					<input type = "hidden" name = "${carlog.driv_no}driv_dist" value  = "${carlog.driv_dist}">
-					<input type = "hidden" name = "${carlog.driv_no}befo_dist" value  = "${carlog.befo_dist}">
 					<input type = "hidden" name = "${carlog.driv_no}card_divi" value  = "${carlog.card_divi}">
 					<input type = "hidden" name = "${carlog.driv_no}oil_fee" value  = "${carlog.oil_fee}">
 					<input type = "hidden" name = "${carlog.driv_no}trans_fee" value  = "${carlog.trans_fee}">

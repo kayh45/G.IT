@@ -65,9 +65,8 @@
 						<p class="label">차량 등록 번호</p>
 
 					</td>
-					<td><input name="car_reg_no" type="text" class="form_textbox" readonly>
-
-					</td>
+					<td><input name="car_reg_no" type="text" class="form_textbox"
+						readonly></td>
 					<td class="form_label">
 						<p class="label">차종</p>
 					</td>
@@ -77,8 +76,8 @@
 
 				<tr>
 					<td class="form_label">
-						<p class="label">사원 이름</p>
-					<input name="mem_id" type="hidden" class="form_textbox" readonly>
+						<p class="label">사원 이름</p> <input name="mem_id" type="hidden"
+						class="form_textbox" readonly>
 
 
 					</td>
@@ -92,29 +91,26 @@
 						<p class="label">운행 기간(시작)</p>
 					</td>
 
-					<td >
+					<td>
 						<div id="driv_s_date">
-							<input type="text" class="form_textbox" name="driv_s_date" readonly> </div>
-					
-							</td>
-							<td class="form_label">
+							<input type="text" class="form_textbox" name="driv_s_date"
+								readonly>
+						</div>
+
+					</td>
+					<td class="form_label">
 						<p class="label">운행 기간(종료)</p>
 					</td>
-							<td>
-							<div id="driv_e_date"><input type="text" class="form_textbox" name="driv_e_date" readonly></div>
-						
+					<td>
+						<div id="driv_e_date">
+							<input type="text" class="form_textbox" name="driv_e_date"
+								readonly>
+						</div>
+
 					</td>
 
 
 				</tr>
-						<tr>
-					<td class="form_label">
-						<p class="label">주행 전 거리</p>
-					</td>
-					<td class="form_normal-td" colspan="3"><input name="befo_dist"
-						type="text" size="13" class="form_textbox">&nbsp;km</td>
-				</tr>
-
 			</table>
 
 			<!-- <div class="content_cont-box"> -->
@@ -124,6 +120,12 @@
 			<table class="table table-bordered" id="form_table">
 
 				<tr>
+					<td class="form_label">
+						<p class="label">출발지 구분</p>
+
+					</td>
+					<td><input name="s_place_divi" type="text"
+						class="form_textbox" readonly></td>
 					<td class="form_label">
 						<p class="label">출발지</p>
 
@@ -135,6 +137,13 @@
 							<span id="search-button" class="glyphicon glyphicon-search"
 								aria-hidden="true"></span>
 						</button></td>
+				</tr>
+				<tr>
+					<td class="form_label">
+						<p class="label">도착지 구분</p>
+					</td>
+					<td class="form_normal-td"><input name="e_place_divi"
+						type="text" class="form_textbox" readonly></td>
 					<td class="form_label">
 						<p class="label">도착지</p>
 					</td>
@@ -147,28 +156,38 @@
 						<p class="label">경로 목적</p>
 
 					</td>
-					<td colspan="4"><select class="form_textbox" name="driv_purpo">
+					<td><select class="form_textbox" name="driv_purpo">
 							<option value="선택" selected>선택</option>
-							<option value="거래처방문">거래처 방문</option>
-							<option value="회의참석">회의 참석</option>
-							<option value="출·퇴근">출·퇴근</option>
-							<option value="기타업무">기타업무</option>
-							<option value="업무외사용">업무외 사용</option>
+							<option value="1">1.거래처방문</option>
+							<option value="2">2.제조시설등 사업장방문</option>
+							<option value="3">3.회의참석</option>
+							<option value="4">4.판촉활동</option>
+							<option value="5">5.교육등 기타업무활동</option>
+							<option value="기타">기타</option>
 					</select></td>
-
-
-				</tr>
-
-
-				<tr>
+					<td class="form_label">
+						<p class="label">경로 구분</p>
+						<p class="must">*</p>
+					</td>
+					<td><select class="form_textbox" name="driv_divi">
+							<option value="선택" selected>선택</option>
+							<option value="1.출근용">1.출근용</option>
+							<option value="2.퇴근용">2.퇴근용</option>
+							<option value="3.업무용">3.업무용</option>
+							<option value="4.비업무">4.비업무</option>
+					</select></td>
+					</tr>
+					<tr>
 					<td class="form_label">
 						<p class="label">주행거리</p>
 					</td>
 					<td class="form_normal-td" colspan="3"><input name="driv_dist"
 						type="text" size="13" class="form_textbox">&nbsp;km</td>
+
 				</tr>
-				
-		
+
+
+
 			</table>
 		</div>
 
@@ -183,9 +202,9 @@
 					</td>
 					<td class="form_normal-td" colspan="3">
 						<div class="radio-group">
-							 <input type="radio" value="미사용" name="card_divi" checked>미사용
-							<input type="radio" value="법인카드" name="card_divi">법인카드
-							 <input type="radio" value="개인카드" name="card_divi">개인카드 
+							<input type="radio" value="미사용" name="card_divi" checked>미사용
+							<input type="radio" value="법인카드" name="card_divi">법인카드 <input
+								type="radio" value="개인카드" name="card_divi">개인카드
 						</div>
 					</td>
 				</tr>
@@ -194,33 +213,34 @@
 					<td class="form_label" rowspan="3">
 						<p class="label">비용 구분</p>
 					</td>
-					<td class="form_normal-td" colspan="3">
-							유류비 <input name="oil_fee" type="text" class="form_textbox" value = 0>원
+					<td class="form_normal-td" colspan="3">유류비 <input
+						name="oil_fee" type="text" class="form_textbox" value=0>원
 					</td>
 				</tr>
 
 				<tr>
-					<td class="form_normal-td" colspan="3">
-							교통비 <input
-								name="trans_fee" type="text" class="form_textbox" value = 0>원
+					<td class="form_normal-td" colspan="3">교통비 <input
+						name="trans_fee" type="text" class="form_textbox" value=0>원
 					</td>
 				</tr>
 				<tr>
 
-					<td class="form_normal-td" colspan="3">
-							기타(직접 입력) <input name="etc_text" type="text" class="form_textbox"> <input
-								name="etc_fee" type="text" class="form_textbox" value = 0>원
+					<td class="form_normal-td" colspan="3">기타(직접 입력) <input
+						name="etc_text" type="text" class="form_textbox"> <input
+						name="etc_fee" type="text" class="form_textbox" value=0>원
 					</td>
 				</tr>
 			</table>
 		</div>
-<!-- ㅇㄹㅈㄷㄹㅈㄷ -->
+		<!-- ㅇㄹㅈㄷㄹㅈㄷ -->
 
 
 
 		<div class="form_btn-group">
-			<button id="ins_btn" type="submit" onclick="return carlogWriteCheck()">등록</button>
-			<button id="mod_btn" type="submit" onclick="return carlogModifyCheck()" disabled>수정</button>
+			<button id="ins_btn" type="submit"
+				onclick="return carlogWriteCheck()">등록</button>
+			<button id="mod_btn" type="submit"
+				onclick="return carlogModifyCheck()" disabled>수정</button>
 			<button id="del_btn" type="button" onclick="carlogDelete()" disabled>삭제</button>
 		</div>
 	</form>

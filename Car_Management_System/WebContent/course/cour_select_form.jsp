@@ -11,7 +11,7 @@
 <link href="css/common.css" rel="stylesheet">
 <script type="text/javascript" src="js/course.js"></script>
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<title>장소 조회</title>
+<title>경로 조회</title>
 </head>
 <body onload = "frm.place_name.value = <%= request.getParameter("place_name") %> ">
 
@@ -87,32 +87,7 @@
 	
 			</form>
 		
-		<%-- 	<div class = "popup_box">
-				<p class = "search-result_label">전체 장소 리스트</p>
-				<table class = "table table-condensed table-bordered">					
-					<thead>
-					<tr>
-						<th>장소 번호</th>
-							<th class = "number_th">장소명</th>
-						<th>주소</th>
-					</tr>
-					<thead>
-					<c:forEach var = "place" items = "${placeAllList}">
-				<tr>
-						<td>${place.place_no}</td>
-						<td><a onclick = "splaceSelect('${place.place_no}')">${place.place_name}</a></td>		
-						<td>${place.place_addr },${place.place_addr_dtl }</td>		
-					</tr>	
-					
-				   <input type = "hidden" name = "${place.place_no}place_no" value  = "${place.place_no}">
-					<input type = "hidden" name = "${place.place_no}place_name" value  = "${place.place_name}">
-					<input type = "hidden" name = "${place.place_no}place_addr" value  = "${place.place_addr}">
-					</c:forEach>
-				</table>
-				
-				
-				
-			</div> --%>
+		
 </div>
 </body>
 </html>

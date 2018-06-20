@@ -160,17 +160,17 @@ function carlogDelete() {
 
 function carlogSearch(){
 	var url = "carlog.do?command=carlog_select"
-	window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
+	window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=1000, height=400");
 }
 
 function carlogCourseSearch(){
 	var url = "carlog.do?command=carlog_course_select_form"
-		window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
+		window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=1000, height=400");
 }
 
 function carlogCourseSearchAuto(rownum){
 	var url = "carlog.do?command=carlog_course_select_form_auto&rownum="+rownum;
-		window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
+		window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=1000, height=400");
 }
 
 function splaceSelectAuto(name, rownum) {
@@ -181,8 +181,11 @@ function splaceSelectAuto(name, rownum) {
 function splaceSelect(name) {
 	opener.frm.cour_no.value = document.getElementsByName(name + "cour_no")[0].value;
 	opener.frm.s_place_name.value = document.getElementsByName(name + "s_place_name")[0].value;
+	opener.frm.s_place_divi.value = document.getElementsByName(name + "s_place_divi")[0].value;
 	opener.frm.e_place_name.value = document.getElementsByName(name + "e_place_name")[0].value;
+	opener.frm.e_place_divi.value = document.getElementsByName(name + "e_place_divi")[0].value;
 	opener.frm.driv_purpo.value = document.getElementsByName(name + "driv_purpo")[0].value;
+	opener.frm.driv_divi.value = document.getElementsByName(name + "driv_divi")[0].value;
 	opener.frm.driv_dist.value = document.getElementsByName(name + "driv_dist")[0].value;
 	self.close();
 }
@@ -206,9 +209,11 @@ function carlogSelect(name) {
 	opener.frm.driv_e_date.value = document.getElementsByName(name + "driv_e_date")[0].value;
 	opener.frm.cour_no.value = document.getElementsByName(name + "cour_no")[0].value;
 	opener.frm.s_place_name.value = document.getElementsByName(name + "s_place_name")[0].value;
+	opener.frm.s_place_divi.value = document.getElementsByName(name + "s_place_divi")[0].value;
 	opener.frm.e_place_name.value = document.getElementsByName(name + "e_place_name")[0].value;
+	opener.frm.e_place_divi.value = document.getElementsByName(name + "e_place_divi")[0].value;
 	opener.frm.driv_purpo.value = document.getElementsByName(name + "driv_purpo")[0].value;
-	opener.frm.befo_dist.value = document.getElementsByName(name + "befo_dist")[0].value;
+	opener.frm.driv_divi.value = document.getElementsByName(name + "driv_divi")[0].value;
 	opener.frm.driv_dist.value = document.getElementsByName(name + "driv_dist")[0].value;
 	switch (document.getElementsByName(name + "card_divi")[0].value) {
 	case "법인카드" : 	opener.frm.card_divi.value ="법인카드"; break;

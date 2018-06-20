@@ -30,7 +30,7 @@ public class CarlogWriteAction implements Action {
 		int driv_no = Integer.parseInt(request.getParameter("driv_no"));
 		int cour_no = Integer.parseInt(request.getParameter("cour_no"));
 		String driv_purpo = request.getParameter("driv_purpo");
-		int befo_dist = Integer.parseInt(request.getParameter("befo_dist"));
+		String driv_divi = request.getParameter("driv_divi");
 		int driv_dist = Integer.parseInt(request.getParameter("driv_dist"));
 		String card_divi = request.getParameter("card_divi");
 		int oil_fee = Integer.parseInt(request.getParameter("oil_fee"));
@@ -44,7 +44,7 @@ public class CarlogWriteAction implements Action {
 		cVo.setDriv_no(driv_no);
 		cVo.setCour_no(cour_no);
 		cVo.setDriv_purpo(driv_purpo);
-		cVo.setBefo_dist(befo_dist);
+		cVo.setDriv_divi(driv_divi);
 		cVo.setDriv_dist(driv_dist);
 		cVo.setCard_divi(card_divi);
 		cVo.setOil_fee(oil_fee);
@@ -53,6 +53,17 @@ public class CarlogWriteAction implements Action {
 		cVo.setEtc_fee(etc_fee);
 		caVo.setCar_reg_no(car_reg_no);
 
+		System.out.println("번호" +driv_no);
+		System.out.println("경로" +cour_no);
+		System.out.println("목적" +driv_purpo);
+		System.out.println("구분" +driv_divi);
+		System.out.println("거리" +driv_dist);
+		System.out.println("카드" +card_divi);
+		System.out.println("유류" +oil_fee);
+		System.out.println("통해" +trans_fee);
+		System.out.println("기타텍스트" +etc_text);
+		System.out.println("기타비" +etc_fee);
+		System.out.println("차번호" +car_reg_no);
 		
 		CarlogDAO cDao = CarlogDAO.getInstance();
 		
