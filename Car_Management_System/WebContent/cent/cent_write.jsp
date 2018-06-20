@@ -46,6 +46,7 @@
  -->						</td>
 					<td class="form_label">
 					<p class="label">대표자</p>
+					<p class="must">*</p>
 				</td>
 				<td class="form_normal-td"><input type="text"
 					class="form_textbox" name="ceo_name"></td>
@@ -64,6 +65,7 @@
 						</td>
 						<td class = "form_label">
 							<p class = "label">FAX</p>
+							<p class="must">*</p>
 						</td>
 						<td  class = "form_phone-td">
 							<input name = "cent_fax1" type = "text" class = "form_textbox" size = "6" maxlength="3" onBlur = "onlyNumber2(this)">
@@ -75,7 +77,8 @@
 					</tr>
 					<tr>
 						<td class = "form_label">
-							<p class = "label">우편번호</p>				
+							<p class = "label">우편번호</p>
+							<p class="must">*</p>				
 						</td>
 						<td class = "form_normal-td"  colspan = "3">
 							<input name = "cent_p_no" type = "text" id = "postcode" size = "13" class = "form_textbox" readonly>
@@ -83,7 +86,8 @@
 					</tr>	
 					<tr>
 						<td class = "form_label">
-							<p class = "label">주소</p>				
+							<p class = "label">주소</p>
+							<p class = "must">*</p>					
 						</td>
 						<td class = "form_normal-td"  colspan = "3">
 							<input  name = "cent_addr" type = "text" id = "roadAddress" class = "form_textbox" readonly>

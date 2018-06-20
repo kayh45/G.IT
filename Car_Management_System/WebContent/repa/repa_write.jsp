@@ -65,6 +65,7 @@
 						class="form_textbox" id="cent_no" name="cent_no" value="${cent_no}"readonly></td>
 					<td class="form_label">
 						<p class="label">정비소 명</p>
+							<p class="must">*</p>
 					</td>
 					<td class="form_normal-td">
 				<input type="text" name="cent_name" value="${cent_name}" class="form_textbox">

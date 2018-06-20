@@ -11,42 +11,22 @@ function centWriteCheck() {
 		alert("정비소 이름 중복체크를 해주세요");
 		document.frm.cent_name.focus();
 		return false;
-	} else if (document.frm.ceo_name.value == "") {
+	}else if (document.frm.ceo_name.value == "") {
 		alert("정비소 대표 이름을 입력하세요");
 		document.frm.ceo_name.focus();
 		return false;
-	} else if (document.frm.ceo_name.value == "") {
-		alert("정비소 대표 이름을 입력하세요");
-		document.frm.ceo_name.focus();
-		return false;
-	}  else if (document.frm.cent_tell1.value == "") {
-		alert("대표전화를 입력하세요");
-		document.frm.cent_tell1.focus();
-		return false;
-	} else if (document.frm.cent_tell2.value == "") {
-		alert("대표전화를 입력하세요");
-		document.frm.cent_tell2.focus();
-		return false;
-	} else if (document.frm.cent_tell3.value == "") {
+	}  else if (document.frm.cent_tell3.value == "") {
 		alert("대표전화를 입력하세요");
 		document.frm.cent_tell3.focus();
 		return false;
-	} else if (document.frm.cent_fax1.value == "") {
-		alert("팩스 번호를 입력하세요");
-		document.frm.cent_fax1.focus();
-		return false;
-	}else if (document.frm.cent_fax2.value == "") {
-		alert("팩스 번호를 입력하세요");
-		document.frm.cent_fax2.focus();
-		return false;
-	}else if (document.frm.cent_fax3.value == "") {
+	} else if (document.frm.cent_fax3.value == "") {
 		alert("팩스 번호를 입력하세요");
 		document.frm.cent_fax3.focus();
 		return false;
 	}
 	else if (document.frm.cent_addr.value == ""
-			&& document.frm.cent_addr_dtl.value != "") {
-		alert("상세주소를 지우거나 주소를 입력해주세요");
+			|| document.frm.cent_p_no.value == "") {
+		alert("주소를 상세 입력해주세요");
 		document.frm.cent_addr2.focus();
 		return false;
 }else {
