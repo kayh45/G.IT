@@ -184,8 +184,6 @@ div .box button{
 					</c:forEach>
 				</table>
 				<jsp:include page="paging.jsp">
-        <jsp:param value="${repa_s_date}" name="s_date"/>
-        <jsp:param value="${repa_e_date}" name="e_date"/>
         <jsp:param value="${paging.page}" name="page"/>
         <jsp:param value="${paging.beginPage}" name="begin"/>
         <jsp:param value="${paging.endPage}" name="end"/>
