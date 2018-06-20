@@ -5,6 +5,8 @@ import com.plani.cms.controller.action.LoginAction;
 import com.plani.cms.controller.action.LogoutAction;
 import com.plani.cms.controller.action.MainAction;
 import com.plani.cms.controller.action.car.CarDeleteAction;
+import com.plani.cms.controller.action.car.CarExpenseAction;
+import com.plani.cms.controller.action.car.CarExpenseFormAction;
 import com.plani.cms.controller.action.car.CarModifyAction;
 import com.plani.cms.controller.action.car.CarSearchAction;
 import com.plani.cms.controller.action.car.CarWriteAction;
@@ -164,8 +166,14 @@ public class ActionFactory {
 		} else if (command.equals("car_write_check_form")) {
 			action = new CarWriteCheckFormAction();
 
-			/* 법인차 기능 구현 end */
+		}else if (command.equals("car_expense_form")) {
+			action = new CarExpenseFormAction();
+
+		}else if (command.equals("car_expense")) {
+			action = new CarExpenseAction();
+
 		}
+		/* 법인차 기능 구현 end */
 		/* 정비소 기능 구현 start */
 		else if (command.equals("cent_write_form")) {
 			action = new CentWriteFormAction();

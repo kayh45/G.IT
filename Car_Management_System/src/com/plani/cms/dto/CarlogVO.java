@@ -9,7 +9,9 @@ public class CarlogVO extends DrivVO{
 	private String car_model;
 	private int cour_no;
 	private String s_place_name;
+	private String s_place_divi;
 	private String e_place_name;
+	private String e_place_divi;
 	private String driv_s_date;
 	private String driv_e_date;
 	private int driv_dist;
@@ -19,11 +21,22 @@ public class CarlogVO extends DrivVO{
 	private int trans_fee;
 	private String etc_text;
 	private int etc_fee;
-	private int befo_dist;
 	private String driv_divi;
 	private String driv_purpo;
 	
 	
+	public String getS_place_divi() {
+		return s_place_divi;
+	}
+	public void setS_place_divi(String s_place_divi) {
+		this.s_place_divi = s_place_divi;
+	}
+	public String getE_place_divi() {
+		return e_place_divi;
+	}
+	public void setE_place_divi(String e_place_divi) {
+		this.e_place_divi = e_place_divi;
+	}
 	public String getDriv_divi() {
 		return driv_divi;
 	}
@@ -138,11 +151,6 @@ public class CarlogVO extends DrivVO{
 	public void setEtc_fee(int etc_fee) {
 		this.etc_fee = etc_fee;
 	}
-	public int getBefo_dist() {
-		return befo_dist;
-	}
-	public void setBefo_dist(int befo_dist) {
-		this.befo_dist = befo_dist;
-	}
+
 	
 }

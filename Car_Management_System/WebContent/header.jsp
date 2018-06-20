@@ -56,6 +56,7 @@
             <li><a href="cent.do?command=cent_write_form">정비소 등록</a></li>
             <li><a href="repa.do?command=repa_write_form">정비 내역 등록</a></li>
             <li><a href="repa.do?command=repa_search_form">정비 내역 조회</a></li>
+          <!--   <li><a href="car.do?command=car_expense_form">법인 차 비용 내역 조회</a></li> -->
           </ul>
         </li>
       </ul>

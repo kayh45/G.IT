@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.*;
 import com.plani.cms.util.DBManager;
 import com.plani.cms.dto.CarVO;
+import com.plani.cms.dto.CarexVO;
 
 public class CarDAO {
 	private static CarDAO instance = new CarDAO();
@@ -53,6 +54,86 @@ public class CarDAO {
 				cVo.setTotal_dist(rs.getInt("total_dist"));
 				
 
+				list.add(cVo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, stmt, rs);
+		}
+		return list;
+	}
+	
+	public List<CarexVO> selectExpenCarOnlydate(String date_s, String date_e) {
+		
+		String sql = "select c.car_reg_no as 'car_reg_no', FORMAT(sum(r.repa_fee),0) as 'repa_fee', "
+				+ "format(sum(d.oil_fee),0) as 'oil_fee', format(sum(d.trans_fee),0) as 'trans_fee', "
+				+ "format(sum(d.etc_fee),0) as 'etc_fee' from car c, repa r, driv d "
+				+ "where (c.car_reg_no = r.car_reg_no) and (r.car_reg_no = d.car_reg_no) and "
+				+ "(between r.repa_s_date = '" + date_s + "' and r.repa_s_date = '" + date_e + "') and (between d.driv_s_date = '" + date_s + "' and "
+						+ "d.driv_e_date = '" + date_e + "') group by c.car_reg_no";
+		
+		List<CarexVO> list = new ArrayList<CarexVO>();
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DBManager.getConnection();
+			stmt = conn.createStatement();
+			
+			rs = stmt.executeQuery(sql);
+			
+			while (rs.next()) {
+				
+				CarexVO cVo = new CarexVO();
+				
+				cVo.setCar_reg_no(rs.getString("car_reg_no"));
+				cVo.setRepa_fee(rs.getInt("repa_fee"));
+				cVo.setOil_fee(rs.getInt("oil_fee"));
+				cVo.setTrans_fee(rs.getInt("trans_fee"));
+				cVo.setEtc_fee(rs.getInt("etc_fee"));
+				
+				list.add(cVo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, stmt, rs);
+		}
+		return list;
+	}
+	
+	public List<CarexVO> selectExpenCarOnlydate(String date_s, String date_e, String car_reg_no) {
+		
+		String sql = "select c.car_reg_no as 'car_reg_no', FORMAT(sum(r.repa_fee),0) as 'repa_fee', "
+				+ "format(sum(d.oil_fee),0) as 'oil_fee', format(sum(d.trans_fee),0) as 'trans_fee', "
+				+ "format(sum(d.etc_fee),0) as 'etc_fee' from car c, repa r, driv d "
+				+ "where (c.car_reg_no = r.car_reg_no) and (r.car_reg_no = d.car_reg_no) and "
+				+ "(between r.repa_s_date = '" + date_s + "' and r.repa_s_date = '" + date_e + "') and (between d.driv_s_date = '" + date_s + "' and "
+				+ "d.driv_e_date = '" + date_e + "') and c.car_reg_no = '" + car_reg_no +"' group by c.car_reg_no";
+		
+		List<CarexVO> list = new ArrayList<CarexVO>();
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DBManager.getConnection();
+			stmt = conn.createStatement();
+			
+			rs = stmt.executeQuery(sql);
+			
+			while (rs.next()) {
+				
+				CarexVO cVo = new CarexVO();
+				
+				cVo.setCar_reg_no(rs.getString("car_reg_no"));
+				cVo.setRepa_fee(rs.getInt("repa_fee"));
+				cVo.setOil_fee(rs.getInt("oil_fee"));
+				cVo.setTrans_fee(rs.getInt("trans_fee"));
+				cVo.setEtc_fee(rs.getInt("etc_fee"));
+				
 				list.add(cVo);
 			}
 		} catch (SQLException e) {
