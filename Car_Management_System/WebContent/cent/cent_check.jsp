@@ -20,7 +20,7 @@
 </head>
 <body>
 <div class = "popup_header">	 
-	<p><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp;법인차 조회</p>
+	<p><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp;정비소 조회</p>
 </div>
 <div class = "popup_body">
 

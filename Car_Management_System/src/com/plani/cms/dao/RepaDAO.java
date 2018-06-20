@@ -18,12 +18,43 @@ public class RepaDAO {
 	public static RepaDAO getInstance() {
 		return instance;
 	}
+	public int selectOnlyDateCount(String repa_s_date, String repa_e_date){
+	    //1번 페이지 1~10
+        //2번 페이지 11~20
+     
+        int count =0;
+        String sql = "select count(r.repa_no) as 'count', r.cent_no, c.cent_name, r.car_reg_no, r.mechanic_name, r.repa_s_date, r.repa_e_date,"
+				+ "r.repa_cont, r.repa_fee, r.repa_divi "
+				+ "from repa r, cent c where r.cent_no = c.cent_no AND r.repa_s_date >='" + repa_s_date + "'and r.repa_e_date<='" + repa_e_date + "' order by repa_s_date asc ;";
+
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		try {
+			conn = DBManager.getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				count = rs.getInt("count");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			 DBManager.close(conn, stmt, rs);
+		}
+		 return count;	
+	}
 	
-	
-	public List<RepaVO> selectOnlyDate(String repa_s_date,String repa_e_date){
+	public List<RepaVO> selectOnlyDate(String repa_s_date,String repa_e_date,int page){
+		//1번 페이지 1~10
+        //2번 페이지 11~20
+        int startNum =(page-1)*10;
+        int endNum = page*10;
+        System.out.println(startNum+"//"+endNum);
 		String sql = "select r.repa_no, r.cent_no, c.cent_name, r.car_reg_no, r.mechanic_name, r.repa_s_date, r.repa_e_date,"
 				+ "r.repa_cont, r.repa_fee, r.repa_divi "
-				+ "from repa r, cent c where r.cent_no = c.cent_no AND r.repa_s_date >='" + repa_s_date + "'and r.repa_e_date<='" + repa_e_date + "' ";
+				+ "from repa r, cent c where r.cent_no = c.cent_no AND r.repa_s_date >='" + repa_s_date + "'and r.repa_e_date<='" + repa_e_date + "' order by repa_s_date asc  LIMIT " + startNum + ", 10;";
 
 		List<RepaVO> list = new ArrayList<RepaVO>();
 		Connection conn = null;

@@ -36,6 +36,9 @@
 				return false;
 		}*/
 			else {
+				 var url = "repa.do?command=repa_search_form";  
+					document.frm.action=url; 	
+				
 			return true;
 		}
 	}
