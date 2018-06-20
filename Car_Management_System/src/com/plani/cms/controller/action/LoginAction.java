@@ -20,7 +20,7 @@ public class LoginAction implements Action {
 		
 		HttpSession session = request.getSession();
 		
-		if(session.getAttribute("loginUser") != null) {
+		if(session.getAttribute("LoginUser") != null) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 			dispatcher.forward(request, response);
 		} else {

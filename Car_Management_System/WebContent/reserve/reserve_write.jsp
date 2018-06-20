@@ -18,7 +18,7 @@
 <link href="css/segmented-controls.css" rel="stylesheet">
 <script type = "text/javascript" src="js/bootstrap.js"></script>
 <script type = "text/javascript" src="js/common.js"></script>
-<script type = "text/javascript" src="js/rsrv.js"></script>
+<script type = "text/javascript" src="js/rsrv.js?ver=1.1"></script>
 </head>
 <body>
 	<header>
@@ -44,7 +44,7 @@
 				<p class = "content_title-text">배차 등록</p>
 			</div>
 			<form name = "frm" method = "post" action = "rsrv.do?command=reserve_view_cars">
-			<input type = "hidden" name = "car_reg_no" value = "${car_reg_no}">
+			<input type = "hidden" name = "isTimeSelected" value = "${s_date ne null}">
 			<input type = "hidden" name = "mem_id" value = "${LoginUser.mem_id}">
 			<div class = "content_cont-box">
 				<p class = "content_title-text">사용 일자</p>
@@ -67,11 +67,12 @@
 						<span id = "search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
 					</button>
 			</div>
-			
-			<div class = "content_cont-box">
+			<div class = "row">
+			<div class =  col-md-6 col-sm-12"">
+				<div class = "content_cont-box">
 				<c:choose>
 				<c:when test="${dVoList ne null}">
-				사용 시간 선택
+				<h5>사용 시간 선택</h5>
 				<table class  = "table table-bordered">	
 				<thead><tr>
 					<th>사용 시간</th>
@@ -128,7 +129,7 @@
 							
 							if(tempVO.getMem_id().equals(mem_id)){ // 위에서 정의함
 								out.print("<td class = \"schedule_td btn-in\" rowspan = " + dif + ">");								
-								out.print("<button onclick =\"carlogWriteFrm(" + tempVO.getDriv_no() + ")\"  type = \"button\" class = \"rsrv_etc_btn wrt_btn\">운행 일지 작성</button>");
+								out.print("<button onclick =\"carlogWriteFrm(" + tempVO.getDriv_no() + ")\"  type = \"button\" class = \"rsrv_etc_btn wrt_btn\">일지 작성</button>");
 								out.print("<button onclick =\"rsrvDelete(" + tempVO.getDriv_no() + ")\" type = \"button\" class = \"rsrv_etc_btn cnl_btn\">등록 취소</button>");
 							}else {
 								out.print("<td class = \"schedule_td btn-in\" rowspan = " + dif + ">");								
@@ -161,40 +162,57 @@
 				</div>
 				</c:when>
 				<c:otherwise>
-					등록 일자를 먼저 선택해주세요
+					※ 사용 일자를 먼저 선택해주세요
 				</c:otherwise>
 				</c:choose>	
-										
+				</div>
+			</div> <!-- class = col -->
+			
+			<script type="text/javascript">
+				/*
+				*	시간 선택 후에 모바일 페이지에서는 차량선택화면이
+				*	바로 안보여서 이동시켜주는 jQuery문
+				*/
+				if(document.frm.isTimeSelected.value == "true") {
+					$(document).ready(function () {
+						$('html, body').animate({
+						scrollTop: $('#carSelect').offset().top-100
+							}, 'slow');
+					});
+				}
+			</script>	
+			
+			<div class = " col-md-6 col-sm-12">
+				<div id = "carSelect" class = "content_cont-box">
+				<c:choose>
+				<c:when test = "${cVoList ne null}">
+					<fmt:parseDate var="dateString" value="${date}" pattern="yyyy-MM-dd" />
+					<fmt:formatDate value="${dateString}" type="both" pattern="yyyy년 MM월 dd일(E)"/>
+					<h5>${s_date}시 ~ ${e_date}시에 사용 가능한 차량 목록</h5>
+					<table class = "table table-hover">				
+						<thead><tr>
+							<th>차종</th>
+							<th>차량등록번호</th>
+							<th>차량 선택</th>
+						</tr></thead>
+						<c:forEach var = "car" items = "${cVoList}">
+							<tr>
+								<td>${car.car_model}</td>
+								<td>${car.car_reg_no}</td>
+								<td>
+									<button type = "button" onclick = "selectThisCar('${date}', '${s_date}', '${e_date}', '${car.car_reg_no}')">이 차량으로 등록</button>
+								</td>
+							</tr>
+						</c:forEach>
+					</table>
+				</c:when>
+				<c:otherwise>
+					※ 사용 시간을 먼저 선택해주세요
+				</c:otherwise>
+				</c:choose>
+				</div><!-- class=content_cont-box -->
 			</div>
-			<div class = "content_cont-box">
-			<c:choose>
-			<c:when test = "${cVoList ne null}">
-				<fmt:parseDate var="dateString" value="${date}" pattern="yyyy-MM-dd" />
-				<fmt:formatDate value="${dateString}" type="both" pattern="yyyy년 MM월 dd일(E)"/>
-				${s_date}시 ~ ${e_date}시에 사용 가능한 차량 목록
-				<table class = "table table-hover">				
-					<thead><tr>
-						<th>차종</th>
-						<th>차량등록번호</th>
-						<th>상태</th>
-						<th>비고</th>
-					</tr></thead>
-					<c:forEach var = "car" items = "${cVoList}">
-						<tr>
-							<td>${car.car_model}</td>
-							<td>${car.car_reg_no}</td>
-							<td>
-								<button>이 차량으로 등록</button>
-							</td>
-						</tr>
-					</c:forEach>
-				</table>
-			</c:when>
-			<c:otherwise>
-				시간을 먼저 선택하세요
-			</c:otherwise>
-			</c:choose>
-			</div>
+			</div> <!-- class=row -->
 			</form>
 		</section>
 	</section>

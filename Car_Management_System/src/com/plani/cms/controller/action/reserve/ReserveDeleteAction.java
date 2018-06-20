@@ -12,27 +12,36 @@ import javax.servlet.http.HttpServletResponse;
 import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.ReserveDAO;
 import com.plani.cms.dto.DrivVO;
+import com.plani.cms.dto.MemberVO;
 
 public class ReserveDeleteAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String url = "rsrv.do?command=reserve_write_form";
+		String url = "rsrv.do?command=reserve_view_schedule";
 		
 		int driv_no = Integer.parseInt(request.getParameter("driv_no"));
+		String date = request.getParameter("date");
+		String mem_id = request.getParameter("mem_id");
 		
 		DrivVO dVo = new DrivVO();
 		ReserveDAO rDao = ReserveDAO.getInstance();
 		
+		
+		System.out.println(driv_no);
 		dVo = rDao.selectOneDrive(driv_no);
-		String date = dVo.getDate();
+		String deleteDate = dVo.getDate();
 		String car_reg_no = dVo.getCar_reg_no();
 				
 		rDao.deleteReserve(driv_no);
 		
 		List<DrivVO> dVoList = new ArrayList<DrivVO>();
-		dVoList = rDao.oneDaySchedule(date, car_reg_no);
+		dVoList = rDao.oneDaySchedule(deleteDate, car_reg_no);
 					
+		
+		System.out.println("login user's name = " + mem_id);
+		
+		request.setAttribute("mem_id", mem_id);
 		request.setAttribute("date", date);
 		request.setAttribute("car_reg_no", car_reg_no);
 		request.setAttribute("dVoList", dVoList);
