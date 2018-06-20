@@ -32,8 +32,7 @@ public class DeptWriteCheckFormAction implements Action {
 			dept_name = request.getParameter("dept_name");
 		} else {
 			dept_name = new String(request.getParameter("dept_name").getBytes("8859_1"),"UTF-8");
-		}
-		
+		}		
 		
 		System.out.println("받은 파라미터 : " + dept_name);
 		

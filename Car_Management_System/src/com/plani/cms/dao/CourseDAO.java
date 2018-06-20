@@ -292,6 +292,43 @@ public class CourseDAO {
 		}
 		return list;
 	}
+	
+	public List<CourseVO> selectAllCourse() {
+		/**
+		 ***/
+		String sql = "select * from course";
+			
+
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+
+		List<CourseVO> list = new ArrayList<CourseVO>();
+
+		try {
+			conn = DBManager.getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+
+				CourseVO cVo = new CourseVO();
+
+				cVo.setCour_no(rs.getInt("cour_no"));
+				cVo.setCour_purpo(rs.getString("cour_purpo"));
+				cVo.setDistance(rs.getInt("distance"));
+				cVo.setCour_divi(rs.getString("cour_divi"));
+				
+				list.add(cVo);
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, stmt, rs);
+		}
+		return list;
+	}
 
 
 

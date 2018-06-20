@@ -87,7 +87,7 @@ public int confirmCentName(String cent_name) {
 				cVo.setCent_fax(rs.getString("cent_fax"));
 				cVo.setCent_p_no(rs.getInt("cent_p_no"));
 				cVo.setCent_addr(rs.getString("cent_addr"));
-				cVo.setCent_addr(rs.getString("cent_addr_dtl"));
+				cVo.setCent_addr_dtl(rs.getString("cent_addr_dtl"));
 
 
 				list.add(cVo);
