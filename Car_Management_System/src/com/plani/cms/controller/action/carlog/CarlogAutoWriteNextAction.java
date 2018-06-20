@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.plani.cms.controller.action.Action;
+import com.plani.cms.dao.CarlogDAO;
+import com.plani.cms.dto.CarlogVO;
 import com.plani.cms.dto.CourseVO;
 
 public class CarlogAutoWriteNextAction implements Action{
@@ -65,7 +67,7 @@ public class CarlogAutoWriteNextAction implements Action{
 				caModel.setDistance((int)(Integer.parseInt(card_trans[i])*0.02));
 			}
 			if (card_course[i].equals("")){
-				caModel.setCour_no(0);
+				caModel.setCour_no(1);
 			}else {
 				caModel.setCour_no(Integer.parseInt(card_course[i]));
 				tol_day++;
@@ -102,7 +104,7 @@ public class CarlogAutoWriteNextAction implements Action{
 				}
 				if(check == 0) {
 					caModel = new CarlogAutoModel();
-					caModel.setAuto_day(i);
+					caModel.setAuto_day(i-1);
 					caList.add(caModel);
 				}
 			}
@@ -122,19 +124,19 @@ public class CarlogAutoWriteNextAction implements Action{
 			}else {				
 				divi = rnd.nextInt(3) + 2;
 			}
-			
+			System.out.println("==1==");
 			for(int i = 0; i <= divi; i++) {
 				int rnd_date = rnd.nextInt(endDay);
 				boolean isDone = false;
 				while(isDone) {
-					for(CarlogAutoModel model : caList) {
+					for(CarlogAutoModel model : new ArrayList<>(caList)) {
 						if(rnd_date == model.getAuto_day()) {
 							if(model.getDistance() == 0) {
 								int tempGap = gap/divi;
 								CourseVO tempcVo = getNearCourse(cList, tempGap);
 								
 								
-								caModel = new CarlogAutoModel();
+								caModel = model;
 								
 								caModel.setS_hour(9);
 								caModel.setE_hour(18);
@@ -143,9 +145,8 @@ public class CarlogAutoWriteNextAction implements Action{
 								caModel.setCour_no(tempcVo.getCour_no());
 								caModel.setDriv_purpo(tempcVo.getCour_purpo());
 								caModel.setDriv_divi(tempcVo.getCour_divi());
-								caList.add(caModel);
 								
-								caList.remove(model);
+								caList.set(caList.indexOf(model), caModel);
 								isDone = true;
 								break;
 							}else {
@@ -156,12 +157,12 @@ public class CarlogAutoWriteNextAction implements Action{
 				}
 			}						
 		}
-				
-		for(CarlogAutoModel model : caList) {
+		System.out.println("==2==");		
+		for(CarlogAutoModel model : new ArrayList<>(caList)) {
 			
 			if(model.getDistance() == 0) {
 				
-				caModel = new CarlogAutoModel();
+				caModel = model;
 				
 				caModel.setDistance(driv_dist);
 				caModel.setS_hour(9);
@@ -170,7 +171,9 @@ public class CarlogAutoWriteNextAction implements Action{
 				caModel.setDriv_purpo("1.출근용");
 				caModel.setDriv_divi("1");
 				
-				caList.add(caModel);
+				caList.set(caList.indexOf(model), caModel);
+				
+				caModel = model;
 				
 				caModel.setDistance(driv_dist);
 				caModel.setS_hour(17);
@@ -181,53 +184,45 @@ public class CarlogAutoWriteNextAction implements Action{
 				
 				caList.add(caModel);
 				
-				caList.remove(model);
-				
 			}
 		}
 		
 		int use_dist = 0;
-		
-		while(use_dist != month_dist) {
-			int gap = month_dist - use_dist;
-			for(int i = 0; i <= gap; i++){
-				int rnd_date = rnd.nextInt(endDay);
-				if(use_dist > month_dist) {
-					for(CarlogAutoModel model : caList) {
-						if(rnd_date == model.getAuto_day()) {
-								
-								caModel = model;
-								
-								caModel.setDistance(model.getDistance()-1);
-								caList.add(caModel);
-								
-								caList.remove(model);
-								break;
-						}		
-					}	
-				}else {
-					for(CarlogAutoModel model : caList) {
-						if(rnd_date == model.getAuto_day()) {
-								
-								caModel = model;
-								
-								caModel.setDistance(model.getDistance()+1);
-								caList.add(caModel);
-								
-								caList.remove(model);
-								break;
-						}		
-					}	
-				}
-			}			
-			use_dist = 0;
-			for(CarlogAutoModel model : caList) {
-				use_dist += model.getDistance();
-			}	
+		for(CarlogAutoModel model : caList) {
+			use_dist += model.getDistance();
 		}
+				
 		
+		CarlogVO carlogVo = new CarlogVO();
+		CarlogDAO clDao = CarlogDAO.getInstance();
 		
-		
+		clDao.deleteAllAutoOneMonth(car_reg_no, carlog_year, carlog_month);
+		System.out.println("==4==");
+		for(CarlogAutoModel model : caList) {
+			carlogVo = new CarlogVO();
+			
+			String date = carlog_year + "-" + carlog_month + "-" + model.getAuto_day();
+			int sHour = model.getS_hour();
+			int eHour = model.getE_hour();
+			
+			carlogVo.setDriv_s_date(date + " " + (sHour>=10?sHour:"0"+sHour) + ":00:00");
+			carlogVo.setDriv_e_date(date + " " + (eHour>=10?eHour:"0"+eHour) + ":00:00");
+			carlogVo.setCour_no(model.getCour_no());
+			carlogVo.setDriv_dist(model.getDistance());
+			carlogVo.setDriv_purpo(model.getDriv_purpo());
+			carlogVo.setDriv_divi(model.getDriv_divi());
+			carlogVo.setOil_fee(model.getOil_fee());
+			carlogVo.setTrans_fee(model.getTrans_fee());
+			carlogVo.setCard_divi(model.getCard_divi());
+			
+			carlogVo.setCar_reg_no(car_reg_no);
+			carlogVo.setMem_id(mem_id);
+			
+			
+			
+			clDao.writeOneAutoCarlog(carlogVo);
+			
+		}
 			
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

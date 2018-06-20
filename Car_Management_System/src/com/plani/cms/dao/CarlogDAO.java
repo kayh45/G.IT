@@ -424,8 +424,8 @@ public List<CarlogVO> drivSearchByNameNoncomplete(String mem_id) {
 	
 	public void writeOneAutoCarlog(CarlogVO cVo) {
 		String sql = "INSERT INTO driv(driv_s_date, driv_e_date, car_reg_no, mem_id"
-				+ ", cour_no, driv_purpo, befo_dist, driv_dist"
-				+ ", card_divi";
+				+ ", cour_no, driv_purpo, driv_dist"
+				+ ", card_divi, driv_divi";
 		
 		if (cVo.getOil_fee() != 0 && cVo.getTrans_fee() != 0) {
 			sql += ", trans_fee, oil_fee) values(?,?,?,?,?,?,?,?,?,?,?)";
@@ -451,9 +451,9 @@ public List<CarlogVO> drivSearchByNameNoncomplete(String mem_id) {
 			pstmt.setString(4, cVo.getMem_id());		
 			pstmt.setInt(5, cVo.getCour_no());		
 			pstmt.setString(6, cVo.getDriv_purpo());		
-			pstmt.setLong(7, cVo.getBefo_dist());		
-			pstmt.setLong(8, cVo.getDriv_dist());		
-			pstmt.setString(9, cVo.getCard_divi());	
+			pstmt.setLong(7, cVo.getDriv_dist());		
+			pstmt.setString(8, cVo.getCard_divi());	
+			pstmt.setString(9, cVo.getDriv_divi());	
 			
 			if (cVo.getOil_fee() != 0 && cVo.getTrans_fee() != 0) {
 				pstmt.setLong(10, cVo.getTrans_fee());	
