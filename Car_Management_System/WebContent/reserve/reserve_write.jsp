@@ -86,7 +86,7 @@
 					
 					dList = (List<DrivVO>) request.getAttribute("dVoList");					
 					
-					int hour = 8;
+					int hour = 9;
 					int hourSub = hour;
 					int dif = 0;
 					int jp = 0;
@@ -188,7 +188,7 @@
 				<c:when test = "${cVoList ne null}">
 					<fmt:parseDate var="dateString" value="${date}" pattern="yyyy-MM-dd" />
 					<fmt:formatDate value="${dateString}" type="both" pattern="yyyy년 MM월 dd일(E)"/>
-					<h5>${s_date}시 ~ ${e_date}시에 사용 가능한 차량 목록</h5>
+					<h5><b>${s_date}시 ~ ${e_date}시</b>에 사용 가능한 차량 목록</h5>
 					<table class = "table table-hover">				
 						<thead><tr>
 							<th>차종</th>

@@ -180,7 +180,7 @@ function centSelect(name) {
 	 * 사원 검색에서 사원 이름 누르면 부모 폼으로 들어가는 기능 
 	 * 
 	 */
-	opener.frm.car_reg_no_ok.value = 1;
+	opener.frm.cent_name_ok.value = 1;
 
 	var frmName = document.getElementsByName(name + "cent_name")[0].value;	
 	
