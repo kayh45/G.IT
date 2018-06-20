@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -11,23 +11,21 @@
 <body>
 <!-- 1~10까지 있는 페이지의 페이징 -->
 
-<c:url var="action" value="/carlog.do?command=carlog_view_form&repa_s_date=${repa_s_date}&repa_e_date=${repa_e_date}&car_reg_no=${car_reg_no}&car_model=${car_model}&mem_name=${mem_name}&mem_id=${mem_id}"/>
-<c:if test="${param.prev}">
-<a href="${action}&page=1">prev</a>
-</c:if>
-<c:forEach begin="${param.begin}" end="${param.end}" step="1" var="index">
-    <c:choose>
-        <c:when test="${param.page==index}">
-            ${index}
-        </c:when>
-        <c:otherwise>
-            <a href="${action}&page=${index}">${index}</a>
-        </c:otherwise>
-    </c:choose>
-</c:forEach>
-<c:if test="${param.next}">
-<a href="${action}?page=11">next</a>
-</c:if>
+<div class="paginate">
+    <a href="javascript:goPage(${param.firstPageNo})" class="first">처음 페이지</a>
+    <a href="javascript:goPage(${param.prevPageNo})" class="prev">이전 페이지</a>
+    <span>
+        <c:forEach var="i" begin="${param.startPageNo}" end="${param.endPageNo}" step="1">
+            <c:choose>
+                <c:when test="${i eq param.pageNo}"><a href="javascript:goPage(${i})" class="choice">${i}</a></c:when>
+                <c:otherwise><a href="javascript:goPage(${i})">${i}</a></c:otherwise>
+            </c:choose>
+        </c:forEach>
+    </span>
+    <a href="javascript:goPage(${param.nextPageNo})" class="next">다음 페이지</a>
+    <a href="javascript:goPage(${param.finalPageNo})" class="last">마지막 페이지</a>
+</div>
+
 
 </body>
-</html>
+</html> --%>사용안함

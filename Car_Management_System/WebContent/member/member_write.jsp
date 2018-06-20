@@ -10,7 +10,7 @@
 <title>사원 등록 :: 법인차량관리시스템</title>
 <script type = "text/javascript" src="../js/bootstrap.js"></script>
 <script type="text/javascript" src="js/post.js"></script>
-<script type = "text/javascript" src="js/member.js?ver=3"></script>
+<script type = "text/javascript" src="js/member.js?ver=1"></script>
 <script type = "text/javascript" src="js/common.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>

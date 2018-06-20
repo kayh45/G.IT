@@ -16,7 +16,7 @@
 <script type="text/javascript" src="js/moment.js"></script>
 <script type="text/javascript" src="js/member.js?ver=4"></script>
 <script type="text/javascript" src="js/car.js?ver=3"></script>
-<script type="text/javascript" src="js/carlog.js?ver=2"></script>
+<script type="text/javascript" src="js/carlog.js?ver=2.2"></script>
 <script type="text/javascript" src="js/common.js"></script>
 </head>
 <body>
@@ -70,7 +70,6 @@
 								<option value="${month.count}">${month.count}월</option>
 							</c:forEach>
 					</select>
-					<button type = "button" onclick = "canWrite()">가능 여부</button>
 					</td>
 				</tr>
 				<tr>
@@ -89,70 +88,41 @@
 				</tr>
 				<tr>
 					<td class="form_label">
-						<p class="label">평균 유가(ℓ당)</p>
+						<p class="label">실 주행거리</p>
 						<p class="must">*</p>
 					</td>
-					<td class="form_normal-td">
-							<input type="text" class="form_textbox" name="avg_oil"> 원
-					</td>
-					<td class="form_label">
-						<p class="label">연비</p>
-						<p class="must">*</p>
-					</td>
-					<td>
-						<select class = "form_car_select text_half" name = "rate_oil">
-							<option value = "16">16km/ℓ</option>
-							<option value = "14">14km/ℓ</option>
-							<option value = "12">12km/ℓ</option>
-							<option value = "10">10km/ℓ</option>
-						</select>
+					<td class="form_normal-td" colspan = "3">
+						<input name="driv_month_dist" type="text" class="form_textbox"> km
 					</td>
 				</tr>
 			</table>
 		</div>
 		<div class = "content_cont-box">
-		<p class="content_cont-text">* 주 이용 (출·퇴근) 경로 정보</p>
+		<p class="content_cont-text">* 출·퇴근 경로 정보</p>
 			<p class="content_cont-text"></p>
 			<input name="cour_no" type="hidden" class="form_textbox">
 			<table class="table table-bordered" id="form_table">
 
 				<tr>
 					<td class="form_label">
-						<p class="label">출발지</p>
-
+						<p class="label">출근 장소(회사)</p>
 					</td>
-					<td><input name="s_place_name" type="text"
-						class="form_textbox" readonly>
+					<td class="form_normal-td" colspan="3">
+					<input name="s_place_name" type="text"class="form_textbox" readonly>
 						<button type="button" onClick="carlogCourseSearch();"
 							class="quiet_btn" id="idCheck">
 							<span id="search-button" class="glyphicon glyphicon-search"
 								aria-hidden="true"></span>
 						</button></td>
-					<td class="form_label">
-						<p class="label">도착지</p>
-					</td>
-					<td class="form_normal-td"><input name="e_place_name"
-						type="text" class="form_textbox" readonly></td>
 				</tr>
-
 				<tr>
 					<td class="form_label">
-						<p class="label">경로 목적</p>
-
+						<p class="label">퇴근 장소(자택)</p>
 					</td>
-					<td colspan="4"><select class="form_textbox" name="driv_purpo">
-							<option value="선택" selected>선택</option>
-							<option value="거래처방문">거래처 방문</option>
-							<option value="회의참석">회의 참석</option>
-							<option selected value="출·퇴근">출·퇴근</option>
-							<option value="기타업무">기타업무</option>
-							<option value="업무외사용">업무외 사용</option>
-					</select></td>
-
-
+					<td class="form_normal-td" colspan="3"><input name="e_place_name"type="text" class="form_textbox" readonly>
+						<input name = "driv_purpo" type = "hidden">
+					</td>
 				</tr>
-
-
 				<tr>
 					<td class="form_label">
 						<p class="label">주행거리</p>
@@ -162,7 +132,6 @@
 				</tr>
 			</table>
 		</div>
-		
 		<script type = "text/javascript">
 		$(document).ready(function(){
             // 옵션추가 버튼 클릭시
@@ -229,9 +198,8 @@
 				</tbody>
 			</table>
 		</div>
-		<input type = "hidden" name = "canWrites" value = "0">
 		<div class = "form_btn-group">
-			<button id = "ins_btn" type = "submit" onclick="return carLogAutoNext()" disabled>다음</button>
+			<button id = "ins_btn" type = "submit" onclick="return carLogAutoNext()">다음</button>
 		</div>
 	</form>
 	</section> 

@@ -57,13 +57,10 @@ function carNoCheck() {
 	} 
   
 function carlogMemSelect(mem_id, mem_name) {
-	/*
+	/* carlog_auto_write.jsp
 	 * repa_cent_check.jsp 에서 사용
-
-
-	 * 정비소명 을 검색하고 정비소명을 누르면 해당 정비소의 정비소명과 정비번호가 부모화면의 폼으로 들어간다.
-	 * 
-	 */
+	 */	
+	opener.frm.mem_search_name.value = mem_name;
 	opener.frm.mem_name.value = mem_name;
 	opener.frm.mem_id.value = mem_id;
 	self.close();
@@ -71,12 +68,13 @@ function carlogMemSelect(mem_id, mem_name) {
 
 function memSearchByName() {
 	/*
-	 * @carlog_view.jsp사용
+	 * carlog_auto_write.jsp
+	 * carlog_view.jsp 사용
 	 * 
 	 * 
 	 */
 	var url = "carlog.do?popup=no&command=carlog_member_search&mem_name="
-			+ encodeURIComponent(document.frm.mem_name.value);
+			+ encodeURIComponent(document.frm.mem_search_name.value);
 	window.open(url, "_blank_1",
 					"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
 	   document.frm.mem_name.value = ""; // 재클릭 시 기존 검색  삭제
@@ -157,8 +155,7 @@ function carlogDelete() {
 		} else {
 			return false;
 		}
-	}
-	
+	}	
 }
 
 function carlogSearch(){
@@ -280,19 +277,6 @@ function carLogAutoNext() {
 			}
 		}
 	}
-}
-
-function canWrite() {
-	
-	var car_reg_no = document.frm.car_usable_no.value;
-	var year = document.frm.carlog_year.value;
-	var month = document.frm.carlog_month.value;
-	
-	if (car_reg_no != "") {
-		 var url = "carlog.do?popup=no&command=carlog_auto_check&car_reg_no="+encodeURIComponent(car_reg_no)
-		   				+"&year="+year+"&month="+month;
-		 window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
-	}	
 }
 
 function autoCheckClose() {

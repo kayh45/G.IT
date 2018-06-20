@@ -18,22 +18,23 @@ public class CarlogViewFormAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "carlog/carlog_view.jsp";
-		String repa_s_date = (request.getParameter("repa_s_date")==null) ? "" : request.getParameter("repa_s_date"); //null인 경우 치환
-		String repa_e_date = (request.getParameter("repa_e_date")==null) ? "" : request.getParameter("repa_e_date"); //null인 경우 치환
-		String car_reg_no = (request.getParameter("car_reg_no")==null) ? "" : request.getParameter("car_reg_no"); //null인 경우 치환
-		String car_model = (request.getParameter("car_model")==null) ? "" : request.getParameter("car_model"); //null인 경우 치환
-		String mem_name = (request.getParameter("mem_name")==null) ? "" : request.getParameter("mem_name"); //null인 경우 치환
-		String mem_id = (request.getParameter("mem_id")==null) ? "" : request.getParameter("mem_id"); //null인 경우 치환
-		int count=0;
-		
-		System.out.println("배차 신청 날짜 :"+ repa_s_date);
-		System.out.println("배차 종료 날짜 :"+ repa_e_date);
-		System.out.println("차량 번호 :"+ car_reg_no);
-		System.out.println("차량 모델 :"+ car_model);
-		System.out.println("사원이름 :"+ mem_name);
-		System.out.println("사원아이디 :"+ mem_id);
-		
-		request.setAttribute("repa_s_date", repa_s_date);  //조회 클릭 후  jsp화면에 검색조건을 보여주기 위해서
+		String repa_s_date = (request.getParameter("repa_s_date") == null) ? "" : request.getParameter("repa_s_date");
+		String repa_e_date = (request.getParameter("repa_e_date") == null) ? "" : request.getParameter("repa_e_date");
+		String car_reg_no = (request.getParameter("car_reg_no") == null) ? "" : new String(request.getParameter("car_reg_no").getBytes("UTF-8"));
+		String car_model = (request.getParameter("car_model") == null) ? "" : new String(request.getParameter("car_model").getBytes("UTF-8"));
+		String mem_name = (request.getParameter("mem_name") == null) ? "" : new String(request.getParameter("mem_name").getBytes("UTF-8"));
+		String mem_id = (request.getParameter("mem_id") == null) ? "" : new String(request.getParameter("mem_id").getBytes("UTF-8"));
+		int count = 0;
+
+		System.out.println("배차 신청 날짜 :" + repa_s_date);
+		System.out.println("배차 종료 날짜 :" + repa_e_date);
+		System.out.println("차량 번호 :" + car_reg_no);
+		System.out.println("차량 모델 :" + car_model);
+		System.out.println("사원이름 :" + mem_name);
+		System.out.println("사원아이디 :" + mem_id);
+
+		request.setAttribute("repa_s_date", repa_s_date); // 조회 클릭 후 jsp화면에
+															// 검색조건을 보여주기 위해서
 		request.setAttribute("repa_e_date", repa_e_date);
 		request.setAttribute("car_reg_no", car_reg_no);
 		request.setAttribute("car_model", car_model);
@@ -42,44 +43,61 @@ public class CarlogViewFormAction implements Action {
 		
 		CarviewDAO vDao = CarviewDAO.getInstance();
 		int page = 1;
-        if(request.getParameter("page")!=null){
-            page = Integer.parseInt(request.getParameter("page"));
-            System.out.println("현재 페이지:"+page);
-        }
-        Paging paging = new Paging();
-        paging.setPage(page);
-        //paging.setTotalCount(44);
-        //List<CarviewVO> list = vDao.selectAllCarview(page);
-		
-		if(car_reg_no.equals("") && repa_s_date==null && repa_e_date==null && mem_id==null ){
-			//최초 실행 시 모두 널 값
+		if (request.getParameter("page") != null) {
+			page = Integer.parseInt(request.getParameter("page"));
+			System.out.println("현재 페이지:" + page);
 		}
-		else if(repa_s_date!=null && repa_e_date!=null && mem_id.equals("") && car_reg_no.equals("")){//운행기간만 입력할 경우
+		Paging paging = new Paging();
+		paging.setPageNo(page);
+		paging.setPageSize(10);
+		// paging.setTotalCount(44);
+		// List<CarviewVO> list = vDao.selectAllCarview(page);
+
+		if (car_reg_no.equals("") && repa_s_date.equals("") && repa_e_date.equals("") && mem_id.equals("")) {
+			// 최초 실행 시 모두 널 값
+			System.out.println("최초실행");
+		} else if (repa_s_date != null && repa_e_date != null && mem_id.equals("") && car_reg_no.equals("")) {// 운행기간만
+																												// 입력할
+																												// 경우
 			System.out.println("운행기간만 입력");
-			List<CarviewVO> carlogAllList = vDao.selectPageDate(repa_s_date,repa_e_date,page);
-			count=vDao.selectPageDateCount(repa_s_date,repa_e_date);
+			List<CarviewVO> carlogAllList = vDao.selectPageDate(repa_s_date, repa_e_date, page);
+			count = vDao.selectPageDateCount(repa_s_date, repa_e_date);
 			paging.setTotalCount(count);
-			System.out.println("카운트:"+ count);
+			System.out.println("카운트:" + count);
 			request.setAttribute("carlogAllList", carlogAllList);
 			request.setAttribute("paging", paging);
+			request.setAttribute("count", count);
 		}
-		
-		else if(repa_s_date!=null && repa_e_date!=null && mem_id.equals("") && car_reg_no!=null){
-			System.out.println("운행기간,차량등록 번호 입력"); //운행기간, 차량등록번호 입력
-			List<CarviewVO> carlogAllList = vDao.selectDateCar(repa_s_date,repa_e_date,car_reg_no);
+
+		else if (repa_s_date != null && repa_e_date != null && mem_id.equals("") && car_reg_no != null) {
+			System.out.println("운행기간,차량등록 번호 입력"); // 운행기간, 차량등록번호 입력
+			List<CarviewVO> carlogAllList = vDao.selectDateCar(repa_s_date, repa_e_date, car_reg_no, page);
+			count = vDao.selectDateCar(repa_s_date, repa_e_date, car_reg_no);
+			paging.setTotalCount(count);
+			System.out.println("카운트" + count);
 			request.setAttribute("carlogAllList", carlogAllList);
-		}
-		else if(repa_s_date!=null && repa_e_date!=null && mem_id != null && car_reg_no.equals("")){
-			System.out.println("운행기간,사원이름 입력");//운행기간 사원이름 입력
-			List<CarviewVO> carlogAllList = vDao.selectDateMem(repa_s_date,repa_e_date,mem_id);
+			request.setAttribute("paging", paging);
+			request.setAttribute("count", count);
+		} else if (repa_s_date != null && repa_e_date != null && mem_id != null && car_reg_no.equals("")) {
+			System.out.println("운행기간,사원이름 입력");// 운행기간 사원이름 입력
+			List<CarviewVO> carlogAllList = vDao.selectDateMem(repa_s_date, repa_e_date, mem_id, page);
+			count = vDao.selectDateMem(repa_s_date, repa_e_date, mem_id);
+			paging.setTotalCount(count);
+			System.out.println("카운트" + count);
 			request.setAttribute("carlogAllList", carlogAllList);
-		}
-		else{ //모두 입력 시 
+			request.setAttribute("paging", paging);
+			request.setAttribute("count", count);
+		} else { // 모두 입력 시
 			System.out.println("모두 입력됨");
-			List<CarviewVO> carlogAllList = vDao.selectAll(repa_s_date,repa_e_date,car_reg_no, mem_id);
-		request.setAttribute("carlogAllList", carlogAllList);
+			List<CarviewVO> carlogAllList = vDao.selectAll(repa_s_date, repa_e_date, car_reg_no, mem_id, page);
+			count = vDao.selectAll(repa_s_date, repa_e_date, car_reg_no, mem_id);
+			paging.setTotalCount(count);
+			System.out.println("카운트" + count);
+			request.setAttribute("carlogAllList", carlogAllList);
+			request.setAttribute("paging", paging);
+			request.setAttribute("count", count);
 		}
-		
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 

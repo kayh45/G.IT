@@ -10,7 +10,7 @@
 <link href="css/popup.css" rel="stylesheet">
 <link href="css/common.css" rel="stylesheet">
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<script type = "text/javascript" src="js/carlog.js?ver=1"></script>
+<script type = "text/javascript" src="js/carlog.js?ver=1.2"></script>
 <title>사원 검색</title>
 </head>
 <body>
@@ -42,6 +42,7 @@
 			</div>
 			<div class = "popup_box">
 				<p class = "search-result_label">'${memName}'에 대한 조회 결과입니다.</p>
+				<form name = "info">
 				<table class = "table table-condensed table-bordered">					
 					<thead>
 					<tr>
@@ -50,8 +51,7 @@
 						<th>부서</th>
 						<th>직책</th>
 					</tr>
-					<thead>
-					<form name = "info">
+					</thead>
 					<c:forEach var = "mem" items = "${memList}">
 					<tr>
 						<td>${mem.mem_id}</td>
@@ -71,8 +71,8 @@
 					<input type = "hidden" name = "${mem.mem_id}dept_no" value  = "${mem.dept_no}">
 					<input type = "hidden" name = "${mem.mem_id}dept_name" value  = "${mem.dept_name}">
 					</c:forEach>
-					</form>
 				</table>
+					</form>
 			</div>
 		</c:when>
 		<c:otherwise>

@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, user-scalable=no">
 <title>법인차량관리시스템</title>
-<script type="text/javascript" src="js/repa.js?ver=1"></script>
+<script type="text/javascript" src="js/repa.js?ver=2"></script>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/jquery.schedule.css" rel="stylesheet">
 <link href="css/jquery-ui.css" rel="stylesheet">
@@ -19,7 +19,13 @@
 </head>
 
 <body>
-	
+	<script type="text/javascript">
+function goPage(i) {
+	 var url = "repa.do?command=repa_search_form&page="+i;
+		document.frm.action=url; 	
+		document.frm.submit();
+}
+	</script>
 	<header> <%@ include file="../header.jsp"%>
 	<!-- 헤더 --> </header>
 	<section id="main"> <aside id="side"> <%@ include file="sideMenu.jsp"%> </aside>
@@ -94,10 +100,16 @@
 					<input type = "hidden" name ="temp_repa_cont" value="false">
 					<input type = "hidden" name ="temp_repa_divi" value="false">
 				<tr>
+							<td class="form_label">
+						<p class="label">차 종</p>
+					</td>
+					<td class="form_normal-td"><input type="text"
+						class="form_textbox" id="car_model" name="car_model" value="${car_model}" readonly>
+							</button>	</td>
 					<td class="form_label">
 						<p class="label">차량 등록 번호</p>
 					</td>
-					<td class="form_normal-td" colspan="3"><input type="text"
+					<td class="form_normal-td"><input type="text"
 						class="form_textbox" id="car_reg_no" name="car_reg_no" value="${ car_reg_no}">
 							<input type = "hidden" name = "car_reg_no_ok" value = "0">
 						<button type = "button" onClick = "carNoCheck();" class = "quiet_btn" id = "idCheck">
@@ -111,7 +123,7 @@
 		</div>
 			<div class = "content_cont-box"
 			id="content_cont-box1" style=display:block;>
-				<p class = "search-result_label" >조회 리스트</p>
+				<p class = "search-result_label" >조회 리스트:${count}개</p>
 
 				<table class = "table table-condensed table-bordered" >					
 					<thead>
@@ -161,6 +173,22 @@
 				
 					</c:forEach>
 				</table>
+				<c:if test = "${paging.finalPageNo ne null}">
+		<div class="paginate">
+    <a href="javascript:goPage(${paging.firstPageNo})" class="first">처음 페이지</a>
+    <a href="javascript:goPage(${paging.prevPageNo})" class="prev">이전 페이지</a>
+    <span>
+        <c:forEach var="i" begin="${paging.startPageNo}" end="${paging.endPageNo}" step="1">
+            <c:choose>
+                <c:when test="${i eq paging.pageNo}"><a href="javascript:goPage(${i})" class="choice">${i}</a></c:when>
+                <c:otherwise><a href="javascript:goPage(${i})">${i}</a></c:otherwise>
+            </c:choose>
+        </c:forEach>        
+    </span>
+    <a href="javascript:goPage(${paging.nextPageNo})" class="next">다음 페이지</a>
+    <a href="javascript:goPage(${paging.finalPageNo})" class="last">마지막 페이지</a>
+</div>
+</c:if>
 			
 				
 				
