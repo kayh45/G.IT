@@ -1,80 +1,191 @@
 package com.plani.cms.dto;
+
+
 public class Paging {
-    private int page=1; //현재 페이지
-    private int totalCount; //전체 게시글수
-    private int beginPage;    //출력 시작
-    private int endPage;    //출력 끝
-    private int displayRow = 10;    //한 페이지에 몇 개 row
-    private int displayPage = 10;    //한 페이지에 몇 개 페이지
-    boolean prev; //prev 버튼이 보일지/안 보일지
-    boolean next; //총 페이지 수가 10개 넘는 경우만 true
-    
-    public int getPage() {
-		return page;
-	}
-	public void setPage(int page) {
-		this.page = page;
-	}
-	public int getBeginPage() {
-		return beginPage;
-	}
-	public void setBeginPage(int beginPage) {
-		this.beginPage = beginPage;
-	}
-	public int getEndPage() {
-		return endPage;
-	}
-	public void setEndPage(int endPage) {
-		this.endPage = endPage;
-	}
-	public int getDisplayRow() {
-		return displayRow;
-	}
-	public void setDisplayRow(int displayRow) {
-		this.displayRow = displayRow;
-	}
-	public int getDisplayPage() {
-		return displayPage;
-	}
-	public void setDisplayPage(int displayPage) {
-		this.displayPage = displayPage;
-	}
-	public boolean isPrev() {
-		return prev;
-	}
-	public void setPrev(boolean prev) {
-		this.prev = prev;
-	}
-	public boolean isNext() {
-		return next;
-	}
-	public void setNext(boolean next) {
-		this.next = next;
-	}
-	public int getTotalCount() {
-		return totalCount;
-	}
-	public void setTotalCount(int totalCount) {
-        //이걸 꼭 호출해야 paging이 가능하기 때문에
-        //이걸 호출하면 자동으로 paging() 함수 호출하도록 설정
+    private int pageSize; // 게시 글 수
+    private int firstPageNo; // 첫 번째 페이지 번호
+    private int prevPageNo; // 이전 페이지 번호
+    private int startPageNo; // 시작 페이지 (페이징 네비 기준)
+    private int pageNo; // 페이지 번호
+    private int endPageNo; // 끝 페이지 (페이징 네비 기준)
+    private int nextPageNo; // 다음 페이지 번호
+    private int finalPageNo; // 마지막 페이지 번호
+    private int totalCount; // 게시 글 전체 수
+
+    /**
+     * @return the pageSize
+     */
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    /**
+     * @param pageSize the pageSize to set
+     */
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    /**
+     * @return the firstPageNo
+     */
+    public int getFirstPageNo() {
+        return firstPageNo;
+    }
+
+    /**
+     * @param firstPageNo the firstPageNo to set
+     */
+    public void setFirstPageNo(int firstPageNo) {
+        this.firstPageNo = firstPageNo;
+    }
+
+    /**
+     * @return the prevPageNo
+     */
+    public int getPrevPageNo() {
+        return prevPageNo;
+    }
+
+    /**
+     * @param prevPageNo the prevPageNo to set
+     */
+    public void setPrevPageNo(int prevPageNo) {
+        this.prevPageNo = prevPageNo;
+    }
+
+    /**
+     * @return the startPageNo
+     */
+    public int getStartPageNo() {
+        return startPageNo;
+    }
+
+    /**
+     * @param startPageNo the startPageNo to set
+     */
+    public void setStartPageNo(int startPageNo) {
+        this.startPageNo = startPageNo;
+    }
+
+    /**
+     * @return the pageNo
+     */
+    public int getPageNo() {
+        return pageNo;
+    }
+
+    /**
+     * @param pageNo the pageNo to set
+     */
+    public void setPageNo(int pageNo) {
+        this.pageNo = pageNo;
+    }
+
+    /**
+     * @return the endPageNo
+     */
+    public int getEndPageNo() {
+        return endPageNo;
+    }
+
+    /**
+     * @param endPageNo the endPageNo to set
+     */
+    public void setEndPageNo(int endPageNo) {
+        this.endPageNo = endPageNo;
+    }
+
+    /**
+     * @return the nextPageNo
+     */
+    public int getNextPageNo() {
+        return nextPageNo;
+    }
+
+    /**
+     * @param nextPageNo the nextPageNo to set
+     */
+    public void setNextPageNo(int nextPageNo) {
+        this.nextPageNo = nextPageNo;
+    }
+
+    /**
+     * @return the finalPageNo
+     */
+    public int getFinalPageNo() {
+        return finalPageNo;
+    }
+
+    /**
+     * @param finalPageNo the finalPageNo to set
+     */
+    public void setFinalPageNo(int finalPageNo) {
+        this.finalPageNo = finalPageNo;
+    }
+
+    /**
+     * @return the totalCount
+     */
+    public int getTotalCount() {
+        return totalCount;
+    }
+
+    /**
+     * @param totalCount the totalCount to set
+     */
+    public void setTotalCount(int totalCount) {
         this.totalCount = totalCount;
-        paging();
+        this.makePaging();
     }
-    private void paging(){
-        //displayPage = 10(고정값)
-        //prev,next,beginPage,endPage 를 계산해서 만든다.
-        endPage = ((page+(displayPage-1))/displayPage)*displayPage;
-        beginPage = endPage - (displayPage-1);
-        
-        //글이 32개라면 필요한 페이지는 4개
-        //32/10 = 3.2 올림해서 4
-        int totalPage = (int)Math.ceil(totalCount/(double)displayRow);
-        if(totalPage<endPage){
-            endPage = totalPage;
-            next=false;
-        }else{
-            next=true;
+
+    /**
+     * 페이징 생성
+     */
+    private void makePaging() {
+        if (this.totalCount == 0) return; // 게시 글 전체 수가 없는 경우
+        if (this.pageNo == 0) this.setPageNo(1); // 기본 값 설정
+        if (this.pageSize == 0) this.setPageSize(10); // 기본 값 설정
+
+        int finalPage = (totalCount + (pageSize - 1)) / pageSize; // 마지막 페이지
+        if (this.pageNo > finalPage) this.setPageNo(finalPage); // 기본 값 설정
+
+        if (this.pageNo < 0 || this.pageNo > finalPage) this.pageNo = 1; // 현재 페이지 유효성 체크
+
+        boolean isNowFirst = pageNo == 1 ? true : false; // 시작 페이지 (전체)
+        boolean isNowFinal = pageNo == finalPage ? true : false; // 마지막 페이지 (전체)
+
+        int startPage = ((pageNo - 1) / 10) * 10 + 1; // 시작 페이지 (페이징 네비 기준)
+        int endPage = startPage + 10 - 1; // 끝 페이지 (페이징 네비 기준)
+
+        if (endPage > finalPage) { // [마지막 페이지 (페이징 네비 기준) > 마지막 페이지] 보다 큰 경우
+            endPage = finalPage;
         }
-        prev=(beginPage == 1)?false:true;
+
+        this.setFirstPageNo(1); // 첫 번째 페이지 번호
+
+        if (isNowFirst) {
+            this.setPrevPageNo(1); // 이전 페이지 번호
+        } else {
+            this.setPrevPageNo(((pageNo - 1) < 1 ? 1 : (pageNo - 1))); // 이전 페이지 번호
+        }
+
+        this.setStartPageNo(startPage); // 시작 페이지 (페이징 네비 기준)
+        this.setEndPageNo(endPage); // 끝 페이지 (페이징 네비 기준)
+
+        if (isNowFinal) {
+            this.setNextPageNo(finalPage); // 다음 페이지 번호
+        } else {
+            this.setNextPageNo(((pageNo + 1) > finalPage ? finalPage : (pageNo + 1))); // 다음 페이지 번호
+        }
+
+        this.setFinalPageNo(finalPage); // 마지막 페이지 번호
     }
-}
+
+  /*  @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);*/
+    }
+
+
+

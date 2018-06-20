@@ -29,6 +29,14 @@ div .box button{
 	background-color: #368AFF;
 }
 </style>
+<script type="text/javascript">
+function goPage(i) {
+	 var url = "carlog.do?command=carlog_view_form_0&page="+i;
+		document.frm.action=url; 	
+		document.frm.submit();
+	
+}
+	</script>
 
 
 </head>
@@ -91,7 +99,7 @@ div .box button{
 		</div>
 			<div class = "content_cont-box"
 			id="content_cont-box1" style=display:block;>
-				<p class = "search-result_label" >조회 리스트</p>
+				<p class = "search-result_label" >조회 리스트:${count}개</p>
 
 				<table class = "table table-condensed table-bordered" >					
 					<thead>
@@ -108,7 +116,7 @@ div .box button{
 					<c:forEach var = "carlog" items = "${carlogAllList}">
 					
 				<tr>		               
-						<td>${carlog.driv_year}-${carlog.driv_month}-${carlog.driv_day}</a></td>
+						<td>${carlog.driv_year}-${carlog.driv_month}-${carlog.driv_day}</td>
 						<td>${carlog.driv_purpo}</td>
 						<td>${carlog.s_place_name}</td>
 						<td>${carlog.e_place_name}</td>
@@ -146,14 +154,28 @@ div .box button{
 				
 					</c:forEach>
 				</table>
-			<div class="box">
-			<button type = "submit" name="excelConverBtn" id="excelConverBtn" value="엑셀출력" onclick="excelConver()" style="cursor:hand">
-			엑셀 출력</button>
+				
+				<c:if test = "${paging.finalPageNo ne null}">
+			<div class="paginate">
+    <a href="javascript:goPage(${paging.firstPageNo})" class="first">처음 페이지</a>
+    <a href="javascript:goPage(${paging.prevPageNo})" class="prev">이전 페이지</a>
+    <span>
+        <c:forEach var="i" begin="${paging.startPageNo}" end="${paging.endPageNo}" step="1">
+            <c:choose>
+                <c:when test="${i eq paging.pageNo}"><a href="javascript:goPage(${i})" class="choice">${i}</a></c:when>
+                <c:otherwise><a href="javascript:goPage(${i})">${i}</a></c:otherwise>
+            </c:choose>
+        </c:forEach>        
+    </span>
+    <a href="javascript:goPage(${paging.nextPageNo})" class="next">다음 페이지</a>
+    <a href="javascript:goPage(${paging.finalPageNo})" class="last">마지막 페이지</a>
+</div>
+</c:if>
 			
 			</div>
 				
 				
-			</div>
+			
 	</form>
 	</section> 
 	</section>

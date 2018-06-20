@@ -45,24 +45,24 @@ public class ExcelFormAction implements Action {
 			//최초 실행 시 모두 널 값
 		}
 		else if(repa_s_date!=null && repa_e_date!=null && mem_id.equals("") && car_reg_no.equals("")){//운행기간만 입력할 경우
-			System.out.println("운행기간만 입력");
-			List<CarviewVO> carlogAllList = vDao.selectDate(repa_s_date,repa_e_date);
+			System.out.println("엑셀출력:운행기간만 입력");
+			List<CarviewVO> carlogAllList = vDao.selectDateEx(repa_s_date,repa_e_date);
 			request.setAttribute("carlogAllList", carlogAllList);
 		}
 		
 		else if(repa_s_date!=null && repa_e_date!=null && mem_id.equals("") && car_reg_no!=null){
 			System.out.println("운행기간,차량등록 번호 입력"); //운행기간, 차량등록번호 입력
-			List<CarviewVO> carlogAllList = vDao.selectDateCar(repa_s_date,repa_e_date,car_reg_no);
+			List<CarviewVO> carlogAllList = vDao.selectDateCarEx(repa_s_date,repa_e_date,car_reg_no);
 			request.setAttribute("carlogAllList", carlogAllList);
 		}
 		else if(repa_s_date!=null && repa_e_date!=null && mem_id != null && car_reg_no.equals("")){
 			System.out.println("운행기간,사원이름 입력");//운행기간 사원이름 입력
-			List<CarviewVO> carlogAllList = vDao.selectDateMem(repa_s_date,repa_e_date,mem_id);
+			List<CarviewVO> carlogAllList = vDao.selectDateMemEx(repa_s_date,repa_e_date,mem_id);
 			request.setAttribute("carlogAllList", carlogAllList);
 		}
 		else{ //모두 입력 시 
 			System.out.println("모두 입력됨");
-			List<CarviewVO> carlogAllList = vDao.selectAll(repa_s_date,repa_e_date,car_reg_no, mem_id);
+			List<CarviewVO> carlogAllList = vDao.selectAllEx(repa_s_date,repa_e_date,car_reg_no, mem_id);
 		request.setAttribute("carlogAllList", carlogAllList);
 		}
 		
