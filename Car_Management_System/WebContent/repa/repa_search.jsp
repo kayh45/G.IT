@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, user-scalable=no">
 <title>법인차량관리시스템</title>
-<script type="text/javascript" src="js/repa.js?ver=1"></script>
+<script type="text/javascript" src="js/repa.js?ver=2"></script>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/jquery.schedule.css" rel="stylesheet">
 <link href="css/jquery-ui.css" rel="stylesheet">
@@ -94,10 +94,16 @@
 					<input type = "hidden" name ="temp_repa_cont" value="false">
 					<input type = "hidden" name ="temp_repa_divi" value="false">
 				<tr>
+							<td class="form_label">
+						<p class="label">차 종</p>
+					</td>
+					<td class="form_normal-td"><input type="text"
+						class="form_textbox" id="car_model" name="car_model" value="${car_model}" readonly>
+							</button>	</td>
 					<td class="form_label">
 						<p class="label">차량 등록 번호</p>
 					</td>
-					<td class="form_normal-td" colspan="3"><input type="text"
+					<td class="form_normal-td"><input type="text"
 						class="form_textbox" id="car_reg_no" name="car_reg_no" value="${ car_reg_no}">
 							<input type = "hidden" name = "car_reg_no_ok" value = "0">
 						<button type = "button" onClick = "carNoCheck();" class = "quiet_btn" id = "idCheck">

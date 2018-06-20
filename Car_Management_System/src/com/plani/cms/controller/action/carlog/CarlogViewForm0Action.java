@@ -13,6 +13,7 @@ import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.CarviewDAO;
 import com.plani.cms.dto.CarviewVO;
 import com.plani.cms.dto.MemberVO;
+import com.plani.cms.dto.Paging;
 
 public class CarlogViewForm0Action implements Action {
 
@@ -24,7 +25,8 @@ public class CarlogViewForm0Action implements Action {
 		HttpSession session = request.getSession();
 		MemberVO logSession = (MemberVO)session.getAttribute("LoginUser");
 		String mem_id = logSession.getMem_id();
-		
+		int count = 0;
+
 		
 		
 		System.out.println("배차 신청 날짜 :"+ repa_s_date);
@@ -34,7 +36,16 @@ public class CarlogViewForm0Action implements Action {
 		request.setAttribute("repa_e_date", repa_e_date);
 		
 		CarviewDAO vDao = CarviewDAO.getInstance();
-
+		int page = 1;
+		if (request.getParameter("page") != null) {
+			page = Integer.parseInt(request.getParameter("page"));
+			System.out.println("현재 페이지:" + page);
+		}
+		Paging paging = new Paging();
+		paging.setPageNo(page);
+		paging.setPageSize(10);
+		// paging.setTotalCount(44);
+		// List<CarviewVO> list = vDao.selectAllCarview(page);
 
 		if(repa_s_date==null && repa_e_date==null ){
 			//최초 실행 시 모두 널 값
@@ -42,10 +53,14 @@ public class CarlogViewForm0Action implements Action {
 
 		else{ //모두 입력 시 
 			System.out.println("모두 입력됨");
-			List<CarviewVO> carlogAllList = vDao.selectDateCar0(repa_s_date,repa_e_date,mem_id);
-		request.setAttribute("carlogAllList", carlogAllList);
+			List<CarviewVO> carlogAllList = vDao.selectDateCar0(repa_s_date,repa_e_date,mem_id,page);
+			count = vDao.selectDateCar0(repa_s_date, repa_e_date,mem_id);
+			paging.setTotalCount(count);
+			System.out.println("카운트" + count);
+			request.setAttribute("count", count);
+			request.setAttribute("carlogAllList", carlogAllList);
+			request.setAttribute("paging", paging);
 		}
-		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 

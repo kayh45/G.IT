@@ -37,12 +37,22 @@ div .box button{
 <c:if test = "${LoginUser.mem_auth eq 0}">
       <% 
          response.sendRedirect("carlog.do?command=carlog_view_form_0");    
+         request.setCharacterEncoding("UTF-8");
       %>
    </c:if>
-
+<script type="text/javascript">
+function goPage(i) {
+	 var url = "carlog.do?command=carlog_view_form&page="+i;
+		document.frm.action=url; 	
+		document.frm.submit();
+	
+}
+	</script>
 
 	<header> <%@ include file="../header.jsp"%>
 	<!-- 헤더 --> </header>
+
+
 	<section id="main"> <aside id="side"> <%@ include file="sideMenu.jsp"%> </aside>
 	<script type = "text/javascript" src="js/jquery-ui.js"></script>
 		<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
@@ -125,7 +135,7 @@ div .box button{
 		</div>
 			<div class = "content_cont-box"
 			id="content_cont-box1" style=display:block;>
-				<p class = "search-result_label" >조회 리스트</p>
+				<p class = "search-result_label" >조회 리스트: ${count}개</p>
 
 				<table class = "table table-condensed table-bordered" >					
 					<thead>
@@ -183,13 +193,22 @@ div .box button{
 				
 					</c:forEach>
 				</table>
-				<jsp:include page="paging.jsp">
-        <jsp:param value="${paging.page}" name="page"/>
-        <jsp:param value="${paging.beginPage}" name="begin"/>
-        <jsp:param value="${paging.endPage}" name="end"/>
-        <jsp:param value="${paging.prev}" name="prev"/>
-        <jsp:param value="${paging.next}" name="next"/>
-</jsp:include>
+				<c:if test = "${paging.finalPageNo ne null}">
+		<div class="paginate">
+    <a href="javascript:goPage(${paging.firstPageNo})" class="first">처음 페이지</a>
+    <a href="javascript:goPage(${paging.prevPageNo})" class="prev">이전 페이지</a>
+    <span>
+        <c:forEach var="i" begin="${paging.startPageNo}" end="${paging.endPageNo}" step="1">
+            <c:choose>
+                <c:when test="${i eq paging.pageNo}"><a href="javascript:goPage(${i})" class="choice">${i}</a></c:when>
+                <c:otherwise><a href="javascript:goPage(${i})">${i}</a></c:otherwise>
+            </c:choose>
+        </c:forEach>        
+    </span>
+    <a href="javascript:goPage(${paging.nextPageNo})" class="next">다음 페이지</a>
+    <a href="javascript:goPage(${paging.finalPageNo})" class="last">마지막 페이지</a>
+</div>
+</c:if>
 
 
 			<div class="box">

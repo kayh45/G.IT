@@ -31,10 +31,11 @@
 			document.frm.repa_s_date.value.focus();
 			return false;
 		}
-			else if(car_reg_no !="" &&car_reg_no_ok== 0){
+		/*	else if(car_reg_no !="" &&car_reg_no_ok == 0){
 				alert("차량 등록 번호 돋보기를 클릭하세요.");
 				return false;
-		}else {
+		}*/
+			else {
 			return true;
 		}
 	}

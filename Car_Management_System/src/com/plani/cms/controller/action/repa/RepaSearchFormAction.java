@@ -22,18 +22,21 @@ public class RepaSearchFormAction implements Action {
 		String car_reg_no = request.getParameter("car_reg_no");
 		String cent_no = request.getParameter("cent_no");
 		String cent_name = request.getParameter("cent_name");
+		String car_model = request.getParameter("car_model");
 		
 		System.out.println("배차 신청 날짜 :"+ repa_s_date);
 		System.out.println("배차 종료 날짜 :"+ repa_e_date);
 		System.out.println("정비소번호 :"+ cent_no);
 		System.out.println("차량 번호 :"+ car_reg_no);
 		System.out.println("정비소 명 :"+ cent_name);
+		System.out.println("차 종 :"+ car_model);
 		
 		request.setAttribute("repa_s_date", repa_s_date);
 		request.setAttribute("repa_e_date", repa_e_date);
 		request.setAttribute("cent_no", cent_no);
 		request.setAttribute("car_reg_no", car_reg_no);
 		request.setAttribute("cent_name", cent_name);
+		request.setAttribute("car_model", car_model);
 		
 		RepaDAO rDao = RepaDAO.getInstance();
 
