@@ -50,25 +50,25 @@
 			<div class = "row qLink_grp">
 				<div class = "col-md-3 col-xs-6">
 					<div class = "content_cont-box qLink_button" onclick = "location.href='place.do?command=place_write_form'">
-						<img src = "img/temp_icon.png" width = "200">
+						<img src = "img/car_icon.png" width = "200">
 						<p>장소 등록</p>
 					</div>
 				</div>
 				<div class = "col-md-3 col-xs-6">
 					<div class = "content_cont-box qLink_button" onclick = "location.href='car.do?command=car_write_form'">
-						<img src = "img/temp_icon.png" width = "200">
+						<img src = "img/car_icon.png" width = "200">
 						<p>법인 차 등록</p>
 					</div>
 				</div>
 				<div class = "col-md-3 col-xs-6">
 					<div class = "content_cont-box qLink_button" onclick = "location.href='member.do?command=member_write_form'">
-						<img src = "img/temp_icon.png" width = "200">
+						<img src = "img/car_icon.png" width = "200">
 						<p>사원 등록</p>
 					</div>
 				</div>
 				<div class = "col-md-3 col-xs-6">
 					<div class = "content_cont-box qLink_button" onclick = "location.href='carlog.do?command=carlog_auto_write_form'">
-						<img src = "img/temp_icon.png" width = "200">
+						<img src = "img/car_icon.png" width = "200">
 						<p>운행일지 일괄작성</p>
 					</div>
 				</div>

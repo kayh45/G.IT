@@ -115,14 +115,15 @@ function goPage(i) {
 					<td class="form_label">
 						<p class="label">사원 이름</p>
 					</td>
-					<td class="form_normal-td" colspan="3"><input type="text"
-						class="form_textbox" id="mem_name" name="mem_name" value="${mem_name}" readonly>
+					<td class="form_normal-td" colspan="3">
+					<input type="text" class="form_textbox" id="mem_name" name="mem_search_name" value="${mem_name}" readonly>
 						<button type = "button" onClick = "memSearchByName();" class = "quiet_btn" id = "idCheck">
 								<span id ="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span>
-							</button>	</td>
+						</button>	
+						<input type="hidden" class="form_textbox" id="mem_id" name="mem_id" value="${mem_id}">
+					</td>
 							
-							<input type="hidden"
-						class="form_textbox" id="mem_id" name="mem_id" value="${mem_id}">
+							
 							
 							
 				</tr>

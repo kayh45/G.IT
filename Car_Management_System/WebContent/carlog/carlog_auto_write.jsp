@@ -101,6 +101,10 @@
 		<p class="content_cont-text">* 출·퇴근 경로 정보</p>
 			<p class="content_cont-text"></p>
 			<input name="cour_no" type="hidden" class="form_textbox">
+			<input name="s_place_divi" type="hidden" class="form_textbox">
+			<input name="e_place_divi" type="hidden" class="form_textbox">
+			<input name="driv_divi" type="hidden" class="form_textbox">
+			
 			<table class="table table-bordered" id="form_table">
 
 				<tr>
