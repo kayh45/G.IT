@@ -12,6 +12,14 @@ import com.plani.cms.dto.DeptVO;
 import com.plani.cms.dto.MemberVO;
 import com.plani.cms.util.DBManager;
 
+/**
+ * 사원 정보 등록, 수정, 삭제, 조회 등의
+ * 기능을 수행하기위한
+ * DAO 클래스
+ * 
+ * @author kayh45
+ *
+ */
 public class MemberDAO {
 
 	private static MemberDAO instance = new MemberDAO();
@@ -20,12 +28,17 @@ public class MemberDAO {
 		return instance;
 	} // Singleton 패턴		
 	
-	
+
+/**
+ * 비밀번호 수정 메소드
+ * 사원 아이디와 변경할 비밀번호를 MemberVO 객체로 받아와서 변경
+ * 	
+ * @param mVo
+ */
 	public void passwordUpdate(MemberVO mVo) {
-		/**
-		 * 사원 수정
-		 **/
-		String sql = "UPDATE mem SET mem_pw = ? where mem_id = ?";
+		String sql = "UPDATE mem"
+				   + "   SET mem_pw = ? "
+				   + " WHERE mem_id = ? ";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -47,16 +60,21 @@ public class MemberDAO {
 
 		}
 	}
-	
+
+	/**
+	 * 사원 등록 메소드
+	 * 사원 정보를 MemberVO 객체로 받아와서 입력
+	 * 
+	 * @MemberWriteAction 클래스에서 사용 
+	 * 
+	 * @param mVo
+	 */
 	public void memberInsert(MemberVO mVo) {
-		/**
-		 * 사원 등록
-		 * 사원정보를 받아와서 입력시킴
-		 * @MemberWriteAction 에서 사용
-		 **/
-		String sql = "insert into mem(mem_id, mem_pw, mem_name, mem_jumin, mem_p_no, mem_addr, mem_addr_dtl, mem_hp"
-				+ ", mem_posi, mem_auth, dept_no)"
-				+ " values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		
+		String sql = "INSERT INTO mem(mem_id, mem_pw, mem_name, mem_jumin"
+   				   + "              , mem_p_no, mem_addr, mem_addr_dtl, mem_hp"
+   				   + "              , mem_posi, mem_auth, dept_no)"
+   				   + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -87,13 +105,25 @@ public class MemberDAO {
 
 		}
 	}
-	
+	/**
+	 * 사원 정보 수정 메소드
+	 * 사원 정보를 MemberVO 객체로 받아와서 수정
+	 * 
+	 * 
+	 * @param mVo
+	 */
 	public void memberUpdate(MemberVO mVo) {
-		/**
-		 * 사원 수정
-		 **/
-		String sql = "UPDATE mem SET mem_name = ?, mem_jumin = ?, mem_p_no = ?, mem_addr = ?"
-				+ ", mem_addr_dtl = ?, mem_hp = ?, mem_posi = ?, mem_auth = ?, dept_no =?  where mem_id = ?";
+		String sql = "UPDATE mem "
+				   + "   SET mem_name = ?"
+				   + "     , mem_jumin = ?"
+				   + "     , mem_p_no = ?"
+				   + "     , mem_addr = ?"
+				   + "     , mem_addr_dtl = ?"
+				   + "     , mem_hp = ?"
+				   + "     , mem_posi = ?"
+				   + "     , mem_auth = ?"
+				   + "     , dept_no = ?"
+				   + " WHERE mem_id = ?";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -124,13 +154,17 @@ public class MemberDAO {
 		}
 	}
 	
+	/**
+	 * 사원 정보 삭제 메소드
+	 * 사원 아이디 (mem_id)를 매개변수를 받아서
+	 * 해당 사원 정보를 삭제
+	 * 
+	 * @param mem_id
+	 */
 	public void memberDelete(String mem_id) {
-		/**
-		 * 부서 수정 -> TODO 사원 삭제로 바꿔야됨 TODO
-		 * 부서 번호와 부서명을 받아와서 수정
-		 * @DeptModifyAction 에서 사용
-		 **/
-		String sql = "DELETE FROM mem WHERE mem_id = ?";
+
+		String sql = "DELETE mem "
+				   + " WHERE mem_id = ?";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
