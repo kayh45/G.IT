@@ -11,17 +11,30 @@ import java.util.*;
 import com.plani.cms.util.DBManager;
 import com.plani.cms.dto.CarVO;
 import com.plani.cms.dto.CarexVO;
-
+/**
+ * 
+ * 법인 차량 등록, 수정, 삭제, 조회를 할 수 있는 클래스(싱글톤)
+ * 
+ * @author 조성철
+ *
+ */
 public class CarDAO {
 	private static CarDAO instance = new CarDAO();
 
 	public static CarDAO getInstance() {
 		return instance;
 	}
-
+	
+	/**
+	 * 법인 차량 전체 조회 메소드(PK 기준 내림 차순 정렬)
+	 * 
+	 * @return : 차량 리스트
+	 */
 	public List<CarVO> selectAllCar() {
 
-		String sql = "select * from car order by car_reg_no desc";
+		String sql = "SELECT c.* "
+				   + "  FROM car c "
+				   + " ORDER BY c.CAR_REG_NO DESC";
 
 		List<CarVO> list = new ArrayList<CarVO>();
 		Connection conn = null;
@@ -63,6 +76,7 @@ public class CarDAO {
 		}
 		return list;
 	}
+	
 	
 	public List<CarexVO> selectExpenCarOnlydate(String date_s, String date_e) {
 		
@@ -145,11 +159,17 @@ public class CarDAO {
 	}
 
 	
-	
+	/**
+	 * 법인 차량 번호 키워드로 검색할 수 있는 메소드
+	 * 
+	 * @param car_reg_no : 법인 차량 번호
+	 * @return			 : 법인 차량 리스트
+	 */
 	
 	public List<CarVO> carSearchByNameLike(String car_reg_no) {
-		String sql = "select * from car"
-				+ " where car_reg_no like '%" + car_reg_no + "%'";
+		String sql = "SELECT c.*"
+				   + "	FROM car c"
+				   + " WHERE c.CAR_REG_NO LIKE '%" + car_reg_no + "%'";
 
 		Connection conn = null;
 		Statement stmt = null;
@@ -193,10 +213,17 @@ public class CarDAO {
 		return list;
 	}
 	
+	/**
+	 * 법인 차 중 구매차(자차) 데이터를 등록하는 메소드
+	 * 
+	 * @param cVo : 법인차 객체
+	 * @return	  : 성공 여부에 따라 -1 또는 1 반환
+	 */
 	public int insertCar_payCar(CarVO cVo) {
 		int result = -1;
-		String sql = "insert into car(car_reg_no, car_divi, car_model,"
-				+ "bo_name,bo_divi,bo_age,bo_s_date,bo_e_date,total_dist) values(?,?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO car (CAR_REG_NO, CAR_DIVI, CAC_MODEL, BO_NAME, BO_DIVI,"
+				   + "                 BO_AGE, BO_S_DATE, BO_E_DATE, TOTAL_DIST) "
+				   + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -223,10 +250,16 @@ public class CarDAO {
 		}
 		return result;
 	}
-
+	
+	/**
+	 * 법인 차 중 렌트차 데이터를 등록하는 메소드
+	 * @param cVo
+	 */
 	public void insertCar_rentalCar(CarVO cVo) {
-		String sql = "insert into car(car_reg_no, car_divi, car_model, ct_date, ep_date,"
-				+ "co_name,co_tel,co_fax,bo_name,bo_divi,bo_age,bo_s_date,bo_e_date,total_dist) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO car (CAR_REG_NO, CAR_DIVI, CAR_MODEL, CT_DATE, EP_DATE"
+				   + "               , CO_NAME, CO_TEL, CO_FAX, BO_NAME, BO_DIVI, BO_AGE"
+				   + "				 , BO_S_DATE, BO_E_DATE, TOTAL_DIST)"
+				   + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -251,18 +284,38 @@ public class CarDAO {
 			pstmt.setInt(14, cVo.getTotal_dist());
 
 			pstmt.executeUpdate();
+		
 		} catch (SQLException e) {
+		
 			e.printStackTrace();
+		
 		} finally {
+		
 			DBManager.close(conn, pstmt);
+		
 		}
 	}
 	
+	/**
+	 * 법인 차 중 렌트카의 데이터를 수정하는 메소드
+	 * @param cVo : cVo 객체
+	 */
 	public void updateCar_rentalCar(CarVO cVo) {
-		String sql = "update car set car_divi=?, car_model=?,"
-				+ "ct_date=?,ep_date=?,co_name=?,co_tel=?,co_fax=?,"
-				+ "bo_name=?, bo_divi=?, bo_age=?,bo_s_date=?,bo_e_date=?,total_dist=? "
-				+ "where car_reg_no=?";
+		String sql = "UPDATE car c"
+				   + "   SET c.CAR_DIVI = ?"
+				   + "	   , c.CAR_MODEL = ?"
+				   + "	   , c.CT_DATE = ?"
+				   + "	   , c.EP_DATE = ?"
+				   + "     , c.CO_NAME = ?"
+				   + " 	   , c.CO_TEL = ?"
+				   + "	   , c.CO_FAX = ?"
+				   + "     , c.BO_NAME = ?"
+				   + "	   , c.BO_DIVI = ?"
+				   + "	   , c.BO_AGE = ?"
+				   + "	   , c.BO_S_DATE = ?"
+				   + "     , c.BO_E_DATE = ?"
+				   + "     , c.TOTAL_DIST = ?"
+				   + "  WHERE c.CAR_REG_NO = ?";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -287,16 +340,33 @@ public class CarDAO {
 			pstmt.setString(14, cVo.getCar_reg_no());
 
 			pstmt.executeUpdate();
+		
 		} catch (SQLException e) {
+		
 			e.printStackTrace();
+		
 		} finally {
+		
 			DBManager.close(conn, pstmt);
+		
 		}
 	}
+	
+	/**
+	 * 법인 차 중 구매차의 데이터를 수정하는 메소드
+	 * @param cVo : cVo 객체
+	 */
 	public void updateCar_payCar(CarVO cVo) {
-		String sql = "update car set car_divi=?, car_model=?,"
-				+ "bo_name=?, bo_divi=?, bo_age=?,bo_s_date=?,bo_e_date=?,total_dist=? "
-				+ "where car_reg_no=?";
+		String sql = "UPDATE car c"
+				   + "   SET c.CAR_DIVI = ?"
+				   + "	   , c.CAR_MODEL = ?"
+				   + "     , c.BO_NAME = ?"
+				   + "	   , c.BO_DIVI = ?"
+				   + "	   , c.BO_AGE = ?"
+				   + "	   , c.BO_S_DATE = ?"
+				   + "     , c.BO_E_DATE = ?"
+				   + "     , c.TOTAL_DIST = ?"
+				   + "  WHERE c.CAR_REG_NO = ?";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -323,9 +393,14 @@ public class CarDAO {
 		}
 	}
 	
+	/**
+	 * 법인 차 데이터를 삭제하는 메소드
+	 * @param car_reg_no : 법인차량번호
+	 */
 	public void DeleteCar(String car_reg_no) {
 
-		String sql = "DELETE FROM car WHERE car_reg_no = ?";
+		String sql = "DELETE FROM car c"
+				   + " WHERE c.CAR_REG_NO = ?";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -346,10 +421,20 @@ public class CarDAO {
 
 		}
 	}
+	
+	/**
+	 * 법인 차 번호를 조회하여 법인 차 데이터가 있는지 없는지 조회하는 메소드
+	 * 
+	 * @param car_reg_no : 법인 차 번호
+	 * @return			 : 데이터 null : 0 : 데이터 존재 : 1 : 데이터 없음 : -1
+	 */
 	public int confirmCarNo(String car_reg_no) {
 		
 		int result = -1;
-		String sql = "select car_reg_no from car where car_reg_no=?";
+		
+		String sql = "SELECT c.CAR_REG_NO "
+				   + "  FROM car c "
+				   + " WHERE c.CAR_REG_NO = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -364,17 +449,25 @@ public class CarDAO {
 			rs = pstmt.executeQuery();
 
 			if (car_reg_no.equals("")) {
-				result = 0;
+				// 데이터 NULL
+				result = 0; 
+		
 			} else if(rs.next()) {
-				result = 1; // 데이터 존재.
-			System.out.println(result +":통과");
+				// 데이터 존재.
+				result = 1;
+				System.out.println(result +":통과");
+			
 			} else {
+				// 데이터 없음
 				result = -1;
 			}
-		}// 데이터 없음.
+		}
+		
 		catch (Exception e) {
 			e.printStackTrace();
+		
 		} finally {
+		
 			try {
 				if (rs != null)
 					rs.close();
@@ -382,13 +475,14 @@ public class CarDAO {
 					pstmt.close();
 				if (conn != null)
 					conn.close();
+			
 			} catch (Exception e) {
+			
 				e.printStackTrace();
+			
 			}
 		}
+		
 		return result;
 	}
 }
-
-
-	
