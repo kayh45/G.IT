@@ -109,7 +109,6 @@ public class MemberDAO {
 	 * 사원 정보 수정 메소드
 	 * 사원 정보를 MemberVO 객체로 받아와서 수정
 	 * 
-	 * 
 	 * @param mVo
 	 */
 	public void memberUpdate(MemberVO mVo) {
@@ -185,12 +184,17 @@ public class MemberDAO {
 
 		}
 	}
-	
+
+	/**
+	 * 로그인 검사를 위한 메소드
+	 * 
+	 * @LoginAction 에서 사용
+	 * 
+	 * @param mVo
+	 * @return 로그인 성공 시 1, 실패 시 0, 비정상적 수행 시 -1
+	 */
 	public int loginCheck(MemberVO mVo) {
-		/**
-		 * 로그인 검사를 위한 메소드
-		 * @LoginAction 에서 사용
-		 **/
+		
 		String sql = "SELECT mem_pw FROM mem WHERE mem_id = '" + mVo.getMem_id() + "'";
 
 		Connection conn = null;
@@ -220,12 +224,17 @@ public class MemberDAO {
 		return -1;
 	}
 	
+	/**
+	 * 로그인 세션 정보를 받아오기 위한 메소드
+	 * 비밀번호는 받지 않는다(보안을 위해)
+	 * 
+	 * @LoginAction 에서 사용
+	 * 
+	 * @param tempVo
+	 * @return 로그인 한 사원의 정보를 가지고 있는 객체를 리턴
+	 */
 	public MemberVO getMemberInfoAll(MemberVO tempVo) {
-		/**
-		 * 로그인 세션 정보를 받아오기 위한 메소드
-		 * 비밀번호는 받지 않는다(보안을 위해)
-		 * @LoginAction 에서 사용
-		 **/
+
 		String sql = "SELECT * FROM mem m inner join dept d on m.dept_no = d.dept_no"
 				+ " WHERE m.mem_id = '" + tempVo.getMem_id() + "'";
 
@@ -261,11 +270,16 @@ public class MemberDAO {
 		return mVo;
 	}
 	
+	/**
+	 * 사원 등록 시 아이디 중복 체크를 하기 위하여
+	 * DB에서 해당 id와 같은 id가 존재하는지 확인
+	 * 
+	 * @param id : String - 가입 시 사용할 id
+	 * 
+	 * @return 이미 값이 존재하면 1, 존재 하지 않으면 0, 비정상적 수행 시 -1을 리턴
+	 */
 	public int idDupCheck(String id) {
-		/**
-		 * 로그인 검사를 위한 메소드
-		 * @LoginAction 에서 사용
-		 **/
+		
 		String sql = "SELECT * FROM mem WHERE mem_id = '" + id + "'";
 
 		Connection conn = null;
@@ -290,6 +304,15 @@ public class MemberDAO {
 		return -1; // 비정상적 리턴
 	}
 	
+	/**
+	 * 사원 정보를 검색하기 위해 사원 이름 키워드를 매개변수로 받아와
+	 * DB에서 LIKE 연산자를 이용해 이름에 그 키워드가 있는 사원 정보를
+	 * 목록으로 반환 
+	 * 
+	 * 
+	 * @param name : String - 검색에 사용할 키워드
+	 * @return 사원 정보(MemeverVO) 객체가 담긴 리스트를 리턴, 찾는 값이 없으면 빈 리스트를 리턴
+	 */
 	public List<MemberVO> memberSearchByName(String name) {
 		/**
 		 * 사원 이름에 대한 부분일치 검색
