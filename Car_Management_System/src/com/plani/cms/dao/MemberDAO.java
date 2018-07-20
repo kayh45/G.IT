@@ -195,7 +195,9 @@ public class MemberDAO {
 	 */
 	public int loginCheck(MemberVO mVo) {
 		
-		String sql = "SELECT mem_pw FROM mem WHERE mem_id = '" + mVo.getMem_id() + "'";
+		String sql = "SELECT mem_pw "
+				+ "     FROM mem "
+				+ "    WHERE mem_id = '" + mVo.getMem_id() + "'";
 
 		Connection conn = null;
 		Statement stmt = null;
@@ -235,8 +237,10 @@ public class MemberDAO {
 	 */
 	public MemberVO getMemberInfoAll(MemberVO tempVo) {
 
-		String sql = "SELECT * FROM mem m inner join dept d on m.dept_no = d.dept_no"
-				+ " WHERE m.mem_id = '" + tempVo.getMem_id() + "'";
+		String sql = "SELECT * "
+				+ "     FROM mem m INNER JOIN dept d "
+				+ "       ON m.dept_no = d.dept_no"
+				+ "    WHERE m.mem_id = '" + tempVo.getMem_id() + "'";
 
 		Connection conn = null;
 		Statement stmt = null;
@@ -280,7 +284,9 @@ public class MemberDAO {
 	 */
 	public int idDupCheck(String id) {
 		
-		String sql = "SELECT * FROM mem WHERE mem_id = '" + id + "'";
+		String sql = "SELECT * "
+				+ "     FROM mem "
+				+ "    WHERE mem_id = '" + id + "'";
 
 		Connection conn = null;
 		Statement stmt = null;
@@ -318,8 +324,10 @@ public class MemberDAO {
 		 * 사원 이름에 대한 부분일치 검색
 		 * @MemberSearchAction 에서 사용
 		 **/
-		String sql = "select * from mem m inner join dept d on m.dept_no = d.dept_no"
-				+ " where mem_name like '%" + name + "%'";
+		String sql = "SELECT * "
+				+ "     FROM mem m INNER JOIN dept d "
+				+ "       ON m.dept_no = d.dept_no"
+				+ "    WHERE mem_name like '%" + name + "%'";
 
 		Connection conn = null;
 		Statement stmt = null;
