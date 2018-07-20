@@ -10,6 +10,13 @@ import java.util.*;
 import com.plani.cms.dto.DeptVO;
 import com.plani.cms.util.DBManager;
 
+/**
+ * 부서의 등록, 수정, 삭제, 조회 등의 기능을 지원하는 
+ * DAO 클래스
+ * 
+ * @author PC38219
+ *
+ */
 public class DeptDAO {
 
 	private static DeptDAO instance = new DeptDAO();
@@ -18,12 +25,13 @@ public class DeptDAO {
 		return instance;
 	} // Singleton 패턴
 
+	/**
+	 * 부서 정보를 등록
+	 * 
+	 * @param dVo : 등록하고자 하는 부서 정보가 담긴 객체
+	 */
 	public void deptInsert(DeptVO dVo) {
-		/**
-		 * 부서 등록
-		 * 부서명만 받아와서 등록시킴
-		 * @DeptWriteAction 에서 사용
-		 **/
+
 		String sql = "insert into dept(dept_name) values(?)";
 
 		Connection conn = null;
@@ -46,13 +54,16 @@ public class DeptDAO {
 		}
 	}
 	
+	/**
+	 * 등록되어있는 부서 정보를 수정
+	 * 
+	 * @param dVo : 조회에 사용되는 부서 번호와 바꾸고자하는 부서 명을 가지고 있는 부서 객체
+	 */
 	public void deptUpdate(DeptVO dVo) {
-		/**
-		 * 부서 수정
-		 * 부서 번호와 부서명을 받아와서 수정
-		 * @DeptModifyAction 에서 사용
-		 **/
-		String sql = "UPDATE dept SET dept_name = ? where dept_no = ?";
+		
+		String sql = "UPDATE dept "
+				+ "      SET dept_name = ? "
+				+ "    WHERE dept_no = ?";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -75,13 +86,15 @@ public class DeptDAO {
 		}
 	}
 	
+	/**
+	 * 등록되어있는 부서 정보 하나를 삭제
+	 * 
+	 * @param dept_no : 삭제하고자하는 부서의 부서번호
+	 */
 	public void deptDelete(int dept_no) {
-		/**
-		 * 부서 삭제
-		 * 부서 번호를 받아와서 삭제
-		 * @DeptModifyAction 에서 사용
-		 **/
-		String sql = "DELETE FROM dept WHERE dept_no = ?";
+		
+		String sql = "DELETE dept "
+				+ "    WHERE dept_no = ?";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -103,12 +116,19 @@ public class DeptDAO {
 		}
 	}
 
+	/**
+	 * 부서명에 대한 완전일치 검색
+	 * 부서 등록 및 수정 시 중복 체크용으로 사용
+	 * 
+	 * @param name : 검색하고자 하는 부서 이름
+	 * 
+	 * @return 부서명이 완전 일치하는 부서 객체
+	 */
 	public DeptVO deptSearchByName(String name) {
-		/**
-		 * 부서명에 대한 완전일치 검색
-		 * @DeptWriteCheckFormAction 에서 사용
-		 **/
-		String sql = "select * from dept where dept_name = '" + name + "'";
+		
+		String sql = "SELECT * "
+				+ "     FROM dept "
+				+ "    WHERE dept_name = '" + name + "'";
 
 		Connection conn = null;
 		Statement stmt = null;
@@ -133,12 +153,19 @@ public class DeptDAO {
 		return dVo;
 	}
 	
+	/**
+	 * 부서명에 대한 부분일치 검색
+	 * 부서 검색 등에 사용
+	 * 
+	 * @param name : 검색하고자 하는 부서 이름
+	 * 
+	 * @return 검색 결과로 나온 부서의 목록을 List 타입으로 리턴
+	 */
 	public List<DeptVO> deptSearchByNameLike(String name) {
-		/**
-		 * 부서명에 대한 부분일치 검색
-		 * @DeptWriteCheckFormAction 에서 사용
-		 **/
-		String sql = "select * from dept where dept_name like '%" + name + "%'";
+		
+		String sql = "SELECT *    "
+				+ "     FROM dept "
+				+ "    WHERE dept_name LIKE '%" + name + "%'";
 
 		Connection conn = null;
 		Statement stmt = null;

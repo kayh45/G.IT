@@ -11,6 +11,13 @@ import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.DeptDAO;
 import com.plani.cms.dto.DeptVO;
 
+/**
+ * 부서 정보 삭제 기능을 구현한 액션 클래스
+ * 모든 기능 수행 후 dept_write_form 액션으로 이동
+ * 
+ * @author 강현
+ *
+ */
 public class DeptDeleteAction implements Action {
 
 	@Override

@@ -77,23 +77,17 @@ import com.plani.cms.controller.action.reserve.ReserveViewScheduleAction;
 import com.plani.cms.controller.action.reserve.ReserveWriteAction;
 import com.plani.cms.controller.action.reserve.ReserveWriteFormAction;
 
-/* ===============================================
- * 
- * 
- * 	ActionFactory
- * 
- * 		설명: request로 받아온 parameter중에 command의 값으로 각 액션을 분기한다.
- * 
- * 		작성자 : 강현
- * 
- * 		작성일 : 2018.5.9
- * 
- * 		참고 : action추가 시 최대한 기능별로 정렬될 수 있도록 한다.
- * 			  수정이 잦은 class이므로 주의하여 편집!!
- *
- *
- *==================================================*/
 
+/**
+ * request로 받아온 매개변수의 command의 값으로 
+ * 각 기능을 수행할 액션을 분기하는 클래스
+ * <br>
+ * action추가 시 최대한 기능별로 정렬될 수 있도록 한다.
+ * 수정이 잦은 class이므로 주의하여 편집!!
+ * 
+ * @author 강현
+ *
+ */
 public class ActionFactory {
 
 	private static ActionFactory instance = new ActionFactory();

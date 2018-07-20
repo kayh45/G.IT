@@ -7,6 +7,15 @@ import java.sql.Statement;
 import com.plani.cms.dto.DeptVO;
 import com.plani.cms.util.DBManager;
 
+/**
+ * 메인 화면에서의 기능을 지원하는 
+ * DAO 클래스
+ * 
+ * 
+ * @author 강현
+ * 
+ *
+ */
 public class MainDAO {
 
 	private static MainDAO instance = new MainDAO();

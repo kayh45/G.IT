@@ -13,11 +13,10 @@ import com.plani.cms.dto.MemberVO;
 import com.plani.cms.util.DBManager;
 
 /**
- * 사원 정보 등록, 수정, 삭제, 조회 등의
- * 기능을 수행하기위한
+ * 사원 정보 등록, 수정, 삭제, 조회 등의 기능을 지원하는
  * DAO 클래스
  * 
- * @author kayh45
+ * @author 강현
  *
  */
 public class MemberDAO {
