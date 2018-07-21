@@ -13,6 +13,13 @@ import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.PlaceDAO;
 import com.plani.cms.dto.PlaceVO;
 
+/**
+ * 도착지 기준으로 경로를 조회하는 클래스
+ * 
+ * @author CHO
+ *
+ */
+
 public class CourEPlaceWriteCheckFormAction implements Action {
 
 	@Override
@@ -32,9 +39,10 @@ public class CourEPlaceWriteCheckFormAction implements Action {
 
 		/* ------------------ place 체크----------------------- */
 		String url = "course/cour_eplace_check.jsp";
-
+		
 		List<PlaceVO> placeList = pDao.placeSearchByNameLike(place_name);
 		request.setAttribute("placeList", placeList);
+	
 		List<PlaceVO> placeAllList = pDao.selectAllPlace();
 		request.setAttribute("placeAllList", placeAllList);
 

@@ -12,21 +12,27 @@ import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.CarDAO;
 import com.plani.cms.dto.CarVO;
 
+/**
+ * 법인 차 데이터를 조회하는 액션 클래스
+ * 
+ * @author CHO
+ *
+ */
 public class CarSearchAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	String car_reg_no = null;
-		
-		if(request.getParameter("popup").equals("yes")) { // 한글로 입력 받았을 때 제대로 받을 수 있도록 하기 위함 
+		String car_reg_no = null;
+
+		// 한글로 입력 받았을 때 제대로 받을 수 있도록 하기 위함
+		if (request.getParameter("popup").equals("yes")) {
 			car_reg_no = request.getParameter("car_reg_no");
+
 		} else {
-			car_reg_no = new String(request.getParameter("car_reg_no").getBytes("8859_1"),"UTF-8");
+			car_reg_no = new String(request.getParameter("car_reg_no").getBytes("8859_1"), "UTF-8");
 		}
-		
-	
-		
-        System.out.println("레그넘 = "+ car_reg_no);
+
+		System.out.println("레그넘 = " + car_reg_no);
 		CarDAO cDao = CarDAO.getInstance();
 
 		int result = cDao.confirmCarNo(car_reg_no);
@@ -43,14 +49,17 @@ public class CarSearchAction implements Action {
 		request.setAttribute("carList", carList);
 		List<CarVO> carAllList = cDao.selectAllCar();
 		request.setAttribute("carAllList", carAllList);
-				
-		if(carList.isEmpty()) { // 부분 일치의 결과가 없는 경우
+
+		// 부분 일치의 결과가 없는 경우
+		if (carList.isEmpty()) {
 			request.setAttribute("isLike", "no");
-		} else { // 부분일치의 결과가 있는 경우			
+
+		// 부분일치의 결과가 있는 경우
+		} else {
 			request.setAttribute("isLike", "yes");
-			request.setAttribute("carList", carList);						
+			request.setAttribute("carList", carList);
 		}
-		
+
 		System.out.println(carAllList);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);

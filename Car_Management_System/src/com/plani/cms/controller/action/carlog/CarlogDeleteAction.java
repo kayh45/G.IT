@@ -10,6 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.CarlogDAO;
 
+/**
+ * 운행일지를 삭제하는 액션 클래스
+ * 
+ * @author 조성철
+ *
+ */
 public class CarlogDeleteAction implements Action{
 
 	@Override

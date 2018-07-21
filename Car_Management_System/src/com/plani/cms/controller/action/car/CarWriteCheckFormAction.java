@@ -11,7 +11,12 @@ import java.util.List;
 import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.CarDAO;
 import com.plani.cms.dto.CarVO;
-
+/**
+ * 법인 차 중복 검색 및 조회 팝업 창 기능을 하는 액션 클래스
+ * 
+ * @author 조성철
+ *
+ */
 public class CarWriteCheckFormAction implements Action {
 
 	@Override
@@ -20,8 +25,10 @@ public class CarWriteCheckFormAction implements Action {
 		
 		if(request.getParameter("popup").equals("yes")) { // 한글로 입력 받았을 때 제대로 받을 수 있도록 하기 위함 
 			car_reg_no = request.getParameter("car_reg_no");
+		
 		} else {
 			car_reg_no = new String(request.getParameter("car_reg_no").getBytes("8859_1"),"UTF-8");
+		
 		}
 		
 	

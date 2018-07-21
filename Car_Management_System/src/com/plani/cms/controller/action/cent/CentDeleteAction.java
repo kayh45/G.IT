@@ -10,7 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.CentDAO;
-
+/**
+ * 정비소를 삭제해주는 액션 클래스
+ * 
+ * @author 조성철
+ *
+ */
 public class CentDeleteAction implements Action {
 
 	@Override

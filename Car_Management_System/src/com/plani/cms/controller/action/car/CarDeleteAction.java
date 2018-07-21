@@ -9,7 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.CarDAO;
-
+/**
+ * 법인 차 데이터를 삭제하는 액션 클래스
+ * 삭제 후 등록 페이지로 이동
+ * 
+ * @author 조성철
+ *
+ */
 public class CarDeleteAction implements Action {
 
 	@Override

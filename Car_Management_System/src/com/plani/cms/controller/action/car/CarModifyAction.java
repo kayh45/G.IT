@@ -8,7 +8,13 @@ import javax.servlet.http.HttpServletResponse;
 import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.CarDAO;
 import com.plani.cms.dto.CarVO;
-
+/**
+ * 법인 차 데이터를 수정하는 액션 클래스
+ * 수정 후 등록 페이지로 이동
+ * 
+ * @author 조성철
+ *
+ */
 public class CarModifyAction implements Action{
 
 	@Override
@@ -31,9 +37,6 @@ public class CarModifyAction implements Action{
 		String bo_e_date = request.getParameter("bo_e_date");
 		String total_dist = request.getParameter("total_dist");
 
-		// 踰뺤씤李� 援щ텇�뿉 �뵲�씪 DAO�뵲濡� 諛쏆븘�빞 �맆�닔�룄...
-
-
 		cVo.setCar_reg_no(car_reg_no);
 		cVo.setCar_divi(car_divi);
 		cVo.setCar_model(car_model);
@@ -50,8 +53,11 @@ public class CarModifyAction implements Action{
 		cVo.setTotal_dist(Integer.parseInt(total_dist));
 	
 		CarDAO cDao = CarDAO.getInstance();
+		
+		// 렌트(리스) : 구입차 구별하는 로직
 		if (car_divi.equals("렌트") || car_divi.equals("리스")) {
 			cDao.updateCar_rentalCar(cVo);
+		
 		} else if(car_divi.equals("구입")){
 			cDao.updateCar_payCar(cVo);
 		}

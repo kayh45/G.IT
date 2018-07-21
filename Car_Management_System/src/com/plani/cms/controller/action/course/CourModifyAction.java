@@ -11,6 +11,12 @@ import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.CourseDAO;
 import com.plani.cms.dto.CourseVO;
 
+/**
+ * 경로 데이터를 수정해주는 액션 클래스
+ * 
+ * @author 조성철
+ *
+ */
 public class CourModifyAction implements Action {
 
 	@Override

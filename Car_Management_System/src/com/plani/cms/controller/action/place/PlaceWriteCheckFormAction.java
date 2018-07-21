@@ -13,6 +13,12 @@ import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.PlaceDAO;
 import com.plani.cms.dto.PlaceVO;
 
+/**
+ * 장소 데이터 중복체크 후 조회 창을 보여주는 액션 클래스
+ * 
+ * @author 조성철
+ *
+ */
 public class PlaceWriteCheckFormAction implements Action {
 
 	@Override

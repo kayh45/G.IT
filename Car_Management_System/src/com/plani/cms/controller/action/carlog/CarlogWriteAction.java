@@ -10,7 +10,13 @@ import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.CarlogDAO;
 import com.plani.cms.dto.CarVO;
 import com.plani.cms.dto.CarlogVO;
-
+/**
+ * 운행일지를 등록하는 액션 클래스
+ * 이동 후 운행일지 등록 페이지로 이동
+ * 
+ * @author CHO
+ *
+ */
 public class CarlogWriteAction implements Action {
 
 	@Override
@@ -19,13 +25,6 @@ public class CarlogWriteAction implements Action {
 
 		CarlogVO cVo = new CarlogVO();
 		CarVO caVo = new CarVO();
-		/*
-		 * String driv_no = request.getParameter("driv_no"); String mem_id =
-		 * request.getParameter("mem_id"); String car_reg_no =
-		 * request.getParameter("car_reg_no"); String driv_s_date =
-		 * request.getParameter("driv_s_date"); String driv_e_date =
-		 * request.getParameter("driv_e_date");
-		 */
 
 		int driv_no = Integer.parseInt(request.getParameter("driv_no"));
 		int cour_no = Integer.parseInt(request.getParameter("cour_no"));
@@ -67,9 +66,11 @@ public class CarlogWriteAction implements Action {
 		
 		CarlogDAO cDao = CarlogDAO.getInstance();
 		
+		// 카드 사용 내역 미사용과 사용을 분기하여 메소드 호출
 		if (card_divi.equals("미사용")) {
 			cDao.updateCarlogNofee(cVo);
 			cDao.updateCarDist(caVo,cVo);
+	
 		}  else {
 			cDao.updateCarlog(cVo);
 			cDao.updateCarDist(caVo,cVo);

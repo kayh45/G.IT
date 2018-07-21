@@ -10,7 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.CentDAO;
 import com.plani.cms.dto.CentVO;
-
+/**
+ * 정비소 데이터를 수정해주는 액션 클래스
+ * 
+ * @author 조성철
+ *
+ */
 public class CentModifyAction implements Action{
 
 	@Override

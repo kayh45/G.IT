@@ -10,16 +10,21 @@ import javax.servlet.http.HttpServletResponse;
 import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.CourseDAO;
 
+/**
+ * 경로 데이터를 삭제해주는 액션 클래스
+ * 
+ * @author 조성철
+ *
+ */
+
 public class CourDeleteAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "course.do?command=cour_write_form";
 
-		
 		int cour_no = Integer.parseInt(request.getParameter("cour_no"));
 
-		
 		CourseDAO cDao = CourseDAO.getInstance();
 		cDao.DeleteCourse(cour_no);
 
