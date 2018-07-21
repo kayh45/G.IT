@@ -15,6 +15,11 @@ import com.plani.cms.dto.MemberVO;
 import com.plani.cms.dto.PlaceVO;
 import com.plani.cms.util.DBManager;
 
+/**
+ * 장소를 등록, 수정, 삭제, 조회할 수 있는 클래스
+ * @author 조성철
+ *
+ */
 public class PlaceDAO {
 
 	private static PlaceDAO instance = new PlaceDAO();
@@ -23,12 +28,19 @@ public class PlaceDAO {
 		return instance;
 	} // Singleton 패턴
 
-	
+	/**
+	 * 장소를 등록할 수 있는 메소드
+	 * @param pVo : place 객체
+	 */
 	public void placeInsert(PlaceVO pVo) {
 		
 		
-		String sql = "insert into place(place_name, place_p_no, place_addr, place_addr_dtl, place_divi)"
-				+ " values(?,?,?,?,?)";
+		String sql = "INSERT INTO place(place_name"
+				   + "				  , place_p_no"
+				   + "				  , place_addr"
+				   + "				  , place_addr_dtl"
+				   + "				  , place_divi) "
+				   + "VALUES(?, ?, ?, ?, ?)";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -55,11 +67,19 @@ public class PlaceDAO {
 		}
 	}
 	
+	/**
+	 * 장소를 수정할 수 있는 메소드
+	 * @param pVo : place 객체
+	 */
 	public void placeUpdate(PlaceVO pVo) {
 		
-		
-		String sql = "UPDATE place SET place_name = ?, place_p_no = ?, place_addr = ?, place_addr_dtl=?, place_divi=? " 
-		+ "where place_no = ?";
+		String sql = "UPDATE place "
+				   + "SET place_name = ?"
+				   + "  , place_p_no = ?"
+				   + "  , place_addr = ?"
+				   + "  , place_addr_dtl = ?"
+				   + "  , place_divi=? " 
+				   + "WHERE place_no = ?";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -87,13 +107,18 @@ public class PlaceDAO {
 		}
 	}
 	
+	/**
+	 * 장소를 삭제할 수 있는 메소드
+	 * @param place_no : 장소 번호
+	 */
 	public void placeDelete(int place_no) {
 		/**
 		 * 부서 수정 -> TODO 사원 삭제로 바꿔야됨 TODO
 		 * 부서 번호와 부서명을 받아와서 수정
 		 * @DeptModifyAction 에서 사용
 		 **/
-		String sql = "DELETE FROM place WHERE place_no = ?";
+		String sql = "DELETE FROM place "
+				   + " WHERE place_no = ?";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -115,9 +140,16 @@ public class PlaceDAO {
 		}
 	}
 	
+	/**
+	 * 장소 이름으로 장소를 조회할 수 있는 메소드
+	 * @param name : 장소명
+	 * @return	   : 장소 리스트
+	 */
 	public PlaceVO placeSearchByName(String name) {
 
-		String sql = "select * from place where place_name = '" + name + "'";
+		String sql = "SELECT p.* "
+				   + "  FROM place p"
+				   + " WHERE p.place_name = '" + name + "'";
 
 		Connection conn = null;
 		Statement stmt = null;
@@ -138,20 +170,28 @@ public class PlaceDAO {
 				pVo.setPlace_addr_dtl(rs.getString("place_addr_dtl"));
 
 			}
+	
 		} catch (Exception e) {
 			e.printStackTrace();
+		
 		} finally {
 			DBManager.close(conn, stmt, rs);
+		
 		}
+		
 		return pVo;
 	}
 	
+	/**
+	 * 사원 이름에 대한 부분일치 조회할 수 있는 메소드
+	 * @param name : 장소 이름
+	 * @return	   : 장소 리스트
+	 */
 	public List<PlaceVO> placeSearchByNameLike(String name) {
-		/**
-		 * 사원 이름에 대한 부분일치 검색
-		 * @MemberSearchAction 에서 사용
-		 ***/
-		String sql = "select * from place where place_name like '%" + name + "%'";
+		
+		String sql = "SELECT * "
+				   + "  FROM place "
+				   + " WHERE place_name LIKE '%" + name + "%'";
 			
 
 		Connection conn = null;
@@ -176,8 +216,6 @@ public class PlaceDAO {
 				pVo.setPlace_addr_dtl(rs.getString("place_addr_dtl"));
 				pVo.setPlace_divi(rs.getString("place_divi"));
 				
-				
-
 				list.add(pVo);
 
 			}
@@ -189,10 +227,17 @@ public class PlaceDAO {
 		return list;
 	}
 	
-public int confirmPlaceName(String place_name) {
+	/**
+	 * 장소 데이터 있는지 없는지 확인하는 메소드
+	 * @param place_name : 장소명
+	 * @return			 : 존재 : 1 : null : 0 : 존재X : -1
+	 */
+	public int confirmPlaceName(String place_name) {
 		
 		int result = -1;
-		String sql = "select place_name from place where place_name=?";
+		String sql = "SELECT place_name "
+				   + "  FROM place "
+				   + " WHERE place_name=?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -208,66 +253,79 @@ public int confirmPlaceName(String place_name) {
 
 			if (place_name.equals("")) {
 				result = 0;
-			} else if(rs.next()) {
+				
+			} else if (rs.next()) {
 				result = 1; // 데이터 존재.
-			System.out.println(result +":통과");
+				System.out.println(result +":통과");
+			
 			} else {
 				result = -1;
 			}
-		}
-		catch (Exception e) {
+	
+		} catch (Exception e) {
 			e.printStackTrace();
+		
 		} finally {
 			try {
 				if (rs != null)
 					rs.close();
+
 				if (pstmt != null)
 					pstmt.close();
+				
 				if (conn != null)
 					conn.close();
+			
 			} catch (Exception e) {
 				e.printStackTrace();
+			
 			}
 		}
 		return result;
 	}
+	
+	/**
+	 * 장소를 전체 조회할 수 있는 메소드
+	 * @return : 장소 리스트
+	 */
+	public List<PlaceVO> selectAllPlace() {
 
-public List<PlaceVO> selectAllPlace() {
-
-	String sql = "select * from place order by place_no desc";
-
-	List<PlaceVO> list = new ArrayList<PlaceVO>();
-	Connection conn = null;
-	Statement stmt = null;
-	ResultSet rs = null;
-
-	try {
-		conn = DBManager.getConnection();
-		stmt = conn.createStatement();
-
-		rs = stmt.executeQuery(sql);
-
-		while (rs.next()) {
-
-			PlaceVO pVo = new PlaceVO();
-
-			pVo.setPlace_no(rs.getInt("place_no"));
-			pVo.setPlace_name(rs.getString("place_name"));
-			pVo.setPlace_p_no(rs.getInt("place_p_no"));
-			pVo.setPlace_addr(rs.getString("place_addr"));
-			pVo.setPlace_addr_dtl(rs.getString("place_addr_dtl"));
-			pVo.setPlace_divi(rs.getString("place_divi"));
-
-
-			list.add(pVo);
+		String sql = "SELECT * "
+				   + "  FROM place "
+				   + " ORDER BY place_no DESC";
+	
+		List<PlaceVO> list = new ArrayList<PlaceVO>();
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+	
+		try {
+			conn = DBManager.getConnection();
+			stmt = conn.createStatement();
+	
+			rs = stmt.executeQuery(sql);
+	
+			while (rs.next()) {
+	
+				PlaceVO pVo = new PlaceVO();
+	
+				pVo.setPlace_no(rs.getInt("place_no"));
+				pVo.setPlace_name(rs.getString("place_name"));
+				pVo.setPlace_p_no(rs.getInt("place_p_no"));
+				pVo.setPlace_addr(rs.getString("place_addr"));
+				pVo.setPlace_addr_dtl(rs.getString("place_addr_dtl"));
+				pVo.setPlace_divi(rs.getString("place_divi"));
+	
+	
+				list.add(pVo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, stmt, rs);
 		}
-	} catch (SQLException e) {
-		e.printStackTrace();
-	} finally {
-		DBManager.close(conn, stmt, rs);
+		return list;
 	}
-	return list;
-}
 
 }
 
