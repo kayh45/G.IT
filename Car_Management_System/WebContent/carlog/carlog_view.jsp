@@ -34,7 +34,7 @@ div .box button{
 </head>
 
 <body>
-<c:if test = "${LoginUser.mem_auth eq 0}">
+<c:if test = "${LoginUser.mem_auth eq 0}">  <!-- 세션의 권한이 0(사용자일 경우) carlog_view_form_0로 이동 -->
       <% 
          response.sendRedirect("carlog.do?command=carlog_view_form_0");    
          request.setCharacterEncoding("UTF-8");

@@ -10,22 +10,20 @@ import javax.servlet.http.HttpServletResponse;
 import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.RepaDAO;
 import com.plani.cms.dto.RepaVO;
-
+/**
+ *정비내역을 수정하는 액션 클래스
+ * 
+ * @author 윤한수
+ *
+ */
 public class RepaModifyAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	String url = "repa.do?command=repa_write_form";
-	//수정해야함	
+	
 		RepaVO rVo = new RepaVO();	
-	/*	private int repa_no;
-		private int cent_no;
-		private String car_reg_no;
-		private String mechanic_name;
-		private String repa_s_date;
-		private String repa_e_date;
-		private String repa_cont;
-		private int repa_fee;*/
+
 
 		
 		String repa_no = request.getParameter("repa_no");	

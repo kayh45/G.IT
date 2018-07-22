@@ -1,5 +1,10 @@
 package com.plani.cms.controller.action.repa;
-
+/**
+ * 정비내역등록 시, 정비소를 조회하는 액션 클래스
+ * 
+ * @author 윤한수
+ *
+ */
 import java.io.IOException;
 import java.util.List;
 

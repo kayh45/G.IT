@@ -1,5 +1,9 @@
 package com.plani.cms.dao;
-
+/**
+ * 정비내역을 등록, 수정, 삭제, 조회 하기 할 수 있는 클래스
+ * @author 윤한수
+ *
+ */
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,14 +22,33 @@ public class RepaDAO {
 	public static RepaDAO getInstance() {
 		return instance;
 	}
+	
+	
+
+	/**
+	 * 시작날짜, 종료날짜의 검색조건에 해당하는 모든 정비내역 데이터의 갯수를 세는 메소드
+	 * @param repa_s_date	: 시작 날짜
+	 * @param repa_e_date	: 종료 날짜
+	 * @return		: 조회된 데이터의 갯수
+	 */
 	public int selectOnlyDateCount(String repa_s_date, String repa_e_date){
 	    //1번 페이지 1~10
         //2번 페이지 11~20
      
         int count =0;
-        String sql = "select count(r.repa_no) as 'count', r.cent_no, c.cent_name, r.car_reg_no, r.mechanic_name, r.repa_s_date, r.repa_e_date,"
-				+ "r.repa_cont, r.repa_fee, r.repa_divi "
-				+ "from repa r, cent c where r.cent_no = c.cent_no AND r.repa_s_date >='" + repa_s_date + "'and r.repa_e_date<='" + repa_e_date + "' order by repa_s_date asc ;";
+        String sql = "SELECT count(r.repa_no) as 'count'"
+        	   	   + "     , r.cent_no"
+        	   	   + "     , c.cent_name"
+        	   	   + "     , r.car_reg_no"
+        	   	   + "     , r.mechanic_name"
+        	   	   + "     , r.repa_s_date"
+        	   	   + "     , r.repa_e_date"
+				   + "     , r.repa_cont"
+				   + "     , r.repa_fee"
+				   + "     , r.repa_divi "
+				   + "  FROM repa r, cent c "
+				   + " WHERE r.cent_no = c.cent_no AND r.repa_s_date >='" + repa_s_date + "'and r.repa_e_date<='" + repa_e_date + "' "
+				   + " ORDER BY repa_s_date asc ;";
 
 		Connection conn = null;
 		Statement stmt = null;
@@ -46,15 +69,33 @@ public class RepaDAO {
 		 return count;	
 	}
 	
+	/**
+	 * 시작날짜, 종료날짜의 검색조건에 해당하는 정비내역 데이터를 출력
+	 * @param repa_s_date	: 시작 날짜
+	 * @param repa_e_date	: 종료 날짜
+	 * @param page	: 현재 선택된 페이지의 번호
+	 * @return		: 정비내역 리스트
+	 */
 	public List<RepaVO> selectOnlyDate(String repa_s_date,String repa_e_date,int page){
 		//1번 페이지 1~10
         //2번 페이지 11~20
         int startNum =(page-1)*10;
         int endNum = page*10;
         System.out.println(startNum+"//"+endNum);
-		String sql = "select r.repa_no, r.cent_no, c.cent_name, r.car_reg_no, r.mechanic_name, r.repa_s_date, r.repa_e_date,"
-				+ "r.repa_cont, r.repa_fee, r.repa_divi "
-				+ "from repa r, cent c where r.cent_no = c.cent_no AND r.repa_s_date >='" + repa_s_date + "'and r.repa_e_date<='" + repa_e_date + "' order by repa_s_date asc  LIMIT " + startNum + ", 10;";
+		String sql = "SELECT r.repa_no"
+				+    "     , r.cent_no"
+				+    "     , c.cent_name"
+				+    "     , r.car_reg_no"
+				+    "     , r.mechanic_name"
+				+    "     , r.repa_s_date"
+				+    "     , r.repa_e_date"
+				+    "     , r.repa_cont"
+				+    "     , r.repa_fee"
+				+    "     , r.repa_divi"
+				+    "  FROM repa r, cent c "
+				+    " WHERE r.cent_no = c.cent_no AND r.repa_s_date >='"
+				+ repa_s_date + "'and r.repa_e_date<='" + repa_e_date + "' "
+				+    " ORDER BY repa_s_date asc  LIMIT " + startNum + ", 10;";
 
 		List<RepaVO> list = new ArrayList<RepaVO>();
 		Connection conn = null;
@@ -91,10 +132,26 @@ public class RepaDAO {
 		}
 		return list;	
 	}
+	/**
+	 * 시작날짜, 종료날짜, 정비소 번호의 검색조건에 해당하는 정비내역 데이터를 출력
+	 * @param repa_s_date	: 시작 날짜
+	 * @param repa_e_date	: 종료 날짜
+	 * @param cent_no	: 정비소 번호
+	 * @return		: 정비내역 리스트
+	 */
 	public List<RepaVO> selectDateCent(String repa_s_date,String repa_e_date,String cent_no){
-		String sql = "select r.repa_no, r.cent_no, c.cent_name, r.car_reg_no, r.mechanic_name, r.repa_s_date, r.repa_e_date,"
-				+ "r.repa_cont, r.repa_fee, r.repa_divi "
-				+ "from repa r, cent c where r.cent_no = c.cent_no AND r.repa_s_date >='" + repa_s_date + "'and r.repa_e_date<='" + repa_e_date + "'and r.cent_no='" + cent_no + "' ";
+		String sql = "SELECT r.repa_no"
+				   + "     , r.cent_no"
+				   + "     , c.cent_name"
+				   + "     , r.car_reg_no"
+				   + "     , r.mechanic_name"
+				   + "     , r.repa_s_date"
+				   + "     , r.repa_e_date"
+				   + "     , r.repa_cont"
+				   + "     , r.repa_fee"
+				   + "     , r.repa_divi"
+				   + "  FROM repa r, cent c "
+				   + " WHERE r.cent_no = c.cent_no AND r.repa_s_date >='" + repa_s_date + "'and r.repa_e_date<='" + repa_e_date + "'and r.cent_no='" + cent_no + "' ";
 
 		List<RepaVO> list = new ArrayList<RepaVO>();
 		Connection conn = null;
@@ -131,12 +188,28 @@ public class RepaDAO {
 		}
 		return list;	
 	}
-	
+	/**
+	 * 시작날짜, 종료날짜, 정비소 번호,차량번호 검색조건에  해당하는 정비내역 데이터를 출력
+	 * @param repa_s_date	: 시작 날짜
+	 * @param repa_e_date	: 종료 날짜
+	 * @param cent_no	: 정비소 번호
+	 * @param car_reg_no	: 차량번호 
+	 * @return		: 정비내역 리스트
+	 */
 	public List<RepaVO> selectDateCentReg(String repa_s_date,String repa_e_date,String cent_no,String car_reg_no){
-		String sql = "select r.repa_no, r.cent_no, c.cent_name, r.car_reg_no, r.mechanic_name, r.repa_s_date, r.repa_e_date,"
-				+ "r.repa_cont, r.repa_fee, r.repa_divi "
-				+ "from repa r, cent c where r.cent_no = c.cent_no and "
-				+ "r.repa_s_date >='" + repa_s_date + "'and r.repa_e_date<='" + repa_e_date + "'and r.cent_no='" + cent_no + "'and r.car_reg_no='" + car_reg_no + "' ";
+		String sql = "SELECT r.repa_no"
+				   + "     , r.cent_no"
+				   + "     , c.cent_name"
+				   + "     , r.car_reg_no"
+				   + "     , r.mechanic_name"
+				   + "     , r.repa_s_date"
+				   + "     , r.repa_e_date"
+				   + "     , r.repa_cont"
+				   + "     , r.repa_fee"
+				   + "     , r.repa_divi "
+			   	   + "  FROM repa r, cent c "
+			   	   + " WHERE r.cent_no = c.cent_no and "
+			   	   + "r.repa_s_date >='" + repa_s_date + "'and r.repa_e_date<='" + repa_e_date + "'and r.cent_no='" + cent_no + "'and r.car_reg_no='" + car_reg_no + "' ";
 
 		List<RepaVO> list = new ArrayList<RepaVO>();
 		Connection conn = null;
@@ -175,10 +248,27 @@ public class RepaDAO {
 	}
 	
 	
+	/**
+	 * 시작날짜, 종료날짜, 차량번호 검색조건에  해당하는 정비내역 데이터를 출력
+	 * @param repa_s_date	: 시작 날짜
+	 * @param repa_e_date	: 종료 날짜
+	 * @param car_reg_no	: 차량번호 
+	 * @return		: 정비내역 리스트
+	 */
 	public List<RepaVO> selectDateReg(String repa_s_date,String repa_e_date,String car_reg_no){
-		String sql = "select r.repa_no, r.cent_no, c.cent_name, r.car_reg_no, r.mechanic_name, r.repa_s_date, r.repa_e_date,"
-				+ "r.repa_cont, r.repa_fee, r.repa_divi "
-				+ "from repa r, cent c where r.cent_no = c.cent_no and r.repa_s_date >='" + repa_s_date + "'and r.repa_e_date<='" + repa_e_date + "'and r.car_reg_no='" + car_reg_no + "' ";
+		String sql = "SELECT r.repa_no"
+				   + "     , r.cent_no"
+				   + "     , c.cent_name"
+				   + "     , r.car_reg_no"
+				   + "     , r.mechanic_name"
+				   + "     , r.repa_s_date"
+				   + "     , r.repa_e_date"
+				   + "     ,r.repa_cont"
+				   + "     , r.repa_fee"
+				   + "     , r.repa_divi "
+				   + "  FROM repa r, cent c "
+				   + " WHERE r.cent_no = c.cent_no "
+				   + "   AND r.repa_s_date >='" + repa_s_date + "'AND r.repa_e_date<='" + repa_e_date + "'AND r.car_reg_no='" + car_reg_no + "' ";
 
 		List<RepaVO> list = new ArrayList<RepaVO>();
 		Connection conn = null;
@@ -216,46 +306,16 @@ public class RepaDAO {
 	}
 
 	
-	public List<RepaVO> selectAllCus() {
-
-		String sql = "select * from repa order by repa_no desc";
-
-		List<RepaVO> list = new ArrayList<RepaVO>();
-		Connection conn = null;
-		Statement stmt = null;
-		ResultSet rs = null;
-
-		try {
-			conn = DBManager.getConnection();
-			stmt = conn.createStatement();
-
-			rs = stmt.executeQuery(sql);
-
-			while (rs.next()) {
-
-				RepaVO rVo = new RepaVO();
-
-				rVo.setRepa_no(rs.getInt("repa_no"));
-				rVo.setCent_no(rs.getInt("cent_no"));
-				rVo.setCar_reg_no(rs.getString("car_reg_no"));
-				rVo.setMechanic_name(rs.getString("mechanic_name"));
-				rVo.setRepa_s_date(rs.getString("repa_s_date"));
-				rVo.setRepa_e_date(rs.getString("repa_e_date"));
-				rVo.setRepa_cont(rs.getString("repa_cont"));
-				rVo.setRepa_fee(rs.getInt("repa_fee"));
-				list.add(rVo);
-
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			DBManager.close(conn, stmt, rs);
-		}
-		return list;
-	}
-
+	/**
+	 * 정비내역 데이터를 등록하는 메소드
+	 * @param rVo : rVo 객체
+	 */
 	public void insertRepa(RepaVO rVo) {
-		String sql = "insert into repa(cent_no, car_reg_no,mechanic_name,repa_s_date,repa_e_date,repa_cont,repa_fee,repa_divi) values(?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO repa (cent_no, car_reg_no, mechanic_name, repa_s_date"
+                   + "                , repa_e_date, repa_cont, repa_fee, repa_divi)"
+				   + "VALUES(?,?,?,?,?,?,?,?)";
+		
+
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -281,9 +341,23 @@ public class RepaDAO {
 			DBManager.close(conn, pstmt);
 		}
 	}
+	
+	/**
+	 * 정비내역를 수정할 수 있는 메소드 
+	 * @param rVo : Repa 객체
+	 */
+	
 	public void updateRepa(RepaVO rVo) {
-		String sql = "update repa set cent_no=?, car_reg_no=?,"
-				+ "mechanic_name=?,repa_s_date=?,repa_e_date=?,repa_cont=?,repa_fee=?,repa_divi=? where repa_no=?";
+		String sql = "UPDATE repa "
+	               + "   SET cent_no=?"
+				   + "     , car_reg_no=?"
+				+ "        , mechanic_name=?"
+				+ "        , repa_s_date=?"
+				+ "        , repa_e_date=?"
+				+ "        , repa_cont=?"
+				+ "        , repa_fee=?"
+				+ "        , repa_divi=?"
+				+ "    WHERE repa_no=?";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -309,10 +383,14 @@ public class RepaDAO {
 			DBManager.close(conn, pstmt);
 		}
 	}
-	
+	/**
+	 * 정비내역을 삭제할 수 있는 메소드
+	 * @param repa_no
+	 */
 	public void DeleteRepa(int repa_no) {
 
-		String sql = "DELETE FROM repa WHERE repa_no = ?";
+		String sql = "DELETE FROM repa "
+				+     "WHERE repa_no = ?";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -333,154 +411,6 @@ public class RepaDAO {
 
 		}
 	}
-	
-	
-	public void DeleteCent(int cent_no) {
-
-		String sql = "DELETE FROM cent WHERE cent_no = ?";
-
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-
-		try {
-			conn = DBManager.getConnection();
-			pstmt = conn.prepareStatement(sql);
-
-			pstmt.setInt(1, cent_no);
-
-			pstmt.executeUpdate();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-
-		} finally {
-			DBManager.close(conn, pstmt);
-
-		}
-	}
-	
-	
-	
-	
-	public RepaVO repaSearchByCarRegNo(String car_reg_no) {
-
-		String sql = "select * from repa where car_reg_no = '" + car_reg_no + "'";
-
-		Connection conn = null;
-		Statement stmt = null;
-		ResultSet rs = null;
-
-		RepaVO rVo = new RepaVO();
-
-		try {
-			conn = DBManager.getConnection();
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(sql);
-
-
-			while (rs.next()) {
-				rVo.setRepa_no(rs.getInt("repa_no"));
-				rVo.setCent_no(rs.getInt("cent_no"));
-				rVo.setCar_reg_no(rs.getString("car_reg_no"));
-				rVo.setMechanic_name(rs.getString("mechanic_name"));
-				rVo.setRepa_s_date(rs.getString("repa_s_date"));
-				rVo.setRepa_e_date(rs.getString("repa_e_date"));
-				rVo.setRepa_cont(rs.getString("repa_cont"));
-				rVo.setRepa_fee(rs.getInt("repa_fee"));
-
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			DBManager.close(conn, stmt, rs);
-		}
-		return rVo;
-	}
-
-	public List<RepaVO> repaSearchByCarRegNoLike(String car_reg_no) {
-
-		String sql = "select * from repa where car_reg_no like '%" + car_reg_no + "%'";
-
-		Connection conn = null;
-		Statement stmt = null;
-		ResultSet rs = null;
-
-		List<RepaVO> list = new ArrayList<RepaVO>();
-
-		try {
-			conn = DBManager.getConnection();
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(sql);
-
-			while (rs.next()) {
-
-				RepaVO rVo = new RepaVO();
-
-				rVo.setRepa_no(rs.getInt("repa_no"));
-				rVo.setCent_no(rs.getInt("cent_no"));
-				rVo.setCar_reg_no(rs.getString("car_reg_no"));
-				rVo.setMechanic_name(rs.getString("mechanic_name"));
-				rVo.setRepa_s_date(rs.getString("repa_s_date"));
-				rVo.setRepa_e_date(rs.getString("repa_e_date"));
-				rVo.setRepa_cont(rs.getString("repa_cont"));
-				rVo.setRepa_fee(rs.getInt("repa_fee"));
-
-				list.add(rVo);
-
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			DBManager.close(conn, stmt, rs);
-		}
-		return list;
-	}
-
-	public List<CarVO> selectAllCar() {
-
-		String sql = "select * from car order by car_reg_no desc";
-
-		List<CarVO> list = new ArrayList<CarVO>();
-		Connection conn = null;
-		Statement stmt = null;
-		ResultSet rs = null;
-
-		try {
-			conn = DBManager.getConnection();
-			stmt = conn.createStatement();
-
-			rs = stmt.executeQuery(sql);
-
-			while (rs.next()) {
-
-				CarVO cVo = new CarVO();
-
-				cVo.setCar_reg_no(rs.getString("car_reg_no"));
-				cVo.setCar_divi(rs.getString("car_divi"));
-				cVo.setCar_model(rs.getString("car_model"));
-				cVo.setCt_date(rs.getString("ct_date"));
-				cVo.setEp_date(rs.getString("ep_date"));
-				cVo.setCo_name(rs.getString("co_name"));
-				cVo.setCo_tel(rs.getString("co_tel"));
-				cVo.setCo_fax(rs.getString("co_fax"));
-				cVo.setBo_name(rs.getString("bo_name"));
-				cVo.setBo_divi(rs.getString("bo_divi"));
-				cVo.setBo_age(rs.getInt("bo_age"));
-				cVo.setBo_s_date(rs.getString("bo_s_date"));
-				cVo.setBo_e_date(rs.getString("bo_e_date"));
-				cVo.setTotal_dist(rs.getInt("total_dist"));
-				
-
-				list.add(cVo);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			DBManager.close(conn, stmt, rs);
-		}
-		return list;
-	}
-	
 	
 	
 }

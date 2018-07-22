@@ -269,7 +269,7 @@ public class ActionFactory {
 			action = new CarlogCourseSelectAction();
 		} else if (command.equals("carlog_auto_write_form")) {
 			action = new CarlogAutoWriteFormAction();
-		} else if (command.equals("carlog_view_form")) {
+		} else if (command.equals("carlog_view_form")) { //세션 권한이 관리자일 경우 이쪽폼으로 이동
 			action = new CarlogViewFormAction();
 		} else if (command.equals("carlog_view_form_0")) {//세션권한이 일반사용자면 이쪽폼으로 이동
 			action = new CarlogViewForm0Action();

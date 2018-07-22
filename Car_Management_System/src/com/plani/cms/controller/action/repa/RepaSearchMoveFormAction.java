@@ -1,5 +1,10 @@
 package com.plani.cms.controller.action.repa;
-
+/**
+ * 정비내역 조회화면에서 클릭 시 , 클릭한 행의 데이터를 가져와 정비내역 등록창으로 이동하는  액션 클래스
+ * 
+ * @author 윤한수
+ *
+ */
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;

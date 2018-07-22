@@ -1,5 +1,11 @@
 package com.plani.cms.controller.action.carlog;
-
+/**
+ * 
+ * 운행일지 조회 후, 검색조건에 맞게 출력된 운행일지 데이터를  엑셀파일로 저장할 수있는 함수 
+ *  
+ * @author 윤한수
+ *
+ */
 import java.io.IOException;
 import java.util.List;
 
@@ -24,12 +30,6 @@ public class ExcelFormAction implements Action {
 		String mem_name = request.getParameter("mem_name");
 		String mem_id = request.getParameter("mem_id");
 		
-		System.out.println("배차 신청 날짜 :"+ repa_s_date);
-		System.out.println("배차 종료 날짜 :"+ repa_e_date);
-		System.out.println("차량 번호 :"+ car_reg_no);
-		System.out.println("차량 모델 :"+ car_model);
-		System.out.println("사원이름 :"+ mem_name);
-		System.out.println("사원아이디 :"+ mem_id);
 		
 		request.setAttribute("repa_s_date", repa_s_date);  //조회 클릭 후  jsp화면에 검색조건을 보여주기 위해서
 		request.setAttribute("repa_e_date", repa_e_date);

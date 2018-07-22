@@ -1,5 +1,11 @@
 package com.plani.cms.controller.action.repa;
-
+/**
+ * 정비내역 조회화면으로 이동 및  
+ * 정비내역조회 시, 검색조건에 맞게 정비내역 데이터를  조회하는 액션 클래스
+ * 
+ * @author 윤한수
+ *
+ */
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -18,20 +24,13 @@ public class RepaSearchFormAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "repa/repa_search.jsp";
-		String repa_s_date = (request.getParameter("repa_s_date") == null) ? "" : request.getParameter("repa_s_date");
+		String repa_s_date = (request.getParameter("repa_s_date") == null) ? "" : request.getParameter("repa_s_date"); //데이터가 null인 경우 ""으로 치환
 		String repa_e_date = (request.getParameter("repa_e_date") == null) ? "" : request.getParameter("repa_e_date");
 		String car_reg_no = (request.getParameter("car_reg_no") == null) ? "" : request.getParameter("car_reg_no");
 		String cent_no = (request.getParameter("cent_no") == null) ? "" : request.getParameter("cent_no");
 		String cent_name = (request.getParameter("cent_name") == null) ? "" : request.getParameter("cent_name");
 		String car_model = (request.getParameter("car_model") == null) ? "" : request.getParameter("car_model");
 		int count;
-		System.out.println("배차 신청 날짜 :"+ repa_s_date);
-		System.out.println("배차 종료 날짜 :"+ repa_e_date);
-		System.out.println("정비소번호 :"+ cent_no);
-		System.out.println("차량 번호 :"+ car_reg_no);
-		System.out.println("정비소 명 :"+ cent_name);
-		System.out.println("차 종 :"+ car_model);
-		
 		request.setAttribute("repa_s_date", repa_s_date);
 		request.setAttribute("repa_e_date", repa_e_date);
 		request.setAttribute("cent_no", cent_no);
@@ -45,21 +44,20 @@ public class RepaSearchFormAction implements Action {
 			page = Integer.parseInt(request.getParameter("page"));
 			System.out.println("현재 페이지:" + page);
 		}
-		Paging paging = new Paging();
+		Paging paging = new Paging(); //페이징 처리를 위해 페이징 객체 생성 Paging 이라는 VO가 존재함
 		paging.setPageNo(page);
 		paging.setPageSize(10);
-		// paging.setTotalCount(44);
-		// List<CarviewVO> list = vDao.selectAllCarview(page);
+		
 		
 
 		if(car_reg_no.equals("") && cent_no.equals("")&& repa_s_date.equals("") && repa_e_date.equals("") ){
-			//최초 실행 시 모두 널 값
+			//최초 실행 시 모두 널 값(처음 정비내역 창이 띄워질 경우
 			System.out.println("최초실행");
 		}
 		else if(car_reg_no.equals("") && cent_no.equals("")){ //정비 시작 날짜와 정비 종료 날짜만 입력했을 경우
 			System.out.println("날짜만 입력");
 			List<RepaVO> repaAllList = rDao.selectOnlyDate(repa_s_date, repa_e_date,page);
-			count = rDao.selectOnlyDateCount(repa_s_date, repa_e_date);
+			count = rDao.selectOnlyDateCount(repa_s_date, repa_e_date);//페이징 처리를 위해 검색조건에 맞는 데이터의 갯수를 세는 메소드
 			paging.setTotalCount(count);
 			System.out.println("카운트:" + count);
 			request.setAttribute("repaAllList", repaAllList);
@@ -75,8 +73,7 @@ public class RepaSearchFormAction implements Action {
 			List<RepaVO> repaAllList = rDao.selectDateReg(repa_s_date,repa_e_date,car_reg_no);
 			request.setAttribute("repaAllList", repaAllList);
 		}
-		/*List<RepaVO> repaList = rDao.carSearchByNameLike(car_reg_no);
-		request.setAttribute("repaList", repaList);*/
+		
 		else{ //모두 입력 시 
 			List<RepaVO> repaAllList = rDao.selectDateCentReg(repa_s_date,repa_e_date,cent_no,car_reg_no);
 		request.setAttribute("repaAllList", repaAllList);
