@@ -13,6 +13,12 @@ import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.PlaceDAO;
 import com.plani.cms.dto.PlaceVO;
 
+/**
+ * 출발지 기준으로 경로를 조회하는 액션 클래스
+ * 
+ * @author 조성철
+ *
+ */
 public class CourSPlaceWriteCheckFormAction implements Action {
 
 	@Override

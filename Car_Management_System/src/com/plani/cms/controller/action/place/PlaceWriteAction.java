@@ -12,6 +12,12 @@ import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.PlaceDAO;
 import com.plani.cms.dto.PlaceVO;
 
+/**
+ * 장소를 들옥해주는 액션 클래스
+ * 
+ * @author 조성철
+ *
+ */
 public class PlaceWriteAction implements Action{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

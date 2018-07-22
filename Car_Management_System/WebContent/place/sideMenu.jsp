@@ -12,10 +12,9 @@
 
 	<ul class = "side_ul">
 		<li class = "side_title">배차 관리</li>
-		<li class = "side_sub-menu">장소 등록</li>
-		<li class = "side_sub-menu">경로 등록</li>
-		<li class = "side_sub-menu">배차 등록</li>
-
+		<li class = "side_sub-menu"><a href = "place.do?command=place_write_form">장소 등록</a></li>
+		<li class = "side_sub-menu"><a href = "course.do?command=cour_write_form">경로 등록</a></li>
+		<li class = "side_sub-menu"><a href = "rsrv.do?command=reserve_write_form">배차 등록</a></li>
 	</ul>
 
 </body>

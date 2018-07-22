@@ -15,38 +15,36 @@ import com.plani.cms.dao.CarlogDAO;
 import com.plani.cms.dto.CarlogVO;
 import com.plani.cms.dto.MemberVO;
 
+/**
+ * 운행일지를 조회하는 액션 클래스
+ * 
+ * @author CHO
+ *
+ */
 public class CarlogSelectAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			CarlogDAO cDao = CarlogDAO.getInstance();
-			
-			HttpSession session = request.getSession();
-			MemberVO logSession = (MemberVO)session.getAttribute("LoginUser");
-			String mem_id = logSession.getMem_id();
-			
-			/*mDao.getMemberInfoAll(mem_id);*/
-					
-			
-			request.setAttribute("mem_id", mem_id);
+		CarlogDAO cDao = CarlogDAO.getInstance();
 
+		HttpSession session = request.getSession();
+		MemberVO logSession = (MemberVO) session.getAttribute("LoginUser");
+		String mem_id = logSession.getMem_id();
 
-			
-			System.out.println(mem_id);
-			System.out.println("레그넘 = " + mem_id);
+		request.setAttribute("mem_id", mem_id);
 
-	
+		System.out.println(mem_id);
+		System.out.println("레그넘 = " + mem_id);
 
 		String url = "carlog/carlog_search.jsp";
-		/*List<CarlogVO> carlogList = cDao.drivSearchAllByName(mem_id);
-		request.setAttribute("carlogList", carlogList);*/
 		
-			List<CarlogVO> NocarlogList = cDao.drivSearchByNameNoncomplete(mem_id);
-			request.setAttribute("NocarlogList", NocarlogList);
+		// 미완료 운행일지 리스트
+		List<CarlogVO> NocarlogList = cDao.drivSearchByNameNoncomplete(mem_id);
+		request.setAttribute("NocarlogList", NocarlogList);
 		
-				List<CarlogVO> carlogList = cDao.drivSearchByNameComplete(mem_id);
-				request.setAttribute("carlogList", carlogList);
-		 
+		// 완료 된 운행일지 리스트
+		List<CarlogVO> carlogList = cDao.drivSearchByNameComplete(mem_id);
+		request.setAttribute("carlogList", carlogList);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

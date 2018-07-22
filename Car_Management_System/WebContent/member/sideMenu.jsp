@@ -11,8 +11,9 @@
 <body class = "side_body">
 	<ul class = "side_ul">
 		<li class = "side_title">기초 정보 관리</li>
-		<li class = "side_sub-menu">부서 등록</li>
-		<li class = "side_sub-menu">사원 등록</li>
+		<li class = "side_sub-menu"><a href = "member.do?command=dept_write_form">부서 등록</a></li>
+		<li class = "side_sub-menu"><a href = "member.do?command=member_write_form">사원 등록</a></li>
+		<li class = "side_sub-menu"><a href = "member.do?command=member_search_form">사원 정보 조회</a></li>
 	</ul>
 </body>
 </html>

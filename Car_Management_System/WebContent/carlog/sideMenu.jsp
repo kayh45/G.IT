@@ -12,8 +12,8 @@
 
 	<ul class = "side_ul">
 		<li class = "side_title">운행일지 관리</li>
-		<li class = "side_sub-menu">운행일지 작성</li>
-		<li class = "side_sub-menu">운행일지 조회</li>
+		<li class = "side_sub-menu"><a href = "carlog.do?command=carlog_write_form">운행일지 작성</a></li>
+		<li class = "side_sub-menu"><a href = "carlog.do?command=carlog_search_form">운행일지 조회</a></li>
 	</ul>
 
 </body>

@@ -8,7 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.plani.cms.controller.action.Action;
-
+/**
+ * 운행일지 조회창으로 이동하는 액션 클래스
+ * @author 조성철
+ *
+ */
 public class CarlogSelectFormAction implements Action{
 
 	@Override

@@ -9,6 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.plani.cms.controller.action.Action;
 
+/**
+ * 운행일지 장소 검색 화면으로 이동해주는 액션 클래스
+ * 
+ * @author CHO
+ *
+ */
 public class CarlogCourseSelectFormAction implements Action {
 	
 	@Override

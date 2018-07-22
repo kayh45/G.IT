@@ -11,7 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.CarDAO;
 import com.plani.cms.dto.CarVO;
-
+/**
+ * 법인차를 등록하는 액션 클래스
+ * 등록 후 등록 페이지로 초기화 이동
+ * 
+ * @author 조성철
+ *
+ */
 public class CarWriteAction implements Action {
 
 	@Override
@@ -52,15 +58,15 @@ public class CarWriteAction implements Action {
 		cVo.setBo_e_date(bo_e_date);
 		cVo.setTotal_dist(Integer.parseInt(total_dist));
 
-		/*렌탈/리스와 구입 기준으로 분기한 코드 내용*/
+		// 렌탈/리스와 구입 기준으로 분기한 코드 내용
 		CarDAO cDao = CarDAO.getInstance();
 		if (car_divi.equals("렌트") || car_divi.equals("리스")) {
 			cDao.insertCar_rentalCar(cVo);
+		
 		} else if(car_divi.equals("구입")){
 			cDao.insertCar_payCar(cVo);
 		}
-		/*렌탈/리스와 구입 기준으로 분기한 코드 내용*/
-
+		// 렌탈/리스와 구입 기준으로 분기한 코드 내용
 		System.out.println("등록성공");
 		request.setAttribute("message", "<strong>법인 차 등록 성공!</strong> &nbsp 등록된 법인차 : " + car_reg_no);
 

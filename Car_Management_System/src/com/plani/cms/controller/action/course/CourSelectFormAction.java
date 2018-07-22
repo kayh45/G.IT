@@ -9,6 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.plani.cms.controller.action.Action;
 
+/**
+ * 경로 조회 페이지로 이동하는 액션 클래스
+ * 
+ * @author 조성철
+ *
+ */
 public class CourSelectFormAction implements Action{
 
 	@Override

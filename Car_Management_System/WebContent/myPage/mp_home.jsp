@@ -55,12 +55,7 @@
 							<button id = "cmm_btn" type = "button" onclick = "location.href='member.do?command=mypage_pwupdate_form'">비밀번호 변경</button>
 						</div>
 					</div>
-				</div>
-				<div class = "col-xs-12 col-md-6">		
-					<div class = "content_cont-box">
-						<span class = "mp_title">내 배차내역</span>
-					</div>
-				</div>										
+				</div>							
 			</div>
 		</section>
 	</section>

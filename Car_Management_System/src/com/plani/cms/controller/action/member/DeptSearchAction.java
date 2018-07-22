@@ -12,13 +12,17 @@ import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.DeptDAO;
 import com.plani.cms.dto.DeptVO;
 
-/*******************************************************
+/**
+ * 부서 정보를 검색하는 기능을 구현한 액션 클래스
  * 
- * 	DeptSearchAction
+ * dept_name(부서명)을 파라미터로 받아서 검색 기능을 수행하고
+ * 그 결과를 List 타입의 어트리뷰트로 리턴
  * 
- * 	부서명을 파라미터값으로 받아와 DB에서 검색하고 결과가 있을경우 list형태로 리턴한다
+ * 모든 기능 수행 후 deptSearch.jsp 화면으로 이동
  * 
- *******************************************************/
+ * @author 강현
+ *
+ */
 
 public class DeptSearchAction implements Action {
 

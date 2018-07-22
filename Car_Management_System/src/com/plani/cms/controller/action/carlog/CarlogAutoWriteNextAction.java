@@ -104,7 +104,7 @@ public class CarlogAutoWriteNextAction implements Action{
 				}
 				if(check == 0) {
 					caModel = new CarlogAutoModel();
-					caModel.setAuto_day(i-1);
+					caModel.setAuto_day(i);
 					caList.add(caModel);
 				}
 			}

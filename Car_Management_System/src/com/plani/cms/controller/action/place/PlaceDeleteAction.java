@@ -10,6 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.PlaceDAO;
 
+/**
+ * 장소를 삭제해주는 액션 클래스
+ * 
+ * @author 조성철
+ *
+ */
 public class PlaceDeleteAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

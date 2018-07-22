@@ -12,10 +12,10 @@
 
 	<ul class = "side_ul">
 		<li class = "side_title">법인 차 관리</li>
-		<li class = "side_sub-menu">법인 차 등록</li>
-		<li class = "side_sub-menu">정비소 등록</li>
-		<li class = "side_sub-menu">정비 내역 등록</li>
-		<li class = "side_sub-menu">정비 내역 조회</li>
+		<li class = "side_sub-menu"><a href = "car.do?command=car_write_form">법인 차 등록</a></li>
+		<li class = "side_sub-menu"><a href = "cent.do?command=cent_write_form">정비소 등록</a></li>
+		<li class = "side_sub-menu"><a href = "repa.do?command=repa_write_form">정비 내역 등록</a></li>
+		<li class = "side_sub-menu"><a href = "repa.do?command=repa_search_form">정비 내역 조회</a></li>
 	</ul>
 
 </body>

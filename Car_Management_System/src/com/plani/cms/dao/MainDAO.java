@@ -7,6 +7,15 @@ import java.sql.Statement;
 import com.plani.cms.dto.DeptVO;
 import com.plani.cms.util.DBManager;
 
+/**
+ * 메인 화면에서의 기능을 지원하는 
+ * DAO 클래스
+ * 
+ * 
+ * @author 강현
+ * 
+ *
+ */
 public class MainDAO {
 
 	private static MainDAO instance = new MainDAO();
@@ -15,9 +24,15 @@ public class MainDAO {
 		return instance;
 	} // Singleton 패턴
 	
+	/**
+	 * 회사에서 운용하고 있는 모든 차량의 수를 리턴
+	 * 
+	 * @return 회사에서 운용하고 있는 모든 차량의 수
+	 */
 	public int numberOfCars() {
 		
-		String sql = "select count(*) from car";
+		String sql = "SELECT COUNT(*) "
+				+ "     FROM car";
 
 		Connection conn = null;
 		Statement stmt = null;
@@ -41,9 +56,18 @@ public class MainDAO {
 		return noc;
 	}
 	
-		public int numberOfUsingCars() {
+	/**
+	 * 현재 사용 중인 차량의 수를 리턴
+	 * 
+	 * 
+	 * @return 현재 사용중인 차량의 수
+	 */
+	public int numberOfUsingCars() {
 		
-		String sql = "SELECT DISTINCT count(*) FROM driv WHERE driv_s_date < now() AND driv_e_date > now()";
+		String sql = "SELECT DISTINCT COUNT(*) "
+				+ "     FROM driv "
+				+ "    WHERE driv_s_date < now() "
+				+ "      AND driv_e_date > now()";
 
 		Connection conn = null;
 		Statement stmt = null;

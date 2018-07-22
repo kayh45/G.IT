@@ -12,10 +12,6 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <script type = "text/javascript" src="js/car.js?ver=4"></script>
 
-
-
-
-
 <title>법인차 조회</title>
 </head>
 <body>
@@ -52,12 +48,14 @@
 						<th>법인차 구분</th>
 					</tr>
 					<thead>
+				
 					<c:forEach var = "car" items = "${carList}">
 					<tr>
 						<td>${car.car_reg_no}</td>
 						<td><a onclick = "carSelect('${car.car_reg_no}')">${car.car_model}</a></td>		
 						<td>${car.car_divi}</td>
 					</tr>	
+				
 					<c:choose>
 						<c:when test="${car.car_divi eq '렌트' || car.car_divi eq '리스'}" >				
 							<input type = "hidden" name = "${car.car_reg_no}car_reg_no" value  = "${car.car_reg_no}">
@@ -75,6 +73,7 @@
 							<input type = "hidden" name = "${car.car_reg_no}ct_date" value  = "${car.ct_date}">
 							<input type = "hidden" name = "${car.car_reg_no}ep_date" value  = "${car.ep_date}">
 						</c:when>				
+					
 						<c:when test="${car.car_divi eq '구입'}" >	
 							<input type = "hidden" name = "${car.car_reg_no}car_reg_no" value  = "${car.car_reg_no}">
 						    <input type = "hidden" name = "${car.car_reg_no}car_model" value  = "${car.car_model}">
@@ -87,6 +86,7 @@
 							<input type = "hidden" name = "${car.car_reg_no}bo_e_date" value  = "${car.bo_e_date}">
 						</c:when>
 					</c:choose>
+					
 		</c:forEach>
 				</table>
 			</div>
@@ -109,6 +109,7 @@
 						<td>${car.car_divi}</td>
 					</tr>					
 					<c:choose>
+						
 						<c:when test="${car.car_divi eq '렌트' || car.car_divi eq '리스'}" >				
 							<input type = "hidden" name = "${car.car_reg_no}car_reg_no" value  = "${car.car_reg_no}">
 							<input type = "hidden" name = "${car.car_reg_no}car_model" value  = "${car.car_model}">
@@ -125,6 +126,7 @@
 							<input type = "hidden" name = "${car.car_reg_no}ct_date" value  = "${car.ct_date}">
 							<input type = "hidden" name = "${car.car_reg_no}ep_date" value  = "${car.ep_date}">
 						</c:when>				
+						
 						<c:when test="${car.car_divi eq '구입'}" >	
 							<input type = "hidden" name = "${car.car_reg_no}car_reg_no" value  = "${car.car_reg_no}">
 						    <input type = "hidden" name = "${car.car_reg_no}car_model" value  = "${car.car_model}">

@@ -10,7 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.CentDAO;
 import com.plani.cms.dto.CentVO;
-
+/**
+ * 정비소 데이터를 수정해주는 액션 클래스
+ * 
+ * @author 조성철
+ *
+ */
 public class CentModifyAction implements Action{
 
 	@Override
@@ -19,7 +24,6 @@ public class CentModifyAction implements Action{
 		
 		CentVO cVo = new CentVO();	
 		
-
 		
 		String cent_no = request.getParameter("cent_no");
 		String cent_name = request.getParameter("cent_name");
@@ -44,8 +48,8 @@ public class CentModifyAction implements Action{
 		CentDAO cDao = CentDAO.getInstance();
 		cDao.updateCent(cVo);
 		
-		System.out.println("등록성공");
-		request.setAttribute("message", "<strong>정비소 수정 성공!</strong> &nbsp 수정된 정비소 이름 : " + cent_name);
+		System.out.println("�벑濡앹꽦怨�");
+		request.setAttribute("message", "<strong>�젙鍮꾩냼 �닔�젙 �꽦怨�!</strong> &nbsp �닔�젙�맂 �젙鍮꾩냼 �씠由� : " + cent_name);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

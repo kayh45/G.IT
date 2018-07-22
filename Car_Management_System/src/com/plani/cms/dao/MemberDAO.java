@@ -12,6 +12,13 @@ import com.plani.cms.dto.DeptVO;
 import com.plani.cms.dto.MemberVO;
 import com.plani.cms.util.DBManager;
 
+/**
+ * 사원 정보 등록, 수정, 삭제, 조회 등의 기능을 지원하는
+ * DAO 클래스
+ * 
+ * @author 강현
+ *
+ */
 public class MemberDAO {
 
 	private static MemberDAO instance = new MemberDAO();
@@ -20,12 +27,17 @@ public class MemberDAO {
 		return instance;
 	} // Singleton 패턴		
 	
-	
+
+/**
+ * 비밀번호 수정 메소드
+ * 사원 아이디와 변경할 비밀번호를 MemberVO 객체로 받아와서 변경
+ * 	
+ * @param mVo
+ */
 	public void passwordUpdate(MemberVO mVo) {
-		/**
-		 * 사원 수정
-		 **/
-		String sql = "UPDATE mem SET mem_pw = ? where mem_id = ?";
+		String sql = "UPDATE mem"
+				   + "   SET mem_pw = ? "
+				   + " WHERE mem_id = ? ";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -47,16 +59,21 @@ public class MemberDAO {
 
 		}
 	}
-	
+
+	/**
+	 * 사원 등록 메소드
+	 * 사원 정보를 MemberVO 객체로 받아와서 입력
+	 * 
+	 * @MemberWriteAction 클래스에서 사용 
+	 * 
+	 * @param mVo
+	 */
 	public void memberInsert(MemberVO mVo) {
-		/**
-		 * 사원 등록
-		 * 사원정보를 받아와서 입력시킴
-		 * @MemberWriteAction 에서 사용
-		 **/
-		String sql = "insert into mem(mem_id, mem_pw, mem_name, mem_jumin, mem_p_no, mem_addr, mem_addr_dtl, mem_hp"
-				+ ", mem_posi, mem_auth, dept_no)"
-				+ " values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		
+		String sql = "INSERT INTO mem(mem_id, mem_pw, mem_name, mem_jumin"
+   				   + "              , mem_p_no, mem_addr, mem_addr_dtl, mem_hp"
+   				   + "              , mem_posi, mem_auth, dept_no)"
+   				   + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -87,13 +104,24 @@ public class MemberDAO {
 
 		}
 	}
-	
+	/**
+	 * 사원 정보 수정 메소드
+	 * 사원 정보를 MemberVO 객체로 받아와서 수정
+	 * 
+	 * @param mVo
+	 */
 	public void memberUpdate(MemberVO mVo) {
-		/**
-		 * 사원 수정
-		 **/
-		String sql = "UPDATE mem SET mem_name = ?, mem_jumin = ?, mem_p_no = ?, mem_addr = ?"
-				+ ", mem_addr_dtl = ?, mem_hp = ?, mem_posi = ?, mem_auth = ?, dept_no =?  where mem_id = ?";
+		String sql = "UPDATE mem "
+				   + "   SET mem_name = ?"
+				   + "     , mem_jumin = ?"
+				   + "     , mem_p_no = ?"
+				   + "     , mem_addr = ?"
+				   + "     , mem_addr_dtl = ?"
+				   + "     , mem_hp = ?"
+				   + "     , mem_posi = ?"
+				   + "     , mem_auth = ?"
+				   + "     , dept_no = ?"
+				   + " WHERE mem_id = ?";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -124,13 +152,17 @@ public class MemberDAO {
 		}
 	}
 	
+	/**
+	 * 사원 정보 삭제 메소드
+	 * 사원 아이디 (mem_id)를 매개변수를 받아서
+	 * 해당 사원 정보를 삭제
+	 * 
+	 * @param mem_id
+	 */
 	public void memberDelete(String mem_id) {
-		/**
-		 * 부서 수정 -> TODO 사원 삭제로 바꿔야됨 TODO
-		 * 부서 번호와 부서명을 받아와서 수정
-		 * @DeptModifyAction 에서 사용
-		 **/
-		String sql = "DELETE FROM mem WHERE mem_id = ?";
+
+		String sql = "DELETE mem "
+				   + " WHERE mem_id = ?";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -151,13 +183,20 @@ public class MemberDAO {
 
 		}
 	}
-	
+
+	/**
+	 * 로그인 검사를 위한 메소드
+	 * 
+	 * @LoginAction 에서 사용
+	 * 
+	 * @param mVo
+	 * @return 로그인 성공 시 1, 실패 시 0, 비정상적 수행 시 -1
+	 */
 	public int loginCheck(MemberVO mVo) {
-		/**
-		 * 로그인 검사를 위한 메소드
-		 * @LoginAction 에서 사용
-		 **/
-		String sql = "SELECT mem_pw FROM mem WHERE mem_id = '" + mVo.getMem_id() + "'";
+		
+		String sql = "SELECT mem_pw "
+				+ "     FROM mem "
+				+ "    WHERE mem_id = '" + mVo.getMem_id() + "'";
 
 		Connection conn = null;
 		Statement stmt = null;
@@ -186,14 +225,21 @@ public class MemberDAO {
 		return -1;
 	}
 	
+	/**
+	 * 로그인 세션 정보를 받아오기 위한 메소드
+	 * 비밀번호는 받지 않는다(보안을 위해)
+	 * 
+	 * @LoginAction 에서 사용
+	 * 
+	 * @param tempVo
+	 * @return 로그인 한 사원의 정보를 가지고 있는 객체를 리턴
+	 */
 	public MemberVO getMemberInfoAll(MemberVO tempVo) {
-		/**
-		 * 로그인 세션 정보를 받아오기 위한 메소드
-		 * 비밀번호는 받지 않는다(보안을 위해)
-		 * @LoginAction 에서 사용
-		 **/
-		String sql = "SELECT * FROM mem m inner join dept d on m.dept_no = d.dept_no"
-				+ " WHERE m.mem_id = '" + tempVo.getMem_id() + "'";
+
+		String sql = "SELECT * "
+				+ "     FROM mem m INNER JOIN dept d "
+				+ "       ON m.dept_no = d.dept_no"
+				+ "    WHERE m.mem_id = '" + tempVo.getMem_id() + "'";
 
 		Connection conn = null;
 		Statement stmt = null;
@@ -227,12 +273,19 @@ public class MemberDAO {
 		return mVo;
 	}
 	
+	/**
+	 * 사원 등록 시 아이디 중복 체크를 하기 위하여
+	 * DB에서 해당 id와 같은 id가 존재하는지 확인
+	 * 
+	 * @param id : String - 가입 시 사용할 id
+	 * 
+	 * @return 이미 값이 존재하면 1, 존재 하지 않으면 0, 비정상적 수행 시 -1을 리턴
+	 */
 	public int idDupCheck(String id) {
-		/**
-		 * 로그인 검사를 위한 메소드
-		 * @LoginAction 에서 사용
-		 **/
-		String sql = "SELECT * FROM mem WHERE mem_id = '" + id + "'";
+		
+		String sql = "SELECT * "
+				+ "     FROM mem "
+				+ "    WHERE mem_id = '" + id + "'";
 
 		Connection conn = null;
 		Statement stmt = null;
@@ -256,13 +309,24 @@ public class MemberDAO {
 		return -1; // 비정상적 리턴
 	}
 	
+	/**
+	 * 사원 정보를 검색하기 위해 사원 이름 키워드를 매개변수로 받아와
+	 * DB에서 LIKE 연산자를 이용해 이름에 그 키워드가 있는 사원 정보를
+	 * 목록으로 반환 
+	 * 
+	 * 
+	 * @param name : String - 검색에 사용할 키워드
+	 * @return 사원 정보(MemeverVO) 객체가 담긴 리스트를 리턴, 찾는 값이 없으면 빈 리스트를 리턴
+	 */
 	public List<MemberVO> memberSearchByName(String name) {
 		/**
 		 * 사원 이름에 대한 부분일치 검색
 		 * @MemberSearchAction 에서 사용
 		 **/
-		String sql = "select * from mem m inner join dept d on m.dept_no = d.dept_no"
-				+ " where mem_name like '%" + name + "%'";
+		String sql = "SELECT * "
+				+ "     FROM mem m INNER JOIN dept d "
+				+ "       ON m.dept_no = d.dept_no"
+				+ "    WHERE mem_name like '%" + name + "%'";
 
 		Connection conn = null;
 		Statement stmt = null;

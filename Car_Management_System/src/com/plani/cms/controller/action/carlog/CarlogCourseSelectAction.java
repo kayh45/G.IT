@@ -11,7 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.CourseDAO;
 import com.plani.cms.dto.PlaceCourVO;
-
+/**
+ * 운행일지 등록 창에서 경로를 조회하는 액션 클래스
+ * 
+ * @author 조성철
+ *
+ */
 public class CarlogCourseSelectAction implements Action{
 
 	@Override
@@ -34,17 +39,20 @@ public class CarlogCourseSelectAction implements Action{
 		List<PlaceCourVO> s_placeList = null;
 		
 		System.out.println(cour_divi);
+		
+		// 검색 조건에 따라 검색 메소드를 분기
 		if(cour_divi.equals("0")) {
 			s_placeList = cDao.courAllplaceSearchByNameLike(place_name);		
+		
 		} else if(cour_divi.equals("1")) {
 			s_placeList = cDao.courSplaceSearchByNameLike(place_name);					
+		
 		} else if(cour_divi.equals("2")) {
 			s_placeList = cDao.courEplaceSearchByNameLike(place_name);
 		}
+	
 		request.setAttribute("s_placeList", s_placeList);
 		request.setAttribute("place_name", place_name);
-/*		List<CarVO> carAllList = cDao.selectAllCar();
-		request.setAttribute("carAllList", carAllList);*/
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
