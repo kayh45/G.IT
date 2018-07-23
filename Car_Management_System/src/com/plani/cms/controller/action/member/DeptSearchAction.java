@@ -16,7 +16,7 @@ import com.plani.cms.dto.DeptVO;
  * 부서 정보를 검색하는 기능을 구현한 액션 클래스
  * 
  * dept_name(부서명)을 파라미터로 받아서 검색 기능을 수행하고
- * 그 결과를 List 타입의 어트리뷰트로 리턴
+ * 그 결과를 List 타입으로 리턴
  * 
  * 모든 기능 수행 후 deptSearch.jsp 화면으로 이동
  * 

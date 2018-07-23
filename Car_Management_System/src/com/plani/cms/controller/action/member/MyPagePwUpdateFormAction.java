@@ -9,6 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.plani.cms.controller.action.Action;
 
+/**
+ * 비밀번호 수정(사용자) 화면으로 이동하는 기능을 구현한 액션 클래스
+ * 
+ * @author 강현
+ *
+ */
 public class MyPagePwUpdateFormAction implements Action{
 
 	@Override

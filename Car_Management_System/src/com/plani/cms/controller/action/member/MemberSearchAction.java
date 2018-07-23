@@ -20,6 +20,15 @@ import com.plani.cms.dto.MemberVO;
  * 
  *******************************************************/
 
+/**
+ * 사원 이름으로 사원을 검색하고 그 목록을 리스트 타입으로 리턴하는
+ * 기능을 구현한 액션 클래스
+ * 
+ * 모든 기능 수행 후 사원 검색 팝업화면으로 이동
+ * 
+ * @author PC38219
+ *
+ */
 public class MemberSearchAction implements Action {
 
 	@Override

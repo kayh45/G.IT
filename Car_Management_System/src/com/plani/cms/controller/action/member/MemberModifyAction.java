@@ -12,6 +12,16 @@ import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.MemberDAO;
 import com.plani.cms.dto.MemberVO;
 
+/**
+ * 사원 정보 수정 기능을 구현한 액션 클래스
+ * 
+ * 관리자 기능, 사용자 기능 모두 이 클래스에서 수행
+ * 모든 기능을 수행하고나서
+ * 받아오는 파라미터를 바탕으로 관리자 , 사용자 기능으로 각각 이동
+ * 
+ * @author 강현
+ *
+ */
 public class MemberModifyAction implements Action{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

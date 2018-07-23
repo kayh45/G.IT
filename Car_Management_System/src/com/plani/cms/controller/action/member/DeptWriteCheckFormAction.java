@@ -12,14 +12,16 @@ import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.DeptDAO;
 import com.plani.cms.dto.DeptVO;
 
-/*******************************************************
- * 
- * 	DeptWriteCheckFormAction
- * 
- * 	부서명을 파라미터값으로 받아와 DB에서 검색하고 결과가 있을경우 list형태로 리턴한다
- * 
- *******************************************************/
 
+/**
+ * 부서명으로 부서를 검색하고 그 목록을 
+ * 리스트 타입으로 리턴하는 기능을 구현한 액션 클래스
+ * 
+ * 모든 기능 수행 후 부서검색 팝업 화면으로 이동
+ * 
+ * @author 강현
+ *
+ */
 public class DeptWriteCheckFormAction implements Action {
 
 	@Override

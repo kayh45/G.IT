@@ -9,6 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.plani.cms.controller.action.Action;
 
+/**
+ * 사원 등록 화면으로 이동하는 기능을 구현한 액션클래스
+ * 
+ * @author 강현
+ *
+ */
 public class MemberWriteFormAction implements Action {
 
 	@Override

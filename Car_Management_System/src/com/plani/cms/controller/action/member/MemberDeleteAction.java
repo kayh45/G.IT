@@ -12,6 +12,14 @@ import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.MemberDAO;
 import com.plani.cms.dto.MemberVO;
 
+/**
+ * 사원 정보 삭제(관리자) 기능을 구현한 액션 클래스
+ * 
+ * 모든 기능 수행 후 사원 등록 화면으로 이동
+ * 
+ * @author PC38219
+ *
+ */
 public class MemberDeleteAction implements Action {
 
 	@Override
@@ -32,7 +40,7 @@ public class MemberDeleteAction implements Action {
 		}
 		
 		System.out.println("삭제 성공");
-		request.setAttribute("message", "<strong>부서 삭제 성공!</strong> &nbsp 삭제한 사원 : " + mem_name + "(" + mem_id+ ")");
+		request.setAttribute("message", "<strong>사원 삭제 성공!</strong> &nbsp 삭제한 사원 : " + mem_name + "(" + mem_id+ ")");
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

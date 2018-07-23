@@ -11,6 +11,14 @@ import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.MemberDAO;
 import com.plani.cms.dto.MemberVO;
 
+/**
+ * 사원 비밀번호 수정(사용자) 기능을 구현한 액션 클래스
+ * 
+ * 모든 기능 수행 후 비밀번호 수정화면으로 이동
+ * 
+ * @author 강현
+ *
+ */
 public class MyPagePwUpdateAction implements Action{
 
 	@Override

@@ -11,6 +11,14 @@ import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.MemberDAO;
 import com.plani.cms.dto.MemberVO;
 
+/**
+ * 사원 정보 등록 기능을 구현한 액션 클래스
+ * 
+ * 모든 기능 수행 후 사원 등록 화면으로 이동
+ * 
+ * @author 강현
+ *
+ */
 public class MemberWriteAction implements Action{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

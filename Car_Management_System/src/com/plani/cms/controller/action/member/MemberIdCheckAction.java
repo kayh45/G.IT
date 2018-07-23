@@ -10,6 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.MemberDAO;
 
+/**
+ * 사원 id 중복체크 기능을 구현한 액션 클래스
+ * 
+ * 모든 기능 수행 후 결과를 가지고 id 중복체크 팝업 화면으로 이동
+ * 
+ * @author 강현
+ *
+ */
 public class MemberIdCheckAction implements Action {
 
 	@Override
