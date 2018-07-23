@@ -11,6 +11,14 @@ import javax.servlet.http.HttpSession;
 import com.plani.cms.dao.MemberDAO;
 import com.plani.cms.dto.MemberVO;
 
+/**
+ * 로그인 기능을 구현한 액션 클래스
+ * 
+ * 모든 기능 수행 후 메인화면으로 이동
+ * 
+ * @author 강현
+ *
+ */
 public class LoginAction implements Action {
 
 	@Override

@@ -12,13 +12,12 @@ import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.MemberDAO;
 import com.plani.cms.dto.MemberVO;
 
-/*******************************************************
+/**
+ * 사원 이름을 파라미터값으로 받아와 DB에서 검색하고 결과가 있을경우 
+ * list형태로 리턴하는 기능을 구현한 액션클래스
  * 
- * 	MemberSearchAction
- * 
- * 	사원 이름을 파라미터값으로 받아와 DB에서 검색하고 결과가 있을경우 list형태로 리턴한다
- * 
- *******************************************************/
+ * @author 강현
+ */
 
 public class CarlogMemberSearchAction implements Action {
 

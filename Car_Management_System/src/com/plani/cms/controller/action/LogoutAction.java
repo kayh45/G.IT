@@ -8,6 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * 로그아웃하는 기능을 구현한 액션클래스
+ * 
+ * session을 invalidate 시켜줌
+ * 
+ * @author 강현
+ *
+ */
 public class LogoutAction implements Action{
 
 	@Override

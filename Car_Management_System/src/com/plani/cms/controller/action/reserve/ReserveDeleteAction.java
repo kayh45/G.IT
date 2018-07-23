@@ -14,6 +14,14 @@ import com.plani.cms.dao.ReserveDAO;
 import com.plani.cms.dto.DrivVO;
 import com.plani.cms.dto.MemberVO;
 
+/**
+ * 배차 등록 정보를 삭제하는 기능을 구현한 액션 클래스
+ * 
+ * 모든 기능 수행 후 배차 등록 화면으로 이동
+ * 
+ * @author 강현
+ *
+ */
 public class ReserveDeleteAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

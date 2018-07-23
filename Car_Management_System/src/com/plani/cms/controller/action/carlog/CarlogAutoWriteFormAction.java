@@ -10,6 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.ReserveDAO;
 
+/**
+ * 일지 일괄작성 화면으로 이동하는 기능을 구현한 액션클래스
+ * 
+ * @author 강현
+ *
+ */
 public class CarlogAutoWriteFormAction implements Action{
 
 	@Override

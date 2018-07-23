@@ -15,6 +15,14 @@ import com.plani.cms.dao.CarDAO;
 import com.plani.cms.dao.ReserveDAO;
 import com.plani.cms.dto.CarVO;
 
+/**
+ * 배차 등록 화면으로 이동하는 기능을 구현한 액션 클래스
+ * 
+ * 초기 날짜로 DB의 sysdate를 리턴
+ * 
+ * @author 강현
+ *
+ */
 public class ReserveWriteFormAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

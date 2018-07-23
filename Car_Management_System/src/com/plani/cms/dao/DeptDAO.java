@@ -14,7 +14,7 @@ import com.plani.cms.util.DBManager;
  * 부서의 등록, 수정, 삭제, 조회 등의 기능을 지원하는 
  * DAO 클래스
  * 
- * @author PC38219
+ * @author 강현
  *
  */
 public class DeptDAO {

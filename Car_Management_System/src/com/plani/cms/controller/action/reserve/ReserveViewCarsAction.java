@@ -13,6 +13,15 @@ import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.ReserveDAO;
 import com.plani.cms.dto.CarVO;
 
+/**
+ * 배차 등록화면에서 사용 가능한 차량의 목록을
+ * 리턴하는 기능을 구현한 액션 클래스
+ * 
+ * 반드시 스케줄 조회 후에 실행됨
+ * 
+ * @author 강현
+ *
+ */
 public class ReserveViewCarsAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

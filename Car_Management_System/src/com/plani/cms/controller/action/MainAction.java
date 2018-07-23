@@ -9,6 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.plani.cms.dao.MainDAO;
 
+/**
+ * 메인화면으로 이동시켜주는 기능을 구현한 액션클래스
+ * 
+ * @author 강현
+ *
+ */
 public class MainAction implements Action {
 
 	@Override

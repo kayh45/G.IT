@@ -14,6 +14,14 @@ import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.ReserveDAO;
 import com.plani.cms.dto.DrivVO;
 
+/**
+ * 배차 등록 화면에서 배차 등록 기능을 구현한 액션 클래스
+ * 
+ * 모든 기능 수행 후 배차 등록 화면으로 이동
+ * 
+ * @author 강현
+ *
+ */
 public class ReserveWriteAction implements Action{
 
 	@Override

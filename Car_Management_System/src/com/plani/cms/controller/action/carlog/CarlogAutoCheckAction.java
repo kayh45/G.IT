@@ -13,6 +13,16 @@ import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.CarlogDAO;
 import com.plani.cms.dto.CarlogVO;
 
+/**
+ * 선택한 이전 달에 입력된 일지가 있는지 확인하는
+ * 기능을 구현한 액션 클래스
+ * 
+ * 
+ * @author 강현
+ *
+ * @deprecated 2018/07/23 더이상 사용하지 않음 
+ */
+@Deprecated
 public class CarlogAutoCheckAction implements Action{
 
 	@Override

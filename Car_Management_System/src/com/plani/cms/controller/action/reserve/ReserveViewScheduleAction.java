@@ -13,6 +13,13 @@ import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.ReserveDAO;
 import com.plani.cms.dto.DrivVO;
 
+/**
+ * 배차 등록 화면에서 날짜 선택 시 해당 날짜의 스케줄을
+ * 리턴해주는 기능을 구현한 액션 클래스
+ * 
+ * @author 강현
+ *
+ */
 public class ReserveViewScheduleAction implements Action {
 
 	@Override
