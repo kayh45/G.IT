@@ -1,9 +1,6 @@
 package com.plani.cms.controller.action.reserve;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,9 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.plani.cms.controller.action.Action;
-import com.plani.cms.dao.CarDAO;
 import com.plani.cms.dao.ReserveDAO;
-import com.plani.cms.dto.CarVO;
 
 /**
  * 배차 등록 화면으로 이동하는 기능을 구현한 액션 클래스

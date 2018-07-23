@@ -12,6 +12,12 @@ import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.CourseDAO;
 import com.plani.cms.dto.PlaceCourVO;
 
+/**
+ * 운행일지 장소 검색 화면으로 이동해주는 액션 클래스
+ * 
+ * @author kayh_develope
+ *
+ */
 public class CarlogCourseSelectAutoAction implements Action{
 
 	@Override
@@ -24,10 +30,6 @@ public class CarlogCourseSelectAutoAction implements Action{
         System.out.println("레그넘 = "+ place_name);
 		CourseDAO cDao = CourseDAO.getInstance();
 		
-		/*int result = cDao.confirmCarNo(car_reg_no);
-
-		System.out.println(result);
-*/
 		request.setAttribute("place_name", place_name);
 
 		/* ------------------ car 체크----------------------- */

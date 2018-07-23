@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.DeptDAO;
-import com.plani.cms.dto.DeptVO;
 
 /**
  * 부서 정보 삭제 기능을 구현한 액션 클래스

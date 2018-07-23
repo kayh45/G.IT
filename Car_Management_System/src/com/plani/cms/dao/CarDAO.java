@@ -80,12 +80,19 @@ public class CarDAO {
 	
 	public List<CarexVO> selectExpenCarOnlydate(String date_s, String date_e) {
 		
-		String sql = "select c.car_reg_no as 'car_reg_no', FORMAT(sum(r.repa_fee),0) as 'repa_fee', "
-				+ "format(sum(d.oil_fee),0) as 'oil_fee', format(sum(d.trans_fee),0) as 'trans_fee', "
-				+ "format(sum(d.etc_fee),0) as 'etc_fee' from car c, repa r, driv d "
-				+ "where (c.car_reg_no = r.car_reg_no) and (r.car_reg_no = d.car_reg_no) and "
-				+ "(between r.repa_s_date = '" + date_s + "' and r.repa_s_date = '" + date_e + "') and (between d.driv_s_date = '" + date_s + "' and "
-						+ "d.driv_e_date = '" + date_e + "') group by c.car_reg_no";
+		String sql = "SELECT c.car_reg_no AS car_reg_no"
+				+ "        , FORMAT(SUM(r.repa_fee),0) AS repa_fee"
+				+ "        , FORMAT(SUM(d.oil_fee),0) AS oil_fee"
+				+ "        , FORMAT(SUM(d.trans_fee),0) AS trans_fee"
+				+ "        , FORMAT(SUM(d.etc_fee),0) AS etc_fee"
+				+ "     FROM car c, repa r, driv d "
+				+ "    WHERE (c.car_reg_no = r.car_reg_no) "
+				+ "      AND (r.car_reg_no = d.car_reg_no)"
+				+ "      AND (between r.repa_s_date = '" + date_s + "'"
+				+ "      AND r.repa_s_date = '" + date_e + "') "
+				+ "      AND (between d.driv_s_date = '" + date_s + "' "
+				+ "      AND d.driv_e_date = '" + date_e + "') "
+			    + "    GROUP BY c.car_reg_no";
 		
 		List<CarexVO> list = new ArrayList<CarexVO>();
 		Connection conn = null;
@@ -120,12 +127,20 @@ public class CarDAO {
 	
 	public List<CarexVO> selectExpenCarOnlydate(String date_s, String date_e, String car_reg_no) {
 		
-		String sql = "select c.car_reg_no as 'car_reg_no', FORMAT(sum(r.repa_fee),0) as 'repa_fee', "
-				+ "format(sum(d.oil_fee),0) as 'oil_fee', format(sum(d.trans_fee),0) as 'trans_fee', "
-				+ "format(sum(d.etc_fee),0) as 'etc_fee' from car c, repa r, driv d "
-				+ "where (c.car_reg_no = r.car_reg_no) and (r.car_reg_no = d.car_reg_no) and "
-				+ "(between r.repa_s_date = '" + date_s + "' and r.repa_s_date = '" + date_e + "') and (between d.driv_s_date = '" + date_s + "' and "
-				+ "d.driv_e_date = '" + date_e + "') and c.car_reg_no = '" + car_reg_no +"' group by c.car_reg_no";
+		String sql = "SELECT c.car_reg_no AS car_reg_no"
+				+ "        , FORMAT(SUM(r.repa_fee),0) AS repa_fee"
+				+ "        , FORMAT(SUM(d.oil_fee),0) AS oil_fee"
+				+ "        , FORMAT(SUM(d.trans_fee),0) AS trans_fee"
+				+ "        , FORMAT(SUM(d.etc_fee),0) AS etc_fee"
+				+ "     FROM car c, repa r, driv d "
+				+ "    WHERE (c.car_reg_no = r.car_reg_no) "
+				+ "      AND (r.car_reg_no = d.car_reg_no)"
+				+ "      AND (between r.repa_s_date = '" + date_s + "'"
+				+ "      AND r.repa_s_date = '" + date_e + "') "
+				+ "      AND (between d.driv_s_date = '" + date_s + "'"
+				+ "      AND d.driv_e_date = '" + date_e + "')"
+				+ "      AND c.car_reg_no = '" + car_reg_no + "'"
+			    + "    GROUP BY c.car_reg_no";
 		
 		List<CarexVO> list = new ArrayList<CarexVO>();
 		Connection conn = null;

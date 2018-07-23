@@ -19,13 +19,14 @@ import com.plani.cms.dto.CourseVO;
 /**
  * 차량 운행일지를 일괄적으로 작성하는 기능을 구현한 액션 클래스
  * 
+ *  * @CarlogAutoWriteNextAction2 을 개선한 버전
+ *  
  * !! 안정적으로 작동하지 않음 !!
  * 
  * @author 강현
  *
  *
  */
-@Deprecated
 public class CarlogAutoWriteNextAction implements Action{
 
 	@Override

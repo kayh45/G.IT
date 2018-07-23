@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.ReserveDAO;
 import com.plani.cms.dto.DrivVO;
-import com.plani.cms.dto.MemberVO;
 
 /**
  * 배차 등록 정보를 삭제하는 기능을 구현한 액션 클래스

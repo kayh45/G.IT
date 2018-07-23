@@ -16,6 +16,7 @@ import com.plani.cms.dao.ReserveDAO;
  * @author 강현
  *
  */
+
 public class CarlogAutoWriteFormAction implements Action{
 
 	@Override
