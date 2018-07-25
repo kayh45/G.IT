@@ -195,6 +195,10 @@ public class MemberDAO {
 				+ "     FROM mem "
 				+ "    WHERE mem_id = '" + mVo.getMem_id() + "'";
 
+		
+		System.out.println(mVo.getMem_pw());
+		System.out.println(mVo.getMem_id());
+		
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -205,7 +209,7 @@ public class MemberDAO {
 			rs = stmt.executeQuery(sql);
 				
 			if (rs.next()) {
-				
+				System.out.println(rs.getString("mem_pw"));
 				if (rs.getString("mem_pw") != null && rs.getString("mem_pw").equals(mVo.getMem_pw())) {
 					return 1; //로그인 성공
 				}else {

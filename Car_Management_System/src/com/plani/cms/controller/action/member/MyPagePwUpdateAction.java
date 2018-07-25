@@ -2,6 +2,8 @@ package com.plani.cms.controller.action.member;
 
 import java.io.IOException;
 
+import static com.plani.cms.util.SHA256.getSHA256;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -33,7 +35,7 @@ public class MyPagePwUpdateAction implements Action{
 		MemberVO mVo = new MemberVO();
 		
 		mVo.setMem_id(mem_id);
-		mVo.setMem_pw(currPass);
+		mVo.setMem_pw(getSHA256(currPass));
 		
 		MemberDAO mDao = MemberDAO.getInstance();
 		
@@ -43,7 +45,7 @@ public class MyPagePwUpdateAction implements Action{
 		String msgType = "success";
 		
 		if (isCorrect == 1) {
-			mVo.setMem_pw(modiPass);
+			mVo.setMem_pw(getSHA256(modiPass));
 			mDao.passwordUpdate(mVo);
 			message = "비밀번호가 성공적으로 변경되었습니다.";
 		}else {

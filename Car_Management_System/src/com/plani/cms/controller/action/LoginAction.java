@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import com.plani.cms.dao.MemberDAO;
 import com.plani.cms.dto.MemberVO;
+import com.plani.cms.util.SHA256;
 
 /**
  * 로그인 기능을 구현한 액션 클래스
@@ -35,8 +36,13 @@ public class LoginAction implements Action {
 			MemberVO mVo = new MemberVO();
 			MemberDAO mDao = MemberDAO.getInstance();
 			
+			String mem_pw = request.getParameter("mem_pw");
+			String sha_pw = SHA256.getSHA256(mem_pw);
+			
 			mVo.setMem_id(request.getParameter("mem_id"));
-			mVo.setMem_pw(request.getParameter("mem_pw"));
+			mVo.setMem_pw(sha_pw);
+			
+			System.out.println(sha_pw);
 			
 			System.out.println(mDao.loginCheck(mVo));
 			

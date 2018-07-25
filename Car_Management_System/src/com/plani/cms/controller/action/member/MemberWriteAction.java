@@ -2,6 +2,8 @@ package com.plani.cms.controller.action.member;
 
 import java.io.IOException;
 
+import static com.plani.cms.util.SHA256.getSHA256;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -27,7 +29,7 @@ public class MemberWriteAction implements Action{
 		MemberVO mVo = new MemberVO();	
 		
 		String mem_id = request.getParameter("mem_id");
-		String mem_pw = "0000";
+		String mem_pw = getSHA256("0000");
 		String mem_name = request.getParameter("mem_name");
 		String p_no = request.getParameter("mem_p_no");
 		String mem_addr = request.getParameter("mem_addr1");
