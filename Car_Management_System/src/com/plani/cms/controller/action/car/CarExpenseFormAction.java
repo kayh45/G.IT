@@ -9,6 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.plani.cms.controller.action.Action;
 
+/**
+ * 차량 비용 관리 화면으로 이동하는 액션 클래스
+ * @author 강현
+ *
+ */
 public class CarExpenseFormAction implements Action{
 
 	@Override

@@ -14,7 +14,6 @@ import com.plani.cms.util.DBManager;
  * 
  * @author 강현
  * 
- *
  */
 public class MainDAO {
 

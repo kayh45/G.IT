@@ -1,10 +1,4 @@
 package com.plani.cms.dao;
-/**
- * 차량 운행일지를 검색조건에 맞게 조회할 수 있는 클래스(싱글톤)
- * 
- * @author 윤한수
- *
- */
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,7 +10,12 @@ import java.util.List;
 
 import com.plani.cms.dto.CarviewVO;
 import com.plani.cms.util.DBManager;
-
+/**
+ * 차량 운행일지를 검색조건에 맞게 조회할 수 있는 클래스(싱글톤)
+ * 
+ * @author 윤한수
+ *
+ */
 public class CarviewDAO {
 	private static CarviewDAO instance = new CarviewDAO();
 

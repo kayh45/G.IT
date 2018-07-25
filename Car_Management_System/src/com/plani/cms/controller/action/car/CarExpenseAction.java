@@ -14,6 +14,11 @@ import com.plani.cms.dao.RepaDAO;
 import com.plani.cms.dto.CarexVO;
 import com.plani.cms.dto.RepaVO;
 
+/**
+ * 차량 비용관리 화면을 출력하는 액션 클래스
+ * @author 강현
+ *
+ */
 public class CarExpenseAction implements Action{
 
 	@Override

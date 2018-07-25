@@ -67,8 +67,6 @@
 			</div>
 		</c:if>
 
-		
-	
 			</form>
 		
 			<div class = "popup_box">

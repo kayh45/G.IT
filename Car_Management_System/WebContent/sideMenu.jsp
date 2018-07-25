@@ -6,7 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="css/common.css" rel="stylesheet">
 <link href="css/side_menu.css" rel="stylesheet">
-<title>Insert title here</title>
 </head>
 <body class = "side_body">
 

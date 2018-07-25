@@ -55,7 +55,7 @@
 					</tr>
 					<thead>
 					<c:forEach var = "cent" items = "${centList}">
-				<tr>
+					<tr>
 						<td>${cent.cent_no}</td>
 						<td><a onclick = "repaCentSelect('${cent.cent_no}','${cent.cent_name}')">${cent.cent_name}</a></td>		
 						<td>${cent.ceo_name}</td>
