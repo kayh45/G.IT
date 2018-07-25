@@ -226,7 +226,7 @@ public class ReserveDAO {
 	 */
 	public void deleteReserve(int driv_no) {
 		
-		String sql = "DELETE driv        "
+		String sql = "DELETE FROM driv        "
 				+ "    WHERE driv_no = ? ";
 		
 		

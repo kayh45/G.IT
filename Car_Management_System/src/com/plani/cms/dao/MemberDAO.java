@@ -161,7 +161,7 @@ public class MemberDAO {
 	 */
 	public void memberDelete(String mem_id) {
 
-		String sql = "DELETE mem "
+		String sql = "DELETE FROM mem "
 				   + " WHERE mem_id = ?";
 
 		Connection conn = null;

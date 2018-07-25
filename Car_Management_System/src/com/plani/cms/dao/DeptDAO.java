@@ -93,7 +93,7 @@ public class DeptDAO {
 	 */
 	public void deptDelete(int dept_no) {
 		
-		String sql = "DELETE dept "
+		String sql = "DELETE FROM dept "
 				+ "    WHERE dept_no = ?";
 
 		Connection conn = null;
