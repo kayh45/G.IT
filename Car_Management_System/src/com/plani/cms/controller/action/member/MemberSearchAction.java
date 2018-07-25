@@ -12,13 +12,6 @@ import com.plani.cms.controller.action.Action;
 import com.plani.cms.dao.MemberDAO;
 import com.plani.cms.dto.MemberVO;
 
-/*******************************************************
- * 
- * 	MemberSearchAction
- * 
- * 	사원 이름을 파라미터값으로 받아와 DB에서 검색하고 결과가 있을경우 list형태로 리턴한다
- * 
- *******************************************************/
 
 /**
  * 사원 이름으로 사원을 검색하고 그 목록을 리스트 타입으로 리턴하는

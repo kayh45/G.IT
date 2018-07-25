@@ -112,11 +112,7 @@ public class PlaceDAO {
 	 * @param place_no : 장소 번호
 	 */
 	public void placeDelete(int place_no) {
-		/**
-		 * 부서 수정 -> TODO 사원 삭제로 바꿔야됨 TODO
-		 * 부서 번호와 부서명을 받아와서 수정
-		 * @DeptModifyAction 에서 사용
-		 **/
+		
 		String sql = "DELETE FROM place "
 				   + " WHERE place_no = ?";
 

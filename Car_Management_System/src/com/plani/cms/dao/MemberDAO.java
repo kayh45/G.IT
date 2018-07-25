@@ -322,7 +322,7 @@ public class MemberDAO {
 		/**
 		 * 사원 이름에 대한 부분일치 검색
 		 * @MemberSearchAction 에서 사용
-		 **/
+		 */
 		String sql = "SELECT * "
 				+ "     FROM mem m INNER JOIN dept d "
 				+ "       ON m.dept_no = d.dept_no"

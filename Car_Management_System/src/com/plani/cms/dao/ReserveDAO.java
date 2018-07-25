@@ -193,13 +193,10 @@ public class ReserveDAO {
 	 *            , 등록하는 사원의 아이디 를 가지고 있는 객체 
 	 */
 	public void insertReserve(DrivVO dVo) {
-		/**
-		 * @ReserveWriteAction 에서 사용
-		 **/
+		
 		
 		String sql = "INSERT INTO driv(driv_s_date, driv_e_date, car_reg_no, mem_id) "
 				+ "   VALUES (?, ?, ?, ?)";
-		
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;

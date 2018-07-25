@@ -361,7 +361,7 @@ public class CourseDAO {
 		/**
 		 * 사원 이름에 대한 부분일치 검색
 		 * @MemberSearchAction 에서 사용
-		 ***/
+		 */
 		String sql = "SELECT p.* "
 				   + "	FROM place p "
 				   + " WHERE p.place_name LIKE '%" + name + "%'";
@@ -402,8 +402,7 @@ public class CourseDAO {
 	}
 	
 	/*public List<CourseVO> selectAllCourse() {
-		*//**
-		 ***//*
+		
 		String sql = "select * from course";
 			
 
