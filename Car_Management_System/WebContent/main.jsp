@@ -66,12 +66,25 @@
 						<p>사원 등록</p>
 					</div>
 				</div>
-				<div class = "col-md-3 col-xs-6">
-					<div class = "content_cont-box qLink_button" onclick = "location.href='carlog.do?command=carlog_auto_write_form'">
-						<img src = "img/car_icon.png" width = "200">
-						<p>운행일지 일괄작성</p>
+				<c:choose>
+					<c:when test="${LoginUser.mem_auth eq 1}">
+					<div class = "col-md-3 col-xs-6">
+						<div class = "content_cont-box qLink_button" onclick = "location.href='carlog.do?command=carlog_auto_write_form'">
+							<img src = "img/car_icon.png" width = "200">
+							<p>운행일지 일괄작성</p>
+						</div>
 					</div>
-				</div>
+					</c:when>
+					<c:otherwise>
+					<div class = "col-md-3 col-xs-6">
+						<div class = "content_cont-box qLink_button" onclick = "location.href='carlog.do?command=mypage_home'">
+							<img src = "img/car_icon.png" width = "200">
+							<p>마이 페이지</p>
+						</div>
+					</div>
+					
+					</c:otherwise>
+				</c:choose>
 			</div>
 			</div>
 		</section>
