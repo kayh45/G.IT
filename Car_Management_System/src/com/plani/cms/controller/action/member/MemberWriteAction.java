@@ -27,9 +27,8 @@ public class MemberWriteAction implements Action{
 		MemberVO mVo = new MemberVO();	
 		
 		String mem_id = request.getParameter("mem_id");
-		String mem_pw = request.getParameter("mem_jumin1");
+		String mem_pw = "0000";
 		String mem_name = request.getParameter("mem_name");
-		String mem_jumin = request.getParameter("mem_jumin1") + request.getParameter("mem_jumin2");
 		String p_no = request.getParameter("mem_p_no");
 		String mem_addr = request.getParameter("mem_addr1");
 		String mem_addr_dtl = request.getParameter("mem_addr_dtl");
@@ -41,7 +40,6 @@ public class MemberWriteAction implements Action{
 		mVo.setMem_id(mem_id);
 		mVo.setMem_pw(mem_pw);
 		mVo.setMem_name(mem_name);
-		mVo.setMem_jumin(mem_jumin);
 		mVo.setMem_p_no(p_no);
 		mVo.setMem_addr(mem_addr);
 		mVo.setMem_addr_dtl(mem_addr_dtl);

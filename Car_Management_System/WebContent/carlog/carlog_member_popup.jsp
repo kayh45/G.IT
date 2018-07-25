@@ -61,7 +61,6 @@
 					</tr>					
 					<input type = "hidden" name = "${mem.mem_id}mem_id" value  = "${mem.mem_id}">
 					<input type = "hidden" name = "${mem.mem_id}mem_name" value  = "${mem.mem_name}">
-					<input type = "hidden" name = "${mem.mem_id}mem_jumin" value  = "${mem.mem_jumin}">
 					<input type = "hidden" name = "${mem.mem_id}mem_hp" value  = "${mem.mem_hp}">
 					<input type = "hidden" name = "${mem.mem_id}mem_posi" value  = "${mem.mem_posi}">
 					<input type = "hidden" name = "${mem.mem_id}mem_p_no" value  = "${mem.mem_p_no}">

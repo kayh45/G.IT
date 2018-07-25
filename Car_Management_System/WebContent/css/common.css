@@ -176,18 +176,13 @@ section#content_car_include {
 	margin : -5px;
 }
 
-.form_phone-td  p,
-.form_jumin-td  p {
+.form_phone-td  p{
 	display: inline-block;
 	margin-left: 5px;
 }
 
 .form_phone-td input {
 	width: 50px;
-}
-
-.form_jumin-td input {
-	width: 70px;
 }
 
 #roadAddress {

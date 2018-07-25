@@ -13,7 +13,6 @@ CREATE TABLE if not exists `cms`.`mem` (
   `mem_id` VARCHAR(50) NOT NULL,
   `mem_pw` VARCHAR(50) NOT NULL,
   `mem_name` VARCHAR(30) NOT NULL,
-  `mem_jumin` VARCHAR(30) NOT NULL,
   `mem_p_no` VARCHAR(10) NULL,
   `mem_addr` VARCHAR(255) NULL,
   `mem_addr_dtl` VARCHAR(50) NULL,

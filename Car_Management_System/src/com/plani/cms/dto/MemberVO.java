@@ -5,7 +5,6 @@ public class MemberVO extends DeptVO{
 //	  `mem_id` VARCHAR(50) NOT NULL,
 //	  `mem_pw` VARCHAR(50) NOT NULL,
 //	  `mem_name` VARCHAR(30) NOT NULL,
-//	  `mem_jumin` INT NOT NULL,
 //	  `mem_p_no` VARCHAR(5) NULL,
 //	  `mem_addr` VARCHAR(255) NULL,
 //	  `mem_hp` VARCHAR(11) NOT NULL,
@@ -18,7 +17,6 @@ public class MemberVO extends DeptVO{
 	private String mem_id;
 	private String mem_pw;
 	private String mem_name;
-	private String mem_jumin;
 	private String mem_p_no;
 	private String mem_addr;
 	private String mem_addr_dtl;
@@ -43,12 +41,6 @@ public class MemberVO extends DeptVO{
 	}
 	public void setMem_name(String mem_name) {
 		this.mem_name = mem_name;
-	}
-	public String getMem_jumin() {
-		return mem_jumin;
-	}
-	public void setMem_jumin(String mem_jumin) {
-		this.mem_jumin = mem_jumin;
 	}
 	public String getMem_p_no() {
 		return mem_p_no;
@@ -87,11 +79,14 @@ public class MemberVO extends DeptVO{
 	public void setMem_auth(String mem_auth) {
 		this.mem_auth = mem_auth;
 	}
+	
 	@Override
 	public String toString() {
-		return "MemberVO [mem_id=" + mem_id + ", mem_pw=" + mem_pw + ", mem_name=" + mem_name + ", mem_jumin="
-				+ mem_jumin + ", mem_p_no=" + mem_p_no + ", mem_addr=" + mem_addr + ", mem_hp=" + mem_hp + ", mem_posi="
+		return "MemberVO [mem_id=" + mem_id + ", mem_pw=" + mem_pw + ", mem_name=" + mem_name + ", mem_p_no=" + mem_p_no
+				+ ", mem_addr=" + mem_addr + ", mem_addr_dtl=" + mem_addr_dtl + ", mem_hp=" + mem_hp + ", mem_posi="
 				+ mem_posi + ", mem_auth=" + mem_auth + "]";
 	}
+	
+	
 	
 }

@@ -139,10 +139,6 @@ function memSelect(name) {
 		opener.frm.mem_id.value = document.getElementsByName(name + "mem_id")[0].value;
 		opener.frm.mem_name.value = document.getElementsByName(name + "mem_name")[0].value;
 		
-		var jumin = document.getElementsByName(name + "mem_jumin")[0].value;
-		opener.frm.mem_jumin1.value = jumin.substr(0,6);
-		opener.frm.mem_jumin2.value = jumin.substr(6,7);
-		
 		var hp = document.getElementsByName(name + "mem_hp")[0].value;
 		opener.frm.mem_hp1.value = hp.substr(0,3);
 		opener.frm.mem_hp2.value = hp.substr(3,4);
@@ -208,14 +204,6 @@ function memWriteCheck() {
 		alert("이름을 입력하세요");
 		document.frm.mem_name.focus();
 		return false;
-	} else if (document.frm.mem_jumin1.value == "") {
-		alert("주민등록번호를 입력하세요");
-		document.frm.mem_jumin1.focus();
-		return false;
-	} else if (document.frm.mem_jumin2.value == "") {
-		alert("주민등록번호를 입력하세요");
-		document.frm.mem_jumin2.focus();
-		return false;
 	} else if (document.frm.dept_no.value == "") {
 		alert("부서를 확인해주세요");
 		document.frm.dept_name.focus();
@@ -260,14 +248,6 @@ function memModifyCheck() {
 	}else if (document.frm.mem_name.value == "") {
 		alert("이름을 입력하세요");
 		document.frm.mem_name.focus();
-		return false;
-	} else if (document.frm.mem_jumin1.value == "") {
-		alert("주민등록번호를 입력하세요");
-		document.frm.mem_jumin1.focus();
-		return false;
-	} else if (document.frm.mem_jumin2.value == "") {
-		alert("주민등록번호를 입력하세요");
-		document.frm.mem_jumin2.focus();
 		return false;
 	} else if (document.frm.dept_no.value == "") {
 		alert("부서를 확인해주세요");

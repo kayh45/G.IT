@@ -70,10 +70,10 @@ public class MemberDAO {
 	 */
 	public void memberInsert(MemberVO mVo) {
 		
-		String sql = "INSERT INTO mem(mem_id, mem_pw, mem_name, mem_jumin"
+		String sql = "INSERT INTO mem(mem_id, mem_pw, mem_name"
    				   + "              , mem_p_no, mem_addr, mem_addr_dtl, mem_hp"
    				   + "              , mem_posi, mem_auth, dept_no)"
-   				   + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+   				   + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -85,14 +85,13 @@ public class MemberDAO {
 			pstmt.setString(1, mVo.getMem_id());
 			pstmt.setString(2, mVo.getMem_pw());
 			pstmt.setString(3, mVo.getMem_name());
-			pstmt.setString(4, mVo.getMem_jumin());
-			pstmt.setString(5, mVo.getMem_p_no());
-			pstmt.setString(6, mVo.getMem_addr());
-			pstmt.setString(7, mVo.getMem_addr_dtl());
-			pstmt.setString(8, mVo.getMem_hp());
-			pstmt.setString(9, mVo.getMem_posi());
-			pstmt.setString(10, mVo.getMem_auth());
-			pstmt.setInt(11, mVo.getDept_no());
+			pstmt.setString(4, mVo.getMem_p_no());
+			pstmt.setString(5, mVo.getMem_addr());
+			pstmt.setString(6, mVo.getMem_addr_dtl());
+			pstmt.setString(7, mVo.getMem_hp());
+			pstmt.setString(8, mVo.getMem_posi());
+			pstmt.setString(9, mVo.getMem_auth());
+			pstmt.setInt(10, mVo.getDept_no());
 
 			pstmt.executeUpdate();
 
@@ -113,7 +112,6 @@ public class MemberDAO {
 	public void memberUpdate(MemberVO mVo) {
 		String sql = "UPDATE mem "
 				   + "   SET mem_name = ?"
-				   + "     , mem_jumin = ?"
 				   + "     , mem_p_no = ?"
 				   + "     , mem_addr = ?"
 				   + "     , mem_addr_dtl = ?"
@@ -131,15 +129,14 @@ public class MemberDAO {
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, mVo.getMem_name());
-			pstmt.setString(2, mVo.getMem_jumin());
-			pstmt.setString(3, mVo.getMem_p_no());
-			pstmt.setString(4, mVo.getMem_addr());
-			pstmt.setString(5, mVo.getMem_addr_dtl());
-			pstmt.setString(6, mVo.getMem_hp());
-			pstmt.setString(7, mVo.getMem_posi());
-			pstmt.setString(8, mVo.getMem_auth());
-			pstmt.setInt(9, mVo.getDept_no());
-			pstmt.setString(10, mVo.getMem_id());
+			pstmt.setString(2, mVo.getMem_p_no());
+			pstmt.setString(3, mVo.getMem_addr());
+			pstmt.setString(4, mVo.getMem_addr_dtl());
+			pstmt.setString(5, mVo.getMem_hp());
+			pstmt.setString(6, mVo.getMem_posi());
+			pstmt.setString(7, mVo.getMem_auth());
+			pstmt.setInt(8, mVo.getDept_no());
+			pstmt.setString(9, mVo.getMem_id());
 
 			pstmt.executeUpdate();
 
@@ -255,7 +252,6 @@ public class MemberDAO {
 			while (rs.next()) {
 				mVo.setMem_id(rs.getString("mem_id"));
 				mVo.setMem_name(rs.getString("mem_name"));
-				mVo.setMem_jumin(rs.getString("mem_jumin"));
 				mVo.setMem_p_no(rs.getString("mem_p_no"));
 				mVo.setMem_addr(rs.getString("mem_addr"));
 				mVo.setMem_addr_dtl(rs.getString("mem_addr_dtl"));
@@ -345,7 +341,6 @@ public class MemberDAO {
 
 				mVo.setMem_id(rs.getString("mem_id"));
 				mVo.setMem_name(rs.getString("mem_name"));
-				mVo.setMem_jumin(rs.getString("mem_jumin"));
 				mVo.setMem_p_no(rs.getString("mem_p_no"));
 				mVo.setMem_addr(rs.getString("mem_addr"));
 				mVo.setMem_addr_dtl(rs.getString("mem_addr_dtl"));
