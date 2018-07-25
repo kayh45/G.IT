@@ -114,17 +114,6 @@
 					</tr>
 					<tr>
 						<td class = "form_label">
-							<p class = "label">주민등록번호</p>
-							<p class = "must">*</p>			
-						</td>
-						<td class = "form_jumin-td" colspan = "3">
-							<input value = "${fn:substring(LoginUser.mem_jumin,0,6)}" name = "mem_jumin1" type = "text" size = "6" maxlength="6" class = "form_textbox" onBlur = "onlyNumber2(this)">
-							<p>-</p>
-							<input value = "${fn:substring(LoginUser.mem_jumin,6,13)}" name = "mem_jumin2" type = "text" size = "7" maxlength="7" class = "form_textbox" onBlur = "onlyNumber2(this)">
-						</td>
-					</tr>
-					<tr>
-						<td class = "form_label">
 							<p class = "label">부서</p>
 							<p class = "must">*</p>			
 						</td>

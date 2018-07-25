@@ -120,17 +120,6 @@
 					</tr>
 					<tr>
 						<td class = "form_label">
-							<p class = "label">주민등록번호</p>
-							<p class = "must">*</p>			
-						</td>
-						<td class = "form_jumin-td" colspan = "3">
-							<input name = "mem_jumin1" type = "text" size = "6" maxlength="6" class = "form_textbox" onBlur = "onlyNumber2(this)">
-							<p>-</p>
-							<input name = "mem_jumin2" type = "password" size = "7" maxlength="7" class = "form_textbox" onBlur = "onlyNumber2(this)">
-						</td>
-					</tr>
-					<tr>
-						<td class = "form_label">
 							<p class = "label">부서</p>
 							<p class = "must">*</p>			
 						</td>
