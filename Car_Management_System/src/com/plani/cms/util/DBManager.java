@@ -23,8 +23,8 @@ public class DBManager {
 
 		try {
 			Class.forName("org.gjt.mm.mysql.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://planicmsdb.mysql.database.azure.com:3306/cms?useSSL=true&requireSSL=false", 
-												"cmsadmin@planicmsdb", "1q2w3e4r*");
+			conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/localdb?useSSL=true&requireSSL=false", 
+												"azure", "6#vWHD_$");
 			System.out.println("DB 연결 성공 :  " + conn);			
 
 		} catch (SQLException ex) {
