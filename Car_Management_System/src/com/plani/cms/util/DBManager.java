@@ -23,7 +23,7 @@ public class DBManager {
 
 		try {
 			Class.forName("org.gjt.mm.mysql.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/localdb?useSSL=true&requireSSL=false", 
+			conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:56573/cms?useSSL=true&requireSSL=false&characterEncoding=UTF-8", 
 												"azure", "6#vWHD_$");
 			System.out.println("DB 연결 성공 :  " + conn);			
 
