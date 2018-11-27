@@ -5,8 +5,7 @@ function carNoCheck() {
 	document.frm.car_reg_no_ok.value = 0; // 중복검사 여부를 0으로 초기화
 	var url = "car.do?popup=no&command=car_write_check_form&car_reg_no="
 			+ encodeURIComponent(document.frm.car_reg_no.value);
-	window
-			.open(url, "_blank_1",
+	window.open(url, "_blank_1",
 					"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
 }
 
@@ -14,8 +13,7 @@ function carSearch() {
 	document.frm.car_reg_no_ok.value = 0; // 중복검사 여부를 0으로 초기화
 	var url = "car.do?popup=no&command=car_search&car_reg_no="
 			+ encodeURIComponent(document.frm.car_reg_no.value);
-	window
-			.open(url, "_blank_1",
+	window.open(url, "_blank_1",
 					"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=500, height=400");
 }
 
@@ -74,18 +72,17 @@ function carSelect(name) {
 
 		opener.frm.co_name.value = document.getElementsByName(name + "co_name")[0].value;
 
-		var tel = document.getElementsByName(name + "co_tel")[0].value;
-		var splTel = tel.split("-");
-		opener.frm.co_tel1.value = splTel[0];
-		opener.frm.co_tel2.value = splTel[1];
-		opener.frm.co_tel3.value = splTel[2];
-		console.log(splTel);
+		var tel = document.getElementsByName(name + "co_tel")[0].value;	
+		
+		opener.frm.co_tel1.value = tel.substr(0,3);
+		opener.frm.co_tel2.value = tel.substr(3,4);
+		opener.frm.co_tel3.value = tel.substr(7,4);
 
 		var fax = document.getElementsByName(name + "co_fax")[0].value;
-		var splFax = fax.split("-");
-		opener.frm.co_fax1.value = splFax[0];
-		opener.frm.co_fax2.value = splFax[1];
-		opener.frm.co_fax3.value = splFax[2];
+		
+		opener.frm.co_fax1.value = fax.substr(0,3);
+		opener.frm.co_fax2.value = fax.substr(3,4);
+		opener.frm.co_fax3.value = fax.substr(7,4);
 
 		opener.frm.ct_date.value = document.getElementsByName(name + "ct_date")[0].value;
 		opener.frm.ep_date.value = document.getElementsByName(name + "ep_date")[0].value;

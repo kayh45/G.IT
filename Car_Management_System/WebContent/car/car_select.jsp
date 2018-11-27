@@ -10,7 +10,7 @@
 <link href="css/popup.css" rel="stylesheet">
 <link href="css/common.css" rel="stylesheet">
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<script type = "text/javascript" src="js/car.js?ver=4"></script>
+<script type = "text/javascript" src="js/car.js?ver=2"></script>
 
 <title>법인차 조회</title>
 </head>
@@ -103,7 +103,7 @@
 					</tr>
 					<thead>
 					<c:forEach var = "car" items = "${carAllList}">
-				<tr>
+					<tr>
 						<td>${car.car_reg_no}</td>
 						<td><a onclick = "carSelect('${car.car_reg_no}')">${car.car_model}</a></td>		
 						<td>${car.car_divi}</td>

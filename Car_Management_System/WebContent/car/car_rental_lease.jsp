@@ -36,7 +36,7 @@
 				<p class="must">*</p>
 			</td>
 			<td class="form_phone-td"><input type="text"
-				class="form_textbox" size="6" maxlength="4" name="co_fax1">-<input
+				class="form_textbox" size="6" maxlength="3" name="co_fax1">-<input
 				type="text" class="form_textbox" size="6" maxlength="4"
 				name="co_fax2">-<input type="text" class="form_textbox"
 				size="6" maxlength="4" name="co_fax3"></td>

@@ -236,7 +236,7 @@ public class CarDAO {
 	 */
 	public int insertCar_payCar(CarVO cVo) {
 		int result = -1;
-		String sql = "INSERT INTO car (CAR_REG_NO, CAR_DIVI, CAC_MODEL, BO_NAME, BO_DIVI,"
+		String sql = "INSERT INTO car (CAR_REG_NO, CAR_DIVI, CAR_MODEL, BO_NAME, BO_DIVI,"
 				   + "                 BO_AGE, BO_S_DATE, BO_E_DATE, TOTAL_DIST) "
 				   + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -414,8 +414,8 @@ public class CarDAO {
 	 */
 	public void DeleteCar(String car_reg_no) {
 
-		String sql = "DELETE FROM car c"
-				   + " WHERE c.CAR_REG_NO = ?";
+		String sql = "DELETE FROM car "
+				   + " WHERE CAR_REG_NO = ?";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;

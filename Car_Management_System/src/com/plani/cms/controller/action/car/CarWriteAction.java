@@ -31,8 +31,8 @@ public class CarWriteAction implements Action {
 		String ct_date = request.getParameter("ct_date");
 		String ep_date = request.getParameter("ep_date");
 		String co_name = request.getParameter("co_name");
-		String co_tel = request.getParameter("co_tel1")+"-"+request.getParameter("co_tel2")+"-"+request.getParameter("co_tel3");
-		String co_fax = request.getParameter("co_fax1")+"-"+request.getParameter("co_fax2")+"-"+request.getParameter("co_fax3");
+		String co_tel = request.getParameter("co_tel1")+request.getParameter("co_tel2")+request.getParameter("co_tel3");
+		String co_fax = request.getParameter("co_fax1")+request.getParameter("co_fax2")+request.getParameter("co_fax3");
 		String bo_name = request.getParameter("bo_name");
 		String bo_divi = request.getParameter("bo_divi");
 		String bo_age = request.getParameter("bo_age");
@@ -58,17 +58,18 @@ public class CarWriteAction implements Action {
 		cVo.setBo_e_date(bo_e_date);
 		cVo.setTotal_dist(Integer.parseInt(total_dist));
 
+		
 		// 렌탈/리스와 구입 기준으로 분기한 코드 내용
 		CarDAO cDao = CarDAO.getInstance();
 		if (car_divi.equals("렌트") || car_divi.equals("리스")) {
 			cDao.insertCar_rentalCar(cVo);
-		
 		} else if(car_divi.equals("구입")){
 			cDao.insertCar_payCar(cVo);
 		}
 		// 렌탈/리스와 구입 기준으로 분기한 코드 내용
 		System.out.println("등록성공");
-		request.setAttribute("message", "<strong>법인 차 등록 성공!</strong> &nbsp 등록된 법인차 : " + car_reg_no);
+		request.setAttribute("message", "<strong>법인 차 등록 성공!</strong> &nbsp 등록된 법인차 : " + car_reg_no + co_tel);
+		
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
