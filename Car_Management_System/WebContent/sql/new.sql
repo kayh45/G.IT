@@ -110,7 +110,7 @@ CREATE TABLE `driv` (
   `etc_fee` int(11) DEFAULT NULL,
   `driv_dist` int(11) DEFAULT NULL,
   `bee_go` varchar(255) DEFAULT NULL,
-  `drive_divi` varchar(50) DEFAULT NULL
+  `driv_divi` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

@@ -78,7 +78,7 @@ public class CarlogWriteAction implements Action {
 		
 		System.out.println(driv_dist);
 		System.out.println("등록 성공");
-		request.setAttribute("message", "<strong>운행일지 작성 성공!</strong>");
+		request.setAttribute("message", "<strong>운행일지 작성 성공!</strong>" + cour_no + card_divi + car_reg_no);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

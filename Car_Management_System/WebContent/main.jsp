@@ -69,7 +69,7 @@
 				<c:choose>
 					<c:when test="${LoginUser.mem_auth eq 1}">
 					<div class = "col-md-3 col-xs-6">
-						<div class = "content_cont-box qLink_button" onclick = "location.href='carlog.do?command=carlog_auto_write_form'">
+						<div class = "content_cont-box qLink_button" onclick = "alert('준비중입니다.')">
 							<img src = "img/car_icon.png" width = "200">
 							<p>운행일지 일괄작성</p>
 						</div>
